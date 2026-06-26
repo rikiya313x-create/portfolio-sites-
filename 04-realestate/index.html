@@ -5,255 +5,277 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PREMIER HOME | 高級不動産・東京港区</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  :root{--dark:#111215;--gold:#b8975a;--cream:#f8f4ee;--gray:#6d6d6d;--border:rgba(184,151,90,.25);}
-  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--dark);}
+  :root{--dark:#111215;--gold:#b8975a;--cream:#f8f4ee;--gray:#6d6d6d;--border:rgba(184,151,90,.25);--light:#fafaf8;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#1a1612;border-left:3px solid var(--gold);padding:10px 24px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.4);}
 
   nav{position:fixed;top:0;width:100%;z-index:100;padding:0 64px;display:flex;align-items:center;justify-content:space-between;height:80px;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);}
   .logo{display:flex;align-items:center;gap:12px;}
-  .logo-mark{width:36px;height:36px;background:var(--gold);display:flex;align-items:center;justify-content:center;}
-  .logo-mark svg{width:20px;height:20px;fill:#fff;}
-  .logo-text{font-family:'Playfair Display',serif;font-size:1.15rem;letter-spacing:.08em;color:var(--dark);}
+  .logo-mark{width:36px;height:36px;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Playfair Display',serif;font-size:.9rem;}
+  .logo-text{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.18em;color:var(--dark);text-transform:uppercase;}
   nav ul{list-style:none;display:flex;gap:36px;}
-  nav ul a{color:var(--gray);text-decoration:none;font-size:.78rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a{color:var(--gray);font-size:.73rem;letter-spacing:.12em;transition:.2s;}
   nav ul a:hover{color:var(--gold);}
-  .nav-line{width:1px;height:24px;background:var(--border);margin:0 8px;}
-  .nav-tel{font-size:.78rem;color:var(--dark);letter-spacing:.05em;}
+  .nav-cta{background:var(--dark);color:#fff!important;padding:11px 24px;font-size:.72rem!important;letter-spacing:.12em;}
 
-  .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;}
-  .hero-slides{position:absolute;inset:0;}
-  .hero-slide{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80') center/cover;opacity:.6;}
-  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,15,.9) 0%,rgba(10,10,15,.3) 60%,transparent 100%);}
-  .hero-content{position:relative;z-index:1;padding:0 80px 80px;}
-  .hero-badge{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--gold);padding:8px 20px;margin-bottom:28px;}
-  .hero-badge span{color:var(--gold);font-size:.7rem;letter-spacing:.25em;}
-  .hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:4.5rem;line-height:1.15;margin-bottom:20px;}
+  .hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=80') center/cover;}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(17,18,21,.92) 40%,rgba(17,18,21,.3));}
+  .hero-content{position:relative;z-index:1;padding:0 80px;}
+  .hero-tag{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:6px 18px;font-size:.62rem;letter-spacing:.3em;margin-bottom:24px;text-transform:uppercase;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:4.5rem;color:#fff;line-height:1.15;max-width:600px;margin-bottom:20px;}
   .hero h1 em{color:var(--gold);font-style:italic;}
-  .hero p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.9;max-width:520px;margin-bottom:40px;font-weight:300;}
-  .hero-btns{display:flex;gap:16px;}
-  .btn-gold{background:var(--gold);color:#fff;padding:16px 44px;font-size:.82rem;letter-spacing:.15em;text-decoration:none;transition:.3s;border:none;cursor:pointer;}
-  .btn-gold:hover{background:#a07840;}
-  .btn-outline-w{border:1px solid rgba(255,255,255,.5);color:#fff;padding:16px 44px;font-size:.82rem;letter-spacing:.15em;text-decoration:none;transition:.3s;}
-  .btn-outline-w:hover{border-color:var(--gold);color:var(--gold);}
+  .hero-lead{color:rgba(255,255,255,.6);font-size:.88rem;line-height:2.1;max-width:500px;margin-bottom:40px;}
+  .btn-gold{display:inline-block;background:var(--gold);color:#fff;padding:15px 44px;font-size:.8rem;letter-spacing:.15em;transition:.3s;}
+  .btn-gold:hover{background:#a5844a;}
+  .btn-dark-ghost{display:inline-block;border:1px solid rgba(255,255,255,.3);color:#fff;padding:15px 36px;font-size:.8rem;letter-spacing:.15em;margin-left:14px;transition:.3s;}
+  .btn-dark-ghost:hover{border-color:var(--gold);color:var(--gold);}
 
-  .search-bar{background:var(--dark);padding:28px 80px;display:flex;gap:16px;align-items:center;}
-  .search-select{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;padding:14px 20px;font-size:.82rem;font-family:'Noto Sans JP',sans-serif;outline:none;cursor:pointer;}
-  .search-select option{background:var(--dark);}
-  .search-btn{background:var(--gold);color:#fff;padding:14px 32px;border:none;font-size:.82rem;letter-spacing:.1em;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
+  .stats-bar{background:var(--dark);padding:24px 80px;display:grid;grid-template-columns:repeat(4,1fr);}
+  .sb{text-align:center;border-right:1px solid rgba(184,151,90,.2);padding:8px 0;}
+  .sb:last-child{border:none;}
+  .sb-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);}
+  .sb-label{color:rgba(255,255,255,.4);font-size:.65rem;letter-spacing:.1em;margin-top:4px;}
 
-  .features{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border);}
-  .feature{padding:40px 36px;border-right:1px solid var(--border);text-align:center;}
-  .feature:last-child{border:none;}
-  .feature-num{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--gold);}
-  .feature-label{font-size:.75rem;color:var(--gray);margin-top:6px;letter-spacing:.08em;}
+  .sec{padding:100px 80px;}
+  .sec-tag{color:var(--gold);font-size:.62rem;letter-spacing:.35em;margin-bottom:10px;text-transform:uppercase;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--dark);margin-bottom:12px;line-height:1.2;}
+  .gold-line{width:32px;height:1px;background:var(--gold);margin:14px 0 36px;}
 
-  .section{padding:100px 80px;}
-  .section-gold{color:var(--gold);font-size:.72rem;letter-spacing:.3em;margin-bottom:12px;}
-  .section-title{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--dark);margin-bottom:16px;}
-  .section-lead{color:var(--gray);font-size:.87rem;line-height:1.9;max-width:560px;font-weight:300;}
+  .properties-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .prop{background:#fff;overflow:hidden;}
+  .prop-img{height:240px;background-size:cover;background-position:center;position:relative;}
+  .prop-badge{position:absolute;top:16px;left:16px;background:var(--gold);color:#fff;font-size:.62rem;letter-spacing:.1em;padding:4px 10px;}
+  .prop-body{padding:22px 22px 26px;}
+  .prop-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--dark);margin-bottom:4px;}
+  .prop-loc{color:var(--gray);font-size:.72rem;letter-spacing:.08em;margin-bottom:14px;}
+  .prop-price{font-size:1.3rem;color:var(--dark);font-weight:700;margin-bottom:12px;}
+  .prop-price span{font-size:.72rem;font-weight:400;color:var(--gray);margin-left:4px;}
+  .prop-specs{display:flex;gap:14px;}
+  .prop-spec{color:var(--gray);font-size:.7rem;display:flex;gap:4px;align-items:center;}
+  .prop-spec::before{content:'';width:4px;height:4px;background:var(--gold);border-radius:50%;}
 
-  .listings{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
-  .listing-card{border:1px solid var(--border);overflow:hidden;transition:.3s;cursor:pointer;}
-  .listing-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.1);transform:translateY(-4px);}
-  .listing-img{height:220px;background:#e8e4dc;position:relative;overflow:hidden;}
-  .listing-img div{width:100%;height:100%;}
-  .listing-tag{position:absolute;top:16px;left:16px;background:var(--gold);color:#fff;font-size:.65rem;padding:4px 12px;letter-spacing:.1em;}
-  .listing-body{padding:24px;}
-  .listing-area{color:var(--gold);font-size:.7rem;letter-spacing:.15em;margin-bottom:6px;}
-  .listing-name{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:8px;}
-  .listing-detail{color:var(--gray);font-size:.78rem;line-height:1.8;}
-  .listing-price{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--dark);margin-top:16px;}
-  .listing-price span{font-size:.75rem;font-family:'Noto Sans JP',sans-serif;color:var(--gray);margin-left:4px;}
+  .why{background:var(--cream);}
+  .why-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .why-img{height:500px;background:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80') center/cover;}
+  .why-content p{color:var(--gray);font-size:.85rem;line-height:2;margin-bottom:16px;}
+  .why-points{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;}
+  .wp{padding:16px;background:#fff;border-left:2px solid var(--gold);}
+  .wp-title{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:4px;}
+  .wp-text{font-size:.72rem;color:var(--gray);}
 
-  .service-dark{background:var(--dark);padding:100px 80px;}
-  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px;}
-  .service-item{background:#1a1d22;padding:48px 36px;border-top:2px solid transparent;transition:.3s;}
-  .service-item:hover{border-top-color:var(--gold);}
-  .service-icon{color:var(--gold);font-size:1.8rem;margin-bottom:20px;}
-  .service-name{color:#fff;font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:12px;}
-  .service-text{color:rgba(255,255,255,.5);font-size:.8rem;line-height:1.9;font-weight:300;}
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
+  .svc{background:#fff;padding:36px 26px;text-align:center;}
+  .svc-icon{font-size:2rem;margin-bottom:14px;}
+  .svc-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+  .svc-text{color:var(--gray);font-size:.75rem;line-height:1.9;}
 
-  .concept{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
-  .concept-img{background:url('https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&q=80') center/cover;}
-  .concept-text{background:var(--cream);padding:100px 80px;display:flex;flex-direction:column;justify-content:center;}
-  .concept-text p{color:var(--gray);line-height:2.1;font-size:.88rem;font-weight:300;margin-bottom:16px;}
+  .staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .sc{background:#fff;overflow:hidden;}
+  .sc-img{height:280px;background-size:cover;background-position:center top;}
+  .sc-body{padding:22px 22px 26px;}
+  .sc-spec{color:var(--gold);font-size:.62rem;letter-spacing:.15em;margin-bottom:4px;}
+  .sc-name{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--dark);margin-bottom:8px;}
+  .sc-text{color:var(--gray);font-size:.76rem;line-height:1.9;}
 
-  .agents{background:#fff;padding:100px 80px;}
-  .agent-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px;}
-  .agent-card{text-align:center;}
-  .agent-avatar{width:100px;height:100px;border-radius:50%;background:#e8e4dc;margin:0 auto 16px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;}
-  .agent-name{font-family:'Playfair Display',serif;font-size:.95rem;margin-bottom:4px;}
-  .agent-role{color:var(--gold);font-size:.7rem;letter-spacing:.1em;margin-bottom:8px;}
-  .agent-text{color:var(--gray);font-size:.75rem;line-height:1.7;}
+  .flow-inner{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:50px;}
+  .flow-inner::before{content:'';position:absolute;top:24px;left:5%;right:5%;height:1px;background:var(--border);}
+  .fi{text-align:center;padding:0 10px;position:relative;}
+  .fi-num{width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:'Playfair Display',serif;font-size:1rem;margin:0 auto 14px;background:#fff;position:relative;z-index:1;}
+  .fi-title{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:6px;}
+  .fi-text{color:var(--gray);font-size:.7rem;line-height:1.85;}
 
-  footer{background:var(--dark);padding:60px 80px 36px;}
-  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;margin-bottom:48px;}
-  .footer-brand p{color:rgba(255,255,255,.4);font-size:.78rem;line-height:1.9;margin-top:12px;}
-  .footer-col h4{color:var(--gold);font-size:.7rem;letter-spacing:.25em;margin-bottom:16px;font-weight:500;}
-  .footer-col a{display:block;color:rgba(255,255,255,.45);text-decoration:none;font-size:.77rem;margin-bottom:9px;transition:.2s;}
-  .footer-col a:hover{color:var(--gold);}
-  .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;}
-  .footer-bottom p{color:rgba(255,255,255,.25);font-size:.72rem;}
+  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .vc{padding:28px 24px;border:1px solid var(--border);}
+  .vc-stars{color:var(--gold);font-size:.8rem;margin-bottom:12px;letter-spacing:.1em;}
+  .vc-text{color:var(--gray);font-size:.78rem;line-height:2;margin-bottom:14px;}
+  .vc-name{color:var(--dark);font-size:.78rem;font-weight:700;}
+  .vc-meta{color:var(--gray);font-size:.68rem;margin-top:2px;}
 
-  .portfolio-note{background:#f5f0e8;border-left:3px solid var(--gold);padding:12px 24px;text-align:center;font-size:.73rem;color:var(--gray);}
+  .faq-list{max-width:780px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);padding:22px 0;}
+  .faq-q{display:flex;gap:14px;font-size:.86rem;font-weight:700;color:var(--dark);margin-bottom:10px;}
+  .fq-i{color:var(--gold);font-family:'Playfair Display',serif;font-size:1rem;flex-shrink:0;}
+  .faq-a{color:var(--gray);font-size:.8rem;line-height:1.95;padding-left:24px;}
+
+  .cta-sec{background:var(--dark);padding:100px 80px;text-align:center;}
+  .cta-title{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;margin-bottom:12px;line-height:1.2;}
+  .cta-sub{color:rgba(255,255,255,.4);font-size:.84rem;margin-bottom:32px;}
+
+  .access{display:grid;grid-template-columns:1fr 1fr;}
+  .access-info{background:var(--cream);padding:80px;}
+  table{margin-top:32px;width:100%;border-collapse:collapse;}
+  td{padding:13px 0;border-bottom:1px solid var(--border);color:var(--gray);font-size:.82rem;vertical-align:top;}
+  td:first-child{color:var(--dark);width:90px;font-size:.72rem;font-weight:700;}
+  .access-img{background:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80') center/cover;min-height:400px;}
+
+  footer{background:#0a0b0e;padding:36px 80px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-family:'Playfair Display',serif;font-size:.95rem;color:rgba(255,255,255,.5);letter-spacing:.2em;}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
 </style>
 </head>
 <body>
-
-<div class="portfolio-note">※ ポートフォリオ用に制作した架空の不動産会社です。実在する会社・物件とは一切関係ありません。</div>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空の不動産会社サイトです。実在する会社・物件とは一切関係ありません。</div>
 
 <nav>
-  <div class="logo">
-    <div class="logo-mark"><svg viewBox="0 0 20 20"><path d="M10 2L2 8v10h5v-6h6v6h5V8L10 2z"/></svg></div>
-    <div class="logo-text">PREMIER HOME</div>
-  </div>
+  <div class="logo"><div class="logo-mark">P</div><div class="logo-text">Premier Home</div></div>
   <ul>
-    <li><a href="#">物件検索</a></li>
-    <li><a href="#">売却サポート</a></li>
-    <li><a href="#">資産運用</a></li>
-    <li><a href="#">会社案内</a></li>
+    <li><a href="#">物件情報</a></li>
+    <li><a href="#">サービス</a></li>
+    <li><a href="#">エージェント</a></li>
+    <li><a href="#">会社概要</a></li>
     <li><a href="#">お問い合わせ</a></li>
+    <li><a href="#" class="nav-cta">無料査定</a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <div class="nav-line"></div>
-    <span class="nav-tel">03-XXXX-XXXX</span>
-  </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-slides"><div class="hero-slide"></div></div>
+  <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span>TOKYO LUXURY REAL ESTATE</span></div>
-    <h1>理想の住まいが、<br><em>あなたの人生を</em><br>変える。</h1>
-    <p>港区・渋谷区・千代田区を中心に、プレミアムな不動産を取り扱うPREMIER HOME。資産価値の高い物件と、プロのエージェントによる丁寧なサポートをご提供します。</p>
-    <div class="hero-btns">
+    <div class="hero-tag">Tokyo Premium Real Estate</div>
+    <h1>東京の<em>一流</em>を、<br>あなたのものに。</h1>
+    <p class="hero-lead">港区・渋谷区・千代田区を中心とした高級住宅・投資用物件の売買・仲介。豊富な実績と独自のネットワークで、理想の物件を最短でご提案します。</p>
+    <div>
       <a href="#" class="btn-gold">物件を探す</a>
-      <a href="#" class="btn-outline-w">売却を相談する</a>
+      <a href="#" class="btn-dark-ghost">無料査定を依頼</a>
     </div>
   </div>
 </section>
 
-<div class="search-bar">
-  <select class="search-select"><option>エリアを選ぶ</option><option>港区</option><option>渋谷区</option><option>千代田区</option><option>中央区</option></select>
-  <select class="search-select"><option>物件タイプ</option><option>マンション</option><option>戸建て</option><option>土地</option><option>投資用</option></select>
-  <select class="search-select"><option>価格帯</option><option>〜5,000万</option><option>5,000万〜1億</option><option>1億〜3億</option><option>3億以上</option></select>
-  <button class="search-btn">検索する</button>
+<div class="stats-bar">
+  <div class="sb"><div class="sb-num">1,200+</div><div class="sb-label">取引実績（棟）</div></div>
+  <div class="sb"><div class="sb-num">18</div><div class="sb-label">年の実績</div></div>
+  <div class="sb"><div class="sb-num">97%</div><div class="sb-label">顧客満足度</div></div>
+  <div class="sb"><div class="sb-num">¥4.2億</div><div class="sb-label">平均成約価格</div></div>
 </div>
 
-<div class="features">
-  <div class="feature"><div class="feature-num">1,200+</div><div class="feature-label">取扱物件数</div></div>
-  <div class="feature"><div class="feature-num">98%</div><div class="feature-label">顧客満足度</div></div>
-  <div class="feature"><div class="feature-num">15年</div><div class="feature-label">業界実績</div></div>
-  <div class="feature"><div class="feature-num">45名</div><div class="feature-label">専門エージェント</div></div>
-</div>
+<section class="sec">
+  <p class="sec-tag">Featured Properties</p>
+  <h2 class="sec-title">注目の物件</h2>
+  <div class="gold-line"></div>
+  <div class="properties-grid">
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80');"><span class="prop-badge">NEW</span></div>
+      <div class="prop-body"><h3 class="prop-name">The Roppongi Residence</h3><p class="prop-loc">東京都港区六本木 / 37F 角部屋</p><p class="prop-price">¥3.8億<span>（3LDK / 128㎡）</span></p><div class="prop-specs"><span class="prop-spec">3LDK</span><span class="prop-spec">128㎡</span><span class="prop-spec">37F</span><span class="prop-spec">2022年築</span></div></div>
+    </div>
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80');"><span class="prop-badge">SALE</span></div>
+      <div class="prop-body"><h3 class="prop-name">Minato Premium Tower</h3><p class="prop-loc">東京都港区芝浦 / 高層タワー</p><p class="prop-price">¥1.95億<span>（2LDK / 78㎡）</span></p><div class="prop-specs"><span class="prop-spec">2LDK</span><span class="prop-spec">78㎡</span><span class="prop-spec">28F</span><span class="prop-spec">2020年築</span></div></div>
+    </div>
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&q=80');"><span class="prop-badge">EXCLUSIVE</span></div>
+      <div class="prop-body"><h3 class="prop-name">Aoyama Court</h3><p class="prop-loc">東京都港区南青山 / 全室角部屋</p><p class="prop-price">¥6.4億<span>（4LDK / 190㎡）</span></p><div class="prop-specs"><span class="prop-spec">4LDK</span><span class="prop-spec">190㎡</span><span class="prop-spec">5F</span><span class="prop-spec">2018年築</span></div></div>
+    </div>
+  </div>
+</section>
 
-<section class="section">
-  <p class="section-gold">FEATURED PROPERTIES</p>
-  <h2 class="section-title">注目物件</h2>
-  <p class="section-lead">港区・渋谷区の厳選プレミアム物件。エージェントが目利きしたとっておきをご紹介。</p>
-  <div class="listings">
-    <div class="listing-card">
-      <div class="listing-img">
-        <div style="background:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80') center/cover;"></div>
-        <span class="listing-tag">NEW</span>
-      </div>
-      <div class="listing-body">
-        <p class="listing-area">港区 麻布十番</p>
-        <h3 class="listing-name">プレミアムタワーレジデンス<br>麻布十番</h3>
-        <p class="listing-detail">3LDK / 112㎡ / 32F / 東南向き<br>地下鉄麻布十番駅 徒歩2分</p>
-        <div class="listing-price">2億4,800万円<span>（税込）</span></div>
-      </div>
-    </div>
-    <div class="listing-card">
-      <div class="listing-img">
-        <div style="background:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80') center/cover;"></div>
-        <span class="listing-tag">RARE</span>
-      </div>
-      <div class="listing-body">
-        <p class="listing-area">渋谷区 広尾</p>
-        <h3 class="listing-name">広尾ガーデンヒルズ<br>邸宅</h3>
-        <p class="listing-detail">5LDK / 280㎡ / 独立邸宅<br>地下鉄広尾駅 徒歩5分</p>
-        <div class="listing-price">5億8,000万円<span>（税込）</span></div>
-      </div>
-    </div>
-    <div class="listing-card">
-      <div class="listing-img">
-        <div style="background:url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80') center/cover;"></div>
-        <span class="listing-tag">RECOMMEND</span>
-      </div>
-      <div class="listing-body">
-        <p class="listing-area">千代田区 番町</p>
-        <h3 class="listing-name">番町グランドマンション<br>最上階</h3>
-        <p class="listing-detail">4LDK / 155㎡ / PH / 皇居ビュー<br>地下鉄半蔵門駅 徒歩6分</p>
-        <div class="listing-price">3億2,000万円<span>（税込）</span></div>
+<section class="sec why">
+  <div class="why-inner">
+    <div class="why-img"></div>
+    <div class="why-content">
+      <p class="sec-tag">Why PREMIER HOME</p>
+      <h2 class="sec-title">選ばれる理由</h2>
+      <div class="gold-line"></div>
+      <p>PREMIER HOMEは2006年の創業以来、東京都心の高級不動産に特化した仲介会社として1,200件以上の取引をサポートしてきました。</p>
+      <p>私たちが大切にしているのは、物件を「売る・買う」ではなく「最適な資産形成」のお手伝いをするということ。マーケットの動向を熟知したエージェントが、長期的な視点でご提案します。</p>
+      <div class="why-points">
+        <div class="wp"><div class="wp-title">独自ネットワーク</div><div class="wp-text">非公開物件を含む港区・渋谷区の豊富な情報を保有</div></div>
+        <div class="wp"><div class="wp-title">ワンストップ対応</div><div class="wp-text">売買・賃貸・管理・リノベまで一社で完結</div></div>
+        <div class="wp"><div class="wp-title">資産運用サポート</div><div class="wp-text">税理士・ファイナンシャルプランナーと連携</div></div>
+        <div class="wp"><div class="wp-title">英語対応可</div><div class="wp-text">外国籍のお客様の物件購入にも対応</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="service-dark">
-  <p class="section-gold">OUR SERVICES</p>
-  <h2 class="section-title" style="color:#fff;">サービス</h2>
-  <p class="section-lead" style="color:rgba(255,255,255,.5);">購入・売却・賃貸・資産運用まで、不動産に関わるすべてをワンストップでサポートします。</p>
+<section class="sec">
+  <p class="sec-tag">Our Services</p>
+  <h2 class="sec-title">サービス一覧</h2>
+  <div class="gold-line"></div>
   <div class="service-grid">
-    <div class="service-item">
-      <div class="service-icon">🏠</div>
-      <h3 class="service-name">購入サポート</h3>
-      <p class="service-text">ご予算・ご要望に合わせた物件探しから、内見・契約・ローン手続きまで専任エージェントが全面サポート。</p>
-    </div>
-    <div class="service-item">
-      <div class="service-icon">💰</div>
-      <h3 class="service-name">売却サポート</h3>
-      <p class="service-text">正確な査定と戦略的な価格設定で、資産価値を最大化します。3ヶ月以内の成約率92%。</p>
-    </div>
-    <div class="service-item">
-      <div class="service-icon">📈</div>
-      <h3 class="service-name">資産運用コンサル</h3>
-      <p class="service-text">投資用不動産の選定から管理会社選び、出口戦略まで。安定した資産形成をサポートします。</p>
-    </div>
+    <div class="svc"><div class="svc-icon">🏠</div><div class="svc-name">物件売買仲介</div><div class="svc-text">購入・売却どちらも対応。市場価格に基づいた正確な査定と迅速なマッチングが強みです。</div></div>
+    <div class="svc"><div class="svc-icon">📋</div><div class="svc-name">無料資産査定</div><div class="svc-text">現在お持ちの物件を無料で査定。売却・運用どちらが得かをデータで提示します。</div></div>
+    <div class="svc"><div class="svc-icon">🔑</div><div class="svc-name">投資物件相談</div><div class="svc-text">都心の投資用マンション・一棟ビルの購入相談。利回り・ローン計画含めてトータル提案。</div></div>
+    <div class="svc"><div class="svc-icon">🏗️</div><div class="svc-name">リノベーション</div><div class="svc-text">信頼できる施工会社と連携し、購入後のリフォーム・リノベーションもワンストップで対応。</div></div>
   </div>
 </section>
 
-<div class="concept">
-  <div class="concept-img"></div>
-  <div class="concept-text">
-    <p class="section-gold">PHILOSOPHY</p>
-    <h2 class="section-title">不動産は、<br>人生そのものだ。</h2>
-    <p>家を選ぶことは、生き方を選ぶことだと私たちは思っています。どこに住むかで、付き合う人が変わり、日常が変わり、未来が変わる。</p>
-    <p>だからこそ私たちは、物件のスペックだけでなく、お客様の人生設計まで一緒に考えます。PREMIER HOMEのエージェントは全員、不動産のプロであるとともに、あなたのライフアドバイザーであることを目指しています。</p>
-    <a href="#" class="btn-gold" style="margin-top:8px;display:inline-block;">会社案内を見る</a>
+<section class="sec" style="background:var(--cream);">
+  <p class="sec-tag">Our Agents</p>
+  <h2 class="sec-title">エージェント紹介</h2>
+  <div class="gold-line"></div>
+  <div class="staff-grid">
+    <div class="sc"><div class="sc-img" style="background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80');"></div><div class="sc-body"><p class="sc-spec">SENIOR AGENT</p><h3 class="sc-name">佐藤 健一</h3><p class="sc-text">港区専門18年。外資系金融・医師・起業家など富裕層へのコンシェルジュ型対応を得意とし、紹介・リピート率が高い。</p></div></div>
+    <div class="sc"><div class="sc-img" style="background-image:url('https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=600&q=80');"></div><div class="sc-body"><p class="sc-spec">INVESTMENT SPECIALIST</p><h3 class="sc-name">鈴木 美穂</h3><p class="sc-text">不動産投資専門アドバイザー。ファイナンシャルプランナー資格保有。利回り・節税効果を含めた長期投資計画の立案が強み。</p></div></div>
+    <div class="sc"><div class="sc-img" style="background-image:url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80');"></div><div class="sc-body"><p class="sc-spec">BUYERS AGENT</p><h3 class="sc-name">田中 拓也</h3><p class="sc-text">購入者専門エージェント。売り主側の利益ではなく買い手の立場に立った物件選びを徹底。価格交渉・法的チェックも一貫担当。</p></div></div>
   </div>
+</section>
+
+<section class="sec">
+  <p class="sec-tag">Process</p>
+  <h2 class="sec-title">ご購入の流れ</h2>
+  <div class="gold-line"></div>
+  <div class="flow-inner">
+    <div class="fi"><div class="fi-num">01</div><div class="fi-title">無料相談</div><p class="fi-text">ご希望・予算・エリアをヒアリング</p></div>
+    <div class="fi"><div class="fi-num">02</div><div class="fi-title">物件提案</div><p class="fi-text">非公開物件含む候補をご案内</p></div>
+    <div class="fi"><div class="fi-num">03</div><div class="fi-title">現地内覧</div><p class="fi-text">専属エージェントが同行</p></div>
+    <div class="fi"><div class="fi-num">04</div><div class="fi-title">条件交渉</div><p class="fi-text">価格・引渡し条件の交渉を代行</p></div>
+    <div class="fi"><div class="fi-num">05</div><div class="fi-title">契約・引渡し</div><p class="fi-text">法的確認から引渡しまで完全サポート</p></div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--cream);">
+  <p class="sec-tag">Client Voice</p>
+  <h2 class="sec-title">お客様の声</h2>
+  <div class="gold-line"></div>
+  <div class="voice-grid">
+    <div class="vc"><div class="vc-stars">★★★★★</div><p class="vc-text">他社では「非公開物件は紹介できない」と言われましたが、PREMIER HOMEでは希望条件にピッタリの非公開物件を翌週に見せてもらえました。ネットワークの強さを感じます。</p><p class="vc-name">S.Kさん（45歳・医師）</p><p class="vc-meta">港区タワーマンション購入</p></div>
+    <div class="vc"><div class="vc-stars">★★★★★</div><p class="vc-text">投資目的での購入でしたが、税務面・ローン戦略・出口戦略まで一気に考えてくれて、本当に「パートナー」という感覚でした。リピート購入しています。</p><p class="vc-name">T.Mさん（52歳・経営者）</p><p class="vc-meta">青山一棟マンション購入</p></div>
+    <div class="vc"><div class="vc-stars">★★★★★</div><p class="vc-text">売却を検討したところ、他社査定より3,000万高い金額で成約できました。価格交渉のノウハウが全然違うと感じました。</p><p class="vc-name">H.Nさん（38歳・外資系勤務）</p><p class="vc-meta">渋谷区マンション売却</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <p class="sec-tag">FAQ</p>
+  <h2 class="sec-title">よくあるご質問</h2>
+  <div class="gold-line"></div>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>相談だけでも大丈夫ですか？</div><div class="faq-a">はい、もちろんです。購入を具体的に決めていない段階のご相談も歓迎しています。市況情報の提供など情報収集のお手伝いも無料で対応します。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>仲介手数料はいくらですか？</div><div class="faq-a">法律に基づく上限（売買価格×3%＋6万円＋消費税）でご案内しています。ご依頼内容によって異なりますので詳細はご相談ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>外国籍でも物件購入できますか？</div><div class="faq-a">はい、外国籍の方の購入にも対応しています。英語対応エージェントが在籍しており、ビザ・ローン手続きも含めてサポートします。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>非公開物件はどうやって見れますか？</div><div class="faq-a">まずは無料相談にお越しください。ご希望条件とご予算を確認した上で、条件に合う非公開物件をご紹介します。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>地方在住でも利用できますか？</div><div class="faq-a">はい、オンライン相談・内覧に対応しています。東京への物件取得をご検討中の地方在住の方も多くご利用いただいています。</div></div>
+  </div>
+</section>
+
+<div class="cta-sec">
+  <h2 class="cta-title">まず、話してみてください。</h2>
+  <p class="cta-sub">無料相談 ／ 無料査定 ／ 秘密厳守</p>
+  <a href="#" class="btn-gold">無料相談・査定を申し込む</a>
+</div>
+
+<div class="access">
+  <div class="access-info">
+    <p class="sec-tag">ACCESS</p>
+    <h2 class="sec-title" style="font-size:1.8rem;">アクセス</h2>
+    <div class="gold-line"></div>
+    <table>
+      <tr><td>所在地</td><td>東京都港区六本木X-X-X<br>プレミアホームビル7F</td></tr>
+      <tr><td>電話</td><td>03-XXXX-XXXX</td></tr>
+      <tr><td>アクセス</td><td>東京メトロ六本木駅 徒歩3分<br>都営大江戸線六本木駅 徒歩5分</td></tr>
+      <tr><td>営業時間</td><td>10:00〜19:00（年中無休）</td></tr>
+    </table>
+  </div>
+  <div class="access-img"></div>
 </div>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="logo">
-        <div class="logo-mark"><svg viewBox="0 0 20 20" fill="white"><path d="M10 2L2 8v10h5v-6h6v6h5V8L10 2z"/></svg></div>
-        <div class="logo-text" style="color:#fff;">PREMIER HOME</div>
-      </div>
-      <p>東京都港区南青山2-X-X プレミアHOMEビル<br>TEL: 03-XXXX-XXXX<br>平日 9:00〜18:00</p>
-    </div>
-    <div class="footer-col">
-      <h4>物件を探す</h4>
-      <a href="#">マンション</a><a href="#">戸建て</a><a href="#">土地</a><a href="#">投資用物件</a>
-    </div>
-    <div class="footer-col">
-      <h4>サービス</h4>
-      <a href="#">購入サポート</a><a href="#">売却査定</a><a href="#">資産運用</a><a href="#">賃貸管理</a>
-    </div>
-    <div class="footer-col">
-      <h4>会社情報</h4>
-      <a href="#">会社概要</a><a href="#">エージェント紹介</a><a href="#">採用情報</a><a href="#">プライバシー</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2024 PREMIER HOME Co., Ltd. All Rights Reserved.</p>
-    <p>宅地建物取引業者免許 東京都知事（X）第XXXXX号</p>
-  </div>
+  <div class="footer-logo">PREMIER HOME</div>
+  <p>© 2024 PREMIER HOME Real Estate. All Rights Reserved.</p>
 </footer>
-
 </body>
 </html>

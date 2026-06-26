@@ -3,101 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IRON FORCE GYM | 本気のトレーニング</title>
+<title>IRON FORCE GYM | 本気のトレーニング 大阪・梅田</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700;900&family=Oswald:wght@400;600;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  :root{--black:#0a0a0a;--yellow:#f5c400;--gray:#1a1a1a;--light-gray:#888;}
-  body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:#fff;}
+  :root{--black:#0a0a0a;--yellow:#f5c400;--gray:#1a1a1a;--mid:#111;--lgray:#888;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:#fff;overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#1a1500;border-left:3px solid var(--yellow);padding:12px 20px;text-align:center;font-size:.73rem;color:rgba(255,255,255,.5);}
 
-  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(10,10,10,0.95);border-bottom:2px solid var(--yellow);}
-  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;color:#fff;}
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(10,10,10,.97);border-bottom:2px solid var(--yellow);}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;}
   .logo span{color:var(--yellow);}
   nav ul{list-style:none;display:flex;gap:32px;}
-  nav ul a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;transition:.2s;}
+  nav ul a{color:rgba(255,255,255,.7);font-size:.78rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;transition:.2s;}
   nav ul a:hover{color:var(--yellow);}
   .nav-cta{background:var(--yellow);color:var(--black)!important;padding:10px 24px;font-weight:900!important;}
 
+  /* HERO */
   .hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
-  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80') center/cover;filter:brightness(.35);}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80') center/cover;filter:brightness(.3);}
+  .hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.95) 45%,transparent 100%);}
   .hero-stripe{position:absolute;left:0;top:0;width:8px;height:100%;background:var(--yellow);}
   .hero-content{position:relative;z-index:1;padding:0 80px;}
   .hero-tag{display:inline-block;background:var(--yellow);color:var(--black);padding:6px 16px;font-size:.7rem;letter-spacing:.25em;font-weight:900;margin-bottom:24px;text-transform:uppercase;}
   .hero h1{font-family:'Bebas Neue',sans-serif;font-size:8rem;line-height:.9;margin-bottom:24px;letter-spacing:.02em;}
   .hero h1 span{color:var(--yellow);display:block;}
-  .hero p{color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.9;max-width:500px;margin-bottom:40px;}
-  .btn-yellow{display:inline-block;background:var(--yellow);color:var(--black);padding:16px 48px;font-size:.85rem;font-weight:900;letter-spacing:.15em;text-decoration:none;text-transform:uppercase;transition:.3s;}
-  .btn-yellow:hover{background:#ffd700;}
-  .btn-ghost{display:inline-block;border:2px solid rgba(255,255,255,.4);color:#fff;padding:16px 48px;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-decoration:none;margin-left:16px;transition:.3s;text-transform:uppercase;}
+  .hero-lead{color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.9;max-width:500px;margin-bottom:40px;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-yellow{display:inline-block;background:var(--yellow);color:var(--black);padding:16px 48px;font-size:.85rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
+  .btn-yellow:hover{background:#ffd700;transform:translateY(-2px);}
+  .btn-ghost{display:inline-block;border:2px solid rgba(255,255,255,.4);color:#fff;padding:16px 48px;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
   .btn-ghost:hover{border-color:var(--yellow);color:var(--yellow);}
 
+  /* TICKER */
   .ticker{background:var(--yellow);padding:12px 0;overflow:hidden;white-space:nowrap;}
   .ticker-inner{display:inline-block;animation:tick 20s linear infinite;}
   .ticker-inner span{color:var(--black);font-size:.75rem;font-weight:900;letter-spacing:.2em;padding:0 40px;text-transform:uppercase;}
   @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-  .programs{padding:100px 80px;background:var(--black);}
-  .section-label{color:var(--yellow);font-size:.7rem;letter-spacing:.35em;font-weight:900;text-transform:uppercase;margin-bottom:12px;}
-  .section-title{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:.05em;margin-bottom:48px;line-height:1;}
-  .program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
-  .program-item{background:var(--gray);padding:40px 28px;position:relative;overflow:hidden;transition:.3s;cursor:pointer;}
-  .program-item::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--yellow);transition:.4s;}
-  .program-item:hover::before{width:100%;}
-  .program-item:hover{background:#222;}
-  .program-icon{font-size:2.5rem;margin-bottom:20px;}
-  .program-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.05em;margin-bottom:10px;}
-  .program-text{color:var(--light-gray);font-size:.78rem;line-height:1.8;}
-  .program-price{color:var(--yellow);font-size:.8rem;font-weight:700;margin-top:16px;}
+  /* 共通 */
+  .sec{padding:100px 80px;}
+  .sec-label{color:var(--yellow);font-size:.7rem;letter-spacing:.35em;font-weight:900;text-transform:uppercase;margin-bottom:12px;}
+  .sec-title{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:.05em;margin-bottom:48px;line-height:1;}
 
+  /* プログラム */
+  .program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .pi{background:var(--gray);padding:40px 28px;transition:.3s;position:relative;overflow:hidden;}
+  .pi::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--yellow);transition:.4s;}
+  .pi:hover::before{width:100%;}
+  .pi:hover{background:#222;}
+  .pi-icon{font-size:2.5rem;margin-bottom:20px;}
+  .pi-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.05em;margin-bottom:10px;}
+  .pi-text{color:var(--lgray);font-size:.78rem;line-height:1.85;}
+  .pi-price{color:var(--yellow);font-size:.8rem;font-weight:700;margin-top:16px;}
+
+  /* ABOUT */
   .about{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
   .about-img{background:url('https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=800&q=80') center/cover;position:relative;}
   .about-img::after{content:'SINCE 2012';position:absolute;bottom:40px;left:40px;font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(245,196,0,.15);line-height:1;}
-  .about-content{background:#111;padding:80px;}
+  .about-content{background:var(--mid);padding:80px;}
   .about-content p{color:rgba(255,255,255,.65);line-height:2;font-size:.88rem;margin-bottom:20px;}
   .about-nums{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
-  .about-num{border-left:3px solid var(--yellow);padding-left:16px;}
-  .about-num-val{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--yellow);}
-  .about-num-label{color:var(--light-gray);font-size:.75rem;margin-top:2px;}
+  .an{border-left:3px solid var(--yellow);padding-left:16px;}
+  .an-val{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--yellow);}
+  .an-label{color:var(--lgray);font-size:.72rem;margin-top:2px;}
 
-  .trainers{padding:100px 80px;background:#0d0d0d;}
+  /* 施設 */
+  .facility-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+  .fc{position:relative;overflow:hidden;height:280px;}
+  .fc-img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+  .fc:hover .fc-img{transform:scale(1.06);}
+  .fc-overlay{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.85));display:flex;align-items:flex-end;padding:24px;}
+  .fc-name{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;}
+
+  /* トレーナー */
   .trainer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
-  .trainer-card{position:relative;overflow:hidden;cursor:pointer;}
-  .trainer-img{height:360px;background:#1f1f1f;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
-  .trainer-placeholder{width:120px;height:120px;background:#333;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-  .trainer-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.9));padding:32px 24px 24px;}
-  .trainer-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.05em;}
-  .trainer-spec{color:var(--yellow);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;}
+  .tc{background:var(--gray);overflow:hidden;}
+  .tc-img{height:320px;background-size:cover;background-position:center top;}
+  .tc-body{padding:24px 28px;}
+  .tc-spec{color:var(--yellow);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px;}
+  .tc-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.05em;margin-bottom:8px;}
+  .tc-text{color:var(--lgray);font-size:.78rem;line-height:1.85;}
+  .tc-certs{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+  .cert{background:#222;font-size:.62rem;padding:3px 9px;color:var(--lgray);letter-spacing:.05em;}
 
-  .price{padding:100px 80px;background:var(--black);}
-  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;}
-  .price-card{background:var(--gray);padding:48px 36px;position:relative;}
-  .price-card.featured{background:var(--yellow);}
-  .price-card.featured *{color:var(--black)!important;}
-  .price-badge{position:absolute;top:20px;right:20px;background:var(--black);color:var(--yellow);font-size:.65rem;padding:4px 10px;font-weight:900;letter-spacing:.1em;}
-  .price-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.1em;margin-bottom:8px;}
-  .price-amount{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;margin-bottom:4px;}
-  .price-period{color:var(--light-gray);font-size:.75rem;margin-bottom:28px;}
-  .price-features{list-style:none;}
-  .price-features li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.82rem;color:rgba(255,255,255,.7);}
-  .price-features li::before{content:'→ ';color:var(--yellow);}
-  .price-card.featured .price-features li{border-bottom-color:rgba(0,0,0,.15);}
-  .price-card.featured .price-features li::before{color:var(--black);}
+  /* 体験の流れ */
+  .flow-sec{background:var(--gray);padding:100px 80px;}
+  .flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative;}
+  .flow-steps::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:2px;background:rgba(245,196,0,.2);}
+  .fs{text-align:center;padding:0 20px;position:relative;z-index:1;}
+  .fs-num{width:64px;height:64px;border-radius:50%;background:var(--yellow);color:var(--black);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.6rem;margin:0 auto 20px;}
+  .fs-title{font-size:.88rem;font-weight:700;margin-bottom:8px;color:#fff;}
+  .fs-text{color:var(--lgray);font-size:.74rem;line-height:1.85;}
+
+  /* 料金 */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+  .pc{background:var(--gray);padding:48px 36px;position:relative;}
+  .pc.featured{background:var(--yellow);}
+  .pc.featured *{color:var(--black)!important;}
+  .pc-badge{position:absolute;top:20px;right:20px;background:var(--black);color:var(--yellow);font-size:.65rem;padding:4px 10px;font-weight:900;letter-spacing:.1em;}
+  .pc-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.1em;margin-bottom:8px;}
+  .pc-amount{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;margin-bottom:4px;}
+  .pc-period{color:var(--lgray);font-size:.75rem;margin-bottom:28px;}
+  .pc-features{list-style:none;}
+  .pc-features li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.82rem;color:rgba(255,255,255,.7);}
+  .pc-features li::before{content:'→ ';color:var(--yellow);}
+  .pc.featured .pc-features li{border-color:rgba(0,0,0,.12);}
+  .pc.featured .pc-features li::before{color:var(--black);}
+  .pc-btn{display:block;text-align:center;margin-top:28px;padding:13px;background:var(--yellow);color:var(--black);font-size:.82rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;transition:.2s;}
+  .pc.featured .pc-btn{background:var(--black);color:var(--yellow);}
+
+  /* 会員の声 */
+  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;}
+  .vc{background:var(--gray);padding:32px 28px;}
+  .vc-stars{color:var(--yellow);font-size:.8rem;margin-bottom:12px;}
+  .vc-text{color:rgba(255,255,255,.6);font-size:.78rem;line-height:1.9;margin-bottom:16px;}
+  .vc-name{color:#fff;font-size:.78rem;font-weight:700;}
+  .vc-meta{color:var(--lgray);font-size:.68rem;margin-top:2px;}
+  .vc-badge{display:inline-block;background:rgba(245,196,0,.15);color:var(--yellow);font-size:.62rem;padding:3px 9px;margin-bottom:10px;letter-spacing:.05em;}
+
+  /* FAQ */
+  .faq-list{max-width:800px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid rgba(255,255,255,.08);padding:22px 0;}
+  .faq-q{display:flex;gap:14px;font-size:.88rem;font-weight:700;margin-bottom:10px;}
+  .fq-icon{color:var(--yellow);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;flex-shrink:0;}
+  .faq-a{color:var(--lgray);font-size:.8rem;line-height:1.9;padding-left:26px;}
+
+  /* アクセス */
+  .access{display:grid;grid-template-columns:1fr 1fr;}
+  .access-info{background:var(--mid);padding:80px;}
+  table{margin-top:40px;width:100%;border-collapse:collapse;}
+  td{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.6);font-size:.84rem;vertical-align:top;}
+  td:first-child{color:var(--yellow);width:90px;font-size:.72rem;font-weight:700;letter-spacing:.05em;}
+  .access-map{background:url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=800&q=80') center/cover;min-height:400px;}
+
+  /* CTA */
+  .cta-sec{background:var(--yellow);padding:80px;text-align:center;}
+  .cta-title{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--black);letter-spacing:.05em;line-height:1;margin-bottom:12px;}
+  .cta-sub{color:rgba(0,0,0,.6);font-size:.88rem;margin-bottom:28px;}
+  .btn-black{display:inline-block;background:var(--black);color:var(--yellow);padding:18px 56px;font-size:.9rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
+  .btn-black:hover{background:#111;}
 
   footer{background:#050505;padding:40px 80px;display:grid;grid-template-columns:1fr auto;align-items:center;border-top:2px solid var(--yellow);}
   footer p{color:rgba(255,255,255,.3);font-size:.75rem;}
-  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#fff;}
-
-  .portfolio-note{background:#1a1500;border-left:3px solid var(--yellow);padding:12px 20px;text-align:center;font-size:.73rem;color:rgba(255,255,255,.5);}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#fff;margin-bottom:6px;}
 </style>
 </head>
 <body>
-
 <div class="portfolio-note">※ ポートフォリオ用に制作した架空のフィットネスジムです。実在する施設・人物とは一切関係ありません。</div>
 
 <nav>
   <div class="logo">IRON<span>FORCE</span></div>
   <ul>
     <li><a href="#">プログラム</a></li>
+    <li><a href="#">施設</a></li>
     <li><a href="#">トレーナー</a></li>
     <li><a href="#">料金</a></li>
     <li><a href="#">アクセス</a></li>
@@ -105,154 +166,202 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
   <div class="hero-stripe"></div>
   <div class="hero-content">
-    <div class="hero-tag">Osaka Premium Gym</div>
+    <div class="hero-tag">Osaka Premium Gym — 梅田</div>
     <h1>BREAK<span>YOUR LIMIT.</span></h1>
-    <p>言い訳をやめた日から、変化は始まる。プロのトレーナーと最高の設備で、本気のフィジカルを手に入れろ。</p>
-    <a href="#" class="btn-yellow">無料体験に申し込む</a>
-    <a href="#" class="btn-ghost">施設を見る</a>
+    <p class="hero-lead">言い訳をやめた日から、変化は始まる。プロのトレーナーと最高の設備で、本気のフィジカルを手に入れろ。</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-yellow">無料体験に申し込む</a>
+      <a href="#" class="btn-ghost">施設を見る</a>
+    </div>
   </div>
 </section>
 
+<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span>
-    <span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span>
+    <span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span><span>2,400+ MEMBERS</span>
+    <span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span><span>2,400+ MEMBERS</span>
   </div>
 </div>
 
-<section class="programs">
-  <p class="section-label">Our Programs</p>
-  <h2 class="section-title">プログラム</h2>
+<!-- プログラム -->
+<section class="sec">
+  <p class="sec-label">Our Programs</p>
+  <h2 class="sec-title">プログラム</h2>
   <div class="program-grid">
-    <div class="program-item">
-      <div class="program-icon">💪</div>
-      <h3 class="program-name">パーソナル</h3>
-      <p class="program-text">専属トレーナーが完全マンツーマンで指導。目標・体質・生活スタイルに合わせたプログラムを設計します。</p>
-      <p class="program-price">¥8,800 / 60min</p>
-    </div>
-    <div class="program-item">
-      <div class="program-icon">🔥</div>
-      <h3 class="program-name">HIIT クラス</h3>
-      <p class="program-text">高強度インターバルトレーニング。短時間で最大限の脂肪燃焼効果を狙う人気グループレッスン。</p>
-      <p class="program-price">¥2,200 / session</p>
-    </div>
-    <div class="program-item">
-      <div class="program-icon">🏋️</div>
-      <h3 class="program-name">パワーリフティング</h3>
-      <p class="program-text">スクワット・ベンチ・デッドの3種目を徹底強化。競技者からアマチュアまで対応。</p>
-      <p class="program-price">¥3,300 / session</p>
-    </div>
-    <div class="program-item">
-      <div class="program-icon">🧘</div>
-      <h3 class="program-name">リカバリー</h3>
-      <p class="program-text">ストレッチ・モビリティワーク・スポーツマッサージで身体の回復を最適化する。</p>
-      <p class="program-price">¥4,400 / 60min</p>
-    </div>
+    <div class="pi"><div class="pi-icon">💪</div><h3 class="pi-name">パーソナル</h3><p class="pi-text">専属トレーナーが完全マンツーマンで指導。目標・体質・生活スタイルに合わせたプログラムを設計します。</p><p class="pi-price">¥8,800 / 60min</p></div>
+    <div class="pi"><div class="pi-icon">🔥</div><h3 class="pi-name">HIIT クラス</h3><p class="pi-text">高強度インターバルトレーニング。短時間で最大限の脂肪燃焼効果を狙う人気グループレッスン。定員12名制。</p><p class="pi-price">¥2,200 / session</p></div>
+    <div class="pi"><div class="pi-icon">🏋️</div><h3 class="pi-name">パワーリフティング</h3><p class="pi-text">スクワット・ベンチ・デッドの3種目を徹底強化。競技者からアマチュアまで対応。専用エリアあり。</p><p class="pi-price">¥3,300 / session</p></div>
+    <div class="pi"><div class="pi-icon">🧘</div><h3 class="pi-name">リカバリー</h3><p class="pi-text">ストレッチ・モビリティワーク・スポーツマッサージで身体の回復を最適化。翌日のパフォーマンスが変わる。</p><p class="pi-price">¥4,400 / 60min</p></div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <div class="about">
   <div class="about-img"></div>
   <div class="about-content">
-    <p class="section-label">About</p>
-    <h2 class="section-title">妥協しない<br>環境がある</h2>
+    <p class="sec-label">About</p>
+    <h2 class="sec-title" style="margin-bottom:24px;">妥協しない<br>環境がある</h2>
     <p>IRON FORCEは2012年に大阪・梅田でオープンした本格フィットネスジムです。プロアスリートから40代で初めてジムに来た人まで、すべての「本気」に応えてきました。</p>
-    <p>設備の充実度と、トレーナーの質。その両方で妥協しないことが私たちのポリシーです。プロテインや栄養面のカウンセリングも含め、トータルで結果にコミットします。</p>
+    <p>設備の充実度と、トレーナーの質。その両方で妥協しないことが私たちのポリシー。プロテインや栄養面のカウンセリングも含め、トータルで結果にコミットします。</p>
     <div class="about-nums">
-      <div class="about-num"><div class="about-num-val">2400+</div><div class="about-num-label">会員数</div></div>
-      <div class="about-num"><div class="about-num-val">12</div><div class="about-num-label">在籍トレーナー</div></div>
-      <div class="about-num"><div class="about-num-val">24H</div><div class="about-num-label">営業時間</div></div>
-      <div class="about-num"><div class="about-num-val">98%</div><div class="about-num-label">継続率</div></div>
+      <div class="an"><div class="an-val">2,400+</div><div class="an-label">会員数</div></div>
+      <div class="an"><div class="an-val">12</div><div class="an-label">在籍トレーナー</div></div>
+      <div class="an"><div class="an-val">24H</div><div class="an-label">営業時間</div></div>
+      <div class="an"><div class="an-val">98%</div><div class="an-label">継続率</div></div>
     </div>
   </div>
 </div>
 
-<section class="trainers">
-  <p class="section-label">Trainers</p>
-  <h2 class="section-title">トレーナー</h2>
+<!-- 施設 -->
+<section class="sec" style="padding:0;">
+  <div class="facility-grid">
+    <div class="fc"><img class="fc-img" src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80" alt="フリーウェイトエリア"><div class="fc-overlay"><span class="fc-name">FREE WEIGHT AREA</span></div></div>
+    <div class="fc"><img class="fc-img" src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80" alt="マシンエリア"><div class="fc-overlay"><span class="fc-name">MACHINE AREA</span></div></div>
+    <div class="fc"><img class="fc-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="グループスタジオ"><div class="fc-overlay"><span class="fc-name">GROUP STUDIO</span></div></div>
+    <div class="fc"><img class="fc-img" src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80" alt="パワーリフティングエリア"><div class="fc-overlay"><span class="fc-name">POWERLIFTING ZONE</span></div></div>
+    <div class="fc"><img class="fc-img" src="https://images.unsplash.com/photo-1592632789003-4f5cc1bdc6f3?w=600&q=80" alt="リカバリーゾーン"><div class="fc-overlay"><span class="fc-name">RECOVERY ZONE</span></div></div>
+    <div class="fc"><img class="fc-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="ロッカールーム"><div class="fc-overlay"><span class="fc-name">LOCKER ROOM</span></div></div>
+  </div>
+</section>
+
+<!-- トレーナー -->
+<section class="sec" style="background:#0d0d0d;">
+  <p class="sec-label">Trainers</p>
+  <h2 class="sec-title">トレーナー</h2>
   <div class="trainer-grid">
-    <div class="trainer-card">
-      <div class="trainer-img">
-        <div class="trainer-placeholder"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="22" r="14" fill="#555"/><ellipse cx="30" cy="52" rx="22" ry="14" fill="#555"/></svg></div>
-        <div class="trainer-overlay">
-          <div class="trainer-name">KEISUKE TANAKA</div>
-          <div class="trainer-spec">Head Trainer / 元プロボクサー</div>
-        </div>
-      </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=600&q=80');"></div>
+      <div class="tc-body"><p class="tc-spec">Head Trainer</p><h3 class="tc-name">KEISUKE TANAKA</h3><p class="tc-text">元プロボクサー。総合格闘技・ストレングストレーニング専門。10年以上のトレーナー歴を持ち、300名以上の会員を指導してきた。</p><div class="tc-certs"><span class="cert">NSCA-CSCS</span><span class="cert">ボクシング</span><span class="cert">格闘技</span></div></div>
     </div>
-    <div class="trainer-card">
-      <div class="trainer-img">
-        <div class="trainer-placeholder"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="22" r="14" fill="#555"/><ellipse cx="30" cy="52" rx="22" ry="14" fill="#555"/></svg></div>
-        <div class="trainer-overlay">
-          <div class="trainer-name">AYAKA NISHIMURA</div>
-          <div class="trainer-spec">Body Make / 栄養士資格保有</div>
-        </div>
-      </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80');background-position:center 20%;"></div>
+      <div class="tc-body"><p class="tc-spec">Body Make Specialist</p><h3 class="tc-name">AYAKA NISHIMURA</h3><p class="tc-text">栄養士資格保有。女性のボディメイクと産後リハビリを専門とする。食事改善からトレーニングまで一貫してサポート。</p><div class="tc-certs"><span class="cert">JATI-ATI</span><span class="cert">栄養士</span><span class="cert">産後ケア</span></div></div>
     </div>
-    <div class="trainer-card">
-      <div class="trainer-img">
-        <div class="trainer-placeholder"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="22" r="14" fill="#555"/><ellipse cx="30" cy="52" rx="22" ry="14" fill="#555"/></svg></div>
-        <div class="trainer-overlay">
-          <div class="trainer-name">RYO MATSUMOTO</div>
-          <div class="trainer-spec">Strength / パワーリフター</div>
-        </div>
-      </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80');"></div>
+      <div class="tc-body"><p class="tc-spec">Strength Coach</p><h3 class="tc-name">RYO MATSUMOTO</h3><p class="tc-text">元全日本パワーリフティング選手権出場。重量系トレーニング・フォーム矯正の第一人者。スポーツパフォーマンス向上も対応。</p><div class="tc-certs"><span class="cert">NSCA-CPT</span><span class="cert">パワーリフティング</span></div></div>
     </div>
   </div>
 </section>
 
-<section class="price">
-  <p class="section-label">Membership</p>
-  <h2 class="section-title">料金プラン</h2>
+<!-- 体験の流れ -->
+<section class="flow-sec">
+  <p class="sec-label">How to Start</p>
+  <h2 class="sec-title">無料体験の流れ</h2>
+  <div class="flow-steps">
+    <div class="fs"><div class="fs-num">01</div><h3 class="fs-title">申し込み</h3><p class="fs-text">WEB・電話・LINEから体験を予約。希望日時・目標を教えてください。</p></div>
+    <div class="fs"><div class="fs-num">02</div><h3 class="fs-title">カウンセリング</h3><p class="fs-text">担当トレーナーが目標・体力・生活スタイルをヒアリングします（約15分）。</p></div>
+    <div class="fs"><div class="fs-num">03</div><h3 class="fs-title">体験トレーニング</h3><p class="fs-text">実際にマシン・フリーウェイトを使って60分のトレーニングを体験します。</p></div>
+    <div class="fs"><div class="fs-num">04</div><h3 class="fs-title">プラン提案</h3><p class="fs-text">目標に合ったプランをご提案。その場で入会しなくてもOKです。</p></div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<section class="sec">
+  <p class="sec-label">Membership</p>
+  <h2 class="sec-title">料金プラン</h2>
   <div class="price-grid">
-    <div class="price-card">
-      <div class="price-name">BASIC</div>
-      <div class="price-amount">¥8,800</div>
-      <div class="price-period">/ 月（税込）</div>
-      <ul class="price-features">
+    <div class="pc">
+      <div class="pc-name">BASIC</div>
+      <div class="pc-amount">¥8,800</div>
+      <div class="pc-period">/ 月（税込）</div>
+      <ul class="pc-features">
         <li>フリーウェイトエリア利用</li>
         <li>マシンエリア利用</li>
         <li>グループクラス2回/月</li>
         <li>ロッカー使用</li>
       </ul>
+      <a href="#" class="pc-btn">申し込む</a>
     </div>
-    <div class="price-card featured">
-      <div class="price-badge">人気No.1</div>
-      <div class="price-name">STANDARD</div>
-      <div class="price-amount">¥14,800</div>
-      <div class="price-period">/ 月（税込）</div>
-      <ul class="price-features">
+    <div class="pc featured">
+      <div class="pc-badge">人気No.1</div>
+      <div class="pc-name">STANDARD</div>
+      <div class="pc-amount">¥14,800</div>
+      <div class="pc-period">/ 月（税込）</div>
+      <ul class="pc-features">
         <li>全エリア利用（24時間）</li>
         <li>グループクラス無制限</li>
         <li>月1回パーソナル指導</li>
         <li>栄養カウンセリング</li>
+        <li>プロテインドリンク1杯/日</li>
       </ul>
+      <a href="#" class="pc-btn">申し込む</a>
     </div>
-    <div class="price-card">
-      <div class="price-name">PREMIUM</div>
-      <div class="price-amount">¥29,800</div>
-      <div class="price-period">/ 月（税込）</div>
-      <ul class="price-features">
+    <div class="pc">
+      <div class="pc-name">PREMIUM</div>
+      <div class="pc-amount">¥29,800</div>
+      <div class="pc-period">/ 月（税込）</div>
+      <ul class="pc-features">
         <li>全エリア利用（24時間）</li>
         <li>週1パーソナル指導</li>
         <li>専属トレーナー担当</li>
         <li>月次フィジカル測定</li>
+        <li>栄養プログラム作成</li>
       </ul>
+      <a href="#" class="pc-btn">申し込む</a>
     </div>
   </div>
 </section>
 
+<!-- 会員の声 -->
+<section class="sec" style="background:#0d0d0d;">
+  <p class="sec-label">Member Voice</p>
+  <h2 class="sec-title">会員の声</h2>
+  <div class="voice-grid">
+    <div class="vc"><span class="vc-badge">-12kg達成</span><div class="vc-stars">★★★★★</div><p class="vc-text">3ヶ月でマイナス12kg。食事制限だけで痩せようとしていた自分が馬鹿でした。トレーナーの指導通りにやったら面白いほど変わっていきました。</p><p class="vc-name">K.Sさん（32歳）</p><p class="vc-meta">STANDARDプラン / 3ヶ月目</p></div>
+    <div class="vc"><span class="vc-badge">パワーリフター</span><div class="vc-stars">★★★★★</div><p class="vc-text">本格的な競技向けの設備が揃っているジムが大阪に少なく探していました。松本トレーナーのフォーム指導で記録が一気に伸びました。</p><p class="vc-name">T.Mさん（26歳）</p><p class="vc-meta">PREMIUMプラン / 1年目</p></div>
+    <div class="vc"><span class="vc-badge">女性会員</span><div class="vc-stars">★★★★★</div><p class="vc-text">女性一人でも安心して通えます。西村トレーナーに産後のケアから食事まで全部みてもらって、体型が妊娠前より良くなった気がします！</p><p class="vc-name">A.Yさん（34歳）</p><p class="vc-meta">STANDARDプラン / 半年</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec">
+  <p class="sec-label">FAQ</p>
+  <h2 class="sec-title">よくある質問</h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>運動経験がなくても通えますか？</div><div class="faq-a">はい、会員の約30%が運動未経験からスタートしています。入会時にカウンセリングを行い、体力レベルに合ったプログラムをゼロから組み立てます。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>無料体験は本当に無料ですか？</div><div class="faq-a">完全無料です。体験当日に入会しなくても費用はかかりません。勧誘もしつこく行いませんのでお気軽にお越しください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>24時間いつでも利用できますか？</div><div class="faq-a">STANDARDプラン以上で24時間利用可能です。深夜・早朝はスタッフは不在になりますが、セキュリティカードでの入退館が可能です。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>月の途中でプランを変更できますか？</div><div class="faq-a">翌月からのプラン変更は可能です。ご希望の場合は月末までにスタッフにご連絡ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>駐車場はありますか？</div><div class="faq-a">専用駐車場はございません。近隣のコインパーキングをご利用ください。電車でのご来館をおすすめしています（梅田駅から徒歩5分）。</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <h2 class="cta-title">まず、体験してみろ。</h2>
+  <p class="cta-sub">無料体験60分 ／ 完全予約制 ／ しつこい勧誘なし</p>
+  <a href="#" class="btn-black">無料体験を申し込む</a>
+</div>
+
+<!-- アクセス -->
+<div class="access">
+  <div class="access-info">
+    <p class="sec-label">Access</p>
+    <h2 class="sec-title" style="font-size:2.5rem;margin-bottom:0;">アクセス</h2>
+    <table>
+      <tr><td>所在地</td><td>大阪府大阪市北区梅田2-X-X<br>IRONFORCE BLDG 3F</td></tr>
+      <tr><td>電話</td><td>06-XXXX-XXXX</td></tr>
+      <tr><td>アクセス</td><td>阪急梅田駅 徒歩5分<br>JR大阪駅 徒歩7分</td></tr>
+      <tr><td>営業時間</td><td>24時間（スタッフ在籍：9:00〜22:00）</td></tr>
+    </table>
+  </div>
+  <div class="access-map"></div>
+</div>
+
 <footer>
   <div>
     <div class="footer-logo">IRON FORCE GYM</div>
-    <p style="margin-top:8px;">大阪府大阪市北区梅田2-X-X IRONFORCE BLDG / TEL: 06-XXXX-XXXX</p>
+    <p>大阪府大阪市北区梅田2-X-X IRONFORCE BLDG 3F / TEL: 06-XXXX-XXXX</p>
   </div>
   <p>© 2024 IRON FORCE GYM. All Rights Reserved.</p>
 </footer>
-
 </body>
 </html>

@@ -7,285 +7,231 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  :root{--black:#0c0c0c;--white:#fafafa;--accent:#e8e0d5;--text:#2a2a2a;--muted:#888;}
-  body{font-family:'DM Sans','Noto Sans JP',sans-serif;background:var(--white);color:var(--text);cursor:none;}
-  .cursor{width:10px;height:10px;background:var(--black);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform .15s;mix-blend-mode:difference;}
-  .cursor-outline{width:40px;height:40px;border:1px solid rgba(0,0,0,.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all .3s;transform:translate(-15px,-15px);}
+  :root{--black:#0c0c0c;--white:#fafafa;--accent:#e8e0d5;--text:#2a2a2a;--muted:#888;--warm:#c4a882;}
+  body{font-family:'DM Sans','Noto Sans JP',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#f5f0ea;border-left:3px solid var(--warm);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--muted);}
 
-  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;mix-blend-mode:difference;}
-  .logo{font-family:'DM Serif Display',serif;font-size:1.1rem;letter-spacing:.05em;color:#fff;}
-  nav ul{list-style:none;display:flex;gap:32px;}
-  nav ul a{color:#fff;text-decoration:none;font-size:.78rem;letter-spacing:.12em;font-weight:300;transition:.2s;opacity:.7;}
-  nav ul a:hover{opacity:1;}
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(250,250,250,.96);border-bottom:1px solid rgba(0,0,0,.06);}
+  .logo{font-family:'DM Serif Display',serif;font-size:1.1rem;letter-spacing:.05em;color:var(--black);}
+  .logo span{font-style:italic;color:var(--warm);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--muted);font-size:.75rem;letter-spacing:.08em;transition:.2s;}
+  nav ul a:hover{color:var(--black);}
+  .nav-cta{color:var(--black)!important;border-bottom:1px solid var(--black);}
 
-  .hero{height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
-  .hero-left{background:var(--black);display:flex;flex-direction:column;justify-content:flex-end;padding:80px;}
-  .hero-left h1{font-family:'DM Serif Display',serif;color:#fff;font-size:5rem;line-height:1;margin-bottom:24px;}
-  .hero-left h1 em{font-style:italic;color:var(--accent);}
-  .hero-left p{color:rgba(255,255,255,.5);font-size:.88rem;line-height:1.9;max-width:340px;margin-bottom:36px;font-weight:300;}
-  .hero-left-links{display:flex;gap:24px;}
-  .hero-link{color:#fff;text-decoration:none;font-size:.75rem;letter-spacing:.2em;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:4px;transition:.3s;}
-  .hero-link:hover{border-color:#fff;}
-  .hero-right{display:grid;grid-template-rows:1fr 1fr;}
-  .hero-img-top{background:url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&q=80') center/cover;}
-  .hero-img-bottom{display:grid;grid-template-columns:1fr 1fr;}
-  .hero-img-bl{background:url('https://images.unsplash.com/photo-1604537466158-719b1972feb8?w=400&q=80') center/cover;}
-  .hero-img-br{background:var(--accent);display:flex;align-items:center;justify-content:center;flex-direction:column;}
-  .hero-img-br span{font-family:'DM Serif Display',serif;font-size:3.5rem;font-style:italic;color:var(--text);}
-  .hero-img-br small{font-size:.7rem;letter-spacing:.25em;color:var(--muted);margin-top:4px;}
+  /* HERO */
+  .hero{height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:72px;}
+  .hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px;}
+  .hero-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:20px;text-transform:uppercase;}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:4.5rem;line-height:1.05;color:var(--black);margin-bottom:24px;}
+  .hero h1 em{display:block;font-style:italic;color:var(--warm);}
+  .hero-lead{color:var(--muted);font-size:.88rem;line-height:2;max-width:400px;margin-bottom:32px;}
+  .btn-black{display:inline-block;background:var(--black);color:var(--white);padding:14px 40px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-black:hover{background:#222;}
+  .btn-line{display:inline-block;color:var(--black);font-size:.78rem;letter-spacing:.15em;border-bottom:1px solid var(--black);padding-bottom:2px;margin-left:20px;transition:.2s;}
+  .btn-line:hover{color:var(--warm);border-color:var(--warm);}
+  .hero-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;}
+  .hero-img-1{background:url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80') center/cover;grid-row:1/3;}
+  .hero-img-2{background:url('https://images.unsplash.com/photo-1604537466158-719b1972feb8?w=400&q=80') center/cover;}
+  .hero-img-3{background:url('https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=400&q=80') center/cover;}
 
-  .marquee{overflow:hidden;white-space:nowrap;border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;padding:14px 0;}
-  .marquee-inner{display:inline-block;animation:slide 18s linear infinite;}
-  .marquee-inner span{font-size:.72rem;letter-spacing:.3em;color:var(--muted);padding:0 48px;text-transform:uppercase;font-weight:300;}
-  @keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  /* ポートフォリオ */
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:2px;}
+  .gc{overflow:hidden;position:relative;}
+  .gc.tall{grid-row:span 2;}
+  .gc img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+  .gc:hover img{transform:scale(1.06);}
+  .gc-overlay{position:absolute;inset:0;background:rgba(12,12,12,0);transition:.3s;display:flex;align-items:flex-end;padding:20px;}
+  .gc:hover .gc-overlay{background:rgba(12,12,12,.35);}
+  .gc-label{color:#fff;font-size:.7rem;letter-spacing:.2em;opacity:0;transition:.3s;text-transform:uppercase;}
+  .gc:hover .gc-label{opacity:1;}
 
-  .works{padding:100px 0;}
-  .works-header{padding:0 80px;margin-bottom:60px;}
-  .works-header .tag{color:var(--muted);font-size:.7rem;letter-spacing:.3em;margin-bottom:8px;}
-  .works-header h2{font-family:'DM Serif Display',serif;font-size:2.5rem;}
-  .masonry{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;gap:4px;padding:0 80px;}
-  .masonry-item{overflow:hidden;cursor:pointer;position:relative;}
-  .masonry-item:nth-child(1){grid-row:span 2;}
-  .masonry-item:nth-child(4){grid-row:span 2;}
-  .masonry-item .img{width:100%;height:100%;object-fit:cover;transition:.5s;background-size:cover;background-position:center;}
-  .masonry-item:hover .img{transform:scale(1.05);}
-  .masonry-item .cat{position:absolute;bottom:16px;left:16px;color:#fff;font-size:.68rem;letter-spacing:.2em;opacity:0;transition:.3s;font-weight:300;}
-  .masonry-item:hover .cat{opacity:1;}
+  /* 共通 */
+  .sec{padding:100px 80px;}
+  .sec-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--black);margin-bottom:36px;line-height:1.15;}
+  .sec-title em{font-style:italic;color:var(--warm);}
 
-  .about{display:grid;grid-template-columns:1fr 1fr;min-height:80vh;margin-top:100px;}
-  .about-img{background:url('https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800&q=80') center/cover;}
-  .about-body{background:var(--black);padding:100px 80px;display:flex;flex-direction:column;justify-content:center;}
-  .about-body .tag{color:var(--accent);font-size:.7rem;letter-spacing:.3em;margin-bottom:24px;}
-  .about-body h2{font-family:'DM Serif Display',serif;color:#fff;font-size:2.8rem;line-height:1.2;margin-bottom:28px;}
-  .about-body h2 em{font-style:italic;color:var(--accent);}
-  .about-body p{color:rgba(255,255,255,.5);font-size:.87rem;line-height:2;font-weight:300;margin-bottom:16px;}
-  .about-sig{font-family:'DM Serif Display',serif;font-style:italic;color:var(--accent);font-size:1.5rem;margin-top:28px;}
+  /* サービス */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#eee;}
+  .svc{background:var(--white);padding:44px 32px;}
+  .svc-num{font-family:'DM Serif Display',serif;font-size:2.5rem;color:rgba(12,12,12,.07);margin-bottom:16px;line-height:1;}
+  .svc-name{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--black);margin-bottom:12px;}
+  .svc-text{color:var(--muted);font-size:.78rem;line-height:2;}
+  .svc-price{color:var(--warm);font-size:.82rem;font-weight:500;margin-top:16px;}
 
-  .category{padding:100px 80px;background:#f4f1ee;}
-  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px;}
-  .cat-item{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;}
-  .cat-img{width:100%;height:100%;background-size:cover;background-position:center;transition:.5s;filter:brightness(.7);}
-  .cat-item:hover .cat-img{transform:scale(1.05);filter:brightness(.5);}
-  .cat-label{position:absolute;bottom:24px;left:24px;color:#fff;}
-  .cat-label-en{font-size:.65rem;letter-spacing:.3em;opacity:.7;margin-bottom:4px;}
-  .cat-label-ja{font-family:'DM Serif Display',serif;font-size:1.3rem;}
+  /* 私について */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .about-img{background:url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&q=80') center/cover;min-height:560px;}
+  .about-content{background:var(--accent);padding:80px;}
+  .about-content p{color:var(--text);font-size:.86rem;line-height:2.1;margin-bottom:18px;}
+  .about-awards{display:flex;flex-direction:column;gap:12px;margin-top:32px;}
+  .award{display:flex;gap:12px;align-items:flex-start;}
+  .award-yr{color:var(--warm);font-size:.7rem;font-weight:500;white-space:nowrap;padding-top:2px;}
+  .award-text{color:var(--text);font-size:.78rem;line-height:1.7;}
 
-  .price-section{padding:100px 80px;}
-  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px;}
-  .price-box{padding:48px 36px;border:1px solid #e0e0e0;}
-  .price-box.featured{background:var(--black);border-color:var(--black);}
-  .price-en{font-size:.7rem;letter-spacing:.3em;color:var(--muted);margin-bottom:8px;}
-  .price-box.featured .price-en{color:var(--accent);}
-  .price-name{font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:20px;}
-  .price-box.featured .price-name,.price-box.featured .price-val{color:#fff;}
-  .price-val{font-size:2.2rem;font-weight:300;margin-bottom:4px;}
-  .price-note{color:var(--muted);font-size:.73rem;margin-bottom:24px;}
-  .price-box.featured .price-note{color:rgba(255,255,255,.4);}
-  .price-list{list-style:none;}
-  .price-list li{font-size:.8rem;color:var(--muted);padding:9px 0;border-bottom:1px solid #e8e8e8;display:flex;align-items:center;gap:8px;}
-  .price-box.featured .price-list li{border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5);}
-  .price-list li::before{content:'';width:6px;height:6px;background:#ccc;border-radius:50%;flex-shrink:0;}
-  .price-box.featured .price-list li::before{background:var(--accent);}
+  /* 流れ */
+  .flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#eee;margin-top:48px;}
+  .fs{background:var(--white);padding:36px 28px;}
+  .fs-num{font-family:'DM Serif Display',serif;font-size:3rem;color:rgba(12,12,12,.06);line-height:1;margin-bottom:14px;}
+  .fs-title{font-size:.88rem;font-weight:500;color:var(--black);margin-bottom:8px;}
+  .fs-text{color:var(--muted);font-size:.76rem;line-height:1.9;}
 
-  footer{background:var(--black);padding:60px 80px 36px;}
-  .footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:60px;}
-  .footer-logo{font-family:'DM Serif Display',serif;color:#fff;font-size:1.3rem;font-style:italic;}
-  .footer-logo span{display:block;color:rgba(255,255,255,.3);font-size:.72rem;font-style:normal;letter-spacing:.2em;margin-top:4px;}
-  .footer-links{display:flex;gap:48px;}
-  .footer-col h4{color:rgba(255,255,255,.3);font-size:.65rem;letter-spacing:.25em;margin-bottom:16px;}
-  .footer-col a{display:block;color:rgba(255,255,255,.5);text-decoration:none;font-size:.78rem;margin-bottom:8px;transition:.2s;}
-  .footer-col a:hover{color:#fff;}
-  .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;color:rgba(255,255,255,.2);font-size:.72rem;}
+  /* お客様の声 */
+  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .vc{padding:28px 24px;background:var(--accent);}
+  .vc-quote{font-family:'DM Serif Display',serif;font-size:3rem;color:rgba(196,168,130,.3);line-height:.8;margin-bottom:10px;}
+  .vc-text{color:var(--text);font-size:.8rem;line-height:2;margin-bottom:14px;}
+  .vc-name{color:var(--black);font-size:.78rem;font-weight:500;}
+  .vc-meta{color:var(--muted);font-size:.68rem;margin-top:2px;}
 
-  .portfolio-note{background:#f0ede8;border-left:3px solid var(--muted);padding:12px 24px;text-align:center;font-size:.73rem;color:var(--muted);}
+  /* FAQ */
+  .faq-list{max-width:700px;}
+  .faq-item{border-bottom:1px solid rgba(0,0,0,.08);padding:22px 0;}
+  .faq-q{display:flex;gap:12px;font-size:.86rem;font-weight:500;color:var(--black);margin-bottom:10px;}
+  .fq-i{color:var(--warm);font-family:'DM Serif Display',serif;font-size:1rem;flex-shrink:0;}
+  .faq-a{color:var(--muted);font-size:.8rem;line-height:1.95;padding-left:22px;}
+
+  /* CTA */
+  .cta-sec{display:grid;grid-template-columns:1fr 1fr;}
+  .cta-img{background:url('https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=800&q=80') center/cover;min-height:400px;}
+  .cta-content{background:var(--black);padding:80px;display:flex;flex-direction:column;justify-content:center;}
+  .cta-title{font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--white);line-height:1.1;margin-bottom:16px;}
+  .cta-title em{font-style:italic;color:var(--warm);}
+  .cta-text{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.9;margin-bottom:28px;}
+  .btn-warm{display:inline-block;background:var(--warm);color:#fff;padding:14px 36px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-warm:hover{background:#b09070;}
+
+  footer{background:var(--black);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);}
+  .footer-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:rgba(255,255,255,.4);letter-spacing:.05em;}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
 </style>
 </head>
 <body>
-
-<div class="cursor"></div>
-<div class="cursor-outline"></div>
-
-<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフォトスタジオです。実在する事業者・人物とは一切関係ありません。</div>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフォトスタジオサイトです。実在する写真家・スタジオとは一切関係ありません。</div>
 
 <nav>
-  <div class="logo">HIKARI STUDIO</div>
+  <div class="logo">HIKARI <span>STUDIO</span></div>
   <ul>
     <li><a href="#">Works</a></li>
+    <li><a href="#">Services</a></li>
     <li><a href="#">About</a></li>
-    <li><a href="#">Category</a></li>
-    <li><a href="#">Price</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="#">FAQ</a></li>
+    <li><a href="#" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
 <section class="hero">
   <div class="hero-left">
-    <h1>See the<br>world in<br><em>light.</em></h1>
-    <p>日常の光の中に宿る、ありふれているようで特別な瞬間を切り取る写真家・光川アキラのフォトスタジオ。</p>
-    <div class="hero-left-links">
-      <a href="#" class="hero-link">作品を見る</a>
-      <a href="#" class="hero-link">撮影を依頼する</a>
+    <p class="hero-label">Photographer / Tokyo</p>
+    <h1>光を<br>写す、<em>物語を残す。</em></h1>
+    <p class="hero-lead">結婚式・家族・ポートレート・商業撮影まで。東京を拠点に、あなたの大切な瞬間を丁寧に切り取ります。</p>
+    <div>
+      <a href="#" class="btn-black">撮影を依頼する</a>
+      <a href="#" class="btn-line">作品を見る</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-img-top"></div>
-    <div class="hero-img-bottom">
-      <div class="hero-img-bl"></div>
-      <div class="hero-img-br">
-        <span>AKIRA</span>
-        <small>PHOTOGRAPHER</small>
-      </div>
-    </div>
+    <div class="hero-img-1"></div>
+    <div class="hero-img-2"></div>
+    <div class="hero-img-3"></div>
   </div>
 </section>
 
-<div class="marquee">
-  <div class="marquee-inner">
-    <span>Portrait</span><span>Wedding</span><span>Architecture</span><span>Product</span><span>Editorial</span><span>Landscape</span><span>Commercial</span><span>Fine Art</span>
-    <span>Portrait</span><span>Wedding</span><span>Architecture</span><span>Product</span><span>Editorial</span><span>Landscape</span><span>Commercial</span><span>Fine Art</span>
-  </div>
-</div>
-
-<section class="works">
-  <div class="works-header">
-    <p class="tag">SELECTED WORKS</p>
-    <h2>作品</h2>
-  </div>
-  <div class="masonry">
-    <div class="masonry-item">
-      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80');height:100%;"></div>
-      <span class="cat">PORTRAIT</span>
-    </div>
-    <div class="masonry-item">
-      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=600&q=80');height:100%;"></div>
-      <span class="cat">LANDSCAPE</span>
-    </div>
-    <div class="masonry-item">
-      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&q=80');height:100%;"></div>
-      <span class="cat">WEDDING</span>
-    </div>
-    <div class="masonry-item">
-      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80');height:100%;"></div>
-      <span class="cat">COMMERCIAL</span>
-    </div>
-    <div class="masonry-item">
-      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80');height:100%;"></div>
-      <span class="cat">EDITORIAL</span>
-    </div>
-    <div class="masonry-item">
-      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80');height:100%;"></div>
-      <span class="cat">PRODUCT</span>
-    </div>
+<!-- ポートフォリオ -->
+<section style="padding:60px 0 0;">
+  <div style="padding:0 80px 32px;"><p class="sec-label">Works</p><h2 class="sec-title">作品集</h2></div>
+  <div class="gallery-grid">
+    <div class="gc tall"><img src="https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=600&q=80" alt="Wedding"><div class="gc-overlay"><span class="gc-label">Wedding</span></div></div>
+    <div class="gc"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80" alt="Portrait"><div class="gc-overlay"><span class="gc-label">Portrait</span></div></div>
+    <div class="gc"><img src="https://images.unsplash.com/photo-1504439904031-93ded9f93e4e?w=600&q=80" alt="Commercial"><div class="gc-overlay"><span class="gc-label">Commercial</span></div></div>
+    <div class="gc"><img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&q=80" alt="Family"><div class="gc-overlay"><span class="gc-label">Family</span></div></div>
+    <div class="gc tall"><img src="https://images.unsplash.com/photo-1541727816860-d9a2f1e77ea2?w=600&q=80" alt="Fashion"><div class="gc-overlay"><span class="gc-label">Fashion</span></div></div>
+    <div class="gc"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80" alt="Event"><div class="gc-overlay"><span class="gc-label">Event</span></div></div>
   </div>
 </section>
 
+<!-- サービス -->
+<section class="sec">
+  <p class="sec-label">Services</p>
+  <h2 class="sec-title">撮影メニュー</h2>
+  <div class="services-grid">
+    <div class="svc"><div class="svc-num">01</div><h3 class="svc-name">ウェディング</h3><p class="svc-text">挙式・披露宴・前撮りまで、すべてのシーンを余すことなく記録します。海外挙式にも対応。写真データ納品。</p><p class="svc-price">¥120,000〜（全日撮影）</p></div>
+    <div class="svc"><div class="svc-num">02</div><h3 class="svc-name">ポートレート</h3><p class="svc-text">プロフィール写真・SNS用・書籍著者プロフィールなど、「最高の一枚」を目標にお撮りします。スタジオ・屋外選択可。</p><p class="svc-price">¥18,000〜（1時間）</p></div>
+    <div class="svc"><div class="svc-num">03</div><h3 class="svc-name">家族写真</h3><p class="svc-text">お誕生日・七五三・100日・お宮参りなど、家族の節目を自然なスタイルで。ご自宅・公園でのロケ撮影も対応。</p><p class="svc-price">¥28,000〜（1.5時間）</p></div>
+    <div class="svc"><div class="svc-num">04</div><h3 class="svc-name">商業撮影</h3><p class="svc-text">ECサイト商品・料理・インテリア・ブランドビジュアルなど、広告・販促用途の商業撮影に対応します。</p><p class="svc-price">¥40,000〜（半日）</p></div>
+    <div class="svc"><div class="svc-num">05</div><h3 class="svc-name">イベント撮影</h3><p class="svc-text">企業イベント・セミナー・コンサート・パーティーなど。納品スピードが早く、SNS投稿用の横縦バリエーションも提供。</p><p class="svc-price">¥35,000〜（3時間）</p></div>
+    <div class="svc"><div class="svc-num">06</div><h3 class="svc-name">出張撮影</h3><p class="svc-text">関東圏を中心に全国対応。カフェ・ショップ・オフィスなど、指定の場所に出向いての撮影が可能です。</p><p class="svc-price">¥25,000〜＋交通費実費</p></div>
+  </div>
+</section>
+
+<!-- About -->
 <div class="about">
   <div class="about-img"></div>
-  <div class="about-body">
-    <p class="tag">ABOUT</p>
-    <h2>光の中に、<br><em>物語がある。</em></h2>
-    <p>光川アキラ。1988年生まれ、京都出身。大阪芸術大学でフォトグラフィを学んだ後、東京に拠点を移し、人物・建築・商業撮影を中心に活動。</p>
-    <p>「写真は光を記録する行為ではなく、その場の空気と感情を封じ込める行為だ」という信念のもと、依頼者の内側にある"らしさ"を引き出す撮影スタイルで知られる。</p>
-    <p>雑誌・広告・ウェディングなど幅広く手がけ、国内外のコンペティションでの受賞歴も多数。</p>
-    <div class="about-sig">Akira Mitsukawa</div>
+  <div class="about-content">
+    <p class="sec-label">About</p>
+    <h2 class="sec-title" style="font-size:2rem;">写真家 / 光原 一輝</h2>
+    <p>1987年東京生まれ。大学在学中に写真に目覚め、卒業後は広告制作会社でカメラマンとして経験を積む。2018年に独立しHIKARI STUDIOを設立。</p>
+    <p>「写真は光の彫刻だ」という信念のもと、被写体の自然な表情と光の瞬間を最優先にした撮影スタイルを大切にしています。重いカメラを構えた時間だけでなく、会話の中から生まれる表情を捉えることが得意です。</p>
+    <p>年間撮影件数は150件以上。これまでのクライアントにはアパレルブランド・飲食チェーン・結婚式場などが含まれます。</p>
+    <div class="about-awards">
+      <div class="award"><span class="award-yr">2023</span><span class="award-text">Wedding Photo Awards Japan — ベストウェディング賞 受賞</span></div>
+      <div class="award"><span class="award-yr">2022</span><span class="award-text">Nikon Photo Contest — ポートレート部門 入選</span></div>
+      <div class="award"><span class="award-yr">2020</span><span class="award-text">写真新世紀 — 優秀賞 受賞</span></div>
+    </div>
   </div>
 </div>
 
-<section class="category">
-  <p style="color:var(--muted);font-size:.7rem;letter-spacing:.3em;margin-bottom:8px;">CATEGORY</p>
-  <h2 style="font-family:'DM Serif Display',serif;font-size:2.2rem;margin-bottom:0;">撮影カテゴリ</h2>
-  <div class="cat-grid">
-    <div class="cat-item">
-      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80');"></div>
-      <div class="cat-label"><div class="cat-label-en">PORTRAIT</div><div class="cat-label-ja">人物撮影</div></div>
-    </div>
-    <div class="cat-item">
-      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80');"></div>
-      <div class="cat-label"><div class="cat-label-en">WEDDING</div><div class="cat-label-ja">ウェディング</div></div>
-    </div>
-    <div class="cat-item">
-      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&q=80');"></div>
-      <div class="cat-label"><div class="cat-label-en">COMMERCIAL</div><div class="cat-label-ja">商業撮影</div></div>
-    </div>
-    <div class="cat-item">
-      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=400&q=80');"></div>
-      <div class="cat-label"><div class="cat-label-en">ARCHITECTURE</div><div class="cat-label-ja">建築・空間</div></div>
-    </div>
+<!-- 流れ -->
+<section class="sec" style="background:var(--accent);">
+  <p class="sec-label">Process</p>
+  <h2 class="sec-title">撮影の流れ</h2>
+  <div class="flow-steps">
+    <div class="fs"><div class="fs-num">01</div><h3 class="fs-title">お問い合わせ</h3><p class="fs-text">フォームまたはメールでご連絡ください。希望日・撮影内容・人数をお知らせいただけるとスムーズです。</p></div>
+    <div class="fs"><div class="fs-num">02</div><h3 class="fs-title">事前ヒアリング</h3><p class="fs-text">オンラインまたはお電話で、ご希望のイメージ・雰囲気・使用用途などを丁寧にヒアリングします。</p></div>
+    <div class="fs"><div class="fs-num">03</div><h3 class="fs-title">撮影当日</h3><p class="fs-text">リラックスできる雰囲気を大切に。撮影中も声をかけながら進めるので初めての方も安心です。</p></div>
+    <div class="fs"><div class="fs-num">04</div><h3 class="fs-title">データ納品</h3><p class="fs-text">撮影から1〜2週間でセレクト済みのデータをクラウドでお届け。RAWデータの提供も対応可能です。</p></div>
   </div>
 </section>
 
-<section class="price-section">
-  <p style="color:var(--muted);font-size:.7rem;letter-spacing:.3em;margin-bottom:8px;">PRICE</p>
-  <h2 style="font-family:'DM Serif Display',serif;font-size:2.2rem;margin-bottom:0;">料金</h2>
-  <div class="price-grid">
-    <div class="price-box">
-      <p class="price-en">LIGHT</p>
-      <h3 class="price-name">ライトプラン</h3>
-      <div class="price-val">¥30,000</div>
-      <p class="price-note">〜 2時間 / データ30枚納品</p>
-      <ul class="price-list">
-        <li>スタジオ or ロケーション選択</li>
-        <li>レタッチ込み</li>
-        <li>納品期間：2週間</li>
-        <li>1名〜2名対応</li>
-      </ul>
-    </div>
-    <div class="price-box featured">
-      <p class="price-en">STANDARD</p>
-      <h3 class="price-name">スタンダード</h3>
-      <div class="price-val">¥60,000</div>
-      <p class="price-note">〜 半日（4時間）/ 80枚納品</p>
-      <ul class="price-list">
-        <li>複数ロケーション対応</li>
-        <li>ヘアメイク手配可</li>
-        <li>納品期間：10日</li>
-        <li>グループ・カップル対応</li>
-      </ul>
-    </div>
-    <div class="price-box">
-      <p class="price-en">COMMERCIAL</p>
-      <h3 class="price-name">商業プラン</h3>
-      <div class="price-val">要相談</div>
-      <p class="price-note">広告・雑誌・ECサイト等</p>
-      <ul class="price-list">
-        <li>用途・媒体に合わせた料金</li>
-        <li>モデル・スタイリスト手配</li>
-        <li>二次使用権設定可</li>
-        <li>まずはご相談ください</li>
-      </ul>
-    </div>
+<!-- 口コミ -->
+<section class="sec">
+  <p class="sec-label">Voice</p>
+  <h2 class="sec-title">お客様の声</h2>
+  <div class="voice-grid">
+    <div class="vc"><div class="vc-quote">"</div><p class="vc-text">結婚式の当日、こんなに自然な表情が撮れるとは思っていませんでした。家族全員が「これ最高だね」と言った一枚があって、今でも飾っています。</p><p class="vc-name">K.Yさん</p><p class="vc-meta">ウェディング撮影 / 2024年春</p></div>
+    <div class="vc"><div class="vc-quote">"</div><p class="vc-text">プロフィール写真を撮ってもらったのですが、撮影前に話をたくさんしてくださって、緊張がほぐれた状態で臨めました。出来上がりがSNSで好評です。</p><p class="vc-name">T.Aさん</p><p class="vc-meta">ポートレート撮影 / 2024年秋</p></div>
+    <div class="vc"><div class="vc-quote">"</div><p class="vc-text">ECサイト用の商品写真をお願いしたのですが、光の当て方が絶妙で商品が全然違って見えます。コンバージョン率が1.5倍になりました。</p><p class="vc-name">S.Kさん（ECショップ運営）</p><p class="vc-meta">商業撮影 / 2023年秋</p></div>
   </div>
 </section>
+
+<!-- FAQ -->
+<section class="sec" style="background:var(--accent);">
+  <p class="sec-label">FAQ</p>
+  <h2 class="sec-title">よくあるご質問</h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>撮影当日に雨が降った場合はどうなりますか？</div><div class="faq-a">屋外撮影の場合、雨天時は日程の変更をご提案します。また、雨の中での撮影をご希望の場合はその場で対応しますので、ご相談ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>データの納品枚数はどのくらいですか？</div><div class="faq-a">撮影メニューによって異なりますが、ポートレートで15〜30枚、ウェディング全日で400〜600枚程度が目安です。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>撮影データの商用利用は可能ですか？</div><div class="faq-a">個人利用・SNS投稿は標準的に可能です。商用利用（広告・書籍など）はお申込み時にお知らせください。別途ライセンス費用が発生する場合があります。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>撮影場所の指定はできますか？</div><div class="faq-a">はい、ご希望の場所で撮影します。場所選びが難しい場合はイメージをお聞きしてご提案します。スタジオ撮影・屋外撮影どちらも対応しています。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>全国への出張は可能ですか？</div><div class="faq-a">可能です。交通費・宿泊費は実費でご請求します。遠方の撮影もお気軽にご相談ください。</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-img"></div>
+  <div class="cta-content">
+    <h2 class="cta-title">大切な瞬間を、<em>一緒に残しませんか。</em></h2>
+    <p class="cta-text">まずはご相談だけでも構いません。撮影のご依頼・お見積もり・ご質問はお気軽にどうぞ。</p>
+    <a href="#" class="btn-warm">お問い合わせ・撮影依頼</a>
+  </div>
+</div>
 
 <footer>
-  <div class="footer-top">
-    <div class="footer-logo">
-      HIKARI STUDIO
-      <span>光川アキラ / Photographer</span>
-    </div>
-    <div class="footer-links">
-      <div class="footer-col">
-        <h4>WORKS</h4>
-        <a href="#">Portrait</a><a href="#">Wedding</a><a href="#">Commercial</a>
-      </div>
-      <div class="footer-col">
-        <h4>INFO</h4>
-        <a href="#">About</a><a href="#">Price</a><a href="#">FAQ</a><a href="#">Contact</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2024 HIKARI STUDIO / Akira Mitsukawa. All Rights Reserved. | 東京都渋谷区神宮前X-X-X</div>
+  <div class="footer-logo">HIKARI STUDIO</div>
+  <p>© 2024 HIKARI STUDIO. All Rights Reserved.</p>
 </footer>
-
-<script>
-const cursor = document.querySelector('.cursor');
-const outline = document.querySelector('.cursor-outline');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX - 5 + 'px';
-  cursor.style.top = e.clientY - 5 + 'px';
-  outline.style.left = e.clientX - 20 + 'px';
-  outline.style.top = e.clientY - 20 + 'px';
-});
-</script>
 </body>
 </html>

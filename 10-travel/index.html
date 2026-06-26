@@ -8,329 +8,397 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Raleway:wght@300;400;600;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
   :root{--deep:#0a2540;--teal:#0d7377;--gold:#f0a500;--cream:#faf7f2;--text:#2d3748;--gray:#718096;--border:#e2e8f0;}
-  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--text);}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#0a2540;border-left:3px solid var(--gold);padding:10px 24px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.4);}
 
   nav{position:fixed;top:0;width:100%;z-index:100;padding:0 64px;display:flex;align-items:center;justify-content:space-between;height:76px;background:rgba(10,37,64,.9);backdrop-filter:blur(8px);}
   .logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;letter-spacing:.05em;}
   .logo span{color:var(--gold);font-style:italic;}
   nav ul{list-style:none;display:flex;gap:32px;}
-  nav ul a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;letter-spacing:.1em;transition:.2s;font-family:'Raleway',sans-serif;font-weight:600;}
-  nav ul a:hover{color:#fff;}
-  .nav-cta{background:var(--gold);color:var(--deep)!important;padding:9px 24px;border-radius:4px;font-weight:700!important;}
+  nav ul a{color:rgba(255,255,255,.7);font-size:.74rem;letter-spacing:.1em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--deep)!important;padding:9px 20px;font-size:.73rem!important;font-weight:700!important;}
 
-  .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-  .hero-slider{position:absolute;inset:0;}
-  .hero-slide-1{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1600&q=80') center/cover;}
-  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,37,64,.5) 0%,rgba(10,37,64,.2) 50%,rgba(10,37,64,.7) 100%);}
-  .hero-content{position:relative;z-index:1;text-align:center;color:#fff;}
-  .hero-pretitle{font-family:'Raleway',sans-serif;font-size:.78rem;letter-spacing:.45em;color:var(--gold);margin-bottom:20px;text-transform:uppercase;}
-  .hero h1{font-family:'Playfair Display',serif;font-size:5rem;line-height:1.1;margin-bottom:24px;}
-  .hero h1 em{font-style:italic;color:var(--gold);}
-  .hero p{color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.8;max-width:580px;margin:0 auto 40px;font-weight:300;}
-  .hero-search{background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:20px 24px;display:flex;gap:16px;align-items:center;max-width:720px;margin:0 auto;}
-  .search-input{flex:1;background:transparent;border:none;color:#fff;font-size:.88rem;outline:none;font-family:'Noto Sans JP',sans-serif;}
-  .search-input::placeholder{color:rgba(255,255,255,.5);}
-  .search-divider{width:1px;height:24px;background:rgba(255,255,255,.25);}
-  .search-btn-hero{background:var(--gold);color:var(--deep);padding:10px 28px;border:none;border-radius:6px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
-  .hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.5);font-size:.65rem;letter-spacing:.2em;}
-  .scroll-line{width:1px;height:40px;background:rgba(255,255,255,.3);animation:scroll-ani 1.5s infinite;}
-  @keyframes scroll-ani{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  /* HERO */
+  .hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1400&q=80') center/cover;}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,37,64,.92) 40%,rgba(10,37,64,.4));}
+  .hero-content{position:relative;z-index:1;padding:0 80px;}
+  .hero-tag{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:5px 16px;font-size:.62rem;letter-spacing:.3em;margin-bottom:22px;text-transform:uppercase;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:4.5rem;color:#fff;line-height:1.1;max-width:700px;margin-bottom:18px;}
+  .hero h1 em{color:var(--gold);font-style:italic;}
+  .hero-lead{color:rgba(255,255,255,.65);font-size:.9rem;line-height:2;max-width:520px;margin-bottom:36px;}
+  .btn-gold{display:inline-block;background:var(--gold);color:var(--deep);padding:14px 40px;font-size:.8rem;font-weight:700;letter-spacing:.1em;transition:.3s;}
+  .btn-gold:hover{background:#e09500;}
+  .btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,.3);color:#fff;padding:14px 34px;font-size:.8rem;letter-spacing:.1em;margin-left:12px;transition:.3s;}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
 
-  .destinations{padding:100px 64px;background:var(--cream);}
-  .section-en{font-family:'Raleway',sans-serif;color:var(--gold);font-size:.7rem;letter-spacing:.35em;font-weight:700;text-transform:uppercase;margin-bottom:8px;}
-  .section-title{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--deep);margin-bottom:16px;}
-  .section-lead{color:var(--gray);font-size:.88rem;line-height:1.9;font-weight:300;}
-  .dest-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;margin-top:60px;height:600px;}
-  .dest-item{position:relative;overflow:hidden;cursor:pointer;}
-  .dest-item:first-child{grid-row:span 2;}
-  .dest-bg{width:100%;height:100%;background-size:cover;background-position:center;transition:.5s;}
-  .dest-item:hover .dest-bg{transform:scale(1.06);}
-  .dest-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,37,64,.7) 0%,transparent 60%);transition:.3s;}
-  .dest-item:hover .dest-overlay{background:linear-gradient(to top,rgba(10,37,64,.8) 0%,rgba(10,37,64,.2) 60%);}
-  .dest-info{position:absolute;bottom:0;left:0;right:0;padding:28px;}
-  .dest-country{color:var(--gold);font-size:.7rem;letter-spacing:.2em;font-family:'Raleway',sans-serif;font-weight:600;text-transform:uppercase;margin-bottom:4px;}
-  .dest-name{color:#fff;font-family:'Playfair Display',serif;font-size:1.4rem;}
-  .dest-item:first-child .dest-name{font-size:2rem;}
-  .dest-price{color:rgba(255,255,255,.7);font-size:.78rem;margin-top:8px;}
+  /* 検索バー */
+  .search-bar{background:rgba(10,37,64,.95);padding:24px 80px;display:flex;gap:12px;align-items:center;}
+  .sb-item{flex:1;}
+  .sb-label{color:rgba(255,255,255,.4);font-size:.62rem;letter-spacing:.15em;margin-bottom:6px;text-transform:uppercase;}
+  .sb-input{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#fff;padding:10px 14px;font-size:.8rem;outline:none;}
+  .sb-input::placeholder{color:rgba(255,255,255,.3);}
+  .btn-search{background:var(--gold);color:var(--deep);border:none;padding:16px 32px;font-size:.8rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;}
 
-  .tours{padding:100px 64px;background:#fff;}
-  .tour-tabs{display:flex;gap:0;margin-bottom:48px;border-bottom:2px solid var(--border);}
-  .tour-tab{padding:12px 28px;font-size:.8rem;cursor:pointer;color:var(--gray);border-bottom:2px solid transparent;margin-bottom:-2px;transition:.2s;font-weight:500;}
-  .tour-tab.active{color:var(--teal);border-bottom-color:var(--teal);}
-  .tour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-  .tour-card{border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.3s;}
-  .tour-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-4px);}
-  .tour-img{height:200px;position:relative;overflow:hidden;}
-  .tour-img-bg{width:100%;height:100%;background-size:cover;background-position:center;transition:.4s;}
-  .tour-card:hover .tour-img-bg{transform:scale(1.04);}
-  .tour-badge{position:absolute;top:16px;left:16px;background:var(--teal);color:#fff;font-size:.62rem;padding:4px 10px;border-radius:4px;font-weight:700;font-family:'Raleway',sans-serif;letter-spacing:.08em;}
-  .tour-body{padding:24px;}
-  .tour-dest{color:var(--gold);font-size:.68rem;letter-spacing:.2em;font-weight:700;text-transform:uppercase;margin-bottom:6px;}
-  .tour-name{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:10px;color:var(--deep);}
-  .tour-meta{display:flex;gap:16px;color:var(--gray);font-size:.75rem;margin-bottom:16px;}
-  .tour-meta span{display:flex;align-items:center;gap:4px;}
-  .tour-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:16px;}
-  .tour-price{font-size:1.1rem;font-weight:700;color:var(--deep);}
-  .tour-price small{font-size:.68rem;color:var(--gray);font-weight:400;}
-  .tour-btn{background:var(--teal);color:#fff;padding:8px 18px;border-radius:6px;text-decoration:none;font-size:.72rem;font-weight:700;transition:.3s;}
-  .tour-btn:hover{background:#0a5f63;}
+  /* 実績バー */
+  .stats-bar{background:var(--cream);padding:28px 80px;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border);}
+  .sb2{text-align:center;padding:10px 0;border-right:1px solid var(--border);}
+  .sb2:last-child{border:none;}
+  .sb2-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--deep);}
+  .sb2-label{color:var(--gray);font-size:.65rem;margin-top:4px;letter-spacing:.1em;}
 
-  .features{background:var(--deep);padding:100px 64px;}
-  .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:60px;}
-  .feat-item{text-align:center;}
-  .feat-icon{font-size:2.5rem;margin-bottom:20px;}
-  .feat-title{color:#fff;font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:12px;}
-  .feat-text{color:rgba(255,255,255,.5);font-size:.8rem;line-height:1.8;}
+  /* 共通 */
+  .sec{padding:90px 80px;}
+  .sec-tag{color:var(--teal);font-size:.62rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--deep);margin-bottom:12px;line-height:1.2;}
+  .sec-title em{color:var(--gold);font-style:italic;}
+  .teal-line{width:32px;height:2px;background:var(--teal);margin:12px 0 36px;}
 
-  .voice{padding:100px 64px;background:var(--cream);}
-  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px;}
-  .voice-card{background:#fff;border-radius:12px;padding:32px;box-shadow:0 4px 16px rgba(0,0,0,.06);}
-  .stars{color:var(--gold);font-size:.85rem;margin-bottom:12px;}
-  .voice-text{color:var(--gray);font-size:.82rem;line-height:1.9;margin-bottom:20px;}
-  .voice-footer{display:flex;align-items:center;gap:12px;}
-  .voice-avatar{width:40px;height:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
-  .voice-name{font-size:.82rem;font-weight:700;}
-  .voice-dest{font-size:.7rem;color:var(--gold);}
+  /* 人気ツアー */
+  .tours-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .tc{background:#fff;overflow:hidden;position:relative;}
+  .tc-img{height:260px;background-size:cover;background-position:center;position:relative;overflow:hidden;}
+  .tc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(10,37,64,.7));}
+  .tc-badge{position:absolute;top:16px;left:16px;background:var(--gold);color:var(--deep);font-size:.62rem;padding:4px 10px;font-weight:700;z-index:1;}
+  .tc-body{padding:22px 22px 28px;}
+  .tc-dest{color:var(--teal);font-size:.65rem;letter-spacing:.15em;margin-bottom:4px;text-transform:uppercase;}
+  .tc-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--deep);margin-bottom:8px;line-height:1.3;}
+  .tc-info{display:flex;gap:16px;color:var(--gray);font-size:.72rem;margin-bottom:12px;}
+  .tc-price{font-size:.9rem;font-weight:700;color:var(--deep);}
+  .tc-price span{font-size:.68rem;font-weight:400;color:var(--gray);}
 
-  footer{background:#060f1e;padding:64px 64px 36px;}
-  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-  .footer-logo-full{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;margin-bottom:12px;}
-  .footer-logo-full span{color:var(--gold);font-style:italic;}
-  .footer-tagline{color:rgba(255,255,255,.35);font-size:.78rem;line-height:1.9;}
-  .footer-col h4{color:rgba(255,255,255,.3);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;font-family:'Raleway',sans-serif;}
-  .footer-col a{display:block;color:rgba(255,255,255,.45);text-decoration:none;font-size:.78rem;margin-bottom:9px;transition:.2s;}
-  .footer-col a:hover{color:var(--gold);}
-  .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;justify-content:space-between;color:rgba(255,255,255,.2);font-size:.72rem;}
+  /* なぜ選ばれるか */
+  .why{background:var(--cream);}
+  .why-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .why-img{background:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80') center/cover;height:500px;}
+  .why-content p{color:var(--gray);font-size:.85rem;line-height:2;margin-bottom:16px;}
+  .why-features{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+  .wf{display:flex;gap:14px;align-items:flex-start;}
+  .wf-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px;}
+  .wf-text h4{font-size:.84rem;font-weight:700;color:var(--deep);margin-bottom:4px;}
+  .wf-text p{font-size:.76rem;color:var(--gray);line-height:1.8;}
 
-  .portfolio-note{background:#eef6f7;border-left:3px solid var(--teal);padding:12px 24px;text-align:center;font-size:.73rem;color:var(--gray);}
+  /* エリア */
+  .areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .ac{position:relative;height:280px;overflow:hidden;cursor:pointer;}
+  .ac img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+  .ac:hover img{transform:scale(1.06);}
+  .ac-overlay{position:absolute;inset:0;background:rgba(10,37,64,.35);transition:.3s;}
+  .ac:hover .ac-overlay{background:rgba(10,37,64,.55);}
+  .ac-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;}
+  .ac-region{color:rgba(255,255,255,.6);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:4px;}
+  .ac-name{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;}
+  .ac-count{color:rgba(255,255,255,.5);font-size:.7rem;margin-top:3px;}
+
+  /* プラン */
+  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .pc2{background:var(--cream);padding:36px 28px;border:1px solid var(--border);}
+  .pc2-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--deep);margin-bottom:8px;}
+  .pc2-price{color:var(--gold);font-size:1rem;font-weight:700;margin-bottom:14px;}
+  .pc2-text{color:var(--gray);font-size:.78rem;line-height:1.9;margin-bottom:18px;}
+  .pc2-features{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .pc2-features li{font-size:.76rem;color:var(--text);display:flex;gap:8px;align-items:flex-start;}
+  .pc2-features li::before{content:'✓';color:var(--teal);flex-shrink:0;}
+
+  /* 担当者 */
+  .staff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .sc{background:var(--cream);border:1px solid var(--border);}
+  .sc-img{height:200px;background-size:cover;background-position:center top;}
+  .sc-body{padding:16px 18px;}
+  .sc-spec{color:var(--teal);font-size:.6rem;letter-spacing:.12em;margin-bottom:3px;text-transform:uppercase;}
+  .sc-name{font-family:'Playfair Display',serif;font-size:1rem;color:var(--deep);margin-bottom:6px;}
+  .sc-text{color:var(--gray);font-size:.72rem;line-height:1.8;}
+
+  /* 口コミ */
+  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .vc{padding:26px 22px;background:var(--cream);border:1px solid var(--border);}
+  .vc-stars{color:var(--gold);font-size:.8rem;margin-bottom:10px;}
+  .vc-text{color:var(--text);font-size:.78rem;line-height:2;margin-bottom:12px;}
+  .vc-name{color:var(--deep);font-size:.76rem;font-weight:700;}
+  .vc-meta{color:var(--gray);font-size:.65rem;margin-top:2px;}
+
+  /* FAQ */
+  .faq-list{max-width:780px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);padding:20px 0;}
+  .faq-q{display:flex;gap:12px;font-size:.84rem;font-weight:700;color:var(--deep);margin-bottom:8px;}
+  .fq-i{color:var(--gold);font-family:'Playfair Display',serif;flex-shrink:0;}
+  .faq-a{color:var(--gray);font-size:.78rem;line-height:1.95;padding-left:20px;}
+
+  /* CTA */
+  .cta-sec{background:url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1200&q=80') center/cover;position:relative;padding:100px 80px;text-align:center;}
+  .cta-sec::before{content:'';position:absolute;inset:0;background:rgba(10,37,64,.7);}
+  .cta-inner{position:relative;z-index:1;}
+  .cta-title{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;margin-bottom:12px;line-height:1.2;}
+  .cta-title em{color:var(--gold);font-style:italic;}
+  .cta-sub{color:rgba(255,255,255,.6);font-size:.86rem;margin-bottom:32px;}
+
+  /* アクセス */
+  .access{display:grid;grid-template-columns:1fr 1fr;}
+  .access-info{padding:70px;background:var(--cream);}
+  table{margin-top:28px;width:100%;border-collapse:collapse;}
+  td{padding:12px 0;border-bottom:1px solid var(--border);color:var(--gray);font-size:.8rem;vertical-align:top;}
+  td:first-child{color:var(--deep);width:90px;font-size:.7rem;font-weight:700;}
+  .access-img{background:url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=800&q=80') center/cover;min-height:380px;}
+
+  footer{background:var(--deep);padding:48px 80px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;}
+  .f-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:rgba(255,255,255,.5);margin-bottom:12px;}
+  .f-logo span{color:var(--gold);}
+  .f-text{color:rgba(255,255,255,.25);font-size:.74rem;line-height:1.9;}
+  .f-head{font-size:.62rem;letter-spacing:.2em;color:rgba(255,255,255,.2);text-transform:uppercase;margin-bottom:10px;}
+  .f-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .f-links a{color:rgba(255,255,255,.3);font-size:.74rem;transition:.2s;}
+  .f-links a:hover{color:var(--gold);}
+  .f-copy{grid-column:1/4;text-align:center;color:rgba(255,255,255,.15);font-size:.66rem;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);}
 </style>
 </head>
 <body>
-
-<div class="portfolio-note">※ ポートフォリオ用に制作した架空の旅行代理店です。実在する会社・ツアーとは一切関係ありません。</div>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空の旅行代理店サイトです。実在する会社・ツアーとは一切関係ありません。</div>
 
 <nav>
-  <div class="logo"><span>VOYAGE</span> JAPAN</div>
+  <div class="logo">VOYAGE <span>JAPAN</span></div>
   <ul>
-    <li><a href="#">目的地</a></li>
-    <li><a href="#">ツアー</a></li>
-    <li><a href="#">オーダーメイド</a></li>
-    <li><a href="#">旅行準備</a></li>
+    <li><a href="#">ツアー検索</a></li>
+    <li><a href="#">エリア別</a></li>
+    <li><a href="#">プラン</a></li>
+    <li><a href="#">担当者</a></li>
     <li><a href="#">お問い合わせ</a></li>
-    <li><a href="#" class="nav-cta">旅の相談をする</a></li>
+    <li><a href="#" class="nav-cta">無料相談</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-slider">
-    <div class="hero-slide-1"></div>
-  </div>
+  <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-pretitle">Your Journey Begins Here</p>
-    <h1>世界は、<em>あなたを</em><br>待っている。</h1>
-    <p>VOYAGE JAPANは、ありきたりな旅ではなく「あなただけの旅」を作るオーダーメイド旅行専門代理店。アジア・ヨーロッパ・オセアニアまで、夢の旅をプランナーが一緒に設計します。</p>
-    <div class="hero-search">
-      <input type="text" class="search-input" placeholder="どこへ行きたいですか？（例：モルディブ、バルセロナ）">
-      <div class="search-divider"></div>
-      <input type="text" class="search-input" placeholder="出発時期">
-      <button class="search-btn-hero">旅を探す</button>
-    </div>
-  </div>
-  <div class="hero-scroll"><span class="scroll-line"></span><span>SCROLL</span></div>
-</section>
-
-<section class="destinations">
-  <p class="section-en">— Destinations</p>
-  <h2 class="section-title">人気の目的地</h2>
-  <p class="section-lead">世界60カ国以上の目的地から、あなたにぴったりの旅をご提案します。</p>
-  <div class="dest-grid">
-    <div class="dest-item">
-      <div class="dest-bg" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80');height:100%;"></div>
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><p class="dest-country">ITALY</p><h3 class="dest-name">トスカーナ</h3><p class="dest-price">¥398,000〜 / 7泊8日</p></div>
-    </div>
-    <div class="dest-item">
-      <div class="dest-bg" style="background-image:url('https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&q=80');height:100%;"></div>
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><p class="dest-country">MALDIVES</p><h3 class="dest-name">モルディブ</h3><p class="dest-price">¥498,000〜 / 5泊6日</p></div>
-    </div>
-    <div class="dest-item">
-      <div class="dest-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80');height:100%;"></div>
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><p class="dest-country">FRANCE</p><h3 class="dest-name">パリ</h3><p class="dest-price">¥298,000〜 / 6泊7日</p></div>
-    </div>
-    <div class="dest-item">
-      <div class="dest-bg" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80');height:100%;"></div>
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><p class="dest-country">HAWAII</p><h3 class="dest-name">ハワイ島</h3><p class="dest-price">¥248,000〜 / 4泊5日</p></div>
+    <div class="hero-tag">Tailor-Made Travel Japan</div>
+    <h1>あなただけの<br>旅を、<em>世界へ。</em></h1>
+    <p class="hero-lead">VOYAGE JAPANは、すべてのお客様にオーダーメイドの旅をお届けする旅行代理店です。団体パッケージではなく、あなたの「行きたい場所・やりたいこと・出会いたい人」から旅を設計します。</p>
+    <div>
+      <a href="#" class="btn-gold">無料で旅を相談する</a>
+      <a href="#" class="btn-ghost">ツアーを見る</a>
     </div>
   </div>
 </section>
 
-<section class="tours">
-  <p class="section-en">— Featured Tours</p>
-  <h2 class="section-title">おすすめツアー</h2>
-  <div class="tour-tabs">
-    <div class="tour-tab active">すべて</div>
-    <div class="tour-tab">ヨーロッパ</div>
-    <div class="tour-tab">アジア</div>
-    <div class="tour-tab">リゾート</div>
-    <div class="tour-tab">アメリカ・ハワイ</div>
-    <div class="tour-tab">オセアニア</div>
+<!-- 検索バー -->
+<div class="search-bar">
+  <div class="sb-item"><div class="sb-label">目的地</div><input class="sb-input" type="text" placeholder="例：ヨーロッパ、ハワイ、アジア…"></div>
+  <div class="sb-item"><div class="sb-label">旅行日数</div><input class="sb-input" type="text" placeholder="例：5泊7日"></div>
+  <div class="sb-item"><div class="sb-label">ご出発時期</div><input class="sb-input" type="text" placeholder="例：2024年12月"></div>
+  <button class="btn-search">ツアーを探す</button>
+</div>
+
+<!-- 実績 -->
+<div class="stats-bar">
+  <div class="sb2"><div class="sb2-num">4,800+</div><div class="sb2-label">催行実績</div></div>
+  <div class="sb2"><div class="sb2-num">98</div><div class="sb2-label">対応国・地域</div></div>
+  <div class="sb2"><div class="sb2-num">20年</div><div class="sb2-label">の実績</div></div>
+  <div class="sb2"><div class="sb2-num">4.9</div><div class="sb2-label">顧客満足度（5段階）</div></div>
+</div>
+
+<!-- 人気ツアー -->
+<section class="sec">
+  <p class="sec-tag">Popular Tours</p>
+  <h2 class="sec-title">人気の<em>オーダーメイドツアー</em></h2>
+  <div class="teal-line"></div>
+  <div class="tours-grid">
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9357976b82?w=600&q=80');">
+        <span class="tc-badge">人気No.1</span>
+      </div>
+      <div class="tc-body"><p class="tc-dest">Europe / France</p><h3 class="tc-name">パリ&プロヴァンス9日間の旅</h3><div class="tc-info"><span>🗓 9日間</span><span>✈ 成田発</span><span>👥 1〜20名</span></div><p class="tc-price">¥398,000<span>〜 / お一人様（2名参加時）</span></p></div>
+    </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80');">
+        <span class="tc-badge">NEW</span>
+      </div>
+      <div class="tc-body"><p class="tc-dest">Asia / Thailand</p><h3 class="tc-name">バンコク&チェンマイ滞在型5日間</h3><div class="tc-info"><span>🗓 5日間</span><span>✈ 関西発</span><span>👥 1〜10名</span></div><p class="tc-price">¥168,000<span>〜 / お一人様（2名参加時）</span></p></div>
+    </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80');">
+        <span class="tc-badge">ハネムーン人気</span>
+      </div>
+      <div class="tc-body"><p class="tc-dest">Pacific / Hawaii</p><h3 class="tc-name">ハワイ島&ホノルル完全攻略7日間</h3><div class="tc-info"><span>🗓 7日間</span><span>✈ 羽田発</span><span>👥 1〜6名</span></div><p class="tc-price">¥278,000<span>〜 / お一人様（2名参加時）</span></p></div>
+    </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80');"></div>
+      <div class="tc-body"><p class="tc-dest">Europe / Italy</p><h3 class="tc-name">ローマ・フィレンツェ・ベネツィア10日間</h3><div class="tc-info"><span>🗓 10日間</span><span>✈ 成田発</span><span>👥 1〜20名</span></div><p class="tc-price">¥428,000<span>〜 / お一人様（2名参加時）</span></p></div>
+    </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80');"></div>
+      <div class="tc-body"><p class="tc-dest">Middle East / UAE</p><h3 class="tc-name">ドバイ&アブダビ贅沢ステイ5日間</h3><div class="tc-info"><span>🗓 5日間</span><span>✈ 羽田発</span><span>👥 1〜8名</span></div><p class="tc-price">¥218,000<span>〜 / お一人様（2名参加時）</span></p></div>
+    </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80');"></div>
+      <div class="tc-body"><p class="tc-dest">Europe / Greece</p><h3 class="tc-name">サントリーニ島&アテネ8日間</h3><div class="tc-info"><span>🗓 8日間</span><span>✈ 成田発</span><span>👥 1〜10名</span></div><p class="tc-price">¥368,000<span>〜 / お一人様（2名参加時）</span></p></div>
+    </div>
   </div>
-  <div class="tour-grid">
-    <div class="tour-card">
-      <div class="tour-img">
-        <div class="tour-img-bg" style="background-image:url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80');"></div>
-        <span class="tour-badge">人気No.1</span>
-      </div>
-      <div class="tour-body">
-        <p class="tour-dest">Italy × Switzerland</p>
-        <h3 class="tour-name">イタリア・スイス絶景鉄道の旅</h3>
-        <div class="tour-meta">
-          <span>🗓 10泊11日</span>
-          <span>✈ 成田発</span>
-          <span>👥 最大12名</span>
-        </div>
-        <div class="tour-footer">
-          <div class="tour-price">¥548,000<small>〜 / 人</small></div>
-          <a href="#" class="tour-btn">詳しく見る</a>
-        </div>
-      </div>
-    </div>
-    <div class="tour-card">
-      <div class="tour-img">
-        <div class="tour-img-bg" style="background-image:url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80');"></div>
-        <span class="tour-badge">NEW</span>
-      </div>
-      <div class="tour-body">
-        <p class="tour-dest">Bali / Indonesia</p>
-        <h3 class="tour-name">バリ島 ウェルネスリトリート</h3>
-        <div class="tour-meta">
-          <span>🗓 6泊7日</span>
-          <span>✈ 関西発</span>
-          <span>👥 最大8名</span>
-        </div>
-        <div class="tour-footer">
-          <div class="tour-price">¥328,000<small>〜 / 人</small></div>
-          <a href="#" class="tour-btn">詳しく見る</a>
-        </div>
-      </div>
-    </div>
-    <div class="tour-card">
-      <div class="tour-img">
-        <div class="tour-img-bg" style="background-image:url('https://images.unsplash.com/photo-1501446529957-6226b4fc7e35?w=600&q=80');"></div>
-        <span class="tour-badge">少人数限定</span>
-      </div>
-      <div class="tour-body">
-        <p class="tour-dest">New Zealand</p>
-        <h3 class="tour-name">ニュージーランド 大自然の旅</h3>
-        <div class="tour-meta">
-          <span>🗓 8泊9日</span>
-          <span>✈ 羽田発</span>
-          <span>👥 最大6名</span>
-        </div>
-        <div class="tour-footer">
-          <div class="tour-price">¥458,000<small>〜 / 人</small></div>
-          <a href="#" class="tour-btn">詳しく見る</a>
-        </div>
+</section>
+
+<!-- なぜVOYAGE -->
+<section class="sec why">
+  <div class="why-inner">
+    <div class="why-img"></div>
+    <div class="why-content">
+      <p class="sec-tag">Why VOYAGE JAPAN</p>
+      <h2 class="sec-title">選ばれる理由</h2>
+      <div class="teal-line"></div>
+      <p>VOYAGE JAPANは2004年創業。「個人旅行の質を、旅行代理店のサポートで」をテーマに、20年間でのべ4,800件以上のオーダーメイドツアーを手がけてきました。</p>
+      <div class="why-features">
+        <div class="wf"><div class="wf-icon">🗺</div><div class="wf-text"><h4>徹底的なヒアリング</h4><p>「どこに行きたいか」ではなく「旅で何を得たいか」から設計します。専任担当者が何度でも相談に乗ります。</p></div></div>
+        <div class="wf"><div class="wf-icon">🏨</div><div class="wf-text"><h4>現地との強力なネットワーク</h4><p>人気ホテルの非公開レート・現地ガイドの専任手配など、20年の実績が生むネットワークを活用します。</p></div></div>
+        <div class="wf"><div class="wf-icon">🛡</div><div class="wf-text"><h4>24時間サポート体制</h4><p>旅行中のトラブルに備え、現地時間24時間対応のサポートデスクを設けています。</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="features">
-  <p class="section-en" style="color:var(--gold);">— Why Choose Us</p>
-  <h2 class="section-title" style="color:#fff;">VOYAGE JAPANが<br>選ばれる理由</h2>
-  <div class="feat-grid">
-    <div class="feat-item">
-      <div class="feat-icon">✈️</div>
-      <h3 class="feat-title">完全オーダーメイド</h3>
-      <p class="feat-text">決まったパッケージではなく、あなたの旅の希望をゼロから設計します。</p>
+<!-- エリア -->
+<section class="sec" style="padding:80px 0 0;">
+  <div style="padding:0 80px 32px;"><p class="sec-tag">Destinations</p><h2 class="sec-title">エリアから探す</h2></div>
+  <div class="areas-grid">
+    <div class="ac"><img src="https://images.unsplash.com/photo-1499856871958-5b9357976b82?w=600&q=80" alt="ヨーロッパ"><div class="ac-overlay"></div><div class="ac-content"><p class="ac-region">Region</p><h3 class="ac-name">ヨーロッパ</h3><p class="ac-count">128ツアー</p></div></div>
+    <div class="ac"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt="アジア"><div class="ac-overlay"></div><div class="ac-content"><p class="ac-region">Region</p><h3 class="ac-name">アジア</h3><p class="ac-count">94ツアー</p></div></div>
+    <div class="ac"><img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80" alt="オセアニア"><div class="ac-overlay"></div><div class="ac-content"><p class="ac-region">Region</p><h3 class="ac-name">オセアニア</h3><p class="ac-count">42ツアー</p></div></div>
+    <div class="ac"><img src="https://images.unsplash.com/photo-1483354483454-4cd359948304?w=600&q=80" alt="アメリカ"><div class="ac-overlay"></div><div class="ac-content"><p class="ac-region">Region</p><h3 class="ac-name">アメリカ</h3><p class="ac-count">56ツアー</p></div></div>
+    <div class="ac"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="中東・アフリカ"><div class="ac-overlay"></div><div class="ac-content"><p class="ac-region">Region</p><h3 class="ac-name">中東・アフリカ</h3><p class="ac-count">28ツアー</p></div></div>
+    <div class="ac"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="太平洋の島々"><div class="ac-overlay"></div><div class="ac-content"><p class="ac-region">Region</p><h3 class="ac-name">太平洋の島々</h3><p class="ac-count">34ツアー</p></div></div>
+  </div>
+</section>
+
+<!-- プラン -->
+<section class="sec">
+  <p class="sec-tag">Plans</p>
+  <h2 class="sec-title">プランの種類</h2>
+  <div class="teal-line"></div>
+  <div class="plan-grid">
+    <div class="pc2">
+      <h3 class="pc2-name">ハネムーンプラン</h3>
+      <p class="pc2-price">¥200,000〜 / おふたり様</p>
+      <p class="pc2-text">結婚のお祝いに、一生の思い出を。ロマンティックなシチュエーションを丁寧に手配します。</p>
+      <ul class="pc2-features">
+        <li>プール付きヴィラ優先手配</li>
+        <li>サプライズ演出オプション</li>
+        <li>ウェルカムフルーツ・スパセット手配</li>
+        <li>専任コンシェルジュ</li>
+      </ul>
     </div>
-    <div class="feat-item">
-      <div class="feat-icon">🌍</div>
-      <h3 class="feat-title">現地在住スタッフ</h3>
-      <p class="feat-text">60カ国以上の現地に提携スタッフが在籍。リアルな情報でベストプランを提案。</p>
+    <div class="pc2">
+      <h3 class="pc2-name">家族旅行プラン</h3>
+      <p class="pc2-price">¥120,000〜 / お一人様</p>
+      <p class="pc2-text">子どもから祖父母まで、世代を超えて楽しめるファミリー向けプランを設計します。</p>
+      <ul class="pc2-features">
+        <li>子ども向けアクティビティ手配</li>
+        <li>コネクティングルーム優先確保</li>
+        <li>ベビーカー・チャイルドシート手配</li>
+        <li>医療機関情報の事前提供</li>
+      </ul>
     </div>
-    <div class="feat-item">
-      <div class="feat-icon">🛡️</div>
-      <h3 class="feat-title">24時間サポート</h3>
-      <p class="feat-text">旅先でのトラブルにも日本語で24時間対応。安心して旅を楽しめます。</p>
-    </div>
-    <div class="feat-item">
-      <div class="feat-icon">💎</div>
-      <h3 class="feat-title">こだわりの宿泊先</h3>
-      <p class="feat-text">スタッフが実際に宿泊したホテル・リゾートのみを厳選してご提案。</p>
+    <div class="pc2">
+      <h3 class="pc2-name">一人旅プラン</h3>
+      <p class="pc2-price">¥98,000〜 / お一人様</p>
+      <p class="pc2-text">自分のペースで、自分だけの旅を。一人旅ならではの自由さを最大限に活かしたプランです。</p>
+      <ul class="pc2-features">
+        <li>1名様部屋料金の最適化</li>
+        <li>現地ローカルツアー組み込み可</li>
+        <li>女性一人旅の安全対策アドバイス</li>
+        <li>フリープランの自由設計</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section class="voice">
-  <p class="section-en">— Traveler Stories</p>
-  <h2 class="section-title">旅行者の声</h2>
+<!-- 担当者 -->
+<section class="sec" style="background:var(--cream);">
+  <p class="sec-tag">Our Team</p>
+  <h2 class="sec-title">担当トラベルコンシェルジュ</h2>
+  <div class="teal-line"></div>
+  <div class="staff-grid">
+    <div class="sc"><div class="sc-img" style="background-image:url('https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=400&q=80');"></div><div class="sc-body"><p class="sc-spec">Europe Specialist</p><h3 class="sc-name">佐藤 裕子</h3><p class="sc-text">ヨーロッパ専門20年。フランス語・イタリア語話者。ハネムーン手配実績が特に多い。</p></div></div>
+    <div class="sc"><div class="sc-img" style="background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80');"></div><div class="sc-body"><p class="sc-spec">Asia & Pacific</p><h3 class="sc-name">田中 健太</h3><p class="sc-text">東南アジア・オセアニア担当。バリ島・ハワイ在住経験あり。現地情報が豊富。</p></div></div>
+    <div class="sc"><div class="sc-img" style="background-image:url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80');"></div><div class="sc-body"><p class="sc-spec">Americas & Africa</p><h3 class="sc-name">中川 美紀</h3><p class="sc-text">米州・アフリカ担当。世界一周経験あり。冒険・トレッキング系のプランが得意。</p></div></div>
+    <div class="sc"><div class="sc-img" style="background-image:url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80');"></div><div class="sc-body"><p class="sc-spec">Luxury Travel</p><h3 class="sc-name">木村 誠</h3><p class="sc-text">高級ホテル・クルーズ専門。ラグジュアリー旅行の設計と交渉力に定評がある。</p></div></div>
+  </div>
+</section>
+
+<!-- 口コミ -->
+<section class="sec">
+  <p class="sec-tag">Voice</p>
+  <h2 class="sec-title">お客様の声</h2>
+  <div class="teal-line"></div>
   <div class="voice-grid">
-    <div class="voice-card">
-      <div class="stars">★★★★★</div>
-      <p class="voice-text">ハネムーンでモルディブに行きましたが、プランナーさんが私たちの好みを丁寧にヒアリングしてくれて、ぴったりのリゾートを提案してくれました。一生の思い出になりました。</p>
-      <div class="voice-footer">
-        <div class="voice-avatar">👫</div>
-        <div>
-          <div class="voice-name">Y様・K様 ご夫婦</div>
-          <div class="voice-dest">モルディブ ハネムーン</div>
-        </div>
-      </div>
-    </div>
-    <div class="voice-card">
-      <div class="stars">★★★★★</div>
-      <p class="voice-text">添乗員なしの個人旅行が不安でしたが、LINEでいつでも相談できて安心でした。バルセロナでレストランの予約から美術館のファストパスまで全部手配してもらえて最高でした。</p>
-      <div class="voice-footer">
-        <div class="voice-avatar">👩</div>
-        <div>
-          <div class="voice-name">S.Mさん（38歳）</div>
-          <div class="voice-dest">スペイン・ポルトガル 9日間</div>
-        </div>
-      </div>
-    </div>
-    <div class="voice-card">
-      <div class="stars">★★★★★</div>
-      <p class="voice-text">定年後の夫婦旅行でスイスへ。体力的な不安もあったのに、無理のないペースで絶景を楽しめるルートを組んでいただきました。他の旅行会社と全然違う対応に感動しました。</p>
-      <div class="voice-footer">
-        <div class="voice-avatar">👴</div>
-        <div>
-          <div class="voice-name">T.H様ご夫婦（65歳）</div>
-          <div class="voice-dest">スイス・フランス 11日間</div>
-        </div>
-      </div>
-    </div>
+    <div class="vc"><div class="vc-stars">★★★★★</div><p class="vc-text">ハネムーンでバリ島を手配してもらいました。普通のパッケージツアーでは味わえない体験が盛り込まれていて、一生の思い出になりました。佐藤さんのセンスが光っています。</p><p class="vc-name">K&Y様</p><p class="vc-meta">ハネムーンプラン / バリ島</p></div>
+    <div class="vc"><div class="vc-stars">★★★★★</div><p class="vc-text">70代の両親を連れた家族旅行でしたが、足が不自由な父に合わせた動線を全部考えてくれて感動しました。家族全員が「また来たい」と言っています。</p><p class="vc-name">T.Mさん</p><p class="vc-meta">家族旅行プラン / イタリア</p></div>
+    <div class="vc"><div class="vc-stars">★★★★★</div><p class="vc-text">女性一人でモロッコに行くのは不安でしたが、安全な宿・ガイド・ルートを全て考慮してプランを作ってもらい、最高の旅ができました。現地サポートにも助けられました。</p><p class="vc-name">A.Nさん</p><p class="vc-meta">一人旅プラン / モロッコ</p></div>
   </div>
 </section>
+
+<!-- FAQ -->
+<section class="sec" style="background:var(--cream);">
+  <p class="sec-tag">FAQ</p>
+  <h2 class="sec-title">よくあるご質問</h2>
+  <div class="teal-line"></div>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>相談だけでも費用はかかりますか？</div><div class="faq-a">初回相談・見積もりは完全無料です。ご旅行のご依頼に至らなくても費用は一切かかりません。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>どのくらい前から相談すればいいですか？</div><div class="faq-a">人気の時期・ホテルは早期に埋まるため、旅行の3〜6ヶ月前のご相談をおすすめしています。急なご依頼にも対応していますのでご相談ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>英語が話せなくても海外旅行できますか？</div><div class="faq-a">はい、英語不要で旅できるプランを設計できます。現地日本語ガイドの手配や、緊急時の日本語サポートも対応しています。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>旅行中にトラブルがあった場合は？</div><div class="faq-a">24時間対応のサポートデスクで、フライト変更・ホテルトラブル・体調不良など旅行中のあらゆる問題に日本語で対応します。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>オンライン相談もできますか？</div><div class="faq-a">はい、ZoomまたはGoogle Meetでのオンライン相談に対応しています。全国どこからでも、移動の手間なくご相談いただけます。</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-inner">
+    <h2 class="cta-title">次の旅を、<em>一緒に作りませんか。</em></h2>
+    <p class="cta-sub">初回相談無料 ／ オンライン対応可 ／ 全国対応</p>
+    <a href="#" class="btn-gold">無料旅行相談を申し込む</a>
+  </div>
+</div>
+
+<!-- アクセス -->
+<div class="access">
+  <div class="access-info">
+    <p class="sec-tag">ACCESS</p>
+    <h2 class="sec-title" style="font-size:1.8rem;">アクセス</h2>
+    <div class="teal-line"></div>
+    <table>
+      <tr><td>所在地</td><td>東京都渋谷区恵比寿X-X-X<br>VOYAGEビル4F</td></tr>
+      <tr><td>電話</td><td>03-XXXX-XXXX</td></tr>
+      <tr><td>アクセス</td><td>JR・東京メトロ恵比寿駅 徒歩5分</td></tr>
+      <tr><td>営業時間</td><td>10:00〜19:00（土曜〜18:00）<br>日曜・祝日休業</td></tr>
+      <tr><td>オンライン相談</td><td>Zoom / Google Meet 対応可</td></tr>
+    </table>
+  </div>
+  <div class="access-img"></div>
+</div>
 
 <footer>
-  <div class="footer-top">
-    <div>
-      <div class="footer-logo-full"><span>VOYAGE</span> JAPAN</div>
-      <p class="footer-tagline">旅に出る理由は、<br>それぞれにある。<br>あなたの旅を、一緒に作りましょう。<br><br>東京都港区西麻布X-X-X<br>TEL: 03-XXXX-XXXX</p>
-    </div>
-    <div class="footer-col">
-      <h4>Destinations</h4>
-      <a href="#">ヨーロッパ</a><a href="#">アジア</a><a href="#">リゾート</a><a href="#">アメリカ</a><a href="#">オセアニア</a>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <a href="#">オーダーメイドツアー</a><a href="#">ハネムーン</a><a href="#">シニア旅行</a><a href="#">法人・研修旅行</a>
-    </div>
-    <div class="footer-col">
-      <h4>Information</h4>
-      <a href="#">会社概要</a><a href="#">旅行準備ガイド</a><a href="#">よくある質問</a><a href="#">お問い合わせ</a>
-    </div>
+  <div>
+    <div class="f-logo">VOYAGE <span>JAPAN</span></div>
+    <p class="f-text">東京都渋谷区恵比寿X-X-X VOYAGEビル4F<br>Tel: 03-XXXX-XXXX / 10:00〜19:00</p>
   </div>
-  <div class="footer-bottom">
-    <span>© 2024 VOYAGE JAPAN Co., Ltd. All Rights Reserved.</span>
-    <span>観光庁長官登録旅行業第XXXXX号</span>
+  <div>
+    <p class="f-head">Links</p>
+    <ul class="f-links">
+      <li><a href="#">会社概要</a></li>
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">旅行業者登録情報</a></li>
+      <li><a href="#">採用情報</a></li>
+    </ul>
   </div>
+  <div>
+    <p class="f-head">Follow Us</p>
+    <ul class="f-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">YouTube</a></li>
+      <li><a href="#">Facebook</a></li>
+    </ul>
+  </div>
+  <div class="f-copy">© 2024 VOYAGE JAPAN Co., Ltd. All Rights Reserved.</div>
 </footer>
-
 </body>
 </html>

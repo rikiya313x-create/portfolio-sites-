@@ -5,232 +5,316 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>blanc wedding | 神戸のウェディングプランナー</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400&family=Noto+Serif+JP:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;600&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  :root{--blush:#f2e8e0;--rose:#c9927a;--gold:#c4a882;--ivory:#faf8f5;--brown:#5c3d2e;--gray:#9a8a80;}
-  body{font-family:'Noto Sans JP',sans-serif;background:var(--ivory);color:var(--brown);}
+  :root{--blush:#f2e8e0;--rose:#c9927a;--gold:#c4a882;--ivory:#faf8f5;--brown:#5c3d2e;--gray:#9a8a80;--border:#e8ddd4;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--ivory);color:var(--brown);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#fdf5f0;border-left:3px solid var(--gold);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--gray);}
 
-  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:76px;background:rgba(250,248,245,.95);border-bottom:1px solid rgba(196,168,130,.3);}
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:76px;background:rgba(250,248,245,.96);border-bottom:1px solid rgba(196,168,130,.3);backdrop-filter:blur(8px);}
   .logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:.12em;color:var(--brown);font-style:italic;}
   .logo span{color:var(--gold);}
   nav ul{list-style:none;display:flex;gap:36px;}
-  nav ul a{color:var(--gray);text-decoration:none;font-size:.78rem;letter-spacing:.15em;transition:.2s;}
+  nav ul a{color:var(--gray);font-size:.75rem;letter-spacing:.15em;transition:.2s;}
   nav ul a:hover{color:var(--rose);}
-  .nav-contact{border:1px solid var(--gold);color:var(--brown)!important;padding:8px 20px;}
+  .nav-cta{background:var(--rose);color:#fff!important;padding:10px 22px;font-size:.72rem!important;letter-spacing:.1em;}
 
-  .hero{height:100vh;position:relative;display:grid;grid-template-columns:1fr 1fr;}
-  .hero-left{background:var(--blush);display:flex;flex-direction:column;justify-content:center;padding:120px 80px;}
-  .hero-en{font-family:'Cormorant Garamond',serif;font-size:.85rem;letter-spacing:.35em;color:var(--gold);margin-bottom:20px;}
-  .hero h1{font-family:'Noto Serif JP',serif;font-size:2.8rem;line-height:1.5;color:var(--brown);margin-bottom:28px;}
-  .hero p{color:var(--gray);line-height:2.1;font-size:.88rem;margin-bottom:40px;font-weight:300;}
-  .btn-rose{display:inline-block;background:var(--rose);color:#fff;padding:14px 40px;font-size:.8rem;letter-spacing:.15em;text-decoration:none;transition:.3s;}
-  .btn-rose:hover{background:#b87f68;}
-  .btn-outline-gold{display:inline-block;border:1px solid var(--gold);color:var(--brown);padding:14px 40px;font-size:.8rem;letter-spacing:.15em;text-decoration:none;margin-left:16px;transition:.3s;}
-  .btn-outline-gold:hover{background:var(--gold);color:#fff;}
-  .hero-right{position:relative;overflow:hidden;}
-  .hero-right-top{height:60%;background:url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80') center/cover;}
-  .hero-right-bottom{height:40%;display:grid;grid-template-columns:1fr 1fr;}
-  .hero-right-b1{background:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&q=80') center/cover;}
-  .hero-right-b2{background:var(--gold);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;}
-  .hero-right-b2 .big{font-family:'Cormorant Garamond',serif;font-size:3rem;color:#fff;font-style:italic;}
-  .hero-right-b2 .small{color:rgba(255,255,255,.8);font-size:.7rem;letter-spacing:.2em;}
+  /* HERO */
+  .hero{height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;padding-top:76px;}
+  .hero-img{background:url('https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=900&q=80') center/cover;}
+  .hero-content{display:flex;flex-direction:column;justify-content:center;padding:80px 64px;background:var(--ivory);}
+  .hero-label{font-size:.62rem;letter-spacing:.4em;color:var(--gold);margin-bottom:20px;}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-size:4rem;line-height:1.2;color:var(--brown);margin-bottom:8px;font-weight:600;}
+  .hero-italic{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--rose);margin-bottom:22px;letter-spacing:.06em;}
+  .hero-lead{font-size:.84rem;line-height:2.1;color:var(--gray);margin-bottom:30px;max-width:380px;}
+  .btn-rose{display:inline-block;background:var(--rose);color:#fff;padding:15px 40px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-rose:hover{background:#b8806a;transform:translateY(-2px);}
+  .btn-outline{display:inline-block;border:1px solid var(--gold);color:var(--brown);padding:15px 36px;font-size:.78rem;letter-spacing:.15em;margin-left:12px;transition:.3s;}
+  .btn-outline:hover{background:var(--gold);color:#fff;}
 
-  .about{padding:100px 120px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-  .about-img{position:relative;}
-  .about-img-main{width:100%;aspect-ratio:3/4;background:url('https://images.unsplash.com/photo-1529636944026-96f4b9d84e31?w=600&q=80') center/cover;}
-  .about-img-sub{position:absolute;width:50%;aspect-ratio:1;background:url('https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400&q=80') center/cover;bottom:-40px;right:-40px;border:6px solid var(--ivory);}
-  .about-tag{color:var(--gold);font-size:.7rem;letter-spacing:.35em;margin-bottom:16px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;}
-  .about h2{font-family:'Noto Serif JP',serif;font-size:2rem;line-height:1.5;margin-bottom:24px;color:var(--brown);}
-  .about p{color:var(--gray);line-height:2.1;font-size:.87rem;font-weight:300;margin-bottom:16px;}
+  /* 実績 */
+  .nums{background:var(--rose);display:grid;grid-template-columns:repeat(4,1fr);}
+  .ni{padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.2);}
+  .ni:last-child{border:none;}
+  .ni-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:#fff;font-weight:600;line-height:1;}
+  .ni-label{color:rgba(255,255,255,.7);font-size:.68rem;margin-top:5px;letter-spacing:.1em;}
 
-  .services{background:var(--blush);padding:100px 80px;}
-  .section-center{text-align:center;margin-bottom:60px;}
-  .section-en{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:1rem;letter-spacing:.2em;margin-bottom:8px;}
-  .section-ja{font-family:'Noto Serif JP',serif;font-size:1.8rem;color:var(--brown);}
-  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-  .service-card{background:#fff;padding:48px 32px;text-align:center;position:relative;}
-  .service-card::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:40px;height:2px;background:var(--gold);}
-  .service-icon{font-size:2.2rem;margin-bottom:20px;}
-  .service-title{font-family:'Noto Serif JP',serif;font-size:1rem;margin-bottom:12px;color:var(--brown);}
-  .service-text{color:var(--gray);font-size:.8rem;line-height:1.9;}
-  .service-price{color:var(--rose);font-size:.78rem;margin-top:16px;font-weight:400;}
+  /* 共通 */
+  .sec{padding:90px 80px;}
+  .sec-tag{color:var(--gold);font-size:.62rem;letter-spacing:.35em;text-align:center;margin-bottom:8px;}
+  .sec-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;text-align:center;color:var(--brown);margin-bottom:8px;line-height:1.3;}
+  .sec-sub{text-align:center;color:var(--gray);font-size:.82rem;line-height:2;margin-bottom:48px;}
+  .divider{width:32px;height:1px;background:var(--gold);margin:12px auto 18px;}
 
-  .works{padding:100px 80px;}
-  .section-center{text-align:center;margin-bottom:60px;}
-  .works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .work-item{position:relative;overflow:hidden;aspect-ratio:4/5;cursor:pointer;}
-  .work-img{width:100%;height:100%;object-fit:cover;transition:.5s;}
-  .work-bg{width:100%;height:100%;transition:.5s;}
-  .work-overlay{position:absolute;inset:0;background:rgba(92,61,46,0);transition:.4s;display:flex;align-items:flex-end;padding:24px;}
-  .work-item:hover .work-overlay{background:rgba(92,61,46,.5);}
-  .work-info{color:#fff;transform:translateY(20px);opacity:0;transition:.4s;}
-  .work-item:hover .work-info{transform:translateY(0);opacity:1;}
-  .work-date{font-family:'Cormorant Garamond',serif;font-size:.85rem;letter-spacing:.1em;}
-  .work-venue{font-size:.75rem;opacity:.8;}
+  /* プラン */
+  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .pc{background:var(--ivory);padding:44px 32px;text-align:center;}
+  .pc-icon{font-size:2rem;margin-bottom:16px;}
+  .pc-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--brown);margin-bottom:8px;font-weight:600;}
+  .pc-price{color:var(--rose);font-size:1.1rem;font-weight:700;margin-bottom:14px;}
+  .pc-text{color:var(--gray);font-size:.78rem;line-height:1.9;margin-bottom:18px;}
+  .pc-items{text-align:left;display:flex;flex-direction:column;gap:7px;}
+  .pci{display:flex;gap:8px;font-size:.75rem;color:var(--gray);}
+  .pci::before{content:'✓';color:var(--rose);flex-shrink:0;}
 
-  .voice{background:var(--brown);padding:100px 80px;}
-  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
-  .voice-card{background:rgba(255,255,255,.07);padding:36px 28px;position:relative;}
-  .voice-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:6rem;color:var(--gold);opacity:.3;position:absolute;top:0;left:20px;line-height:1;}
-  .voice-text{color:rgba(255,255,255,.8);font-size:.83rem;line-height:2;font-weight:300;margin-bottom:20px;}
-  .voice-name{color:var(--gold);font-size:.75rem;letter-spacing:.1em;}
-  .voice .section-en,.voice .section-ja{color:#fff!important;}
+  /* 実績写真 */
+  .works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+  .wc{overflow:hidden;position:relative;height:300px;}
+  .wc img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+  .wc:hover img{transform:scale(1.07);}
+  .wc-overlay{position:absolute;inset:0;background:rgba(92,61,46,0);transition:.3s;display:flex;align-items:flex-end;padding:20px;}
+  .wc:hover .wc-overlay{background:rgba(92,61,46,.4);}
+  .wc-label{color:#fff;font-size:.72rem;letter-spacing:.15em;opacity:0;transition:.3s;}
+  .wc:hover .wc-label{opacity:1;}
 
-  footer{background:#fff;padding:60px 80px 40px;}
-  .footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;margin-bottom:48px;}
-  .footer-brand .logo{font-size:1.4rem;}
-  .footer-brand p{color:var(--gray);font-size:.78rem;line-height:1.9;margin-top:12px;}
-  .footer-col h4{color:var(--brown);font-size:.78rem;letter-spacing:.15em;margin-bottom:16px;font-weight:600;}
-  .footer-col a{display:block;color:var(--gray);text-decoration:none;font-size:.78rem;margin-bottom:8px;transition:.2s;}
-  .footer-col a:hover{color:var(--rose);}
-  .footer-bottom{border-top:1px solid rgba(196,168,130,.3);padding-top:24px;text-align:center;color:var(--gray);font-size:.72rem;}
+  /* こだわり */
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:960px;margin:0 auto;}
+  .fc{text-align:center;padding:32px 24px;background:var(--blush);}
+  .fc-icon{font-size:2.2rem;margin-bottom:14px;}
+  .fc-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--brown);margin-bottom:10px;font-weight:600;}
+  .fc-text{color:var(--gray);font-size:.78rem;line-height:1.9;}
 
-  .portfolio-note{background:#fdf5f0;border-left:3px solid var(--rose);padding:12px 24px;text-align:center;font-size:.73rem;color:var(--gray);}
+  /* スタッフ */
+  .staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto;}
+  .sc{text-align:center;}
+  .sc-img{width:140px;height:140px;border-radius:50%;background:var(--blush);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;border:2px solid var(--border);overflow:hidden;}
+  .sc-img img{width:100%;height:100%;object-fit:cover;}
+  .sc-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--brown);font-weight:600;margin-bottom:3px;}
+  .sc-title{color:var(--gold);font-size:.65rem;letter-spacing:.15em;margin-bottom:10px;}
+  .sc-career{color:var(--gray);font-size:.75rem;line-height:1.9;}
+
+  /* 口コミ */
+  .voice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:900px;margin:0 auto;}
+  .vc{background:#fff;padding:30px 28px;border:1px solid var(--border);position:relative;}
+  .vc::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:5rem;color:var(--gold);opacity:.15;position:absolute;top:8px;left:18px;line-height:1;}
+  .vc-text{color:var(--gray);font-size:.8rem;line-height:2;padding-top:18px;margin-bottom:16px;}
+  .vc-name{color:var(--brown);font-size:.78rem;font-weight:700;}
+  .vc-meta{color:var(--gray);font-size:.68rem;margin-top:2px;}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);padding:22px 0;}
+  .faq-q{display:flex;gap:14px;font-size:.86rem;font-weight:700;color:var(--brown);margin-bottom:10px;}
+  .fq-i{color:var(--rose);font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;flex-shrink:0;}
+  .faq-a{color:var(--gray);font-size:.8rem;line-height:1.95;padding-left:26px;}
+
+  /* CTA */
+  .cta-sec{background:url('https://images.unsplash.com/photo-1464699908537-0954e50791ee?w=1200&q=80') center/cover;position:relative;padding:100px 80px;text-align:center;}
+  .cta-sec::before{content:'';position:absolute;inset:0;background:rgba(92,61,46,.55);}
+  .cta-inner{position:relative;z-index:1;}
+  .cta-title{font-family:'Cormorant Garamond',serif;font-size:3rem;color:#fff;font-weight:600;margin-bottom:12px;line-height:1.3;}
+  .cta-sub{color:rgba(255,255,255,.7);font-size:.84rem;margin-bottom:28px;}
+  .btn-white{display:inline-block;background:#fff;color:var(--brown);padding:16px 48px;font-size:.82rem;letter-spacing:.15em;font-weight:700;transition:.3s;}
+  .btn-white:hover{background:var(--blush);}
+
+  /* アクセス */
+  .access{display:grid;grid-template-columns:1fr 1fr;}
+  .access-info{background:var(--blush);padding:80px;}
+  table{margin-top:36px;width:100%;border-collapse:collapse;}
+  td{padding:13px 0;border-bottom:1px solid var(--border);color:var(--gray);font-size:.82rem;vertical-align:top;}
+  td:first-child{color:var(--brown);width:90px;font-size:.72rem;font-weight:700;}
+  .access-img{background:url('https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=800&q=80') center/cover;min-height:400px;}
+
+  footer{background:var(--brown);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:rgba(255,255,255,.7);font-style:italic;letter-spacing:.1em;}
+  footer p{color:rgba(255,255,255,.3);font-size:.7rem;}
 </style>
 </head>
 <body>
-
-<div class="portfolio-note">※ ポートフォリオ用に制作した架空のウェディングプランナーです。実在する会社・人物とは一切関係ありません。</div>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のウェディングプランナーサイトです。実在する会社・人物とは一切関係ありません。</div>
 
 <nav>
   <div class="logo"><span>blanc</span> wedding</div>
   <ul>
-    <li><a href="#">私たちについて</a></li>
     <li><a href="#">プラン</a></li>
     <li><a href="#">実績</a></li>
-    <li><a href="#">お客様の声</a></li>
-    <li><a href="#" class="nav-contact">相談予約</a></li>
+    <li><a href="#">こだわり</a></li>
+    <li><a href="#">スタッフ</a></li>
+    <li><a href="#">アクセス</a></li>
+    <li><a href="#" class="nav-cta">無料相談</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <p class="hero-en">Kobe Wedding Planner</p>
-    <h1>あなたらしい<br>最高の一日を、<br>一緒に作ろう。</h1>
-    <p>婚礼の常識にとらわれず、おふたりの「好き」を全力で形にします。神戸・大阪・京都の厳選会場で、世界にひとつだけのウェディングを。</p>
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <p class="hero-label">KOBE WEDDING PLANNER</p>
+    <h1>あなたの<br>「好き」だけで<br>つくる結婚式</h1>
+    <p class="hero-italic">— Your story, your wedding —</p>
+    <p class="hero-lead">型にはまらない、おふたりだけの物語を。神戸の海と光の中で、一生の記憶になる一日を一緒につくりましょう。</p>
     <div>
       <a href="#" class="btn-rose">無料相談を予約する</a>
-      <a href="#" class="btn-outline-gold">実績を見る</a>
+      <a href="#" class="btn-outline">実績を見る</a>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-right-top"></div>
-    <div class="hero-right-bottom">
-      <div class="hero-right-b1"></div>
-      <div class="hero-right-b2">
-        <div class="big">350+</div>
-        <div class="small">組のご成婚実績</div>
+</section>
+
+<!-- 数字 -->
+<div class="nums">
+  <div class="ni"><div class="ni-num">320<small style="font-size:1rem">+</small></div><div class="ni-label">組の挙式をサポート</div></div>
+  <div class="ni"><div class="ni-num">98<small style="font-size:1rem">%</small></div><div class="ni-label">満足度</div></div>
+  <div class="ni"><div class="ni-num">12</div><div class="ni-label">年の実績</div></div>
+  <div class="ni"><div class="ni-num">4.9</div><div class="ni-label">Googleクチコミ</div></div>
+</div>
+
+<!-- プラン -->
+<section class="sec">
+  <p class="sec-tag">PLAN</p>
+  <h2 class="sec-title">ウェディングプラン</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">すべてのプランはおふたりのご希望に合わせてカスタマイズできます</p>
+  <div class="plan-grid">
+    <div class="pc">
+      <div class="pc-icon">🌸</div>
+      <h3 class="pc-name">シンプルプラン</h3>
+      <p class="pc-price">¥300,000〜</p>
+      <p class="pc-text">少人数・ファミリー婚に最適。アットホームな雰囲気でゲスト全員と丁寧な時間を過ごせます。</p>
+      <div class="pc-items">
+        <div class="pci">会場コーディネート</div>
+        <div class="pci">ブーケ・装花</div>
+        <div class="pci">ヘアメイク1回</div>
+        <div class="pci">写真データ100枚</div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-icon">💍</div>
+      <h3 class="pc-name">スタンダードプラン</h3>
+      <p class="pc-price">¥650,000〜</p>
+      <p class="pc-text">最も人気のプラン。演出・フード・装花すべてをトータルコーディネートします。</p>
+      <div class="pc-items">
+        <div class="pci">会場コーディネート</div>
+        <div class="pci">フルコース料理</div>
+        <div class="pci">映像演出</div>
+        <div class="pci">ヘアメイク2回転換</div>
+        <div class="pci">写真データ300枚</div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-icon">👑</div>
+      <h3 class="pc-name">プレミアムプラン</h3>
+      <p class="pc-price">¥1,200,000〜</p>
+      <p class="pc-text">完全オーダーメイドの特別な一日。ドレス・演出・フードまでこだわりを詰め込んだ最高級プランです。</p>
+      <div class="pc-items">
+        <div class="pci">完全オーダーコーディネート</div>
+        <div class="pci">ドレス・タキシード手配</div>
+        <div class="pci">プロフォト＆ムービー</div>
+        <div class="pci">専属プランナー担当</div>
+        <div class="pci">引き出物手配</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="about">
-  <div class="about-img">
-    <div class="about-img-main"></div>
-    <div class="about-img-sub"></div>
-  </div>
-  <div>
-    <p class="about-tag">— Our Story</p>
-    <h2>「結婚式」ではなく<br>「おふたりの物語」を。</h2>
-    <p>blanc weddingは2016年、神戸・北野で生まれた小さなウェディングプランナーです。豪華な式場案内や決まったプランの押し売りではなく、おふたりが本当に望む結婚式の形を一から考えることから始めます。</p>
-    <p>代表プランナーの白川はこれまで350組以上のウェディングに携わり、「この日のことを一生忘れない」と言っていただける瞬間を大切にしてきました。ご予算の大小に関わらず、丁寧に向き合います。</p>
-    <a href="#" class="btn-outline-gold" style="margin-top:8px;">プランナー紹介</a>
-  </div>
-</section>
-
-<section class="services">
-  <div class="section-center">
-    <p class="section-en">— Our Services</p>
-    <h2 class="section-ja">プラン・サービス</h2>
-  </div>
-  <div class="service-grid">
-    <div class="service-card">
-      <div class="service-icon">💍</div>
-      <h3 class="service-title">フルプロデュース</h3>
-      <p class="service-text">会場選びから当日の進行まで、全てをおまかせいただけるコース。理想のウェディングを一緒に作り上げます。</p>
-      <p class="service-price">¥200,000〜（プランナー料）</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🌸</div>
-      <h3 class="service-title">部分サポート</h3>
-      <p class="service-text">「演出だけ」「招待状だけ」など、必要な部分だけご依頼いただける柔軟なプラン。自分たちで進めたい方に。</p>
-      <p class="service-price">¥50,000〜（内容により変動）</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">✉️</div>
-      <h3 class="service-title">フォトウェディング</h3>
-      <p class="service-text">式を挙げない選択をされたカップルに。神戸の街や自然の中で、おふたりらしい写真を残します。</p>
-      <p class="service-price">¥80,000〜（衣裳・撮影込み）</p>
-    </div>
-  </div>
-</section>
-
-<section class="works">
-  <div class="section-center">
-    <p class="section-en">— Our Works</p>
-    <h2 class="section-ja">実績</h2>
-  </div>
+<!-- 実績 -->
+<section class="sec" style="background:var(--blush);padding-top:90px;padding-bottom:0;">
+  <p class="sec-tag">WORKS</p>
+  <h2 class="sec-title">実績</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">これまでにサポートさせていただいた挙式の一部をご紹介します</p>
   <div class="works-grid">
-    <div class="work-item">
-      <div class="work-bg" style="background:url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&q=80') center/cover;height:100%;"></div>
-      <div class="work-overlay"><div class="work-info"><div class="work-date">2024.03</div><div class="work-venue">神戸北野異人館</div></div></div>
+    <div class="wc"><img src="https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=600&q=80" alt="チャペル挙式"><div class="wc-overlay"><span class="wc-label">チャペル挙式 / 六甲山頂ガーデン</span></div></div>
+    <div class="wc"><img src="https://images.unsplash.com/photo-1550005809-91ad75fb315f?w=600&q=80" alt="ガーデンウェディング"><div class="wc-overlay"><span class="wc-label">ガーデンウェディング / 神戸メリケンパーク</span></div></div>
+    <div class="wc"><img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=600&q=80" alt="レストランウェディング"><div class="wc-overlay"><span class="wc-label">レストランウェディング / 大阪城ビュー</span></div></div>
+  </div>
+</section>
+
+<!-- こだわり -->
+<section class="sec">
+  <p class="sec-tag">OUR COMMITMENT</p>
+  <h2 class="sec-title">blanc weddingのこだわり</h2>
+  <div class="divider"></div>
+  <div class="features-grid">
+    <div class="fc"><div class="fc-icon">🤝</div><h3 class="fc-title">専属プランナー制</h3><p class="fc-text">担当プランナーが最初のご相談から当日まで一貫してサポート。引き継ぎなしで、おふたりのことを深く理解した上でプランを作ります。</p></div>
+    <div class="fc"><div class="fc-icon">🌸</div><h3 class="fc-title">完全オーダーメイド</h3><p class="fc-text">テンプレートは使いません。おふたりの出会い・好み・ゲストの顔を思い浮かべながら、世界にひとつの式を一から設計します。</p></div>
+    <div class="fc"><div class="fc-icon">💰</div><h3 class="fc-title">明瞭な費用提示</h3><p class="fc-text">後から追加費用が発生しない明朗会計が私たちのポリシー。最初の見積もりに必要なものをすべて含めてご提示します。</p></div>
+  </div>
+</section>
+
+<!-- スタッフ -->
+<section class="sec" style="background:var(--blush);">
+  <p class="sec-tag">STAFF</p>
+  <h2 class="sec-title">プランナー紹介</h2>
+  <div class="divider"></div>
+  <div class="staff-grid">
+    <div class="sc">
+      <div class="sc-img"><img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=300&q=80" alt="山本由香"></div>
+      <h3 class="sc-name">山本 由香</h3>
+      <p class="sc-title">チーフプランナー</p>
+      <p class="sc-career">ウェディングプランナー歴14年。担当した挙式は200組以上。ゲストひとりひとりが笑顔になれる演出づくりを得意とする。</p>
     </div>
-    <div class="work-item">
-      <div class="work-bg" style="background:url('https://images.unsplash.com/photo-1550005809-91ad75fb315f?w=500&q=80') center/cover;height:100%;"></div>
-      <div class="work-overlay"><div class="work-info"><div class="work-date">2024.01</div><div class="work-venue">六甲山頂ガーデン</div></div></div>
+    <div class="sc">
+      <div class="sc-img"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&q=80" alt="田中彩"></div>
+      <h3 class="sc-name">田中 彩</h3>
+      <p class="sc-title">フラワーコーディネーター</p>
+      <p class="sc-career">パリのフラワースクール卒業後、帰国してウェディングフラワーの世界へ。季節の生花を使った会場装花が評判。</p>
     </div>
-    <div class="work-item">
-      <div class="work-bg" style="background:url('https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=500&q=80') center/cover;height:100%;"></div>
-      <div class="work-overlay"><div class="work-info"><div class="work-date">2023.11</div><div class="work-venue">大阪城ウェディング</div></div></div>
+    <div class="sc">
+      <div class="sc-img"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&q=80" alt="木村真奈美"></div>
+      <h3 class="sc-name">木村 真奈美</h3>
+      <p class="sc-title">ヘア＆メイクアーティスト</p>
+      <p class="sc-career">ブライダルヘアメイク専門15年。新婦の「なりたいイメージ」を引き出す丁寧なカウンセリングと技術に定評がある。</p>
     </div>
   </div>
 </section>
 
-<section class="voice">
-  <div class="section-center">
-    <p class="section-en">— Voice</p>
-    <h2 class="section-ja" style="color:#fff;">お客様の声</h2>
-  </div>
+<!-- 口コミ -->
+<section class="sec">
+  <p class="sec-tag">VOICE</p>
+  <h2 class="sec-title">ご参列者・新郎新婦の声</h2>
+  <div class="divider"></div>
   <div class="voice-grid">
-    <div class="voice-card">
-      <p class="voice-text">白川さんが私たちの話を本当にちゃんと聞いてくれた。「こんな式がしたい」という漠然としたイメージを、形にしてくれたのが嬉しかったです。</p>
-      <p class="voice-name">K様・T様 ご夫婦（2024年3月挙式）</p>
-    </div>
-    <div class="voice-card">
-      <p class="voice-text">予算が限られていても丁寧に対応してくれました。高額プランを勧めるのではなく、私たちの希望に合わせて考えてくれるので安心できました。</p>
-      <p class="voice-name">Y様・M様 ご夫婦（2023年9月挙式）</p>
-    </div>
-    <div class="voice-card">
-      <p class="voice-text">当日もプランナーさんが近くにいてくれて、何かあればすぐ動いてくれた。ゲストからも「素敵な式だったね」と言われて本当によかった。</p>
-      <p class="voice-name">R様・S様 ご夫婦（2023年6月挙式）</p>
-    </div>
+    <div class="vc"><p class="vc-text">最初「どこで挙式したらいいかわからない」という状態で相談に来たのですが、山本プランナーが私たちのこだわりをどんどん引き出してくれて、気づいたら理想の式が完成していました。</p><p class="vc-name">K＆M様</p><p class="vc-meta">スタンダードプラン / 2024年春</p></div>
+    <div class="vc"><p class="vc-text">費用が明確で安心でした。他社で見積もりを取ったら後から追加費用が出てきて困ったのですが、blanc weddingは最初の見積もり通りで助かりました。</p><p class="vc-name">T＆A様</p><p class="vc-meta">シンプルプラン / 2023年秋</p></div>
+    <div class="vc"><p class="vc-text">フラワーコーディネートが本当に素敵で、ゲスト全員が会場に入った瞬間に歓声を上げてくれました。田中さんのセンスに完全にお任せしてよかったです。</p><p class="vc-name">S＆Y様</p><p class="vc-meta">プレミアムプラン / 2024年初夏</p></div>
+    <div class="vc"><p class="vc-text">遠方から来るゲストが多く、移動の負担を最小限にしたいという要望を汲んでくれてホテル・会場の動線まで考えてくれました。細かい配慮が心に残っています。</p><p class="vc-name">H＆N様</p><p class="vc-meta">スタンダードプラン / 2023年冬</p></div>
   </div>
 </section>
+
+<!-- FAQ -->
+<section class="sec" style="background:var(--blush);">
+  <p class="sec-tag">FAQ</p>
+  <h2 class="sec-title">よくあるご質問</h2>
+  <div class="divider"></div>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>相談は無料ですか？</div><div class="faq-a">はい、初回相談は完全無料です。相談後にご依頼いただかなくても費用は一切かかりません。お気軽にお越しください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>会場は持ち込みでも対応できますか？</div><div class="faq-a">はい、お客様がご希望の会場でのプランニングにも対応しています。提携会場外でも対応できますのでご相談ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>少人数婚・家族婚にも対応していますか？</div><div class="faq-a">はい、10名以下の少人数・家族婚も多く手がけています。シンプルプランで対応可能ですのでご相談ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>挙式の何ヶ月前から相談すればいいですか？</div><div class="faq-a">会場の空き状況によりますが、挙式の6〜12ヶ月前のご相談をおすすめしています。直前でもご相談可能です。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>キャンセルはできますか？</div><div class="faq-a">時期・プランによりキャンセルポリシーが異なります。詳細は初回相談の際にご説明いたします。</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-inner">
+    <h2 class="cta-title">まずは、お話しください。</h2>
+    <p class="cta-sub">初回相談無料 ／ 完全予約制 ／ 神戸三宮より徒歩5分</p>
+    <a href="#" class="btn-white">無料相談を予約する</a>
+  </div>
+</div>
+
+<!-- アクセス -->
+<div class="access">
+  <div class="access-info">
+    <p class="sec-tag" style="text-align:left;">ACCESS</p>
+    <h2 class="sec-title" style="text-align:left;font-size:1.8rem;">アクセス・相談受付</h2>
+    <table>
+      <tr><td>所在地</td><td>兵庫県神戸市中央区三宮町1-X-X<br>三宮ブライダルビル4F</td></tr>
+      <tr><td>電話</td><td>078-XXXX-XXXX</td></tr>
+      <tr><td>アクセス</td><td>JR・阪急・阪神 三宮駅より徒歩5分</td></tr>
+      <tr><td>営業時間</td><td>10:00〜19:00（火曜定休）</td></tr>
+      <tr><td>相談料</td><td>初回無料（要予約）</td></tr>
+    </table>
+  </div>
+  <div class="access-img"></div>
+</div>
 
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="logo"><span>blanc</span> wedding</div>
-      <p>神戸・大阪・京都エリアで活動するウェディングプランナー。<br>おふたりらしい結婚式を一緒に作ります。</p>
-    </div>
-    <div class="footer-col">
-      <h4>サービス</h4>
-      <a href="#">フルプロデュース</a>
-      <a href="#">部分サポート</a>
-      <a href="#">フォトウェディング</a>
-      <a href="#">会場一覧</a>
-    </div>
-    <div class="footer-col">
-      <h4>お問い合わせ</h4>
-      <a href="#">無料相談予約</a>
-      <a href="#">よくある質問</a>
-      <a href="#">アクセス</a>
-      <p style="color:var(--gray);font-size:.75rem;margin-top:12px;">TEL: 078-XXX-XXXX<br>平日 10:00〜19:00</p>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2024 blanc wedding. All Rights Reserved.</div>
+  <div class="footer-logo"><span>blanc</span> wedding</div>
+  <p>© 2024 blanc wedding. All Rights Reserved.</p>
 </footer>
-
 </body>
 </html>

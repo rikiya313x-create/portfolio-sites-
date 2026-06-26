@@ -7,327 +7,250 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  :root{--bg:#04060f;--purple:#7c3aed;--cyan:#06b6d4;--pink:#ec4899;--text:#e2e8f0;--muted:#64748b;--card:#0d1225;}
+  :root{--bg:#04060f;--purple:#7c3aed;--cyan:#06b6d4;--pink:#ec4899;--text:#e2e8f0;--muted:#64748b;--card:#0d1225;--border:rgba(124,58,237,.2);}
   body{font-family:'Space Grotesk','Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  body::before{content:'';position:fixed;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.15),transparent 70%);top:-200px;left:-200px;pointer-events:none;z-index:0;}
+  body::after{content:'';position:fixed;width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,.1),transparent 70%);bottom:-200px;right:-200px;pointer-events:none;z-index:0;}
+  .portfolio-note{background:#0d1225;border-left:3px solid var(--purple);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--muted);position:relative;z-index:1;}
 
-  /* グロー効果 */
-  body::before{content:'';position:fixed;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.15),transparent 70%);top:-200px;left:-200px;pointer-events:none;}
-  body::after{content:'';position:fixed;width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,.1),transparent 70%);bottom:-200px;right:-200px;pointer-events:none;}
-
-  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(4,6,15,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);}
-  .logo{font-size:1.2rem;font-weight:700;letter-spacing:.05em;}
-  .logo span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  nav ul{list-style:none;display:flex;gap:36px;}
-  nav ul a{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:400;transition:.2s;}
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(4,6,15,.9);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);}
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--purple),var(--cyan));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;}
+  .logo-text{font-size:.9rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:var(--muted);font-size:.75rem;letter-spacing:.08em;transition:.2s;}
   nav ul a:hover{color:var(--text);}
-  .nav-cta{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff!important;padding:8px 24px;border-radius:6px;font-weight:500!important;}
+  .nav-cta{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff!important;padding:9px 22px;border-radius:6px;font-size:.75rem!important;}
 
-  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 80px 80px;position:relative;}
-  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
-  .hero-content{position:relative;z-index:1;max-width:700px;}
-  .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.08);padding:6px 16px;border-radius:100px;margin-bottom:28px;}
-  .hero-badge span{font-size:.72rem;letter-spacing:.1em;color:var(--purple);}
-  .badge-dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:pulse 2s infinite;}
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 80px 80px;overflow:hidden;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.05) 1px,transparent 1px);background-size:60px 60px;}
+  .hero-content{position:relative;z-index:1;max-width:720px;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,.15);border:1px solid var(--border);padding:6px 16px;border-radius:100px;font-size:.68rem;letter-spacing:.1em;margin-bottom:28px;}
+  .hero-badge span{width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:pulse 2s infinite;}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-  .hero h1{font-size:4rem;font-weight:700;line-height:1.1;margin-bottom:24px;letter-spacing:-.02em;}
-  .hero h1 .grad{background:linear-gradient(135deg,var(--purple),var(--cyan),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  .hero p{color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:40px;font-weight:300;}
-  .hero-btns{display:flex;gap:16px;align-items:center;}
-  .btn-gradient{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff;padding:14px 36px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:500;transition:.3s;display:inline-block;}
-  .btn-gradient:hover{opacity:.85;transform:translateY(-1px);}
-  .btn-ghost-w{border:1px solid rgba(255,255,255,.15);color:var(--text);padding:14px 36px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:400;transition:.3s;display:inline-block;}
-  .btn-ghost-w:hover{border-color:rgba(255,255,255,.4);}
-  .hero-visual{position:absolute;right:80px;top:50%;transform:translateY(-50%);width:480px;}
-  .hero-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:28px;margin-bottom:16px;position:relative;overflow:hidden;}
-  .hero-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.06),transparent);pointer-events:none;}
-  .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
-  .card-dots{display:flex;gap:6px;}
-  .card-dot{width:10px;height:10px;border-radius:50%;}
-  .card-label{font-size:.7rem;color:var(--muted);letter-spacing:.1em;}
-  .chart-bars{display:flex;align-items:flex-end;gap:8px;height:80px;}
-  .bar{flex:1;border-radius:4px 4px 0 0;opacity:.8;}
-  .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
-  .metric{text-align:center;}
-  .metric-val{font-size:1.2rem;font-weight:700;}
-  .metric-val.up{color:var(--cyan);}
-  .metric-val.purple{color:var(--purple);}
-  .metric-val.pink{color:var(--pink);}
-  .metric-label{font-size:.65rem;color:var(--muted);margin-top:2px;}
-  .ai-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
-  .ai-tag{padding:4px 12px;border-radius:100px;font-size:.68rem;font-weight:500;}
+  .hero h1{font-size:5rem;font-weight:700;line-height:1.05;margin-bottom:20px;}
+  .hero h1 span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-lead{color:var(--muted);font-size:.92rem;line-height:2;max-width:560px;margin-bottom:36px;}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-gradient{display:inline-block;background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff;padding:14px 36px;border-radius:8px;font-size:.82rem;font-weight:600;letter-spacing:.08em;transition:.3s;}
+  .btn-gradient:hover{opacity:.85;transform:translateY(-2px);}
+  .btn-ghost{display:inline-block;border:1px solid var(--border);color:var(--text);padding:14px 32px;border-radius:8px;font-size:.82rem;transition:.3s;}
+  .btn-ghost:hover{border-color:var(--purple);color:var(--purple);}
+  .hero-nums{display:flex;gap:48px;margin-top:52px;padding-top:36px;border-top:1px solid var(--border);}
+  .hn-num{font-size:2rem;font-weight:700;color:var(--text);}
+  .hn-num span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hn-label{color:var(--muted);font-size:.72rem;margin-top:4px;}
 
-  .logos{padding:48px 80px;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);}
-  .logos-label{color:var(--muted);font-size:.72rem;letter-spacing:.2em;text-align:center;margin-bottom:24px;}
-  .logos-row{display:flex;justify-content:center;gap:60px;align-items:center;}
-  .logo-item{color:rgba(255,255,255,.2);font-size:.95rem;font-weight:700;letter-spacing:.05em;}
+  /* 共通 */
+  .sec{padding:100px 80px;position:relative;z-index:1;}
+  .sec-badge{display:inline-block;background:rgba(124,58,237,.1);border:1px solid var(--border);color:var(--purple);font-size:.62rem;letter-spacing:.2em;padding:4px 12px;border-radius:100px;margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-size:2.4rem;font-weight:700;margin-bottom:36px;line-height:1.15;}
+  .sec-title span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
-  .features{padding:120px 80px;}
-  .section-tag{color:var(--purple);font-size:.72rem;letter-spacing:.2em;margin-bottom:12px;}
-  .section-title{font-size:2.5rem;font-weight:700;letter-spacing:-.02em;margin-bottom:16px;}
-  .section-lead{color:var(--muted);font-size:.9rem;line-height:1.8;max-width:500px;}
-  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
-  .feature-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:36px;transition:.3s;position:relative;overflow:hidden;}
-  .feature-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));transform:scaleX(0);transition:.3s;transform-origin:left;}
-  .feature-card:hover{border-color:rgba(124,58,237,.3);transform:translateY(-4px);}
-  .feature-card:hover::after{transform:scaleX(1);}
-  .feature-icon{font-size:2rem;margin-bottom:20px;display:block;}
-  .feature-title{font-size:1.05rem;font-weight:600;margin-bottom:12px;}
-  .feature-text{color:var(--muted);font-size:.82rem;line-height:1.8;}
+  /* サービス */
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+  .sc{background:var(--card);padding:36px 28px;transition:.3s;}
+  .sc:hover{background:#101828;}
+  .sc-icon{font-size:2rem;margin-bottom:16px;}
+  .sc-name{font-size:1rem;font-weight:600;margin-bottom:10px;}
+  .sc-text{color:var(--muted);font-size:.78rem;line-height:1.9;}
+  .sc-tag{display:inline-block;margin-top:14px;background:rgba(6,182,212,.1);color:var(--cyan);font-size:.62rem;padding:3px 10px;border-radius:4px;}
 
-  .use-cases{padding:0 80px 120px;}
-  .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px;}
-  .case-item{background:var(--card);padding:48px;border:1px solid rgba(255,255,255,.04);transition:.3s;}
-  .case-item:hover{background:#111827;}
-  .case-num{font-size:3rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:16px;}
-  .case-title{font-size:1.1rem;font-weight:600;margin-bottom:10px;}
-  .case-text{color:var(--muted);font-size:.83rem;line-height:1.8;}
+  /* 導入事例 */
+  .case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .cc{background:var(--card);border:1px solid var(--border);padding:28px;border-radius:8px;transition:.3s;}
+  .cc:hover{border-color:var(--purple);}
+  .cc-industry{color:var(--cyan);font-size:.62rem;letter-spacing:.15em;margin-bottom:8px;text-transform:uppercase;}
+  .cc-title{font-size:.9rem;font-weight:600;margin-bottom:12px;}
+  .cc-result{color:var(--muted);font-size:.78rem;line-height:1.8;margin-bottom:14px;}
+  .cc-num{font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .cc-num-label{color:var(--muted);font-size:.68rem;}
 
-  .pricing{padding:120px 80px;background:var(--card);}
-  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
-  .plan-card{border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:40px;transition:.3s;}
-  .plan-card.popular{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.1));border-color:rgba(124,58,237,.4);}
-  .plan-badge{display:inline-block;background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff;font-size:.65rem;padding:3px 10px;border-radius:100px;margin-bottom:16px;}
-  .plan-name{font-size:1rem;font-weight:600;margin-bottom:4px;}
-  .plan-desc{color:var(--muted);font-size:.78rem;margin-bottom:24px;}
-  .plan-price{font-size:2.5rem;font-weight:700;margin-bottom:4px;}
-  .plan-price span{font-size:.85rem;color:var(--muted);font-weight:400;}
-  .plan-period{color:var(--muted);font-size:.75rem;margin-bottom:28px;}
-  .plan-features{list-style:none;}
-  .plan-features li{color:var(--muted);font-size:.8rem;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;gap:8px;}
-  .plan-features li::before{content:'✓';color:var(--cyan);}
-  .plan-cta{display:block;text-align:center;margin-top:28px;padding:12px;border-radius:8px;text-decoration:none;font-size:.83rem;font-weight:500;transition:.3s;}
-  .plan-cta-outline{border:1px solid rgba(255,255,255,.2);color:var(--text);}
-  .plan-cta-outline:hover{border-color:var(--purple);color:var(--purple);}
-  .plan-cta-filled{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff;}
+  /* チーム */
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .tc{background:var(--card);border:1px solid var(--border);padding:24px;border-radius:8px;text-align:center;}
+  .tc-avatar{width:72px;height:72px;border-radius:50%;margin:0 auto 14px;background:linear-gradient(135deg,var(--purple),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;}
+  .tc-name{font-size:.9rem;font-weight:600;margin-bottom:3px;}
+  .tc-title{color:var(--muted);font-size:.68rem;margin-bottom:10px;}
+  .tc-text{color:var(--muted);font-size:.73rem;line-height:1.8;}
 
-  footer{padding:60px 80px 36px;border-top:1px solid rgba(255,255,255,.06);}
-  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;margin-bottom:48px;}
-  .footer-logo-large{font-size:1.2rem;font-weight:700;}
-  .footer-logo-large span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  .footer-tagline{color:var(--muted);font-size:.78rem;line-height:1.8;margin-top:12px;}
-  .footer-col h4{color:rgba(255,255,255,.3);font-size:.65rem;letter-spacing:.2em;margin-bottom:16px;}
-  .footer-col a{display:block;color:var(--muted);text-decoration:none;font-size:.78rem;margin-bottom:9px;transition:.2s;}
-  .footer-col a:hover{color:var(--text);}
-  .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;justify-content:space-between;color:var(--muted);font-size:.72rem;}
+  /* 価格 */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .pc{background:var(--card);border:1px solid var(--border);padding:36px 28px;border-radius:8px;}
+  .pc.featured{border-color:var(--purple);background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(6,182,212,.05));}
+  .pc-badge{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff;font-size:.62rem;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:14px;}
+  .pc-name{font-size:1rem;font-weight:600;margin-bottom:8px;}
+  .pc-price{font-size:2.2rem;font-weight:700;margin-bottom:4px;}
+  .pc-price span{font-size:.75rem;font-weight:400;color:var(--muted);}
+  .pc-period{color:var(--muted);font-size:.72rem;margin-bottom:22px;}
+  .pc-features{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .pc-features li{color:var(--muted);font-size:.78rem;display:flex;gap:8px;align-items:flex-start;}
+  .pc-features li::before{content:'✓';color:var(--cyan);flex-shrink:0;}
+  .pc-btn{display:block;text-align:center;margin-top:24px;padding:12px;border-radius:6px;font-size:.8rem;font-weight:600;letter-spacing:.08em;transition:.3s;}
+  .pc .pc-btn{border:1px solid var(--border);color:var(--text);}
+  .pc.featured .pc-btn{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff;border:none;}
 
-  .portfolio-note{background:rgba(124,58,237,.08);border-left:3px solid var(--purple);padding:12px 24px;text-align:center;font-size:.73rem;color:var(--muted);}
+  /* FAQ */
+  .faq-list{max-width:780px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);padding:22px 0;}
+  .faq-q{display:flex;gap:12px;font-size:.86rem;font-weight:600;margin-bottom:10px;}
+  .fq-i{color:var(--purple);flex-shrink:0;}
+  .faq-a{color:var(--muted);font-size:.8rem;line-height:1.95;padding-left:22px;}
+
+  /* CTA */
+  .cta-sec{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.08));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 80px;text-align:center;position:relative;z-index:1;}
+  .cta-title{font-size:3rem;font-weight:700;margin-bottom:14px;}
+  .cta-title span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .cta-sub{color:var(--muted);font-size:.88rem;margin-bottom:32px;}
+
+  footer{background:#020409;padding:36px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);position:relative;z-index:1;}
+  .footer-logo{font-size:.9rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.3);}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
 </style>
 </head>
 <body>
-
-<div class="portfolio-note">※ ポートフォリオ用に制作した架空のITスタートアップです。実在する会社・製品とは一切関係ありません。</div>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のITスタートアップサイトです。実在する会社・サービスとは一切関係ありません。</div>
 
 <nav>
-  <div class="logo"><span>NEXUS</span> AI</div>
+  <div class="logo"><div class="logo-mark">N</div><div class="logo-text">NEXUS AI</div></div>
   <ul>
-    <li><a href="#">機能</a></li>
-    <li><a href="#">活用事例</a></li>
+    <li><a href="#">サービス</a></li>
+    <li><a href="#">導入事例</a></li>
     <li><a href="#">料金</a></li>
-    <li><a href="#">ドキュメント</a></li>
-    <li><a href="#">ブログ</a></li>
-    <li><a href="#" class="nav-cta">無料で試す</a></li>
+    <li><a href="#">チーム</a></li>
+    <li><a href="#">お問い合わせ</a></li>
+    <li><a href="#" class="nav-cta">無料トライアル</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      <span>NEW — Nexus AI v3.0 リリース</span>
-    </div>
-    <h1>ビジネスを、<br><span class="grad">AIの力で</span><br>加速させる。</h1>
-    <p>NEXUS AIは、業務効率化・顧客体験向上・データ分析を<br>ひとつのプラットフォームで実現するAIソリューションです。</p>
+    <div class="hero-badge"><span></span>AI-Powered Business Solution</div>
+    <h1>AIで、<br><span>ビジネスを</span><br>次のステージへ。</h1>
+    <p class="hero-lead">NEXUS AIは、最新の生成AI・機械学習技術を活用したビジネスDXプラットフォームです。業務自動化からデータ分析まで、すべてをワンストップで提供します。</p>
     <div class="hero-btns">
-      <a href="#" class="btn-gradient">14日間 無料トライアル</a>
-      <a href="#" class="btn-ghost-w">デモを見る →</a>
+      <a href="#" class="btn-gradient">無料トライアルを始める</a>
+      <a href="#" class="btn-ghost">デモを見る</a>
     </div>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-card">
-      <div class="card-header">
-        <div class="card-dots">
-          <div class="card-dot" style="background:#ef4444;"></div>
-          <div class="card-dot" style="background:#f59e0b;"></div>
-          <div class="card-dot" style="background:#10b981;"></div>
-        </div>
-        <span class="card-label">AI ANALYTICS</span>
-      </div>
-      <div class="chart-bars">
-        <div class="bar" style="height:40%;background:linear-gradient(var(--purple),rgba(124,58,237,.3));"></div>
-        <div class="bar" style="height:65%;background:linear-gradient(var(--purple),rgba(124,58,237,.3));"></div>
-        <div class="bar" style="height:55%;background:linear-gradient(var(--purple),rgba(124,58,237,.3));"></div>
-        <div class="bar" style="height:80%;background:linear-gradient(var(--cyan),rgba(6,182,212,.3));"></div>
-        <div class="bar" style="height:70%;background:linear-gradient(var(--cyan),rgba(6,182,212,.3));"></div>
-        <div class="bar" style="height:90%;background:linear-gradient(var(--pink),rgba(236,72,153,.3));"></div>
-        <div class="bar" style="height:85%;background:linear-gradient(var(--pink),rgba(236,72,153,.3));"></div>
-      </div>
-      <div class="metric-row">
-        <div class="metric"><div class="metric-val up">+38%</div><div class="metric-label">効率化</div></div>
-        <div class="metric"><div class="metric-val purple">2.4x</div><div class="metric-label">処理速度</div></div>
-        <div class="metric"><div class="metric-val pink">99.8%</div><div class="metric-label">稼働率</div></div>
-      </div>
-    </div>
-    <div class="hero-card">
-      <p style="color:var(--muted);font-size:.72rem;margin-bottom:12px;">AI SUGGESTION</p>
-      <p style="font-size:.85rem;line-height:1.6;">「今月の問い合わせ傾向を分析しました。<strong style="color:var(--cyan);">FAQ対応の自動化</strong>で工数を約40%削減できる見込みです。」</p>
-      <div class="ai-tags">
-        <span class="ai-tag" style="background:rgba(124,58,237,.15);color:var(--purple);">分析完了</span>
-        <span class="ai-tag" style="background:rgba(6,182,212,.1);color:var(--cyan);">提案あり</span>
-      </div>
+    <div class="hero-nums">
+      <div><div class="hn-num"><span>320</span>社+</div><div class="hn-label">導入企業数</div></div>
+      <div><div class="hn-num"><span>68</span>%</div><div class="hn-label">平均業務削減率</div></div>
+      <div><div class="hn-num"><span>4.8</span></div><div class="hn-label">顧客満足度（5段階）</div></div>
     </div>
   </div>
 </section>
 
-<div class="logos">
-  <p class="logos-label">TRUSTED BY LEADING COMPANIES</p>
-  <div class="logos-row">
-    <span class="logo-item">SORA Inc.</span>
-    <span class="logo-item">TECHWAVE</span>
-    <span class="logo-item">GLOBALINK</span>
-    <span class="logo-item">DEEPROOT</span>
-    <span class="logo-item">VERTIX</span>
-  </div>
-</div>
-
-<section class="features">
-  <p class="section-tag">FEATURES</p>
-  <h2 class="section-title">できること</h2>
-  <p class="section-lead">NEXUS AIが提供する機能は、あなたのビジネスのあらゆる課題に対応します。</p>
-  <div class="feature-grid">
-    <div class="feature-card">
-      <span class="feature-icon">🤖</span>
-      <h3 class="feature-title">AIチャットボット</h3>
-      <p class="feature-text">自社データで学習したAIが24時間対応。問い合わせ対応工数を最大60%削減します。</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">📊</span>
-      <h3 class="feature-title">データ分析 & 予測</h3>
-      <p class="feature-text">売上・顧客行動・市場トレンドをAIが自動分析。意思決定を数字で裏付けます。</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">✍️</span>
-      <h3 class="feature-title">コンテンツ自動生成</h3>
-      <p class="feature-text">メルマガ・SNS投稿・商品説明文を自社トーンで自動生成。マーケ工数を大幅削減。</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">🔗</span>
-      <h3 class="feature-title">API連携</h3>
-      <p class="feature-text">Salesforce・HubSpot・Slackなど主要ツールと即日連携。既存フローを壊さない。</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">🛡️</span>
-      <h3 class="feature-title">セキュリティ</h3>
-      <p class="feature-text">SOC2 Type2認証取得。データは国内サーバーに保管。エンタープライズ水準の安全性。</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">⚙️</span>
-      <h3 class="feature-title">ノーコード設定</h3>
-      <p class="feature-text">エンジニア不要。ドラッグ＆ドロップで業務フローを設計・変更できます。</p>
-    </div>
+<!-- サービス -->
+<section class="sec">
+  <div class="sec-badge">Services</div>
+  <h2 class="sec-title">AIで解決する、<span>6つの課題</span></h2>
+  <div class="service-grid">
+    <div class="sc"><div class="sc-icon">🤖</div><h3 class="sc-name">AI チャットボット</h3><p class="sc-text">24時間対応のAIカスタマーサポート。学習機能で日々精度が上がり、問い合わせ対応の70%を自動化します。</p><span class="sc-tag">カスタマーサポート</span></div>
+    <div class="sc"><div class="sc-icon">📊</div><h3 class="sc-name">データ分析 AI</h3><p class="sc-text">売上・在庫・顧客データをリアルタイムで分析。ダッシュボードで可視化し、意思決定のスピードを3倍に。</p><span class="sc-tag">データ活用</span></div>
+    <div class="sc"><div class="sc-icon">✍️</div><h3 class="sc-name">コンテンツ生成 AI</h3><p class="sc-text">商品説明文・メルマガ・SNS投稿を自動生成。ブランドトーンを学習した高品質なテキストを量産可能。</p><span class="sc-tag">マーケティング</span></div>
+    <div class="sc"><div class="sc-icon">🔍</div><h3 class="sc-name">書類 AI 処理</h3><p class="sc-text">請求書・契約書・申請書の読み取り・分類・入力を自動化。人的ミスをゼロにしながら処理時間を90%短縮。</p><span class="sc-tag">バックオフィス</span></div>
+    <div class="sc"><div class="sc-icon">🎯</div><h3 class="sc-name">AI マーケティング</h3><p class="sc-text">顧客ごとにパーソナライズされた広告・レコメンドを自動配信。CVRの平均2.4倍改善を実現しています。</p><span class="sc-tag">広告最適化</span></div>
+    <div class="sc"><div class="sc-icon">🔒</div><h3 class="sc-name">セキュリティ AI</h3><p class="sc-text">異常アクセス・不正ログインをリアルタイム検知。AIが攻撃パターンを学習し、ゼロデイ脅威にも対応。</p><span class="sc-tag">セキュリティ</span></div>
   </div>
 </section>
 
-<section class="use-cases">
-  <p class="section-tag">USE CASES</p>
-  <h2 class="section-title">活用事例</h2>
-  <div class="cases-grid">
-    <div class="case-item">
-      <div class="case-num">01</div>
-      <h3 class="case-title">ECサイト × 商品レコメンド</h3>
-      <p class="case-text">顧客の購買履歴・閲覧パターンをAIが学習し、リアルタイムでパーソナライズされた商品を提案。CTRが平均2.3倍に向上。</p>
-    </div>
-    <div class="case-item">
-      <div class="case-num">02</div>
-      <h3 class="case-title">人事 × 採用スクリーニング</h3>
-      <p class="case-text">履歴書・職務経歴書の一次選考をAIが自動化。スクリーニング工数を80%削減し、担当者は面接に集中できる環境に。</p>
-    </div>
-    <div class="case-item">
-      <div class="case-num">03</div>
-      <h3 class="case-title">カスタマーサポート自動化</h3>
-      <p class="case-text">よくある問い合わせの85%をAIが即時対応。複雑な問題のみ人間にエスカレーション。顧客満足度スコアが12pt向上。</p>
-    </div>
-    <div class="case-item">
-      <div class="case-num">04</div>
-      <h3 class="case-title">マーケ × コンテンツ量産</h3>
-      <p class="case-text">ブランドガイドラインを学習したAIが、ブログ・SNS・メルマガを自動生成。月間コンテンツ量が3倍に。</p>
-    </div>
+<!-- 導入事例 -->
+<section class="sec" style="background:rgba(13,18,37,.5);">
+  <div class="sec-badge">Case Studies</div>
+  <h2 class="sec-title">導入<span>事例</span></h2>
+  <div class="case-grid">
+    <div class="cc"><p class="cc-industry">小売業</p><h3 class="cc-title">大手ECモールへのAIレコメンド導入</h3><p class="cc-result">顧客の購買履歴・閲覧パターンをAIが学習し、パーソナライズされた商品提案を実現。</p><div class="cc-num">+240%</div><div class="cc-num-label">CVR改善率</div></div>
+    <div class="cc"><p class="cc-industry">製造業</p><h3 class="cc-title">工場ラインの品質検査AI化</h3><p class="cc-result">カメラ映像をAIがリアルタイム解析し、製品の不良品を自動検出。人員削減とミス率低下を同時に実現。</p><div class="cc-num">-92%</div><div class="cc-num-label">検査ミス率</div></div>
+    <div class="cc"><p class="cc-industry">金融・保険</p><h3 class="cc-title">保険申請書類のOCR＋AI自動処理</h3><p class="cc-result">手書き・印刷書類の読み取りから入力・審査補助までを自動化し、オペレーター負荷を大幅削減。</p><div class="cc-num">68%</div><div class="cc-num-label">処理時間削減</div></div>
   </div>
 </section>
 
-<section class="pricing">
-  <p class="section-tag">PRICING</p>
-  <h2 class="section-title">料金プラン</h2>
-  <p class="section-lead" style="color:var(--muted);">全プラン14日間無料トライアル付き。クレジットカード不要。</p>
-  <div class="plan-grid">
-    <div class="plan-card">
-      <div class="plan-name">Starter</div>
-      <div class="plan-desc">スモールビジネス向け</div>
-      <div class="plan-price">¥9,800<span>/月</span></div>
-      <div class="plan-period">税込・年払いで20%OFF</div>
-      <ul class="plan-features">
-        <li>AIチャットボット（月1,000件）</li>
-        <li>コンテンツ生成（月50件）</li>
-        <li>基本分析ダッシュボード</li>
+<!-- チーム -->
+<section class="sec">
+  <div class="sec-badge">Team</div>
+  <h2 class="sec-title">チーム<span>紹介</span></h2>
+  <div class="team-grid">
+    <div class="tc"><div class="tc-avatar">KT</div><h3 class="tc-name">木村 拓郎</h3><p class="tc-title">CEO / Co-Founder</p><p class="tc-text">元Google AIリサーチャー。Stanford大学CS修士。AI研究歴12年。</p></div>
+    <div class="tc"><div class="tc-avatar">AY</div><h3 class="tc-name">山田 彩子</h3><p class="tc-title">CTO / Co-Founder</p><p class="tc-text">LLM・NLPの専門家。東京大学情報工学博士課程修了。</p></div>
+    <div class="tc"><div class="tc-avatar">RS</div><h3 class="tc-name">鈴木 涼介</h3><p class="tc-title">CPO</p><p class="tc-text">プロダクト開発10年。前職は国内大手SaaS企業のPM。</p></div>
+    <div class="tc"><div class="tc-avatar">MO</div><h3 class="tc-name">大野 美佐</h3><p class="tc-title">CSO</p><p class="tc-text">エンタープライズ営業・パートナーシップ担当。前職はAWS。</p></div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<section class="sec" style="background:rgba(13,18,37,.5);">
+  <div class="sec-badge">Pricing</div>
+  <h2 class="sec-title">シンプルな<span>料金プラン</span></h2>
+  <div class="price-grid">
+    <div class="pc">
+      <h3 class="pc-name">Starter</h3>
+      <div class="pc-price">¥29,800<span> /月</span></div>
+      <div class="pc-period">小規模チーム向け</div>
+      <ul class="pc-features">
+        <li>AIチャットボット（月5,000件）</li>
+        <li>データ分析ダッシュボード</li>
+        <li>コンテンツ生成（月100件）</li>
         <li>メールサポート</li>
       </ul>
-      <a href="#" class="plan-cta plan-cta-outline">無料で始める</a>
+      <a href="#" class="pc-btn">トライアルを開始</a>
     </div>
-    <div class="plan-card popular">
-      <span class="plan-badge">最人気</span>
-      <div class="plan-name">Business</div>
-      <div class="plan-desc">成長企業向け</div>
-      <div class="plan-price">¥29,800<span>/月</span></div>
-      <div class="plan-period">税込・年払いで20%OFF</div>
-      <ul class="plan-features">
-        <li>AIチャットボット（無制限）</li>
-        <li>コンテンツ生成（無制限）</li>
-        <li>高度な分析 & 予測</li>
-        <li>主要SaaS連携</li>
-        <li>チャットサポート（24h）</li>
+    <div class="pc featured">
+      <div class="pc-badge">最人気プラン</div>
+      <h3 class="pc-name">Growth</h3>
+      <div class="pc-price">¥98,000<span> /月</span></div>
+      <div class="pc-period">成長フェーズの企業向け</div>
+      <ul class="pc-features">
+        <li>全AIサービス利用可能</li>
+        <li>月50,000件のAI処理</li>
+        <li>カスタムAPI連携</li>
+        <li>専任サポートマネージャー</li>
+        <li>月次レポート提供</li>
       </ul>
-      <a href="#" class="plan-cta plan-cta-filled">無料で始める</a>
+      <a href="#" class="pc-btn">トライアルを開始</a>
     </div>
-    <div class="plan-card">
-      <div class="plan-name">Enterprise</div>
-      <div class="plan-desc">大企業・カスタム向け</div>
-      <div class="plan-price">要相談</div>
-      <div class="plan-period">専任担当者がサポート</div>
-      <ul class="plan-features">
-        <li>全機能利用可能</li>
-        <li>自社データでのAI学習</li>
-        <li>専任カスタマーサクセス</li>
-        <li>SLA保証 / セキュリティ審査対応</li>
+    <div class="pc">
+      <h3 class="pc-name">Enterprise</h3>
+      <div class="pc-price">要相談</div>
+      <div class="pc-period">大規模・カスタム対応</div>
+      <ul class="pc-features">
+        <li>無制限のAI処理</li>
+        <li>オンプレミス導入対応</li>
+        <li>SLA保証・専任エンジニア</li>
+        <li>セキュリティ監査対応</li>
+        <li>カスタム機能開発</li>
       </ul>
-      <a href="#" class="plan-cta plan-cta-outline">営業に相談する</a>
+      <a href="#" class="pc-btn">お問い合わせ</a>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo-large"><span>NEXUS</span> AI</div>
-      <p class="footer-tagline">AIで、ビジネスを次のステージへ。<br>東京都渋谷区道玄坂2-X-X NEXUS BLDG</p>
-    </div>
-    <div class="footer-col">
-      <h4>PRODUCT</h4>
-      <a href="#">機能一覧</a><a href="#">活用事例</a><a href="#">料金</a><a href="#">ロードマップ</a>
-    </div>
-    <div class="footer-col">
-      <h4>COMPANY</h4>
-      <a href="#">会社概要</a><a href="#">採用情報</a><a href="#">ブログ</a><a href="#">プレスリリース</a>
-    </div>
-    <div class="footer-col">
-      <h4>SUPPORT</h4>
-      <a href="#">ドキュメント</a><a href="#">よくある質問</a><a href="#">お問い合わせ</a><a href="#">ステータス</a>
-    </div>
+<!-- FAQ -->
+<section class="sec">
+  <div class="sec-badge">FAQ</div>
+  <h2 class="sec-title">よくある<span>ご質問</span></h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>技術的な知識がなくても導入できますか？</div><div class="faq-a">はい、技術的な知識は不要です。導入から設定まで専任スタッフがサポートします。ノーコードで操作できるUIを提供しています。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>既存システムとの連携は可能ですか？</div><div class="faq-a">Salesforce・HubSpot・Slack・Notionなど主要ツールとのAPI連携に対応しています。独自システムはエンタープライズプランでご相談ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>データのセキュリティは大丈夫ですか？</div><div class="faq-a">ISO 27001認証取得済みです。データは国内サーバーで暗号化して保管し、第三者への提供は一切行いません。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>無料トライアル期間はどのくらいですか？</div><div class="faq-a">14日間の無料トライアルをご用意しています。クレジットカード登録不要でお試しいただけます。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>解約はいつでもできますか？</div><div class="faq-a">月次契約プランはいつでも解約可能です。解約手数料はかかりません。年次プランは契約期間終了後の解約となります。</div></div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2024 NEXUS AI, Inc. All Rights Reserved.</span>
-    <span>プライバシーポリシー ｜ 利用規約</span>
-  </div>
-</footer>
+</section>
 
+<!-- CTA -->
+<div class="cta-sec">
+  <h2 class="cta-title">今すぐ、<span>AIの力を体験してください。</span></h2>
+  <p class="cta-sub">14日間無料トライアル ／ クレジットカード不要 ／ いつでも解約可能</p>
+  <a href="#" class="btn-gradient">無料トライアルを始める</a>
+</div>
+
+<footer>
+  <div class="footer-logo">NEXUS AI</div>
+  <p>© 2024 NEXUS AI Inc. All Rights Reserved.</p>
+</footer>
 </body>
 </html>

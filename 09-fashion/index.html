@@ -5,297 +5,275 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MONOCHROME | セレクトショップ</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  :root{--black:#0a0a0a;--white:#fafafa;--gray:#666;--border:#e8e8e8;--accent:#d4a847;}
-  body{font-family:'Montserrat','Noto Sans JP',sans-serif;background:var(--white);color:var(--black);}
+  :root{--black:#0a0a0a;--white:#fafafa;--gray:#666;--lgray:#999;--border:#e8e8e8;--accent:#d4a847;--cream:#faf8f5;}
+  body{font-family:'Montserrat','Noto Sans JP',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#f5f0ea;border-left:3px solid var(--accent);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--lgray);}
 
-  nav{position:fixed;top:0;width:100%;z-index:100;background:var(--white);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid var(--border);}
+  /* 上部バー */
+  .topbar{background:var(--black);color:rgba(255,255,255,.5);text-align:center;padding:8px;font-size:.68rem;letter-spacing:.2em;}
+  .topbar span{color:var(--accent);}
+
+  nav{position:fixed;top:34px;width:100%;z-index:100;background:var(--white);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid var(--border);}
   .logo{font-size:1rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;}
   nav ul{list-style:none;display:flex;gap:32px;}
-  nav ul a{color:var(--gray);text-decoration:none;font-size:.7rem;letter-spacing:.15em;font-weight:600;text-transform:uppercase;transition:.2s;}
+  nav ul a{color:var(--gray);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;transition:.2s;}
   nav ul a:hover{color:var(--black);}
-  .nav-icons{display:flex;gap:20px;align-items:center;}
-  .nav-icon{cursor:pointer;color:var(--gray);font-size:1rem;transition:.2s;}
+  .nav-icons{display:flex;gap:16px;align-items:center;}
+  .nav-icon{color:var(--gray);font-size:.82rem;cursor:pointer;transition:.2s;}
   .nav-icon:hover{color:var(--black);}
 
-  .hero{padding-top:64px;height:100vh;display:grid;grid-template-columns:1fr 1fr;}
-  .hero-left{background:var(--black);display:flex;align-items:flex-end;padding:60px;position:relative;overflow:hidden;}
-  .hero-left-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80') center/cover;opacity:.4;transition:.5s;}
-  .hero-left:hover .hero-left-bg{transform:scale(1.03);}
-  .hero-left-content{position:relative;z-index:1;}
-  .collection-tag{color:rgba(255,255,255,.5);font-size:.65rem;letter-spacing:.35em;margin-bottom:12px;text-transform:uppercase;}
-  .hero-left h2{color:#fff;font-size:2.5rem;font-weight:300;line-height:1.3;letter-spacing:.03em;margin-bottom:20px;}
-  .hero-left h2 strong{font-weight:700;display:block;}
-  .hero-link{color:#fff;text-decoration:none;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:3px;transition:.3s;}
-  .hero-link:hover{border-color:#fff;}
-  .hero-right{display:grid;grid-template-rows:1fr 1fr;}
-  .hero-right-top{background:url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=80') center/cover;position:relative;overflow:hidden;}
-  .hero-right-top:hover .overlay-tag{opacity:1;}
-  .hero-right-bottom{display:grid;grid-template-columns:1fr 1fr;}
-  .hero-mini{position:relative;overflow:hidden;cursor:pointer;}
-  .hero-mini-img{width:100%;height:100%;background-size:cover;background-position:center;transition:.4s;}
-  .hero-mini:hover .hero-mini-img{transform:scale(1.05);}
-  .overlay-tag{position:absolute;inset:0;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;opacity:0;transition:.3s;}
-  .overlay-tag span{color:#fff;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;font-weight:600;border:1px solid rgba(255,255,255,.6);padding:8px 16px;}
-  .promo-box{background:var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;}
-  .promo-box .big{font-size:2rem;font-weight:700;color:#fff;letter-spacing:.05em;}
-  .promo-box .sub{font-size:.65rem;letter-spacing:.25em;color:rgba(255,255,255,.8);text-transform:uppercase;}
+  /* HERO */
+  .hero{height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:98px;}
+  .hero-img{background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80') center/cover;position:relative;}
+  .hero-img-tag{position:absolute;bottom:32px;left:32px;background:var(--white);padding:14px 20px;}
+  .hero-img-tag p{font-size:.62rem;letter-spacing:.2em;color:var(--lgray);margin-bottom:3px;text-transform:uppercase;}
+  .hero-img-tag h3{font-size:.82rem;font-weight:600;letter-spacing:.1em;}
+  .hero-content{display:flex;flex-direction:column;justify-content:center;padding:80px 64px;background:var(--cream);}
+  .hero-season{font-size:.62rem;letter-spacing:.4em;color:var(--accent);margin-bottom:16px;text-transform:uppercase;}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-size:5.5rem;line-height:.9;margin-bottom:24px;color:var(--black);}
+  .hero h1 em{display:block;font-style:italic;color:var(--accent);}
+  .hero-lead{color:var(--gray);font-size:.84rem;line-height:2;max-width:400px;margin-bottom:32px;}
+  .btn-black{display:inline-block;background:var(--black);color:var(--white);padding:14px 36px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s;}
+  .btn-black:hover{background:#222;}
+  .btn-border{display:inline-block;border:1px solid var(--black);color:var(--black);padding:13px 30px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;margin-left:12px;transition:.3s;}
+  .btn-border:hover{background:var(--black);color:var(--white);}
 
-  .announcement{background:var(--black);padding:10px;text-align:center;}
-  .announcement p{color:#fff;font-size:.7rem;letter-spacing:.15em;}
+  /* カテゴリ */
+  .category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .cat{position:relative;overflow:hidden;height:420px;cursor:pointer;}
+  .cat img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+  .cat:hover img{transform:scale(1.05);}
+  .cat-label{position:absolute;bottom:0;left:0;right:0;padding:28px 24px;background:linear-gradient(transparent,rgba(10,10,10,.7));}
+  .cat-name{color:#fff;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;}
+  .cat-count{color:rgba(255,255,255,.5);font-size:.62rem;margin-top:3px;}
 
-  .new-arrivals{padding:80px 60px;}
-  .section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;}
-  .section-h{font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;margin-bottom:6px;color:var(--gray);}
-  .section-title-large{font-size:1.8rem;font-weight:300;letter-spacing:.02em;}
-  .view-all{font-size:.68rem;letter-spacing:.2em;color:var(--gray);text-decoration:none;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:2px;transition:.2s;}
-  .view-all:hover{color:var(--black);border-color:var(--black);}
-  .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
-  .product-card{cursor:pointer;}
-  .product-img{aspect-ratio:3/4;background:#f0ede8;position:relative;overflow:hidden;margin-bottom:16px;}
-  .product-img-bg{width:100%;height:100%;background-size:cover;background-position:center;transition:.5s;}
-  .product-card:hover .product-img-bg{transform:scale(1.04);}
-  .product-overlay{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,.4));opacity:0;transition:.3s;}
-  .product-card:hover .product-overlay{opacity:1;}
-  .add-btn{background:#fff;color:var(--black);padding:10px;width:100%;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;border:none;cursor:pointer;font-family:inherit;font-weight:600;}
-  .product-brand{font-size:.65rem;letter-spacing:.15em;color:var(--gray);text-transform:uppercase;margin-bottom:4px;}
-  .product-name{font-size:.85rem;font-weight:400;letter-spacing:.02em;margin-bottom:4px;}
-  .product-price{font-size:.82rem;color:var(--black);}
-  .product-price .old{color:var(--gray);text-decoration:line-through;margin-right:6px;font-size:.75rem;}
-  .product-price .sale{color:#e53935;}
-  .product-colors{display:flex;gap:4px;margin-top:8px;}
-  .color-dot{width:12px;height:12px;border-radius:50%;border:1px solid var(--border);}
+  /* 新着 */
+  .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .pc{background:var(--white);cursor:pointer;}
+  .pc-img{height:340px;overflow:hidden;position:relative;}
+  .pc-img img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+  .pc:hover .pc-img img{transform:scale(1.04);}
+  .pc-tag{position:absolute;top:12px;left:12px;background:var(--black);color:var(--white);font-size:.6rem;letter-spacing:.1em;padding:3px 8px;text-transform:uppercase;}
+  .pc-tag.sale{background:var(--accent);}
+  .pc-body{padding:16px 12px;}
+  .pc-brand{font-size:.62rem;letter-spacing:.15em;color:var(--lgray);margin-bottom:3px;text-transform:uppercase;}
+  .pc-name{font-size:.8rem;font-weight:600;margin-bottom:6px;letter-spacing:.05em;}
+  .pc-price{font-size:.82rem;color:var(--black);}
+  .pc-price s{color:var(--lgray);font-size:.72rem;margin-right:6px;}
 
-  .editorial{display:grid;grid-template-columns:1fr 1fr;min-height:600px;margin:0 0 0;}
-  .editorial-img{background:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80') center/cover;}
-  .editorial-text{background:var(--black);padding:80px 60px;display:flex;flex-direction:column;justify-content:center;}
-  .edit-tag{color:rgba(255,255,255,.35);font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;margin-bottom:20px;}
-  .edit-h{color:#fff;font-size:2.2rem;font-weight:300;line-height:1.4;margin-bottom:20px;letter-spacing:.02em;}
-  .edit-h strong{font-weight:700;}
-  .edit-p{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.9;margin-bottom:32px;font-weight:300;}
-  .btn-white{display:inline-block;background:#fff;color:var(--black);padding:13px 32px;font-size:.7rem;letter-spacing:.2em;text-decoration:none;text-transform:uppercase;font-weight:700;transition:.3s;}
-  .btn-white:hover{background:var(--accent);color:#fff;}
+  /* About */
+  .about{display:grid;grid-template-columns:1fr 1fr;}
+  .about-img{background:url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&q=80') center/cover;min-height:600px;}
+  .about-content{background:var(--black);padding:80px;display:flex;flex-direction:column;justify-content:center;}
+  .about-label{font-size:.62rem;letter-spacing:.35em;color:var(--accent);margin-bottom:14px;text-transform:uppercase;}
+  .about h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--white);margin-bottom:24px;line-height:1.2;}
+  .about h2 em{font-style:italic;color:var(--accent);}
+  .about p{color:rgba(255,255,255,.5);font-size:.84rem;line-height:2.1;margin-bottom:18px;}
+  .about-btn{display:inline-block;border:1px solid rgba(255,255,255,.3);color:var(--white);padding:12px 28px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;margin-top:8px;transition:.3s;}
+  .about-btn:hover{background:var(--white);color:var(--black);}
 
-  .categories{padding:80px 60px;background:#f8f7f5;}
-  .cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px;}
-  .cat-item{text-align:center;cursor:pointer;}
-  .cat-circle{width:100px;height:100px;border-radius:50%;margin:0 auto 12px;overflow:hidden;border:2px solid var(--border);transition:.3s;}
-  .cat-circle-img{width:100%;height:100%;background-size:cover;background-position:center;transition:.3s;}
-  .cat-item:hover .cat-circle{border-color:var(--black);}
-  .cat-name{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--gray);transition:.2s;}
-  .cat-item:hover .cat-name{color:var(--black);}
+  /* ブランド */
+  .brands{background:var(--cream);padding:60px 80px;}
+  .brands-title{text-align:center;font-size:.62rem;letter-spacing:.35em;color:var(--lgray);margin-bottom:28px;text-transform:uppercase;}
+  .brand-list{display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap;}
+  .brand-item{font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:.15em;color:var(--lgray);font-weight:600;text-transform:uppercase;}
 
-  .brands{padding:60px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-  .brands-label{font-size:.65rem;letter-spacing:.3em;color:var(--gray);text-align:center;text-transform:uppercase;margin-bottom:28px;}
-  .brands-row{display:flex;justify-content:space-between;align-items:center;}
-  .brand-name{font-size:.9rem;font-weight:700;letter-spacing:.1em;color:var(--border);transition:.3s;cursor:pointer;}
-  .brand-name:hover{color:var(--gray);}
+  /* スタイリング */
+  .styling-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+  .sg{position:relative;overflow:hidden;height:480px;}
+  .sg img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+  .sg:hover img{transform:scale(1.04);}
+  .sg-body{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(10,10,10,.75));}
+  .sg-theme{color:rgba(255,255,255,.6);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px;}
+  .sg-title{color:#fff;font-size:.84rem;font-weight:600;letter-spacing:.05em;}
 
-  footer{background:var(--black);padding:60px 60px 36px;}
-  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-  .f-logo{font-size:1rem;font-weight:700;letter-spacing:.25em;color:#fff;margin-bottom:12px;}
-  .f-tagline{color:rgba(255,255,255,.35);font-size:.75rem;line-height:1.9;}
-  .f-col h4{color:rgba(255,255,255,.25);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:14px;font-weight:700;}
-  .f-col a{display:block;color:rgba(255,255,255,.45);text-decoration:none;font-size:.75rem;letter-spacing:.05em;margin-bottom:8px;transition:.2s;}
-  .f-col a:hover{color:#fff;}
-  .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;justify-content:space-between;color:rgba(255,255,255,.2);font-size:.7rem;}
+  /* こだわり */
+  .features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);}
+  .fc{padding:36px 28px;border-right:1px solid var(--border);}
+  .fc:last-child{border:none;}
+  .fc-icon{font-size:1.8rem;margin-bottom:16px;}
+  .fc-title{font-size:.82rem;font-weight:700;margin-bottom:8px;letter-spacing:.05em;}
+  .fc-text{color:var(--gray);font-size:.75rem;line-height:1.9;}
 
-  .portfolio-note{background:#f0ede8;border-left:3px solid var(--accent);padding:12px 24px;text-align:center;font-size:.73rem;color:var(--gray);}
+  /* FAQ */
+  .faq-list{max-width:720px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);padding:20px 0;}
+  .faq-q{display:flex;gap:12px;font-size:.84rem;font-weight:600;letter-spacing:.03em;margin-bottom:10px;}
+  .fq-i{color:var(--accent);flex-shrink:0;}
+  .faq-a{color:var(--gray);font-size:.78rem;line-height:1.95;padding-left:20px;}
+
+  /* ニュースレター */
+  .newsletter{background:var(--black);padding:80px;text-align:center;}
+  .newsletter h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--white);margin-bottom:12px;}
+  .newsletter p{color:rgba(255,255,255,.4);font-size:.82rem;margin-bottom:28px;}
+  .newsletter-form{display:flex;gap:0;max-width:440px;margin:0 auto;}
+  .newsletter input{flex:1;padding:14px 18px;border:none;background:rgba(255,255,255,.08);color:var(--white);font-size:.78rem;letter-spacing:.08em;outline:none;}
+  .newsletter input::placeholder{color:rgba(255,255,255,.25);}
+  .newsletter button{background:var(--accent);color:#fff;border:none;padding:14px 24px;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;}
+
+  footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:40px 80px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;}
+  .f-logo{font-size:.9rem;font-weight:700;letter-spacing:.25em;color:rgba(255,255,255,.3);margin-bottom:12px;}
+  .f-text{color:rgba(255,255,255,.2);font-size:.72rem;line-height:1.9;}
+  .f-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .f-links a{color:rgba(255,255,255,.3);font-size:.72rem;letter-spacing:.1em;transition:.2s;}
+  .f-links a:hover{color:var(--accent);}
+  .f-copy{border-top:1px solid rgba(255,255,255,.05);margin-top:32px;padding-top:20px;color:rgba(255,255,255,.2);font-size:.65rem;text-align:center;grid-column:1/4;}
 </style>
 </head>
 <body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のセレクトショップサイトです。実在するブランド・店舗とは一切関係ありません。</div>
 
-<div class="portfolio-note">※ ポートフォリオ用に制作した架空のセレクトショップです。実在する店舗・ブランドとは一切関係ありません。</div>
-
-<div class="announcement"><p>SUMMER SALE 開催中 — 最大50% OFF | 10,000円以上のご注文は送料無料</p></div>
+<div class="topbar">NEW ARRIVAL — 2024 AUTUMN/WINTER COLLECTION <span>NOW IN STORE</span></div>
 
 <nav>
   <div class="logo">MONOCHROME</div>
   <ul>
-    <li><a href="#">New Arrivals</a></li>
-    <li><a href="#">Women</a></li>
-    <li><a href="#">Men</a></li>
-    <li><a href="#">Accessories</a></li>
-    <li><a href="#">Sale</a></li>
-    <li><a href="#">Editorial</a></li>
+    <li><a href="#">NEW</a></li>
+    <li><a href="#">MEN</a></li>
+    <li><a href="#">WOMEN</a></li>
+    <li><a href="#">ACCESSORIES</a></li>
+    <li><a href="#">SALE</a></li>
+    <li><a href="#">ABOUT</a></li>
   </ul>
   <div class="nav-icons">
     <span class="nav-icon">🔍</span>
     <span class="nav-icon">♡</span>
-    <span class="nav-icon">🛍</span>
+    <span class="nav-icon">🛒</span>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <div class="hero-left-bg"></div>
-    <div class="hero-left-content">
-      <p class="collection-tag">2024 Summer Collection</p>
-      <h2>The Art of<br><strong>Simplicity</strong></h2>
-      <a href="#" class="hero-link">Shop Collection</a>
-    </div>
+  <div class="hero-img">
+    <div class="hero-img-tag"><p>2024 A/W Collection</p><h3>MINIMAL ELEGANCE</h3></div>
   </div>
-  <div class="hero-right">
-    <div class="hero-right-top">
-      <div class="overlay-tag"><span>Women's Tops</span></div>
-    </div>
-    <div class="hero-right-bottom">
-      <div class="hero-mini">
-        <div class="hero-mini-img" style="background-image:url('https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80');"></div>
-        <div class="overlay-tag"><span>Men's Line</span></div>
-      </div>
-      <div class="promo-box">
-        <div class="big">SALE</div>
-        <div class="sub">Up to 50% off</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="new-arrivals">
-  <div class="section-header">
+  <div class="hero-content">
+    <p class="hero-season">2024 Autumn / Winter</p>
+    <h1>LESS<br>IS<br><em>MORE.</em></h1>
+    <p class="hero-lead">本物のシンプルさは豊かさを語る。世界から厳選したミニマルな逸品をあなたのもとへ。</p>
     <div>
-      <p class="section-h">— Just In</p>
-      <h2 class="section-title-large">New Arrivals</h2>
-    </div>
-    <a href="#" class="view-all">View All</a>
-  </div>
-  <div class="product-grid">
-    <div class="product-card">
-      <div class="product-img">
-        <div class="product-img-bg" style="background-image:url('https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80');"></div>
-        <div class="product-overlay"><button class="add-btn">カートに追加</button></div>
-      </div>
-      <p class="product-brand">TOTEME</p>
-      <h3 class="product-name">オーバーサイズドレープシャツ</h3>
-      <p class="product-price">¥28,600</p>
-      <div class="product-colors">
-        <span class="color-dot" style="background:#fff;"></span>
-        <span class="color-dot" style="background:#333;"></span>
-        <span class="color-dot" style="background:#c8b9a0;"></span>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-img">
-        <div class="product-img-bg" style="background-image:url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80');"></div>
-        <div class="product-overlay"><button class="add-btn">カートに追加</button></div>
-      </div>
-      <p class="product-brand">OUR LEGACY</p>
-      <h3 class="product-name">クリーンランナースニーカー</h3>
-      <p class="product-price"><span class="old">¥42,000</span><span class="sale">¥29,400</span></p>
-      <div class="product-colors">
-        <span class="color-dot" style="background:#f0ede8;"></span>
-        <span class="color-dot" style="background:#1a1a1a;"></span>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-img">
-        <div class="product-img-bg" style="background-image:url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80');"></div>
-        <div class="product-overlay"><button class="add-btn">カートに追加</button></div>
-      </div>
-      <p class="product-brand">LEMAIRE</p>
-      <h3 class="product-name">ウォッシュドデニムジャケット</h3>
-      <p class="product-price">¥64,900</p>
-      <div class="product-colors">
-        <span class="color-dot" style="background:#7b96b2;"></span>
-        <span class="color-dot" style="background:#2c3e50;"></span>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-img">
-        <div class="product-img-bg" style="background-image:url('https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80');"></div>
-        <div class="product-overlay"><button class="add-btn">カートに追加</button></div>
-      </div>
-      <p class="product-brand">A.P.C.</p>
-      <h3 class="product-name">ミニマルレザートートバッグ</h3>
-      <p class="product-price">¥52,800</p>
-      <div class="product-colors">
-        <span class="color-dot" style="background:#c8a882;"></span>
-        <span class="color-dot" style="background:#1a1a1a;"></span>
-        <span class="color-dot" style="background:#fff;border:1px solid #e0e0e0;"></span>
-      </div>
+      <a href="#" class="btn-black">SHOP NOW</a>
+      <a href="#" class="btn-border">LOOKBOOK</a>
     </div>
   </div>
 </section>
 
-<div class="editorial">
-  <div class="editorial-img"></div>
-  <div class="editorial-text">
-    <p class="edit-tag">— Editorial</p>
-    <h2 class="edit-h">Less is<br><strong>Everything.</strong></h2>
-    <p class="edit-p">流行に左右されない、本当に好きなものを選ぶ。MONOCHROMEは「引き算の美学」をテーマに、世界中からシンプルで質の高いブランドをセレクトしています。</p>
-    <a href="#" class="btn-white">Editorial を読む</a>
+<!-- カテゴリ -->
+<div class="category-grid">
+  <div class="cat"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80" alt="WOMEN"><div class="cat-label"><div class="cat-name">WOMEN</div><div class="cat-count">187 items</div></div></div>
+  <div class="cat"><img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=80" alt="MEN"><div class="cat-label"><div class="cat-name">MEN</div><div class="cat-count">142 items</div></div></div>
+  <div class="cat"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80" alt="ACCESSORIES"><div class="cat-label"><div class="cat-name">ACCESSORIES</div><div class="cat-count">89 items</div></div></div>
+  <div class="cat"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="SHOES"><div class="cat-label"><div class="cat-name">SHOES</div><div class="cat-count">64 items</div></div></div>
+</div>
+
+<!-- 新着 -->
+<section style="padding:80px 0 0;">
+  <div style="padding:0 60px 32px;display:flex;justify-content:space-between;align-items:flex-end;"><div><p style="font-size:.62rem;letter-spacing:.35em;color:var(--lgray);text-transform:uppercase;margin-bottom:6px;">New Arrival</p><h2 style="font-size:1.4rem;font-weight:700;letter-spacing:.05em;">新着アイテム</h2></div><a href="#" style="font-size:.72rem;letter-spacing:.15em;color:var(--gray);text-decoration:underline;text-underline-offset:3px;text-transform:uppercase;">View All</a></div>
+  <div class="products-grid">
+    <div class="pc"><div class="pc-img"><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80" alt="コート"><span class="pc-tag">NEW</span></div><div class="pc-body"><p class="pc-brand">Aesther Ekme</p><p class="pc-name">ウールカシミアロングコート</p><p class="pc-price">¥68,000</p></div></div>
+    <div class="pc"><div class="pc-img"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4f5b?w=400&q=80" alt="ニット"><span class="pc-tag">NEW</span></div><div class="pc-body"><p class="pc-brand">Studio Nicholson</p><p class="pc-name">リブニットプルオーバー</p><p class="pc-price">¥32,000</p></div></div>
+    <div class="pc"><div class="pc-img"><img src="https://images.unsplash.com/photo-1542295669297-4d352b042bca?w=400&q=80" alt="パンツ"><span class="pc-tag sale">SALE</span></div><div class="pc-body"><p class="pc-brand">Lemaire</p><p class="pc-name">ツイードテーパードパンツ</p><p class="pc-price"><s>¥48,000</s> ¥32,000</p></div></div>
+    <div class="pc"><div class="pc-img"><img src="https://images.unsplash.com/photo-1622219809260-8f03e5a8dae8?w=400&q=80" alt="バッグ"></div><div class="pc-body"><p class="pc-brand">Toteme</p><p class="pc-name">スモールトートバッグ</p><p class="pc-price">¥54,000</p></div></div>
+  </div>
+</section>
+
+<!-- About -->
+<div class="about">
+  <div class="about-img"></div>
+  <div class="about-content">
+    <p class="about-label">About MONOCHROME</p>
+    <h2>時代を超える<br><em>一枚</em>を届ける</h2>
+    <p>MONOCHROMEは2018年に東京・代官山でオープンしたセレクトショップです。「流行に左右されない、本質的な服」をテーマに、ヨーロッパを中心とした世界各地のデザイナーズブランドを厳選してお届けしています。</p>
+    <p>バイヤーが年2回ヨーロッパに渡り、サステナブルな素材・生産背景にこだわったブランドを直接選定。試着し、納得したものだけを店頭に並べます。</p>
+    <a href="#" class="about-btn">OUR STORY</a>
   </div>
 </div>
 
-<section class="categories">
-  <div class="section-header">
-    <div>
-      <p class="section-h">— Browse By</p>
-      <h2 class="section-title-large">カテゴリ</h2>
-    </div>
+<!-- ブランド -->
+<div class="brands">
+  <p class="brands-title">取り扱いブランド（一部）</p>
+  <div class="brand-list">
+    <span class="brand-item">Lemaire</span>
+    <span class="brand-item">Toteme</span>
+    <span class="brand-item">The Row</span>
+    <span class="brand-item">Aesther Ekme</span>
+    <span class="brand-item">Studio Nicholson</span>
+    <span class="brand-item">Arket</span>
   </div>
-  <div class="cat-grid">
-    <div class="cat-item">
-      <div class="cat-circle"><div class="cat-circle-img" style="background-image:url('https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200&q=80');"></div></div>
-      <p class="cat-name">Tops</p>
-    </div>
-    <div class="cat-item">
-      <div class="cat-circle"><div class="cat-circle-img" style="background-image:url('https://images.unsplash.com/photo-1542272604-787c3835535d?w=200&q=80');"></div></div>
-      <p class="cat-name">Bottoms</p>
-    </div>
-    <div class="cat-item">
-      <div class="cat-circle"><div class="cat-circle-img" style="background-image:url('https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=200&q=80');"></div></div>
-      <p class="cat-name">Outerwear</p>
-    </div>
-    <div class="cat-item">
-      <div class="cat-circle"><div class="cat-circle-img" style="background-image:url('https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=200&q=80');"></div></div>
-      <p class="cat-name">Bags</p>
-    </div>
-    <div class="cat-item">
-      <div class="cat-circle"><div class="cat-circle-img" style="background-image:url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80');"></div></div>
-      <p class="cat-name">Shoes</p>
-    </div>
+</div>
+
+<!-- スタイリング -->
+<section style="padding:0;">
+  <div style="padding:60px 60px 28px;"><p style="font-size:.62rem;letter-spacing:.35em;color:var(--lgray);text-transform:uppercase;margin-bottom:6px;">Styling</p><h2 style="font-size:1.4rem;font-weight:700;">コーディネートギャラリー</h2></div>
+  <div class="styling-grid">
+    <div class="sg"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Style1"><div class="sg-body"><p class="sg-theme">All Day Casual</p><p class="sg-title">ニュートラルトーンのデイリーコーデ</p></div></div>
+    <div class="sg"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80" alt="Style2"><div class="sg-body"><p class="sg-theme">Office Minimal</p><p class="sg-title">シャープなラインで魅せるオフィスルック</p></div></div>
+    <div class="sg"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Style3"><div class="sg-body"><p class="sg-theme">Weekend Chic</p><p class="sg-title">リラックスしながらも洗練されたスタイル</p></div></div>
   </div>
 </section>
 
-<div class="brands">
-  <p class="brands-label">Selected Brands</p>
-  <div class="brands-row">
-    <span class="brand-name">TOTEME</span>
-    <span class="brand-name">LEMAIRE</span>
-    <span class="brand-name">OUR LEGACY</span>
-    <span class="brand-name">A.P.C.</span>
-    <span class="brand-name">AURALEE</span>
-    <span class="brand-name">MAISON MARGIELA</span>
+<!-- こだわり -->
+<section style="padding:80px 60px;">
+  <p style="font-size:.62rem;letter-spacing:.35em;color:var(--lgray);text-transform:uppercase;margin-bottom:6px;">Our Values</p>
+  <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:32px;">私たちが大切にすること</h2>
+  <div class="features-grid">
+    <div class="fc"><div class="fc-icon">🌿</div><h3 class="fc-title">サステナビリティ</h3><p class="fc-text">環境に配慮した素材・製造工程を採用するブランドを優先的にセレクトしています。</p></div>
+    <div class="fc"><div class="fc-icon">✈️</div><h3 class="fc-title">直接バイイング</h3><p class="fc-text">バイヤーが年2回ヨーロッパへ。展示会で直接選んだものだけを仕入れ、正規代理店価格で提供します。</p></div>
+    <div class="fc"><div class="fc-icon">🤝</div><h3 class="fc-title">丁寧なスタイリング提案</h3><p class="fc-text">「何を合わせたらいいか分からない」お客様のために、スタッフが全身コーデを一緒に考えます。</p></div>
+    <div class="fc"><div class="fc-icon">🔄</div><h3 class="fc-title">30日間返品保証</h3><p class="fc-text">購入後30日以内であれば理由を問わず返品・交換に対応します（オンライン購入含む）。</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:60px 80px 80px;background:var(--cream);">
+  <p style="font-size:.62rem;letter-spacing:.35em;color:var(--lgray);text-transform:uppercase;margin-bottom:6px;">FAQ</p>
+  <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:28px;">よくあるご質問</h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>オンラインで購入できますか？</div><div class="faq-a">はい、オンラインストアで全商品をご購入いただけます。全国送料無料（¥5,000以上のご購入）、30日間返品保証付きです。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>サイズ感が心配です。</div><div class="faq-a">商品ページに各ブランドのサイズ表を掲載しています。またオンラインチャットでスタッフに相談いただくことも可能です。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>ラッピング・ギフト対応はできますか？</div><div class="faq-a">はい、購入時にギフト包装のご指定が可能です（無料）。メッセージカードも同封できます。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>取り扱い商品の入荷情報はどこで確認できますか？</div><div class="faq-a">Instagramアカウント（@monochrome_tokyo）とニュースレターで最新情報を発信しています。ぜひご登録ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>ブランドのご要望・お取り寄せはできますか？</div><div class="faq-a">ご要望はぜひお聞かせください。取り扱いのないブランドのお取り寄せについては、対応できるケースもあります。店頭またはお問い合わせフォームからご相談ください。</div></div>
+  </div>
+</section>
+
+<!-- ニュースレター -->
+<div class="newsletter">
+  <h2>Stay Minimal.</h2>
+  <p>新着・セール情報をいち早くお届けします。メールマガジン登録（無料）</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="YOUR EMAIL ADDRESS">
+    <button>JOIN</button>
   </div>
 </div>
 
 <footer>
-  <div class="footer-top">
-    <div>
-      <div class="f-logo">MONOCHROME</div>
-      <p class="f-tagline">引き算の美学をテーマに、<br>世界中からシンプルで<br>質の高いブランドをセレクト。<br><br>東京都渋谷区神宮前X-X-X</p>
-    </div>
-    <div class="f-col">
-      <h4>Shop</h4>
-      <a href="#">New Arrivals</a><a href="#">Women</a><a href="#">Men</a><a href="#">Accessories</a><a href="#">Sale</a>
-    </div>
-    <div class="f-col">
-      <h4>About</h4>
-      <a href="#">Our Story</a><a href="#">Brands</a><a href="#">Editorial</a><a href="#">Sustainability</a>
-    </div>
-    <div class="f-col">
-      <h4>Support</h4>
-      <a href="#">配送・返品</a><a href="#">サイズガイド</a><a href="#">よくある質問</a><a href="#">お問い合わせ</a>
-    </div>
+  <div>
+    <div class="f-logo">MONOCHROME</div>
+    <p class="f-text">東京都渋谷区代官山町XX-X<br>Tel: 03-XXXX-XXXX<br>Open: 11:00〜20:00（火曜定休）</p>
   </div>
-  <div class="footer-bottom">
-    <span>© 2024 MONOCHROME. All Rights Reserved.</span>
-    <span>プライバシーポリシー ｜ 特定商取引法</span>
+  <div>
+    <p style="font-size:.62rem;letter-spacing:.2em;color:rgba(255,255,255,.2);margin-bottom:10px;text-transform:uppercase;">Links</p>
+    <ul class="f-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Stores</a></li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="#">Press</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
   </div>
+  <div>
+    <p style="font-size:.62rem;letter-spacing:.2em;color:rgba(255,255,255,.2);margin-bottom:10px;text-transform:uppercase;">Follow</p>
+    <ul class="f-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Pinterest</a></li>
+      <li><a href="#">Twitter</a></li>
+    </ul>
+  </div>
+  <div class="f-copy">© 2024 MONOCHROME. All Rights Reserved.</div>
 </footer>
-
 </body>
 </html>
