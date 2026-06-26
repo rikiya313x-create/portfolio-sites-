@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web制作ポートフォリオ | 松本利希也</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&family=DM+Sans:wght@300;400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0d0d0d;--white:#fafafa;--accent:#2563eb;--gray:#6b7280;--border:#e5e7eb;--bg:#f9fafb;}
+  body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:var(--white);color:var(--black);}
+
+  /* ヘッダー */
+  header{padding:80px 80px 60px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+  header::before{content:'PORTFOLIO';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-size:10rem;font-weight:700;color:rgba(0,0,0,.03);letter-spacing:-.02em;pointer-events:none;white-space:nowrap;}
+  .header-tag{display:inline-block;background:var(--accent);color:#fff;font-size:.7rem;padding:5px 14px;letter-spacing:.15em;margin-bottom:20px;font-weight:500;}
+  .header-name{font-family:'Noto Serif JP',serif;font-size:3rem;font-weight:600;line-height:1.2;margin-bottom:16px;}
+  .header-name span{color:var(--accent);}
+  .header-sub{color:var(--gray);font-size:.9rem;line-height:1.9;max-width:560px;font-weight:300;}
+  .header-meta{display:flex;gap:32px;margin-top:32px;}
+  .meta-item{display:flex;flex-direction:column;gap:4px;}
+  .meta-label{font-size:.65rem;color:var(--gray);letter-spacing:.15em;font-weight:500;}
+  .meta-value{font-size:.88rem;font-weight:600;}
+
+  /* スキルバッジ */
+  .skills{padding:32px 80px;background:var(--bg);border-bottom:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;}
+  .skill{background:#fff;border:1px solid var(--border);padding:6px 16px;font-size:.72rem;color:var(--gray);border-radius:100px;font-weight:500;}
+
+  /* メインコンテンツ */
+  .main{padding:80px;}
+  .section-header{margin-bottom:48px;}
+  .section-label{color:var(--accent);font-size:.7rem;letter-spacing:.25em;font-weight:600;margin-bottom:8px;}
+  .section-title{font-family:'Noto Serif JP',serif;font-size:1.8rem;}
+
+  /* サイトグリッド */
+  .sites-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);}
+  .site-card{background:#fff;display:grid;grid-template-columns:1fr 1fr;min-height:260px;transition:.3s;position:relative;overflow:hidden;}
+  .site-card:hover{z-index:1;box-shadow:0 8px 40px rgba(0,0,0,.12);}
+  .site-preview{position:relative;overflow:hidden;}
+  .site-preview-bg{width:100%;height:100%;background-size:cover;background-position:center top;transition:.5s;filter:brightness(.85);}
+  .site-card:hover .site-preview-bg{transform:scale(1.04);filter:brightness(.75);}
+  .site-preview-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.1),transparent);}
+  .site-num{position:absolute;top:16px;left:16px;font-size:.65rem;color:rgba(255,255,255,.7);letter-spacing:.15em;font-weight:600;}
+  .site-info{padding:32px 36px;display:flex;flex-direction:column;justify-content:space-between;}
+  .site-category{color:var(--accent);font-size:.65rem;letter-spacing:.2em;font-weight:600;margin-bottom:8px;text-transform:uppercase;}
+  .site-name{font-family:'Noto Serif JP',serif;font-size:1.1rem;margin-bottom:12px;line-height:1.4;}
+  .site-desc{color:var(--gray);font-size:.78rem;line-height:1.85;font-weight:300;flex:1;}
+  .site-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+  .site-tag{background:var(--bg);color:var(--gray);font-size:.62rem;padding:3px 10px;border-radius:4px;}
+  .site-link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:.75rem;font-weight:600;text-decoration:none;margin-top:16px;transition:.2s;}
+  .site-link:hover{gap:10px;}
+  .site-link::after{content:'→';}
+
+  /* お問い合わせ */
+  .contact{background:var(--black);padding:80px;margin-top:2px;}
+  .contact-inner{max-width:600px;}
+  .contact .section-label{color:rgba(255,255,255,.4);}
+  .contact .section-title{color:#fff;font-family:'Noto Serif JP',serif;font-size:2rem;margin-bottom:16px;}
+  .contact p{color:rgba(255,255,255,.5);font-size:.87rem;line-height:1.9;margin-bottom:32px;font-weight:300;}
+  .contact-btn{display:inline-block;background:var(--accent);color:#fff;padding:14px 40px;font-size:.85rem;font-weight:600;letter-spacing:.1em;text-decoration:none;transition:.3s;}
+  .contact-btn:hover{background:#1d4ed8;}
+
+  /* フッター */
+  footer{padding:28px 80px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:var(--gray);font-size:.73rem;}
+
+  /* レスポンシブ */
+  @media(max-width:900px){
+    header{padding:48px 24px 40px;}
+    .header-name{font-size:2rem;}
+    .skills{padding:20px 24px;}
+    .main{padding:40px 24px;}
+    .sites-grid{grid-template-columns:1fr;}
+    .site-card{grid-template-columns:1fr;min-height:auto;}
+    .site-preview{height:200px;}
+    .contact{padding:48px 24px;}
+    footer{padding:20px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-tag">WEB DESIGN PORTFOLIO</div>
+  <h1 class="header-name">松本 <span>利希也</span></h1>
+  <p class="header-sub">Webサイト制作・デザイン・コーディングを手がけています。業種・ターゲット・ブランドイメージに合わせて、見やすくデザインを変えることが得意です。以下は実力をお伝えするために制作した架空サイトのサンプルです。</p>
+  <div class="header-meta">
+    <div class="meta-item"><span class="meta-label">NAME</span><span class="meta-value">松本 利希也</span></div>
+    <div class="meta-item"><span class="meta-label">LOCATION</span><span class="meta-value">岡山県</span></div>
+    <div class="meta-item"><span class="meta-label">WORKS</span><span class="meta-value">10 sites</span></div>
+  </div>
+</header>
+
+<div class="skills">
+  <span class="skill">HTML / CSS</span>
+  <span class="skill">JavaScript</span>
+  <span class="skill">レスポンシブデザイン</span>
+  <span class="skill">LP制作</span>
+  <span class="skill">コーポレートサイト</span>
+  <span class="skill">ECサイト</span>
+  <span class="skill">Netlify / GitHub Pages</span>
+  <span class="skill">UI / UX</span>
+</div>
+
+<div class="main">
+  <div class="section-header">
+    <p class="section-label">WORKS</p>
+    <h2 class="section-title">制作サンプル一覧</h2>
+  </div>
+
+  <div class="sites-grid">
+
+    <!-- 01 法律事務所 -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#0d1b2a;background-image:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">01</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Law Firm</p>
+          <h3 class="site-name">山田・中村<br>法律事務所</h3>
+          <p class="site-desc">ネイビー×ゴールドで「信頼と格式」を表現。重厚なレイアウトと明朝体フォントで、専門職としての権威を視覚的に伝えます。弁護士紹介・専門分野・アクセスを含む本格コーポレートサイト。</p>
+          <div class="site-tags">
+            <span class="site-tag">重厚感</span>
+            <span class="site-tag">ネイビー×ゴールド</span>
+            <span class="site-tag">士業向け</span>
+          </div>
+        </div>
+        <a href="01-law-firm/" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 02 ジム -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#0a0a0a;background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">02</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Fitness Gym</p>
+          <h3 class="site-name">IRON FORCE GYM</h3>
+          <p class="site-desc">黒×蛍光イエローのコントラストで「強さ・エネルギー」を体現。Bebas Neue等の太字フォントとテキストティッカーで動きを演出。トレーナー紹介・料金プランを含む男気あふれるデザイン。</p>
+          <div class="site-tags">
+            <span class="site-tag">ダーク×蛍光</span>
+            <span class="site-tag">ダイナミック</span>
+            <span class="site-tag">スポーツ向け</span>
+          </div>
+        </div>
+        <a href="02-gym/" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 03 ウェディング -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#f2e8e0;background-image:url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">03</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Wedding Planner</p>
+          <h3 class="site-name">blanc wedding</h3>
+          <p class="site-desc">ブラッシュピンク×ゴールドの繊細な配色で「ロマンティックで上品」な世界観を表現。英字イタリック体と余白を活かしたレイアウトで、ブライダルらしい特別感を演出します。</p>
+          <div class="site-tags">
+            <span class="site-tag">ピンク×ゴールド</span>
+            <span class="site-tag">エレガント</span>
+            <span class="site-tag">ブライダル向け</span>
+          </div>
+        </div>
+        <a href="03-wedding/" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 04 不動産 -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#111215;background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">04</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Real Estate</p>
+          <h3 class="site-name">PREMIER HOME</h3>
+          <p class="site-desc">高級不動産をターゲットにした、ラグジュアリー感のあるデザイン。Playfair Displayの見出しと広い余白で「品格」を演出。物件カード・検索バー・エージェント紹介を備えた本格設計。</p>
+          <div class="site-tags">
+            <span class="site-tag">ラグジュアリー</span>
+            <span class="site-tag">ダーク×ゴールド</span>
+            <span class="site-tag">不動産向け</span>
+          </div>
+        </div>
+        <a href="04-realestate/" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 05 フォトスタジオ -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#0c0c0c;background-image:url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">05</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Photo Studio</p>
+          <h3 class="site-name">HIKARI STUDIO</h3>
+          <p class="site-desc">写真家らしい「見せる」デザイン。黒×白のモノクロミニマルで作品を引き立てます。カスタムカーソルやマスonry グリッドで没入感を演出。テキストよりビジュアルで語るサイト構成。</p>
+          <div class="site-tags">
+            <span class="site-tag">モノクロミニマル</span>
+            <span class="site-tag">カスタムカーソル</span>
+            <span class="site-tag">写真家向け</span>
+          </div>
+        </div>
+        <a href="05-photo-studio/" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 06 ITスタートアップ -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#04060f;background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">06</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">IT Startup</p>
+          <h3 class="site-name">NEXUS AI</h3>
+          <p class="site-desc">ダークモード×パープル×シアンのグラデーションで「先進的・テック感」を全面に。グロー効果・グリッド背景・アニメーション点滅で近未来感を演出。SaaSサービスLPとして完成度の高い構成。</p>
+          <div class="site-tags">
+            <span class="site-tag">ダークモード</span>
+            <span class="site-tag">グラデーション</span>
+            <span class="site-tag">SaaS / IT向け</span>
+          </div>
+        </div>
+        <a href="06-it-startup/" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 07 学習塾 -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#fffdf9;background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">07</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Cram School</p>
+          <h3 class="site-name">明星学習塾</h3>
+          <p class="site-desc">オレンジ×ブルーの明るい配色で「親しみやすさ・安心感」を表現。成績グラフ・ステップフロー・合格実績など、保護者が知りたい情報を視覚的にわかりやすく整理した教育機関向けサイト。</p>
+          <div class="site-tags">
+            <span class="site-tag">ポップ・明るい</span>
+            <span class="site-tag">オレンジ×ブルー</span>
+            <span class="site-tag">教育向け</span>
+          </div>
+        </div>
+        <a href="07-juku/" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 08 クリニック -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#fff8fb;background-image:url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">08</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Clinic</p>
+          <h3 class="site-name">さくら皮膚科<br>クリニック</h3>
+          <p class="site-desc">ピンク×ホワイトの清潔感あるカラーで「安心・やさしさ」を伝えます。診療案内・診療時間表・医師紹介と、患者が必要な情報を使いやすく配置した医療機関向けの実用的なデザイン。</p>
+          <div class="site-tags">
+            <span class="site-tag">清潔感</span>
+            <span class="site-tag">ピンク×ホワイト</span>
+            <span class="site-tag">医療向け</span>
+          </div>
+        </div>
+        <a href="08-clinic/" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 09 ファッション -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#fafafa;background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">09</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Select Shop</p>
+          <h3 class="site-name">MONOCHROME</h3>
+          <p class="site-desc">白×黒のエディトリアルデザインでファッションブランドらしい「洗練されたミニマル感」を追求。商品カード・カテゴリ・ブランド一覧など、ECサイトとしての機能性とおしゃれさを両立。</p>
+          <div class="site-tags">
+            <span class="site-tag">エディトリアル</span>
+            <span class="site-tag">モノトーン</span>
+            <span class="site-tag">アパレル向け</span>
+          </div>
+        </div>
+        <a href="09-fashion/" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 10 旅行 -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#0a2540;background-image:url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">10</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Travel Agency</p>
+          <h3 class="site-name">VOYAGE JAPAN</h3>
+          <p class="site-desc">ディープネイビー×ゴールドで「旅への憧れ・非日常感」を演出。全画面ヒーローに検索バーを配置し、目的地グリッド・ツアーカード・口コミで旅行代理店として必要な要素を網羅した完成度の高い構成。</p>
+          <div class="site-tags">
+            <span class="site-tag">旅・冒険感</span>
+            <span class="site-tag">ネイビー×ゴールド</span>
+            <span class="site-tag">旅行業向け</span>
+          </div>
+        </div>
+        <a href="10-travel/" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 11 整体院 -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#2d4a3e;background-image:url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">11</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Chiropractic</p>
+          <h3 class="site-name">整体院サイト</h3>
+          <p class="site-desc">落ち着いたグリーン×ナチュラルカラーで「癒し・安心感」を表現。施術メニュー・料金・アクセスを見やすく整理した、整体・治療院向けのコーポレートサイト。</p>
+          <div class="site-tags">
+            <span class="site-tag">ナチュラル</span>
+            <span class="site-tag">グリーン系</span>
+            <span class="site-tag">治療院向け</span>
+          </div>
+        </div>
+        <a href="https://willowy-heliotrope-60acd4.netlify.app/" target="_blank" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+    <!-- 12 カフェ -->
+    <div class="site-card">
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background-color:#3d2b1f;background-image:url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=80');"></div>
+        <div class="site-preview-overlay"></div>
+        <span class="site-num">12</span>
+      </div>
+      <div class="site-info">
+        <div>
+          <p class="site-category">Cafe</p>
+          <h3 class="site-name">カフェサイト</h3>
+          <p class="site-desc">温かみのあるブラウン×クリームカラーで「居心地の良さ・おしゃれさ」を演出。メニュー・コンセプト・店舗情報を含む、カフェ・飲食店向けの雰囲気重視のデザイン。</p>
+          <div class="site-tags">
+            <span class="site-tag">温かみ</span>
+            <span class="site-tag">ブラウン系</span>
+            <span class="site-tag">飲食店向け</span>
+          </div>
+        </div>
+        <a href="https://exquisite-arithmetic-9897c4.netlify.app/" target="_blank" class="site-link">サイトを見る</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="contact">
+  <div class="contact-inner">
+    <p class="section-label">CONTACT</p>
+    <h2 class="section-title">制作のご依頼・<br>お問い合わせ</h2>
+    <p>業種・予算・イメージをお聞きして、ご要望に合ったサイトを制作します。まずはお気軽にご相談ください。</p>
+    <a href="mailto:rikiya313x@gmail.com" class="contact-btn">メールで相談する</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2024 松本利希也 Web Design Portfolio</p>
+  <p>※ 掲載サイトはポートフォリオ用に制作した架空のサイトです</p>
+</footer>
+
+</body>
+</html>
