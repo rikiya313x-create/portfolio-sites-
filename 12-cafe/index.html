@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHIZUKU COFFEE | 京都・四条のスペシャルティコーヒー専門店</title>
+  <meta name="description" content="京都・四条のスペシャルティコーヒー専門店「SHIZUKU COFFEE」。こだわりの一杯とともに、ゆったりとした時間を。テイクアウト・イートイン対応。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #4a2c1a;
+      --brown-mid: #7a4f35;
+      --caramel: #c8884a;
+      --cream: #fdf6ed;
+      --beige: #f0e4d0;
+      --text: #2a1a0e;
+      --text-muted: #8a7060;
+      --white: #fff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.8;
+    }
+
+    /* ===== PORTFOLIO NOTICE ===== */
+    .portfolio-notice {
+      background: #222;
+      color: #aaa;
+      text-align: center;
+      font-size: 0.72rem;
+      padding: 6px 16px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 32px; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.4s;
+    }
+    header.scrolled {
+      top: 0;
+      background: rgba(253,246,237,0.97);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 24px rgba(74,44,26,0.08);
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+    .logo-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--brown);
+      letter-spacing: 0.1em;
+      line-height: 1;
+    }
+    .logo-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem;
+      color: var(--caramel);
+      letter-spacing: 0.3em;
+      font-weight: 300;
+    }
+
+    nav ul { display: flex; gap: 36px; list-style: none; }
+    nav a {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      color: var(--brown);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--caramel); }
+
+    .header-btn {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      border: 1.5px solid var(--brown);
+      color: var(--brown);
+      padding: 9px 22px;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-weight: 700;
+    }
+    .header-btn:hover { background: var(--brown); color: #fff; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--brown);
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 104px; left: 0; right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--beige);
+      padding: 24px 32px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 0.95rem;
+      color: var(--brown);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--beige);
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      margin-top: 104px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+    .slide.active { opacity: 1; }
+    .slide-1 { background-color: #d4b896; background-image: url('hero1.jpg'); }
+    .slide-2 { background-color: #b8a080; background-image: url('hero2.jpg'); }
+    .slide-3 { background-color: #c8b090; background-image: url('hero3.jpg'); }
+    .slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(74,44,26,0.6) 0%, rgba(74,44,26,0.2) 60%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 10% 0 8%;
+      color: #fff;
+      max-width: 640px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      margin-bottom: 20px;
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: #f0d0a0;
+    }
+
+    .hero-tagline {
+      font-size: 0.95rem;
+      opacity: 0.88;
+      margin-bottom: 40px;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-fill {
+      background: var(--caramel);
+      color: #fff;
+      padding: 14px 32px;
+      font-size: 0.85rem;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .btn-fill:hover { background: var(--brown-mid); }
+
+    .btn-ghost-white {
+      border: 1.5px solid rgba(255,255,255,0.7);
+      color: #fff;
+      padding: 12px 28px;
+      font-size: 0.85rem;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-ghost-white:hover { background: rgba(255,255,255,0.1); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      font-family: 'Lato', sans-serif;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: scrollAnim 1.6s ease-in-out infinite;
+    }
+    @keyframes scrollAnim {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    .slider-nav {
+      position: absolute;
+      bottom: 48px;
+      right: 48px;
+      z-index: 3;
+      display: flex;
+      gap: 10px;
+    }
+    .s-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .s-dot.active { background: #fff; width: 20px; border-radius: 3px; }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 96px 20px; }
+    .container { max-width: 1060px; margin: 0 auto; }
+
+    .sec-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      color: var(--caramel);
+      text-align: center;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      text-align: center;
+      color: var(--brown);
+      margin-bottom: 16px;
+    }
+    .sec-line {
+      width: 40px; height: 1px;
+      background: var(--caramel);
+      margin: 0 auto 16px;
+    }
+    .sec-desc {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      max-width: 520px;
+      margin: 0 auto 64px;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ===== CONCEPT ===== */
+    .concept { background: var(--cream); }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .concept-img {
+      aspect-ratio: 4/5;
+      background: var(--beige);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .concept-img img { width: 100%; height: 100%; object-fit: cover; }
+    .concept-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: var(--caramel);
+      opacity: 0.4;
+    }
+
+    .concept-body {}
+    .concept-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--caramel);
+      margin-bottom: 16px;
+    }
+    .concept-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--brown);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .concept-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 2;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    /* ===== FEATURES ===== */
+    .features-strip {
+      background: var(--brown);
+      padding: 64px 20px;
+    }
+    .features-row {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+    .feature-box {
+      background: var(--brown);
+      padding: 40px 28px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .feature-box:hover { background: var(--brown-mid); }
+    .feature-box-icon { font-size: 2rem; margin-bottom: 16px; }
+    .feature-box-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .feature-box-desc { font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; }
+
+    /* ===== MENU ===== */
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--beige);
+    }
+    .tab-btn {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      padding: 12px 28px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { color: var(--brown); border-bottom-color: var(--caramel); font-weight: 700; }
+    .tab-btn:hover { color: var(--brown); }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    .menu-item {
+      background: var(--cream);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .menu-item:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(74,44,26,0.12); }
+
+    .menu-item-img {
+      aspect-ratio: 4/3;
+      background: var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .menu-item-body { padding: 20px; }
+    .menu-item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--brown);
+      margin-bottom: 6px;
+    }
+    .menu-item-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.6; font-weight: 300; }
+    .menu-item-price { font-size: 0.85rem; color: var(--caramel); font-weight: 700; font-family: 'Lato', sans-serif; }
+
+    /* ===== STORY ===== */
+    .story { background: var(--cream); }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .story-body {}
+    .story-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--brown);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      padding-left: 24px;
+      border-left: 2px solid var(--caramel);
+    }
+    .story-text { font-size: 0.88rem; color: var(--text-muted); line-height: 2; font-weight: 300; }
+    .story-name { margin-top: 24px; font-size: 0.85rem; color: var(--brown); font-weight: 700; }
+    .story-role { font-size: 0.75rem; color: var(--caramel); letter-spacing: 0.1em; }
+
+    .story-img {
+      aspect-ratio: 1;
+      background: var(--beige);
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
+    .gallery-item {
+      background: var(--beige);
+      aspect-ratio: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--caramel);
+      opacity: 0.5;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover { opacity: 0.8; }
+    .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+
+    /* ===== ACCESS ===== */
+    .access { background: var(--cream); }
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .access-info { display: flex; flex-direction: column; gap: 24px; }
+    .access-row { display: flex; gap: 20px; font-size: 0.9rem; }
+    .access-label { min-width: 80px; color: var(--caramel); font-family: 'Lato', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; font-weight: 700; padding-top: 4px; }
+    .access-val { color: var(--text-muted); line-height: 1.8; font-weight: 300; }
+    .map-box {
+      aspect-ratio: 4/3;
+      background: var(--beige);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border: 1px dashed var(--caramel);
+      opacity: 0.6;
+    }
+
+    /* ===== SNS ===== */
+    .sns-section {
+      background: var(--brown);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .sns-section .sec-title { color: #fff; }
+    .sns-section .sec-eyebrow { color: rgba(255,255,255,0.5); }
+    .sns-section .sec-line { background: rgba(255,255,255,0.3); }
+    .sns-section .sec-desc { color: rgba(255,255,255,0.6); }
+
+    .sns-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .sns-img {
+      aspect-ratio: 1;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .sns-img:hover { background: rgba(255,255,255,0.15); }
+
+    .sns-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      color: #fff;
+      padding: 12px 28px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .sns-btn:hover { background: rgba(255,255,255,0.1); }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--white); }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--brown);
+      margin-bottom: 20px;
+    }
+    .contact-info p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.9; font-weight: 300; margin-bottom: 28px; }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-size: 0.85rem;
+    }
+    .contact-icon { font-size: 1.1rem; min-width: 24px; }
+    .contact-val { color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 0.78rem; letter-spacing: 0.1em; color: var(--brown); margin-bottom: 8px; font-weight: 700; }
+    .form-label .req { color: var(--caramel); margin-left: 4px; }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #e0d4c4;
+      border-radius: 2px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--cream);
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--caramel);
+    }
+    .form-textarea { height: 120px; resize: vertical; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--brown);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--brown-mid); }
+
+    .form-error { font-size: 0.75rem; color: #c0392b; margin-top: 4px; display: none; }
+    .form-error.show { display: block; }
+    .form-success {
+      background: #f0f8f0;
+      border: 1px solid #6aaa6a;
+      padding: 20px;
+      text-align: center;
+      color: #3a7a3a;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.5);
+      padding: 64px 20px 28px;
+    }
+    .footer-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-logo-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .footer-logo-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
+    }
+    .footer-desc { font-size: 0.8rem; line-height: 1.8; font-weight: 300; }
+    .footer-h { font-family: 'Lato', sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; color: #fff; margin-bottom: 16px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.5); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1060px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-portfolio { color: rgba(255,255,255,0.3); font-size: 0.7rem; }
+
+    /* ===== FADE IN ===== */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== BACK TO TOP ===== */
+    .back-top {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 48px; height: 48px;
+      background: var(--brown);
+      color: #fff;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.3s;
+      z-index: 900;
+      font-family: 'Lato', sans-serif;
+    }
+    .back-top.visible { opacity: 1; transform: translateY(0); }
+    .back-top:hover { background: var(--brown-mid); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      header { padding: 0 24px; }
+      nav, .header-btn { display: none; }
+      .hamburger { display: flex; }
+      .hero { margin-top: 104px; }
+      .hero-content { padding: 0 6%; max-width: 100%; }
+      .concept-grid, .story-grid, .access-grid, .contact-wrap, .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+      .features-row { grid-template-columns: 1fr 1fr; }
+      .menu-panel.active { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.wide { grid-column: span 2; }
+      .sns-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ポートフォリオ表記 -->
+<div class="portfolio-notice">
+  ⚠ これはポートフォリオ提出用に作成した架空のサイトです。実在する店舗ではありません。
+</div>
+
+<!-- ヘッダー -->
+<header id="header">
+  <a href="#" class="logo">
+    <span class="logo-main">SHIZUKU COFFEE</span>
+    <span class="logo-sub">SPECIALTY COFFEE · KYOTO</span>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="#concept">CONCEPT</a></li>
+      <li><a href="#menu">MENU</a></li>
+      <li><a href="#story">STORY</a></li>
+      <li><a href="#access">ACCESS</a></li>
+    </ul>
+  </nav>
+  <a href="#contact" class="header-btn">CONTACT</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- モバイルメニュー -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#concept" onclick="closeMobile()">CONCEPT</a>
+  <a href="#menu" onclick="closeMobile()">MENU</a>
+  <a href="#story" onclick="closeMobile()">STORY</a>
+  <a href="#access" onclick="closeMobile()">ACCESS</a>
+  <a href="#contact" onclick="closeMobile()">CONTACT</a>
+</div>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="slide slide-1 active"></div>
+  <div class="slide slide-2"></div>
+  <div class="slide slide-3"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">SPECIALTY COFFEE · KYOTO SHIJO</div>
+    <h1>一滴に、<br><em>京都の朝</em>を。</h1>
+    <p class="hero-tagline">
+      世界中から厳選した豆を、<br>
+      その日の天気に合わせて丁寧に淹れる。<br>
+      ここだけの一杯をどうぞ。
+    </p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-fill">MENU を見る</a>
+      <a href="#concept" class="btn-ghost-white">CONCEPT</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    SCROLL
+  </div>
+
+  <div class="slider-nav">
+    <div class="s-dot active" onclick="goSlide(0)"></div>
+    <div class="s-dot" onclick="goSlide(1)"></div>
+    <div class="s-dot" onclick="goSlide(2)"></div>
+  </div>
+</section>
+
+
+<!-- コンセプト -->
+<section class="concept" id="concept">
+  <div class="container">
+    <div class="concept-grid">
+      <div class="concept-img fade-in">
+        <img src="concept.jpg" alt="店内の様子">
+      </div>
+      <div class="concept-body fade-in">
+        <div class="concept-eyebrow">OUR CONCEPT</div>
+        <h2 class="concept-title">
+          急がない。<br>急かさない。<br>ただ、いい時間を。
+        </h2>
+        <p class="concept-text">
+          SHIZUKUとは、水の雫（しずく）のこと。一滴一滴、丁寧に落ちるドリップコーヒーのように、急がずゆっくりと時間をかけることの豊かさを大切にしたい。そんな想いからこの名前をつけました。
+        </p>
+        <p class="concept-text">
+          スペシャルティコーヒーの世界基準を満たした豆だけを仕入れ、焙煎日・産地・精製方法まで全てをオープンに。知識がなくても、ただ「おいしい」と感じていただければ十分です。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 特徴 -->
+<div class="features-strip">
+  <div class="features-row">
+    <div class="feature-box fade-in">
+      <div class="feature-box-icon">🌍</div>
+      <div class="feature-box-title">世界基準の豆</div>
+      <div class="feature-box-desc">スペシャルティグレードのみを厳選仕入れ。産地・農園まで明示。</div>
+    </div>
+    <div class="feature-box fade-in">
+      <div class="feature-box-icon">🔥</div>
+      <div class="feature-box-title">自家焙煎</div>
+      <div class="feature-box-desc">店内焙煎で常に新鮮な状態を提供。焙煎日を全商品に明示。</div>
+    </div>
+    <div class="feature-box fade-in">
+      <div class="feature-box-icon">💧</div>
+      <div class="feature-box-title">一杯ずつ手淹れ</div>
+      <div class="feature-box-desc">バリスタが一杯ずつ丁寧にドリップ。マシン任せにしません。</div>
+    </div>
+    <div class="feature-box fade-in">
+      <div class="feature-box-icon">🌿</div>
+      <div class="feature-box-title">フェアトレード</div>
+      <div class="feature-box-desc">生産者への適正価格を徹底。サステナブルなコーヒーを届けます。</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- メニュー -->
+<section id="menu">
+  <div class="container">
+    <div class="sec-eyebrow fade-in">MENU</div>
+    <h2 class="sec-title fade-in">こだわりの一杯</h2>
+    <div class="sec-line fade-in"></div>
+    <p class="sec-desc fade-in">季節やその日の気分に合わせてお選びください。</p>
+
+    <div class="menu-tabs fade-in">
+      <button class="tab-btn active" onclick="switchTab('coffee')">COFFEE</button>
+      <button class="tab-btn" onclick="switchTab('food')">FOOD</button>
+      <button class="tab-btn" onclick="switchTab('takeout')">TAKE OUT</button>
+    </div>
+
+    <div class="menu-panel active" id="tab-coffee">
+      <div class="menu-item fade-in">
+        <div class="menu-item-img">☕</div>
+        <div class="menu-item-body">
+          <div class="menu-item-name">シングルオリジン ドリップ</div>
+          <div class="menu-item-desc">その日入荷した産地の豆を一杯ずつ丁寧にハンドドリップ。テイスティングノート付き。</div>
+          <div class="menu-item-price">¥680〜</div>
+        </div>
+      </div>
+      <div class="menu-item fade-in">
+        <div class="menu-item-img">🧊</div>
+        <div class="menu-item-body">
+          <div class="menu-item-name">水出しアイスコーヒー</div>
+          <div class="menu-item-desc">12時間かけてゆっくり抽出。苦みを抑えた、すっきりとした飲み口。</div>
+          <div class="menu-item-price">¥720</div>
+        </div>
+      </div>
+      <div class="menu-item fade-in">
+        <div class="menu-item-img">🥛</div>
+        <div class="menu-item-body">
+          <div class="menu-item-name">カフェラテ</div>
+          <div class="menu-item-desc">自家製エスプレッソに北海道産ミルクをブレンド。ラテアートをお楽しみください。</div>
+          <div class="menu-item-price">¥750</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-panel" id="tab-food">
+      <div class="menu-item fade-in">
+        <div class="menu-item-img">🍞</div>
+        <div class="menu-item-body">
+          <div class="menu-item-name">厚切りトースト</div>
+          <div class="menu-item-desc">京都の老舗パン屋から仕入れる食パンを厚切りで。バター・はちみつ添え。</div>
+          <div class="menu-item-price">¥480</div>
+        </div>
+      </div>
+      <div class="menu-item fade-in">
+        <div class="menu-item-img">🍰</div>
+        <div class="menu-item-body">
+          <div class="menu-item-name">バスクチーズケーキ</div>
+          <div class="menu-item-desc">毎朝手作り。外はしっかり焦げ目、中はとろとろのスペイン風チーズケーキ。</div>
+          <div class="menu-item-price">¥520</div>
+        </div>
+      </div>
+      <div class="menu-item fade-in">
+        <div class="menu-item-img">🥐</div>
+        <div class="menu-item-body">
+          <div class="menu-item-name">クロワッサン</div>
+          <div class="menu-item-desc">フランス産発酵バターを使用。外はパリッと、中はもちっとした食感。</div>
+          <div class="menu-item-price">¥380</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-panel" id="tab-takeout">
+      <div class="menu-item fade-in">
+        <div class="menu-item-img">☕</div>
+        <div class="menu-item-body">
+          <div class="menu-item-name">テイクアウトドリップ</div>
+          <div class="menu-item-desc">イートインと同じ豆・同じ技術でテイクアウト対応。専用カップで提供。</div>
+          <div class="menu-item-price">¥600〜</div>
+        </div>
+      </div>
+      <div class="menu-item fade-in">
+        <div class="menu-item-img">📦</div>
+        <div class="menu-item-body">
+          <div class="menu-item-name">豆の販売（100g）</div>
+          <div class="menu-item-desc">店内焙煎の豆をご自宅用に。挽き方のご要望にも対応いたします。</div>
+          <div class="menu-item-price">¥1,200〜</div>
+        </div>
+      </div>
+      <div class="menu-item fade-in">
+        <div class="menu-item-img">🎁</div>
+        <div class="menu-item-body">
+          <div class="menu-item-name">ギフトセット</div>
+          <div class="menu-item-desc">3種の豆をセットにしたギフトボックス。のし・包装対応。贈り物にどうぞ。</div>
+          <div class="menu-item-price">¥3,800〜</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ストーリー -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-body fade-in">
+        <div class="sec-eyebrow" style="text-align:left; margin-bottom:16px;">OUR STORY</div>
+        <blockquote class="story-quote">
+          「おいしいコーヒーは、人の気持ちを少し軽くする」
+        </blockquote>
+        <p class="story-text">
+          店主の田村が初めてスペシャルティコーヒーと出会ったのは、バックパック旅行中のエチオピアでした。農園で飲んだその一杯の鮮やかな酸味と甘みは、それまでのコーヒーの概念を覆すものでした。
+        </p>
+        <p class="story-text" style="margin-top:12px;">
+          帰国後、バリスタの修行を経て2019年に四条烏丸に開店。「難しいことを考えなくてもおいしい」と思ってもらえるコーヒーを目指し、毎日豆と向き合っています。
+        </p>
+        <div class="story-name">田村 渉（たむら わたる）</div>
+        <div class="story-role">OWNER BARISTA</div>
+      </div>
+      <div class="story-img fade-in">👨‍🍳</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ギャラリー -->
+<section style="padding: 80px 20px; background: var(--white);">
+  <div class="container">
+    <div class="sec-eyebrow fade-in">GALLERY</div>
+    <h2 class="sec-title fade-in">店内の雰囲気</h2>
+    <div class="sec-line fade-in"></div>
+    <br>
+    <div class="gallery-grid fade-in">
+      <div class="gallery-item wide" style="opacity:1;"><img src="gallery1.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" style="opacity:1;"><img src="gallery2.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" style="opacity:1;"><img src="gallery3.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" style="opacity:1;"><img src="gallery4.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" style="opacity:1;"><img src="gallery5.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item wide" style="opacity:1;"><img src="gallery6.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SNS -->
+<div class="sns-section">
+  <div class="container">
+    <div class="sec-eyebrow">INSTAGRAM</div>
+    <h2 class="sec-title">@shizuku_coffee_kyoto</h2>
+    <div class="sec-line"></div>
+    <p class="sec-desc">日々のコーヒーや店内の様子をInstagramで発信しています。</p>
+    <div class="sns-grid fade-in">
+      <div class="sns-img">☕</div>
+      <div class="sns-img">🌿</div>
+      <div class="sns-img">🍰</div>
+      <div class="sns-img">☕</div>
+      <div class="sns-img">📷</div>
+    </div>
+    <a href="#" class="sns-btn">Instagramをフォローする →</a>
+  </div>
+</div>
+
+
+<!-- アクセス -->
+<section class="access" id="access">
+  <div class="container">
+    <div class="sec-eyebrow fade-in">ACCESS</div>
+    <h2 class="sec-title fade-in">アクセス・営業時間</h2>
+    <div class="sec-line fade-in"></div>
+    <br>
+    <div class="access-grid fade-in">
+      <div class="access-info">
+        <div class="access-row">
+          <div class="access-label">ADDRESS</div>
+          <div class="access-val">〒600-8006<br>京都府京都市下京区四条烏丸1-1<br>サンプルビル1F</div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">ACCESS</div>
+          <div class="access-val">阪急烏丸駅・徒歩2分<br>地下鉄四条駅・徒歩3分</div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">HOURS</div>
+          <div class="access-val">
+            平日 8:00〜20:00<br>
+            土日祝 9:00〜19:00<br>
+            <span style="font-size:0.8rem; opacity:0.7;">定休日：火曜日</span>
+          </div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">TEL</div>
+          <div class="access-val">075-XXX-XXXX</div>
+        </div>
+      </div>
+      <div class="map-box">📍 Google マップ埋め込み予定</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- お問い合わせ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="sec-eyebrow fade-in">CONTACT</div>
+    <h2 class="sec-title fade-in">お問い合わせ</h2>
+    <div class="sec-line fade-in"></div>
+    <br>
+    <div class="contact-wrap fade-in">
+      <div class="contact-info">
+        <h3>お気軽にどうぞ</h3>
+        <p>ご予約・貸し切り・取材・コーヒー豆の大量注文など、お気軽にご連絡ください。通常1〜2営業日以内にご返信いたします。</p>
+        <div class="contact-detail">
+          <div class="contact-row">
+            <div class="contact-icon">📍</div>
+            <div class="contact-val">京都府京都市下京区四条烏丸1-1</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">📞</div>
+            <div class="contact-val">075-XXX-XXXX<br><span style="font-size:0.78rem;">営業時間内のみ対応</span></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">✉</div>
+            <div class="contact-val">info@shizuku-coffee.jp（架空）</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="form-success" id="formSuccess">
+          ✅ お問い合わせありがとうございます。1〜2営業日以内にご返信いたします。
+        </div>
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label class="form-label">お名前<span class="req">*</span></label>
+            <input type="text" class="form-input" id="name" placeholder="田村 花子">
+            <div class="form-error" id="nameErr">お名前を入力してください</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">メールアドレス<span class="req">*</span></label>
+            <input type="email" class="form-input" id="email" placeholder="example@email.com">
+            <div class="form-error" id="emailErr">正しいメールアドレスを入力してください</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">お問い合わせ種別<span class="req">*</span></label>
+            <select class="form-select" id="category">
+              <option value="">選択してください</option>
+              <option>ご予約・貸し切り</option>
+              <option>コーヒー豆のご注文</option>
+              <option>ギフトについて</option>
+              <option>取材・メディア</option>
+              <option>その他</option>
+            </select>
+            <div class="form-error" id="catErr">種別を選択してください</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">メッセージ</label>
+            <textarea class="form-textarea" id="message" placeholder="ご用件をお聞かせください"></textarea>
+          </div>
+          <button type="submit" class="form-submit">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- フッター -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-main">SHIZUKU COFFEE</div>
+      <div class="footer-logo-sub">SPECIALTY COFFEE · KYOTO</div>
+      <div class="footer-desc">京都・四条のスペシャルティコーヒー専門店。一杯ずつ丁寧に淹れるハンドドリップコーヒーをどうぞ。</div>
+    </div>
+    <div>
+      <div class="footer-h">NAVIGATION</div>
+      <div class="footer-links">
+        <a href="#concept">CONCEPT</a>
+        <a href="#menu">MENU</a>
+        <a href="#story">OUR STORY</a>
+        <a href="#access">ACCESS</a>
+        <a href="#contact">CONTACT</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">HOURS</div>
+      <div class="footer-desc">
+        平日 8:00〜20:00<br>
+        土日祝 9:00〜19:00<br>
+        定休日：火曜日<br><br>
+        📍 京都市下京区四条烏丸1-1<br>
+        📞 075-XXX-XXXX
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-portfolio">⚠ ポートフォリオ提出用の架空サンプルサイトです</div>
+    <div>© 2026 SHIZUKU COFFEE All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- TOPに戻る -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+
+<script>
+  // ヘッダー
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 80);
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // スライダー
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.s-dot');
+  let cur = 0, sliderTimer;
+
+  function goSlide(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = n;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+    clearInterval(sliderTimer);
+    sliderTimer = setInterval(() => goSlide((cur + 1) % slides.length), 5000);
+  }
+  sliderTimer = setInterval(() => goSlide((cur + 1) % slides.length), 5000);
+
+  // ハンバーガー
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // メニュータブ
+  function switchTab(id) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // フォームバリデーション
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let ok = true;
+    ['nameErr','emailErr','catErr'].forEach(id => document.getElementById(id).classList.remove('show'));
+
+    if (!document.getElementById('name').value.trim()) {
+      document.getElementById('nameErr').classList.add('show'); ok = false;
+    }
+    if (!document.getElementById('email').value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      document.getElementById('emailErr').classList.add('show'); ok = false;
+    }
+    if (!document.getElementById('category').value) {
+      document.getElementById('catErr').classList.add('show'); ok = false;
+    }
+    if (ok) {
+      this.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  });
+
+  // フェードイン
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

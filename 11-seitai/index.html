@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>癒し処 和 | 整体・骨盤矯正 | 大阪市北区</title>
+  <meta name="description" content="大阪市北区の整体院「癒し処 和」。肩こり・腰痛・骨盤矯正を丁寧な施術でサポート。初回限定2,980円。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #4a7c59;
+      --green-light: #6a9e78;
+      --green-pale: #e8f0ea;
+      --beige: #f5f0e8;
+      --brown: #8b6f47;
+      --text: #333;
+      --text-muted: #777;
+      --white: #fff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.8;
+    }
+
+    /* ===== PORTFOLIO NOTICE ===== */
+    .portfolio-notice {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      font-size: 0.75rem;
+      padding: 6px 16px;
+      letter-spacing: 0.05em;
+    }
+    .portfolio-notice a { color: #aaa; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 32px;
+      left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: top 0.3s;
+    }
+    header.scrolled { top: 0; box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
+
+    .logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+    }
+    .logo span { font-size: 0.7rem; color: var(--text-muted); display: block; letter-spacing: 0.05em; font-family: 'Noto Sans JP', sans-serif; font-weight: 400; }
+
+    nav ul {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    nav a {
+      font-size: 0.85rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 1px;
+      background: var(--green);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+    nav a:hover { color: var(--green); }
+    nav a:hover::after { transform: scaleX(1); }
+
+    .header-btn {
+      background: var(--green);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .header-btn:hover { background: var(--green-light); }
+
+    /* ハンバーガー */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 96px; left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 24px 32px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* ===== HERO SLIDER ===== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      margin-top: 96px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .slide.active { opacity: 1; }
+    .slide-1 { background-color: #c8d8c0; background-image: url('hero1.jpg'); }
+    .slide-2 { background-color: #d4c8b8; background-image: url('hero2.jpg'); }
+    .slide-3 { background-color: #b8c8d4; background-image: url('hero3.jpg'); }
+
+    .slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.38);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      color: #fff;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.6);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      padding: 5px 18px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+
+    .hero p {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      opacity: 0.9;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--green);
+      padding: 14px 36px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-white:hover { background: var(--green-pale); }
+
+    .btn-outline-white {
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+    /* スライダードット */
+    .slider-dots {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 10px;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .dot.active { background: #fff; }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 80px 20px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+
+    .sec-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      color: var(--green);
+      text-align: center;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .sec-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .sec-divider {
+      width: 36px; height: 2px;
+      background: var(--green);
+      margin: 0 auto 16px;
+    }
+    .sec-desc {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      max-width: 560px;
+      margin: 0 auto 56px;
+      line-height: 1.8;
+    }
+
+    /* ===== APPEAL POINTS ===== */
+    .appeal { background: var(--beige); }
+
+    .appeal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .appeal-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .appeal-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+
+    .appeal-icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+    .appeal-num {
+      font-size: 0.7rem;
+      color: var(--green);
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .appeal-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .appeal-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===== MENU ===== */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .menu-card {
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      transition: box-shadow 0.3s;
+    }
+    .menu-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+
+    .menu-img {
+      width: 120px;
+      min-height: 120px;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+    .menu-body { padding: 20px; flex: 1; }
+    .menu-title { font-weight: 700; margin-bottom: 6px; font-size: 1rem; }
+    .menu-desc { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.6; }
+    .menu-price { font-size: 0.8rem; color: var(--text-muted); }
+    .menu-price strong { font-size: 1.2rem; color: var(--green); font-weight: 700; }
+
+    /* ===== FIRST VISIT ===== */
+    .first-visit {
+      background: var(--green);
+      color: #fff;
+      text-align: center;
+    }
+    .first-visit .sec-label { color: rgba(255,255,255,0.7); }
+    .first-visit .sec-title { color: #fff; }
+    .first-visit .sec-divider { background: rgba(255,255,255,0.5); }
+    .first-visit .sec-desc { color: rgba(255,255,255,0.85); }
+
+    .price-box {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 12px;
+      padding: 32px 56px;
+      margin-bottom: 32px;
+    }
+    .price-label { font-size: 0.8rem; letter-spacing: 0.15em; margin-bottom: 8px; opacity: 0.85; }
+    .price-num { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; line-height: 1; margin-bottom: 8px; }
+    .price-tax { font-size: 0.8rem; opacity: 0.7; }
+
+    .first-btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--green);
+      padding: 16px 48px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .first-btn:hover { background: var(--green-pale); }
+
+    /* ===== STAFF ===== */
+    .staff { background: var(--beige); }
+
+    .staff-card {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .staff-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      overflow: hidden;
+    }
+    .staff-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .staff-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .staff-role { font-size: 0.8rem; color: var(--green); letter-spacing: 0.1em; margin-bottom: 16px; }
+    .staff-bio { font-size: 0.9rem; color: var(--text-muted); line-height: 1.9; }
+
+    .license-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .license-tag {
+      background: var(--green-pale);
+      color: var(--green);
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* ===== VOICE ===== */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .voice-card {
+      background: var(--beige);
+      border-radius: 8px;
+      padding: 28px;
+      position: relative;
+    }
+    .voice-card::before {
+      content: '"';
+      font-family: Georgia, serif;
+      font-size: 4rem;
+      color: var(--green);
+      opacity: 0.2;
+      position: absolute;
+      top: 8px; left: 16px;
+      line-height: 1;
+    }
+    .voice-stars { color: #f5a623; font-size: 0.85rem; margin-bottom: 10px; }
+    .voice-text { font-size: 0.88rem; color: var(--text); line-height: 1.7; margin-bottom: 16px; }
+    .voice-name { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; }
+
+    /* ===== FAQ ===== */
+    .faq { background: var(--beige); }
+
+    .faq-list { max-width: 720px; margin: 0 auto; }
+
+    .faq-item {
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+
+    .faq-q {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .faq-q:hover { background: var(--green-pale); }
+    .faq-q-icon {
+      min-width: 28px; height: 28px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.85rem;
+    }
+    .faq-arrow {
+      margin-left: auto;
+      transition: transform 0.3s;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    .faq-a {
+      display: none;
+      padding: 0 24px 20px 68px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      border-top: 1px solid #f0f0f0;
+    }
+    .faq-a.open { display: block; }
+
+    /* ===== ACCESS ===== */
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .access-info { display: flex; flex-direction: column; gap: 20px; }
+
+    .access-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-size: 0.92rem;
+    }
+    .access-label {
+      min-width: 72px;
+      font-weight: 700;
+      color: var(--green);
+      font-size: 0.82rem;
+    }
+
+    .map-placeholder {
+      background: #e8e8e8;
+      border-radius: 8px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border: 2px dashed #ccc;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact { background: var(--beige); }
+
+    .form-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 48px 40px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    .form-group { margin-bottom: 24px; }
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .form-label .required {
+      background: var(--green);
+      color: #fff;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      background: #fff;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(74,124,89,0.1);
+    }
+    .form-textarea { height: 140px; resize: vertical; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 16px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+      letter-spacing: 0.05em;
+    }
+    .form-submit:hover { background: var(--green-light); }
+
+    .form-error {
+      font-size: 0.78rem;
+      color: #e53e3e;
+      margin-top: 4px;
+      display: none;
+    }
+    .form-error.show { display: block; }
+    .form-success {
+      background: var(--green-pale);
+      border: 1px solid var(--green);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--green);
+      display: none;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #2a2a2a;
+      color: rgba(255,255,255,0.7);
+      padding: 48px 20px 24px;
+    }
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .footer-desc { font-size: 0.82rem; line-height: 1.7; }
+    .footer-h { font-weight: 700; color: #fff; font-size: 0.85rem; margin-bottom: 12px; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.78rem;
+    }
+
+    /* ===== FADE IN ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== BACK TO TOP ===== */
+    .back-top {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 48px; height: 48px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.3s;
+      box-shadow: 0 4px 16px rgba(74,124,89,0.35);
+      z-index: 900;
+    }
+    .back-top.visible { opacity: 1; transform: translateY(0); }
+    .back-top:hover { background: var(--green-light); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav, .header-btn { display: none; }
+      .hamburger { display: flex; }
+      .hero { margin-top: 96px; }
+      .appeal-grid { grid-template-columns: 1fr; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .access-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .staff-card { flex-direction: column; text-align: center; }
+      .license-list { justify-content: center; }
+      .form-wrap { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ポートフォリオ表記 -->
+<div class="portfolio-notice" id="portfolioNotice">
+  ⚠ これはポートフォリオ提出用に作成した架空のサイトです。実在する店舗ではありません。
+</div>
+
+<!-- ヘッダー -->
+<header id="header">
+  <a href="#" class="logo">
+    癒し処 和
+    <span>IYASHIDOKORO NAGOMI</span>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="#appeal">当院の特徴</a></li>
+      <li><a href="#menu">メニュー</a></li>
+      <li><a href="#staff">スタッフ</a></li>
+      <li><a href="#voice">お客様の声</a></li>
+      <li><a href="#access">アクセス</a></li>
+    </ul>
+  </nav>
+  <a href="#contact" class="header-btn">ご予約・お問い合わせ</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- モバイルメニュー -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#appeal" onclick="closeMobile()">当院の特徴</a>
+  <a href="#menu" onclick="closeMobile()">メニュー</a>
+  <a href="#staff" onclick="closeMobile()">スタッフ</a>
+  <a href="#voice" onclick="closeMobile()">お客様の声</a>
+  <a href="#access" onclick="closeMobile()">アクセス</a>
+  <a href="#contact" onclick="closeMobile()">ご予約・お問い合わせ</a>
+</div>
+
+<!-- ヒーロースライダー -->
+<section class="hero">
+  <div class="slide slide-1 active"></div>
+  <div class="slide slide-2"></div>
+  <div class="slide slide-3"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">大阪市北区 / 完全予約制</div>
+    <h1>
+      体の芯から<br>ほぐれる時間を。
+    </h1>
+    <p>
+      肩こり・腰痛・骨盤のゆがみ、<br>
+      あなたのお悩みに丁寧に向き合います。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-white">初回限定 2,980円で予約する</a>
+      <a href="#menu" class="btn-outline-white">メニューを見る</a>
+    </div>
+  </div>
+
+  <div class="slider-dots">
+    <div class="dot active" onclick="goSlide(0)"></div>
+    <div class="dot" onclick="goSlide(1)"></div>
+    <div class="dot" onclick="goSlide(2)"></div>
+  </div>
+</section>
+
+
+<!-- 当院の特徴 -->
+<section class="appeal" id="appeal">
+  <div class="container">
+    <div class="sec-label fade-in">Our Features</div>
+    <h2 class="sec-title fade-in">選ばれる<strong style="color:var(--green)">6つの理由</strong></h2>
+    <div class="sec-divider fade-in"></div>
+    <p class="sec-desc fade-in">「なんとなく通い続ける整体」ではなく、根本から変わる施術を提供しています。</p>
+
+    <div class="appeal-grid">
+      <div class="appeal-card fade-in">
+        <div class="appeal-icon">🏆</div>
+        <div class="appeal-num">REASON 01</div>
+        <div class="appeal-title">累計3,000名以上の施術実績</div>
+        <div class="appeal-desc">開院10年で培った確かな技術と経験。様々な症状に対応してきた実績があります。</div>
+      </div>
+      <div class="appeal-card fade-in">
+        <div class="appeal-icon">🔬</div>
+        <div class="appeal-num">REASON 02</div>
+        <div class="appeal-title">根本原因にアプローチ</div>
+        <div class="appeal-desc">痛みのある部位だけでなく、姿勢・骨格・筋肉のバランスを総合的に整えます。</div>
+      </div>
+      <div class="appeal-card fade-in">
+        <div class="appeal-icon">📋</div>
+        <div class="appeal-num">REASON 03</div>
+        <div class="appeal-title">丁寧なカウンセリング</div>
+        <div class="appeal-desc">初回は30分のカウンセリングでお体の状態を詳しくヒアリング。最適な施術プランをご提案します。</div>
+      </div>
+      <div class="appeal-card fade-in">
+        <div class="appeal-icon">🏠</div>
+        <div class="appeal-num">REASON 04</div>
+        <div class="appeal-title">完全個室・完全予約制</div>
+        <div class="appeal-desc">他のお客様と顔を合わせることなく、プライベートな空間でリラックスして施術を受けられます。</div>
+      </div>
+      <div class="appeal-card fade-in">
+        <div class="appeal-icon">👶</div>
+        <div class="appeal-num">REASON 05</div>
+        <div class="appeal-title">お子様連れOK</div>
+        <div class="appeal-desc">キッズスペース完備。育児疲れのママさんにも安心してご来院いただけます。</div>
+      </div>
+      <div class="appeal-card fade-in">
+        <div class="appeal-icon">🌙</div>
+        <div class="appeal-num">REASON 06</div>
+        <div class="appeal-title">平日21時まで営業</div>
+        <div class="appeal-desc">お仕事帰りにも立ち寄れる時間帯まで営業。土日祝も営業しています。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- メニュー -->
+<section id="menu">
+  <div class="container">
+    <div class="sec-label fade-in">Menu</div>
+    <h2 class="sec-title fade-in">施術<strong style="color:var(--green)">メニュー</strong></h2>
+    <div class="sec-divider fade-in"></div>
+    <p class="sec-desc fade-in">お体のお悩みに合わせたメニューをご用意しています。</p>
+
+    <div class="menu-grid">
+      <div class="menu-card fade-in">
+        <div class="menu-img">🦴</div>
+        <div class="menu-body">
+          <div class="menu-title">全身整体コース</div>
+          <div class="menu-desc">全身の骨格バランスを整え、慢性的な疲労・痛みを根本から改善します。60分の丁寧な施術。</div>
+          <div class="menu-price">60分 <strong>6,600円</strong>（税込）</div>
+        </div>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-img">🩺</div>
+        <div class="menu-body">
+          <div class="menu-title">骨盤矯正コース</div>
+          <div class="menu-desc">産後・座りすぎによる骨盤のゆがみを矯正。姿勢改善・ダイエット効果も期待できます。</div>
+          <div class="menu-price">45分 <strong>5,500円</strong>（税込）</div>
+        </div>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-img">💆</div>
+        <div class="menu-body">
+          <div class="menu-title">肩こり・首こり集中ケア</div>
+          <div class="menu-desc">デスクワークや育児で固まった肩・首を集中ケア。頭痛の改善にも効果的です。</div>
+          <div class="menu-price">30分 <strong>3,300円</strong>（税込）</div>
+        </div>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-img">🤸</div>
+        <div class="menu-body">
+          <div class="menu-title">腰痛・坐骨神経痛ケア</div>
+          <div class="menu-desc">腰の深部にアプローチし、慢性腰痛・坐骨神経痛の痛みを緩和します。</div>
+          <div class="menu-price">45分 <strong>5,500円</strong>（税込）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 初回特典 -->
+<section class="first-visit fade-in">
+  <div class="container" style="text-align:center;">
+    <div class="sec-label">First Visit</div>
+    <h2 class="sec-title" style="color:#fff;">初めての方への<strong>特別プラン</strong></h2>
+    <div class="sec-divider" style="background:rgba(255,255,255,0.5);"></div>
+    <p class="sec-desc">まずは気軽に体験してください。カウンセリング・施術込みでこの価格。</p>
+
+    <div class="price-box">
+      <div class="price-label">初回限定 全身整体コース（60分）</div>
+      <div class="price-num">¥2,980</div>
+      <div class="price-tax">税込 / 通常6,600円</div>
+    </div>
+
+    <br>
+    <a href="#contact" class="first-btn">今すぐ予約する →</a>
+  </div>
+</section>
+
+
+<!-- スタッフ -->
+<section class="staff" id="staff">
+  <div class="container">
+    <div class="sec-label fade-in">Staff</div>
+    <h2 class="sec-title fade-in">担当<strong style="color:var(--green)">スタッフ</strong></h2>
+    <div class="sec-divider fade-in"></div>
+
+    <div class="staff-card fade-in">
+      <div class="staff-img">👨‍⚕️</div>
+      <div>
+        <div class="staff-name">田中 和樹</div>
+        <div class="staff-role">院長 / 整体師</div>
+        <div class="staff-bio">
+          大阪出身。柔道整復師専門学校を卒業後、整形外科・整骨院での勤務を経て2014年に独立開業。「薬に頼らず、体本来の力で回復する」をモットーに、丁寧なカウンセリングと根本改善にこだわった施術を行っています。趣味はランニングと料理。
+        </div>
+        <div class="license-list">
+          <span class="license-tag">柔道整復師</span>
+          <span class="license-tag">骨盤矯正認定</span>
+          <span class="license-tag">スポーツ整体認定</span>
+          <span class="license-tag">施術歴15年</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- お客様の声 -->
+<section id="voice">
+  <div class="container">
+    <div class="sec-label fade-in">Voice</div>
+    <h2 class="sec-title fade-in">お客様の<strong style="color:var(--green)">声</strong></h2>
+    <div class="sec-divider fade-in"></div>
+
+    <div class="voice-grid">
+      <div class="voice-card fade-in">
+        <div class="voice-stars">★★★★★</div>
+        <div class="voice-text">産後の骨盤ゆがみが気になって来院。3回の施術で姿勢が整い、腰の重さが全然違います。子連れでも安心できる雰囲気が嬉しかったです。</div>
+        <div class="voice-name">30代・女性 / 産後の骨盤矯正</div>
+      </div>
+      <div class="voice-card fade-in">
+        <div class="voice-stars">★★★★★</div>
+        <div class="voice-text">デスクワークで長年悩んでいた肩こり・頭痛がかなり楽になりました。カウンセリングが丁寧で、原因を説明してもらえたのが安心できました。</div>
+        <div class="voice-name">40代・男性 / 肩こり・頭痛</div>
+      </div>
+      <div class="voice-card fade-in">
+        <div class="voice-stars">★★★★☆</div>
+        <div class="voice-text">以前通っていた整体と全然違いました。痛みのある部位だけでなく全身を見てくれるので、施術後の体の軽さが段違いです。</div>
+        <div class="voice-name">50代・女性 / 腰痛・坐骨神経痛</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="sec-label fade-in">FAQ</div>
+    <h2 class="sec-title fade-in">よくある<strong style="color:var(--green)">ご質問</strong></h2>
+    <div class="sec-divider fade-in"></div>
+
+    <div class="faq-list fade-in">
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-q-icon">Q</div>
+          予約なしで来院できますか？
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-a">当院は完全予約制となっております。当日のご予約はお電話またはお問い合わせフォームよりご連絡ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-q-icon">Q</div>
+          施術中は痛みがありますか？
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-a">強い痛みを伴う施術は行っておりません。「気持ちいい痛さ」の範囲で行いますので、ご安心ください。痛みの強さはご要望に応じて調整いたします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-q-icon">Q</div>
+          何回通えば効果が出ますか？
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-a">症状の程度によって異なりますが、多くの方が3〜5回の施術で変化を実感されています。初回カウンセリング後に、おおよその施術プランをご提案します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-q-icon">Q</div>
+          妊娠中でも施術を受けられますか？
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-a">妊娠中の方は安全のため、安定期（16週以降）からの施術をお受けしています。必ず事前にご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-q-icon">Q</div>
+          駐車場はありますか？
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-a">院内に専用駐車場はございませんが、近隣にコインパーキングが複数ございます。詳しくはアクセスページをご確認ください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- アクセス -->
+<section id="access">
+  <div class="container">
+    <div class="sec-label fade-in">Access</div>
+    <h2 class="sec-title fade-in">アクセス・<strong style="color:var(--green)">営業時間</strong></h2>
+    <div class="sec-divider fade-in"></div>
+
+    <div class="access-grid fade-in">
+      <div class="access-info">
+        <div class="access-row">
+          <div class="access-label">住所</div>
+          <div>〒530-0001<br>大阪府大阪市北区梅田1-1-1<br>サンプルビル3F</div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">アクセス</div>
+          <div>JR大阪駅・徒歩5分<br>阪急梅田駅・徒歩3分</div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">営業時間</div>
+          <div>
+            平日：10:00〜21:00<br>
+            土日祝：9:00〜19:00<br>
+            <span style="color:var(--text-muted); font-size:0.82rem;">定休日：木曜日</span>
+          </div>
+        </div>
+        <div class="access-row">
+          <div class="access-label">電話</div>
+          <div>06-XXXX-XXXX</div>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        📍 Google マップ埋め込み予定
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- お問い合わせ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="sec-label fade-in">Contact</div>
+    <h2 class="sec-title fade-in">ご予約・<strong style="color:var(--green)">お問い合わせ</strong></h2>
+    <div class="sec-divider fade-in"></div>
+    <p class="sec-desc fade-in">フォームまたはお電話にてお気軽にどうぞ。<br>通常24時間以内にご返信いたします。</p>
+
+    <div class="form-wrap fade-in">
+      <div class="form-success" id="formSuccess">
+        ✅ お問い合わせを受け付けました。<br>24時間以内にご連絡いたします。
+      </div>
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label class="form-label">お名前<span class="required">必須</span></label>
+          <input type="text" class="form-input" id="name" placeholder="山田 花子">
+          <div class="form-error" id="nameError">お名前を入力してください</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス<span class="required">必須</span></label>
+          <input type="email" class="form-input" id="email" placeholder="example@email.com">
+          <div class="form-error" id="emailError">正しいメールアドレスを入力してください</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">電話番号</label>
+          <input type="tel" class="form-input" id="tel" placeholder="090-0000-0000">
+        </div>
+        <div class="form-group">
+          <label class="form-label">ご希望のメニュー<span class="required">必須</span></label>
+          <select class="form-select" id="menu_select">
+            <option value="">選択してください</option>
+            <option>全身整体コース（60分）</option>
+            <option>骨盤矯正コース（45分）</option>
+            <option>肩こり・首こり集中ケア（30分）</option>
+            <option>腰痛・坐骨神経痛ケア（45分）</option>
+            <option>初回限定プラン（60分 2,980円）</option>
+            <option>その他・ご相談</option>
+          </select>
+          <div class="form-error" id="menuError">メニューを選択してください</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">お問い合わせ内容</label>
+          <textarea class="form-textarea" id="message" placeholder="ご希望の日時・お体のお悩みなどをお書きください"></textarea>
+        </div>
+        <button type="submit" class="form-submit">送信する</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- フッター -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">癒し処 和</div>
+      <div class="footer-desc">大阪市北区の整体院。肩こり・腰痛・骨盤矯正のお悩みを根本から改善します。</div>
+    </div>
+    <div>
+      <div class="footer-h">メニュー</div>
+      <div class="footer-links">
+        <a href="#appeal">当院の特徴</a>
+        <a href="#menu">施術メニュー</a>
+        <a href="#staff">スタッフ紹介</a>
+        <a href="#voice">お客様の声</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#access">アクセス</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">営業時間</div>
+      <div class="footer-desc">
+        平日 10:00〜21:00<br>
+        土日祝 9:00〜19:00<br>
+        定休日：木曜日<br><br>
+        📍 大阪市北区梅田1-1-1<br>
+        📞 06-XXXX-XXXX
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p style="margin-bottom:8px; color:rgba(255,255,255,0.4); font-size:0.72rem;">
+      ⚠ このサイトはポートフォリオ提出用に作成した架空のサンプルサイトです。
+    </p>
+    <p>© 2026 癒し処 和 All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- TOPに戻る -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+
+<script>
+  // --- ヘッダースクロール ---
+  const header = document.getElementById('header');
+  const portfolioNotice = document.getElementById('portfolioNotice');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // --- スライダー ---
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+  let timer;
+
+  function goSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    clearInterval(timer);
+    timer = setInterval(nextSlide, 5000);
+  }
+
+  function nextSlide() {
+    goSlide((current + 1) % slides.length);
+  }
+
+  timer = setInterval(nextSlide, 5000);
+
+  // --- ハンバーガー ---
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // --- FAQ アコーディオン ---
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const ans = item.querySelector('.faq-a');
+      item.classList.toggle('open');
+      ans.classList.toggle('open');
+    });
+  });
+
+  // --- フォームバリデーション ---
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let valid = true;
+
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const menuSel = document.getElementById('menu_select');
+
+    document.getElementById('nameError').classList.remove('show');
+    document.getElementById('emailError').classList.remove('show');
+    document.getElementById('menuError').classList.remove('show');
+
+    if (!name.value.trim()) {
+      document.getElementById('nameError').classList.add('show');
+      valid = false;
+    }
+    if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      document.getElementById('emailError').classList.add('show');
+      valid = false;
+    }
+    if (!menuSel.value) {
+      document.getElementById('menuError').classList.add('show');
+      valid = false;
+    }
+
+    if (valid) {
+      this.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  });
+
+  // --- フェードイン ---
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => {
+      if (el.isIntersecting) el.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
