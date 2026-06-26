@@ -56,9 +56,13 @@
   .site-desc{color:var(--gray);font-size:.78rem;line-height:1.85;font-weight:300;flex:1;}
   .site-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
   .site-tag{background:var(--bg);color:var(--gray);font-size:.62rem;padding:3px 10px;border-radius:4px;}
+  .site-card{position:relative;}
   .site-link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:.75rem;font-weight:600;text-decoration:none;margin-top:16px;transition:.2s;}
   .site-link:hover{gap:10px;}
   .site-link::after{content:'→';}
+  .site-card-link{position:absolute;inset:0;z-index:0;}
+  .site-info{position:relative;z-index:1;}
+  .site-preview{position:relative;z-index:1;}
 
   /* お問い合わせ */
   .contact{background:var(--black);padding:80px;margin-top:2px;}
@@ -408,5 +412,17 @@
   <p>※ 掲載サイトはポートフォリオ用に制作した架空のサイトです</p>
 </footer>
 
+<script>
+document.querySelectorAll('.site-card').forEach(card => {
+  const link = card.querySelector('.site-link');
+  if (!link) return;
+  const a = document.createElement('a');
+  a.href = link.href;
+  a.className = 'site-card-link';
+  if (link.target) a.target = link.target;
+  card.appendChild(a);
+  card.style.cursor = 'pointer';
+});
+</script>
 </body>
 </html>
