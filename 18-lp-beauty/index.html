@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUX BEAUTÉ | 最高峰の美容体験を、あなたに</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--rose:#b5697b;--beige:#f5ede8;--cream:#fdf8f5;--dark:#1a0a0f;--gold:#c9a47a;--gray:#8a7a7a;--text:#2a1a1f;}
+  body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;}
+  .portfolio-note{background:#fdf2f5;border-left:3px solid var(--rose);padding:12px 24px;text-align:center;font-size:.73rem;color:var(--gray);}
+  /* FV */
+  .fv{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;}
+  .fv-left{background:url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&q=80') center/cover;position:relative;}
+  .fv-left::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,rgba(253,248,245,1));}
+  .fv-right{background:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 40px;}
+  .fv-logo{font-family:'Cormorant Garamond',serif;font-size:.85rem;letter-spacing:.4em;color:var(--rose);margin-bottom:60px;}
+  .fv-eyebrow{color:var(--gold);font-size:.65rem;letter-spacing:.3em;margin-bottom:16px;}
+  .fv h1{font-family:'Cormorant Garamond',serif;font-size:3.4rem;font-weight:400;line-height:1.25;margin-bottom:16px;color:var(--dark);}
+  .fv h1 em{font-style:italic;color:var(--rose);}
+  .fv-divider{width:40px;height:1px;background:var(--gold);margin:24px 0;}
+  .fv-sub{color:var(--gray);font-size:.85rem;line-height:2;margin-bottom:36px;font-weight:300;}
+  .fv-campaign{background:#fff;border:1px solid var(--beige);padding:20px 24px;margin-bottom:28px;}
+  .campaign-tag{color:var(--rose);font-size:.65rem;font-weight:700;letter-spacing:.15em;margin-bottom:6px;}
+  .campaign-text{font-size:.85rem;font-weight:500;color:var(--dark);}
+  .campaign-text em{color:var(--rose);font-style:normal;}
+  .btn-reserve{display:inline-block;background:var(--dark);color:#fff;padding:18px 40px;font-size:.82rem;font-weight:500;text-decoration:none;letter-spacing:.15em;transition:.3s;margin-right:16px;}
+  .btn-reserve:hover{background:var(--rose);}
+  .btn-line{display:inline-block;background:#06c755;color:#fff;padding:18px 32px;font-size:.82rem;font-weight:500;text-decoration:none;letter-spacing:.05em;transition:.2s;}
+  .btn-line:hover{opacity:.85;}
+  .fv-trust{display:flex;gap:24px;margin-top:20px;}
+  .trust-chip{color:var(--gray);font-size:.68rem;display:flex;align-items:center;gap:5px;}
+  .trust-chip::before{content:'◆';color:var(--gold);font-size:.5rem;}
+  /* ブランド理念 */
+  .brand{padding:80px 60px;background:#fff;text-align:center;}
+  .brand-quote{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-style:italic;color:var(--dark);line-height:1.5;max-width:700px;margin:0 auto 24px;}
+  .brand-text{color:var(--gray);font-size:.83rem;line-height:2;max-width:580px;margin:0 auto;font-weight:300;}
+  /* メニュー */
+  .menu{padding:80px 60px;background:var(--beige);}
+  .section-eyebrow{color:var(--rose);font-size:.65rem;letter-spacing:.3em;text-align:center;margin-bottom:8px;}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:400;text-align:center;margin-bottom:48px;color:var(--dark);}
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto;}
+  .menu-card{background:#fff;padding:0;overflow:hidden;}
+  .menu-img{height:220px;background-size:cover;background-position:center;position:relative;}
+  .menu-label{position:absolute;bottom:16px;left:16px;background:rgba(255,255,255,.9);padding:4px 12px;font-size:.62rem;letter-spacing:.15em;color:var(--rose);font-weight:700;}
+  .menu-body{padding:24px;}
+  .menu-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--dark);margin-bottom:8px;}
+  .menu-desc{color:var(--gray);font-size:.75rem;line-height:1.9;margin-bottom:14px;}
+  .menu-price{color:var(--rose);font-size:.85rem;font-weight:500;}
+  .menu-time{color:var(--gray);font-size:.68rem;margin-left:12px;}
+  /* スタッフ */
+  .staff{padding:80px 60px;background:#fff;}
+  .staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:900px;margin:0 auto;}
+  .staff-card{text-align:center;}
+  .staff-photo{width:120px;height:120px;border-radius:50%;background:var(--beige);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:3rem;border:2px solid var(--gold);}
+  .staff-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--dark);margin-bottom:4px;}
+  .staff-title{color:var(--rose);font-size:.65rem;letter-spacing:.15em;margin-bottom:12px;}
+  .staff-desc{color:var(--gray);font-size:.75rem;line-height:1.9;}
+  /* 口コミ */
+  .reviews{padding:80px 60px;background:var(--cream);}
+  .review-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:840px;margin:0 auto;}
+  .review-card{background:#fff;padding:28px 32px;position:relative;}
+  .review-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:5rem;color:var(--beige);position:absolute;top:8px;left:16px;line-height:1;}
+  .review-text{font-size:.82rem;line-height:1.9;color:var(--text);margin-bottom:16px;padding-top:20px;position:relative;z-index:1;}
+  .review-name{font-size:.72rem;color:var(--rose);font-weight:500;}
+  .review-stars{color:var(--gold);font-size:.78rem;margin-bottom:8px;}
+  /* CTA */
+  .cta{padding:80px 60px;background:var(--dark);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .cta-left h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:400;color:#fff;line-height:1.3;margin-bottom:20px;}
+  .cta-left h2 em{color:var(--rose);font-style:italic;}
+  .cta-left p{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.9;}
+  .cta-right{display:flex;flex-direction:column;gap:16px;}
+  .cta-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:24px;}
+  .cta-box-tag{color:var(--gold);font-size:.65rem;letter-spacing:.2em;margin-bottom:8px;}
+  .cta-box-text{color:#fff;font-size:.85rem;margin-bottom:16px;line-height:1.7;}
+  .btn-white{display:block;background:#fff;color:var(--dark);padding:16px;font-size:.82rem;font-weight:500;text-decoration:none;text-align:center;letter-spacing:.1em;transition:.2s;}
+  .btn-white:hover{background:var(--rose);color:#fff;}
+  footer{background:#0d0005;padding:32px;text-align:center;}
+  footer p{color:rgba(255,255,255,.2);font-size:.72rem;line-height:1.9;}
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空の美容エステLPです。実在するサロン・会社とは一切関係ありません。</div>
+
+<section class="fv">
+  <div class="fv-left"></div>
+  <div class="fv-right">
+    <div class="fv-logo">LUX BEAUTÉ</div>
+    <p class="fv-eyebrow">PREMIUM BEAUTY SALON</p>
+    <h1>あなたの美しさを、<br><em>最高峰の技術で</em><br>引き出す。</h1>
+    <div class="fv-divider"></div>
+    <p class="fv-sub">厳選された美容成分と、10年以上のキャリアを持つセラピストによる施術。日常の喧騒を忘れ、本当の美しさと向き合う時間をご提供します。</p>
+    <div class="fv-campaign">
+      <p class="campaign-tag">✦ 初回限定キャンペーン</p>
+      <p class="campaign-text">全メニュー<em> 40%OFF</em>でご体験いただけます</p>
+    </div>
+    <div>
+      <a href="#" class="btn-reserve">ご予約はこちら</a>
+      <a href="#" class="btn-line">LINEで相談</a>
+    </div>
+    <div class="fv-trust">
+      <div class="trust-chip">全個室プライベート空間</div>
+      <div class="trust-chip">完全予約制</div>
+      <div class="trust-chip">無料カウンセリング付</div>
+    </div>
+  </div>
+</section>
+
+<section class="brand">
+  <p class="brand-quote">"美しさとは、外に求めるものではなく<br>内に宿るものを、輝かせること。"</p>
+  <p class="brand-text">LUX BEAUTÉは、フランス語で「贅沢な美しさ」を意味します。私たちはお客様お一人おひとりの肌状態・ライフスタイル・ご希望を丁寧にヒアリングし、あなただけのオーダーメイド施術をご提供します。</p>
+</section>
+
+<section class="menu">
+  <p class="section-eyebrow">MENU</p>
+  <h2 class="section-title">ご提供メニュー</h2>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80')">
+        <span class="menu-label">FACE</span>
+      </div>
+      <div class="menu-body">
+        <h3 class="menu-name">プレミアムフェイシャル</h3>
+        <p class="menu-desc">独自開発の美容液を使ったフェイシャルケア。毛穴ケア・くすみ改善・リフトアップを同時に叶えます。</p>
+        <span class="menu-price">¥18,000（税込）</span><span class="menu-time">90分</span>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80')">
+        <span class="menu-label">BODY</span>
+      </div>
+      <div class="menu-body">
+        <h3 class="menu-name">アロマリンパボディ</h3>
+        <p class="menu-desc">全身のリンパを丁寧に流すボディトリートメント。むくみ・疲れ・コリを根本からほぐします。</p>
+        <span class="menu-price">¥22,000（税込）</span><span class="menu-time">120分</span>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80')">
+        <span class="menu-label">TOTAL</span>
+      </div>
+      <div class="menu-body">
+        <h3 class="menu-name">贅沢トータルコース</h3>
+        <p class="menu-desc">フェイシャル＋ボディ＋ヘッドスパをセットに。特別な日の前夜、また日々のご褒美に。</p>
+        <span class="menu-price">¥35,000（税込）</span><span class="menu-time">180分</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="staff">
+  <p class="section-eyebrow">THERAPIST</p>
+  <h2 class="section-title">担当セラピスト</h2>
+  <div class="staff-grid">
+    <div class="staff-card">
+      <div class="staff-photo">👩</div>
+      <h3 class="staff-name">佐藤 美咲</h3>
+      <p class="staff-title">チーフセラピスト</p>
+      <p class="staff-desc">エステティシャン歴12年。パリで美容技術を研鑽し帰国。独自のリフトアップ技術が人気を集めています。</p>
+    </div>
+    <div class="staff-card">
+      <div class="staff-photo">👩</div>
+      <h3 class="staff-name">田中 由美</h3>
+      <p class="staff-title">ボディスペシャリスト</p>
+      <p class="staff-desc">アロマテラピー1級・リンパドレナージュ専門資格保有。ボディケアの深い知識と確かな手技が強みです。</p>
+    </div>
+    <div class="staff-card">
+      <div class="staff-photo">👩</div>
+      <h3 class="staff-name">山本 花</h3>
+      <p class="staff-title">フェイシャルスペシャリスト</p>
+      <p class="staff-desc">皮膚科学を学んだ美容師出身。お客様の肌状態を細かく分析し、最適な施術をご提案します。</p>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <p class="section-eyebrow">VOICE</p>
+  <h2 class="section-title">お客様の声</h2>
+  <div class="review-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">フェイシャルコースを受けたら、翌日から会社の同僚に「肌がきれいになった？」と言われました。それからずっとリピートしています。</p>
+      <p class="review-name">K.Mさん（38歳）</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">全個室で完全プライベートなので、人目を気にせずリラックスできます。カウンセリングが丁寧で、肌の悩みを全部聞いてもらえました。</p>
+      <p class="review-name">Y.Tさん（44歳）</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">出産後、自分を大切にする時間がなかったのですが、ここに来るようになってから気持ちの余裕が生まれました。贅沢な時間をありがとうございます。</p>
+      <p class="review-name">A.Nさん（32歳）</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">誕生日に贅沢トータルコースを予約しました。3時間があっという間で、終わった後は肌も体も見違えるほど。また来年も来ます！</p>
+      <p class="review-name">S.Rさん（29歳）</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-left">
+    <h2>初回限定、<em>特別価格</em>でご体験ください</h2>
+    <p>はじめてのお客様に、すべてのメニューを40%OFFでご提供。まずは無料カウンセリングから、お気軽にどうぞ。</p>
+  </div>
+  <div class="cta-right">
+    <div class="cta-box">
+      <p class="cta-box-tag">✦ WEB予約</p>
+      <p class="cta-box-text">24時間いつでもご予約いただけます。初回カウンセリングは無料です。</p>
+      <a href="#" class="btn-white">WEB予約はこちら</a>
+    </div>
+    <div class="cta-box">
+      <p class="cta-box-tag">✦ LINE相談</p>
+      <p class="cta-box-text">メニューや肌の悩みについて、LINEでご相談いただけます。返信は当日中。</p>
+      <a href="#" class="btn-white" style="background:#06c755;color:#fff;">LINEで相談する</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>LUX BEAUTÉ / 有限会社ルクスビューテ（架空）<br>© 2024 LUX BEAUTÉ. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>不動産投資セミナー2024 | 年収400万から資産1億を築く方法</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Montserrat:wght@700;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--gold:#c9a227;--dark:#0a0a0a;--dark2:#111;--red:#c0392b;--text:#1a1a1a;--gray:#888;}
+  body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--dark);overflow-x:hidden;}
+  .portfolio-note{background:#1a1a00;border-left:3px solid var(--gold);padding:12px 24px;text-align:center;font-size:.73rem;color:#888;}
+  /* カウントダウン */
+  .countdown-bar{background:var(--red);padding:10px;text-align:center;color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.05em;}
+  .countdown-bar em{color:var(--gold);font-style:normal;}
+  /* FV */
+  .fv{background:linear-gradient(160deg,#0a0a0a 0%,#1a1200 100%);min-height:90vh;display:flex;align-items:center;padding:60px;position:relative;overflow:hidden;}
+  .fv::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80') center/cover;opacity:.08;}
+  .fv-inner{max-width:800px;position:relative;z-index:1;}
+  .fv-label{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:6px 16px;font-size:.7rem;letter-spacing:.2em;margin-bottom:24px;}
+  .fv h1{color:#fff;font-size:3.2rem;font-weight:900;line-height:1.25;margin-bottom:20px;}
+  .fv h1 em{color:var(--gold);font-style:normal;}
+  .fv-sub{color:rgba(255,255,255,.6);font-size:.88rem;line-height:1.9;margin-bottom:32px;max-width:600px;}
+  .fv-detail{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap;}
+  .fv-detail-item{display:flex;flex-direction:column;gap:4px;}
+  .fv-detail-label{color:var(--gold);font-size:.65rem;letter-spacing:.15em;}
+  .fv-detail-val{color:#fff;font-size:.92rem;font-weight:700;}
+  .btn-seminar{display:inline-block;background:linear-gradient(135deg,var(--gold),#e8c84a);color:var(--dark);padding:20px 48px;font-size:1rem;font-weight:900;text-decoration:none;letter-spacing:.05em;transition:.3s;}
+  .btn-seminar:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(201,162,39,.4);}
+  .fv-seats{color:rgba(255,255,255,.4);font-size:.72rem;margin-top:12px;}
+  .fv-seats em{color:var(--red);font-style:normal;}
+  /* 実績 */
+  .track{padding:60px;background:#111;}
+  .track-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#333;max-width:900px;margin:0 auto;}
+  .track-item{background:#111;padding:32px 24px;text-align:center;}
+  .track-num{font-family:'Montserrat',sans-serif;font-size:2.8rem;font-weight:900;color:var(--gold);line-height:1;}
+  .track-num em{font-size:1.2rem;}
+  .track-label{color:rgba(255,255,255,.5);font-size:.72rem;margin-top:6px;}
+  /* セミナー内容 */
+  .content{padding:80px 60px;background:var(--dark);}
+  .section-tag{color:var(--gold);font-size:.68rem;font-weight:700;letter-spacing:.25em;text-align:center;margin-bottom:8px;}
+  .section-title{font-size:1.8rem;font-weight:900;text-align:center;color:#fff;margin-bottom:48px;}
+  .content-list{max-width:720px;margin:0 auto;}
+  .content-item{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #222;align-items:flex-start;}
+  .content-num{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0;width:60px;}
+  .content-title{color:#fff;font-size:.95rem;font-weight:700;margin-bottom:6px;}
+  .content-desc{color:var(--gray);font-size:.8rem;line-height:1.8;}
+  /* 講師 */
+  .speaker{padding:80px 60px;background:#111;}
+  .speaker-inner{max-width:800px;margin:0 auto;display:flex;gap:60px;align-items:center;}
+  .speaker-img{width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,#333,#222);display:flex;align-items:center;justify-content:center;font-size:5rem;flex-shrink:0;border:2px solid var(--gold);}
+  .speaker-name-jp{color:#fff;font-size:1.4rem;font-weight:700;margin-bottom:4px;}
+  .speaker-name-en{color:var(--gold);font-size:.72rem;letter-spacing:.15em;margin-bottom:16px;}
+  .speaker-career{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+  .career-item{display:flex;align-items:flex-start;gap:8px;color:rgba(255,255,255,.7);font-size:.8rem;line-height:1.6;}
+  .career-dot{color:var(--gold);flex-shrink:0;}
+  .speaker-quote{background:#1a1a00;border-left:3px solid var(--gold);padding:16px 20px;color:rgba(255,255,255,.8);font-size:.82rem;line-height:1.9;}
+  /* CTA */
+  .cta{padding:80px 60px;background:linear-gradient(160deg,#1a1200,#0a0a0a);text-align:center;}
+  .cta h2{color:#fff;font-size:2rem;font-weight:900;line-height:1.4;margin-bottom:12px;}
+  .cta h2 em{color:var(--gold);font-style:normal;}
+  .cta-box{background:#111;border:1px solid #333;max-width:500px;margin:32px auto;padding:32px;}
+  .cta-price{color:var(--gold);font-size:2.2rem;font-weight:900;margin-bottom:4px;}
+  .cta-note2{color:var(--gray);font-size:.75rem;line-height:1.8;margin-bottom:20px;}
+  .btn-seminar-big{display:inline-block;background:linear-gradient(135deg,var(--gold),#e8c84a);color:var(--dark);padding:20px 60px;font-size:1.1rem;font-weight:900;text-decoration:none;transition:.3s;}
+  .btn-seminar-big:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(201,162,39,.5);}
+  .seats-warning{color:var(--red);font-size:.8rem;font-weight:700;margin-top:12px;}
+  footer{background:#000;padding:28px;text-align:center;}
+  footer p{color:rgba(255,255,255,.25);font-size:.72rem;line-height:1.9;}
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空の不動産投資セミナーLPです。実在するセミナー・会社とは一切関係ありません。</div>
+
+<div class="countdown-bar">【残席わずか】次回開催まで <em>あと3日</em> ／ 定員30名 → 残り <em>8席</em></div>
+
+<section class="fv">
+  <div class="fv-inner">
+    <div class="fv-label">2024年 不動産投資セミナー</div>
+    <h1>年収400万の会社員が<br><em>10年で資産1億円</em>を<br>築いた全メソッド公開</h1>
+    <p class="fv-sub">金融知識ゼロ・貯金200万からスタートした著者が、再現性のある不動産投資の全手順を3時間で徹底解説。「失敗しない物件の選び方」から「融資戦略」まで、現場で使えるノウハウだけをお届けします。</p>
+    <div class="fv-detail">
+      <div class="fv-detail-item"><span class="fv-detail-label">DATE</span><span class="fv-detail-val">2024年XX月XX日（土）</span></div>
+      <div class="fv-detail-item"><span class="fv-detail-label">TIME</span><span class="fv-detail-val">13:00〜16:00（3時間）</span></div>
+      <div class="fv-detail-item"><span class="fv-detail-label">PLACE</span><span class="fv-detail-val">東京都内 会議室 / Zoom同時配信</span></div>
+      <div class="fv-detail-item"><span class="fv-detail-label">FEE</span><span class="fv-detail-val">無料（先着30名）</span></div>
+    </div>
+    <a href="#" class="btn-seminar">今すぐ無料で席を確保する</a>
+    <p class="fv-seats">※ 定員30名。残席 <em>8名</em> のため、お早めにお申し込みください。</p>
+  </div>
+</section>
+
+<section class="track">
+  <div class="track-grid">
+    <div class="track-item"><div class="track-num">12<em>億</em></div><div class="track-label">累計資産運用額</div></div>
+    <div class="track-item"><div class="track-num">47<em>棟</em></div><div class="track-label">保有物件数</div></div>
+    <div class="track-item"><div class="track-num">850<em>名</em></div><div class="track-label">セミナー参加者数</div></div>
+    <div class="track-item"><div class="track-num">96<em>%</em></div><div class="track-label">参加者満足度</div></div>
+  </div>
+</section>
+
+<section class="content">
+  <p class="section-tag">PROGRAM</p>
+  <h2 class="section-title">当日の内容</h2>
+  <div class="content-list">
+    <div class="content-item">
+      <div class="content-num">01</div>
+      <div>
+        <h3 class="content-title">なぜ今、不動産投資なのか</h3>
+        <p class="content-desc">株・FXとの比較、不動産投資のレバレッジの仕組み、インフレ時代のリアルな資産防衛法をデータで解説。</p>
+      </div>
+    </div>
+    <div class="content-item">
+      <div class="content-num">02</div>
+      <div>
+        <h3 class="content-title">失敗しない物件の選び方</h3>
+        <p class="content-desc">立地・築年数・利回りの最低ラインと、プロが物件を見るときの7つのチェックポイントを公開。</p>
+      </div>
+    </div>
+    <div class="content-item">
+      <div class="content-num">03</div>
+      <div>
+        <h3 class="content-title">金融機関からの融資戦略</h3>
+        <p class="content-desc">年収400万でも融資を引き出せた実際の交渉術と、銀行が好む「融資を通る人」の条件を詳細に解説。</p>
+      </div>
+    </div>
+    <div class="content-item">
+      <div class="content-num">04</div>
+      <div>
+        <h3 class="content-title">Q&Aセッション（30分）</h3>
+        <p class="content-desc">参加者の疑問・不安に対して講師が直接回答。「自分の場合はどうなのか」を確認できる貴重な時間。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="speaker">
+  <div class="speaker-inner">
+    <div class="speaker-img">👨</div>
+    <div>
+      <h3 class="speaker-name-jp">田村 誠一</h3>
+      <p class="speaker-name-en">SEIICHI TAMURA</p>
+      <div class="speaker-career">
+        <div class="career-item"><span class="career-dot">◆</span>元・中堅メーカー勤務（年収420万）</div>
+        <div class="career-item"><span class="career-dot">◆</span>30歳から不動産投資をスタート、10年で資産1億2000万円を構築</div>
+        <div class="career-item"><span class="career-dot">◆</span>現在は47棟を保有、月間家賃収入280万円</div>
+        <div class="career-item"><span class="career-dot">◆</span>著書「サラリーマンのための不動産投資入門」累計3万部</div>
+      </div>
+      <div class="speaker-quote">「私は特別な才能もコネもありませんでした。ただ正しい順序で、正しい物件を選んだだけです。その方法を余すことなくお伝えします。」</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>先着30名限定、<em>無料</em>でご参加いただけます</h2>
+  <div class="cta-box">
+    <div class="cta-price">参加費：無料</div>
+    <p class="cta-note2">当日会場でのコンサル販売等は一切ありません。<br>純粋に学びたい方のためのセミナーです。</p>
+    <a href="#" class="btn-seminar-big">今すぐ無料で申し込む</a>
+    <p class="seats-warning">⚠ 残席8名。定員に達し次第受付終了します。</p>
+  </div>
+</section>
+
+<footer>
+  <p>不動産投資セミナー事務局 / 株式会社タムラインベストメント（架空）<br>© 2024 All Rights Reserved.</p>
+</footer>
+</body>
+</html>
