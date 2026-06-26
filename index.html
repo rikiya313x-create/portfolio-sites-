@@ -60,9 +60,8 @@
   .site-link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:.75rem;font-weight:600;text-decoration:none;margin-top:16px;transition:.2s;}
   .site-link:hover{gap:10px;}
   .site-link::after{content:'→';}
-  .site-card-link{position:absolute;inset:0;z-index:0;}
-  .site-info{position:relative;z-index:1;}
-  .site-preview{position:relative;z-index:1;}
+  .site-card-link{position:absolute;inset:0;z-index:2;}
+  .site-preview{position:relative;}
 
   /* お問い合わせ */
   .contact{background:var(--black);padding:80px;margin-top:2px;}
@@ -395,6 +394,15 @@
       </div>
     </div>
 
+  </div>
+
+  <div class="section-header" style="margin-top:64px;">
+    <p class="section-label">LP WORKS</p>
+    <h2 class="section-title">ランディングページ</h2>
+  </div>
+
+  <div class="sites-grid">
+
     <!-- 13 LP サプリ -->
     <div class="site-card">
       <div class="site-preview">
@@ -547,13 +555,14 @@
 <script>
 document.querySelectorAll('.site-card').forEach(card => {
   const link = card.querySelector('.site-link');
-  if (!link) return;
+  const preview = card.querySelector('.site-preview');
+  if (!link || !preview) return;
   const a = document.createElement('a');
   a.href = link.href;
   a.className = 'site-card-link';
   if (link.target) a.target = link.target;
-  card.appendChild(a);
-  card.style.cursor = 'pointer';
+  preview.appendChild(a);
+  preview.style.cursor = 'pointer';
 });
 </script>
 </body>
