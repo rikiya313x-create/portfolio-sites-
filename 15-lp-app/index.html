@@ -3,144 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HABIFY | 習慣化アプリで人生を変える</title>
+<title>HABIFY | 続かなかった習慣が、続くようになる</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  :root{--purple:#7c3aed;--pink:#f72585;--dark:#0f0318;--text:#1a0530;--gray:#6b7280;}
+  :root{--purple:#7c3aed;--pink:#f72585;--dark:#0f0318;--mid:#1a0530;--text:#1a0530;--gray:#6b7280;--light:#f3e8ff;}
   body{font-family:'Noto Sans JP',sans-serif;color:var(--text);overflow-x:hidden;}
-  .portfolio-note{background:#f3e8ff;border-left:3px solid var(--purple);padding:12px 24px;text-align:center;font-size:.73rem;color:var(--gray);}
+  a{text-decoration:none;}
+  .portfolio-note{background:var(--light);border-left:3px solid var(--purple);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--gray);}
+
   /* FV */
-  .fv{background:var(--dark);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px;text-align:center;position:relative;overflow:hidden;}
-  .fv-glow1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.3),transparent 70%);top:-100px;left:-100px;}
-  .fv-glow2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(247,37,133,.2),transparent 70%);bottom:-100px;right:-100px;}
-  .fv-tag{display:inline-block;border:1px solid rgba(124,58,237,.5);color:#a78bfa;padding:6px 20px;font-size:.72rem;letter-spacing:.15em;border-radius:100px;margin-bottom:28px;position:relative;z-index:1;}
-  .fv h1{color:#fff;font-size:3.8rem;font-weight:900;line-height:1.2;margin-bottom:20px;position:relative;z-index:1;}
+  .fv{background:var(--dark);min-height:100vh;display:flex;align-items:center;padding:80px 60px;position:relative;overflow:hidden;}
+  .fv-glow1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.25),transparent 70%);top:-150px;left:-150px;pointer-events:none;}
+  .fv-glow2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(247,37,133,.18),transparent 70%);bottom:-100px;right:-100px;pointer-events:none;}
+  .fv-inner{max-width:1100px;margin:0 auto;display:flex;gap:60px;align-items:center;width:100%;position:relative;z-index:1;}
+  .fv-left{flex:1;}
+  .fv-tag{display:inline-block;border:1px solid rgba(124,58,237,.5);color:#a78bfa;padding:6px 18px;font-size:.7rem;letter-spacing:.15em;border-radius:100px;margin-bottom:24px;}
+  .fv h1{color:#fff;font-size:3.6rem;font-weight:900;line-height:1.2;margin-bottom:16px;}
   .fv h1 .grad{background:linear-gradient(135deg,#a78bfa,#f72585);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .fv-sub{color:rgba(255,255,255,.6);font-size:.92rem;line-height:1.9;max-width:560px;margin:0 auto 40px;position:relative;z-index:1;}
-  .dl-btns{display:flex;gap:16px;justify-content:center;margin-bottom:48px;position:relative;z-index:1;}
-  .dl-btn{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;padding:14px 24px;text-decoration:none;border-radius:12px;transition:.3s;backdrop-filter:blur(10px);}
-  .dl-btn:hover{background:rgba(255,255,255,.18);transform:translateY(-2px);}
-  .dl-btn-icon{font-size:1.8rem;}
-  .dl-btn-text small{display:block;font-size:.62rem;opacity:.6;}
-  .dl-btn-text strong{font-size:.92rem;}
-  .fv-mockup{position:relative;z-index:1;max-width:300px;margin:0 auto;}
-  .phone-frame{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.1);border-radius:36px;padding:24px 16px;aspect-ratio:9/19;display:flex;flex-direction:column;gap:16px;}
-  .screen-item{background:linear-gradient(135deg,rgba(124,58,237,.3),rgba(247,37,133,.15));border-radius:16px;padding:16px;color:#fff;}
-  .screen-title{font-size:.7rem;opacity:.6;margin-bottom:6px;}
-  .screen-val{font-size:1.4rem;font-weight:700;}
-  .screen-bar{height:6px;background:rgba(255,255,255,.1);border-radius:3px;margin-top:8px;overflow:hidden;}
-  .screen-bar-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--pink));border-radius:3px;}
+  .fv-sub{color:rgba(255,255,255,.6);font-size:.9rem;line-height:1.95;max-width:520px;margin-bottom:32px;}
+  .fv-stats{display:flex;gap:32px;margin-bottom:32px;}
+  .fvs{text-align:center;}
+  .fvs-num{color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;line-height:1;}
+  .fvs-num em{color:#a78bfa;font-style:normal;font-size:1rem;}
+  .fvs-lbl{color:rgba(255,255,255,.4);font-size:.65rem;margin-top:3px;}
+  .dl-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px;}
+  .dl-btn{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;padding:12px 22px;border-radius:12px;transition:.3s;backdrop-filter:blur(10px);}
+  .dl-btn:hover{background:rgba(255,255,255,.15);transform:translateY(-2px);}
+  .dl-icon{font-size:1.6rem;}
+  .dl-text small{display:block;font-size:.58rem;opacity:.55;}
+  .dl-text strong{font-size:.88rem;}
+  .fv-note{color:rgba(255,255,255,.35);font-size:.7rem;}
+  .fv-right{width:280px;flex-shrink:0;}
+  .phone{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.1);border-radius:32px;padding:20px 14px;display:flex;flex-direction:column;gap:12px;}
+  .phone-item{background:linear-gradient(135deg,rgba(124,58,237,.3),rgba(247,37,133,.15));border-radius:14px;padding:14px;}
+  .pi-lbl{font-size:.62rem;color:rgba(255,255,255,.5);margin-bottom:4px;}
+  .pi-val{font-size:1.2rem;font-weight:700;color:#fff;}
+  .pi-bar{height:5px;background:rgba(255,255,255,.1);border-radius:3px;margin-top:8px;overflow:hidden;}
+  .pi-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--pink));border-radius:3px;}
+
+  /* 数字バー */
+  .num-bar{background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:28px 60px;display:flex;justify-content:center;gap:0;}
+  .nb-item{flex:1;max-width:200px;text-align:center;border-right:1px solid rgba(255,255,255,.08);padding:0 20px;}
+  .nb-item:last-child{border-right:none;}
+  .nb-num{color:#fff;font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;line-height:1;}
+  .nb-num em{color:#a78bfa;font-style:normal;font-size:1rem;}
+  .nb-lbl{color:rgba(255,255,255,.4);font-size:.66rem;margin-top:4px;}
+
+  /* 共通 */
+  .sec{padding:80px 60px;}
+  .sec-tag{color:var(--purple);font-size:.66rem;font-weight:700;letter-spacing:.25em;text-align:center;margin-bottom:6px;text-transform:uppercase;}
+  .sec-title{font-size:1.85rem;font-weight:900;text-align:center;margin-bottom:10px;line-height:1.4;}
+  .sec-sub{text-align:center;color:var(--gray);font-size:.85rem;line-height:1.9;margin-bottom:44px;}
+
+  /* 問題 */
+  .prob-list{max-width:680px;margin:0 auto;}
+  .prob-item{display:flex;align-items:center;gap:16px;padding:16px 20px;background:#fff;margin-bottom:8px;border-radius:8px;border-left:4px solid #e0e0e0;}
+  .prob-item.yes{border-left-color:var(--purple);}
+  .prob-icon{font-size:1.4rem;flex-shrink:0;}
+  .prob-text{font-size:.83rem;color:#444;}
+
   /* 機能 */
-  .features{padding:80px 60px;background:#faf8ff;}
-  .section-tag{color:var(--purple);font-size:.68rem;font-weight:700;letter-spacing:.25em;text-align:center;margin-bottom:8px;}
-  .section-title{font-size:1.8rem;font-weight:900;text-align:center;margin-bottom:48px;}
-  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto;}
-  .feat-card{padding:32px 24px;background:#fff;border-radius:16px;border:1px solid #ede9fe;}
-  .feat-icon{font-size:2rem;margin-bottom:14px;}
-  .feat-name{font-size:.95rem;font-weight:700;margin-bottom:8px;}
-  .feat-text{color:var(--gray);font-size:.78rem;line-height:1.8;}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:0 auto;}
+  .fc{background:#fff;padding:30px 22px;border-radius:14px;border:1.5px solid #ede9fe;transition:.3s;}
+  .fc:hover{border-color:var(--purple);box-shadow:0 4px 20px rgba(124,58,237,.1);}
+  .fc-icon{font-size:2.2rem;margin-bottom:14px;}
+  .fc-num{color:var(--purple);font-size:.62rem;font-weight:700;letter-spacing:.2em;margin-bottom:6px;}
+  .fc-name{font-size:.9rem;font-weight:700;margin-bottom:8px;line-height:1.4;}
+  .fc-text{color:var(--gray);font-size:.76rem;line-height:1.85;}
+
+  /* 使い方ステップ */
+  .steps{display:flex;gap:0;max-width:900px;margin:0 auto;position:relative;}
+  .steps::before{content:'';position:absolute;top:36px;left:80px;right:80px;height:2px;background:linear-gradient(90deg,var(--purple),var(--pink));}
+  .step{flex:1;text-align:center;padding:0 14px;position:relative;z-index:1;}
+  .step-c{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 14px;border:3px solid #fff;box-shadow:0 4px 16px rgba(124,58,237,.3);}
+  .step-lbl{color:var(--purple);font-size:.62rem;font-weight:700;letter-spacing:.15em;margin-bottom:6px;}
+  .step-title{font-size:.88rem;font-weight:700;margin-bottom:6px;}
+  .step-text{color:var(--gray);font-size:.73rem;line-height:1.8;}
+
+  /* Premium */
+  .premium{background:var(--dark);padding:80px 60px;}
+  .premium .sec-tag{color:#a78bfa;}
+  .premium .sec-title{color:#fff;}
+  .premium .sec-sub{color:rgba(255,255,255,.5);}
+  .prem-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;margin:0 auto;}
+  .prem-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:20px 22px;border-radius:10px;display:flex;gap:14px;align-items:flex-start;}
+  .prem-icon{font-size:1.6rem;flex-shrink:0;}
+  .prem-name{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:4px;}
+  .prem-text{color:rgba(255,255,255,.55);font-size:.74rem;line-height:1.7;}
+  .prem-price{text-align:center;margin-top:36px;}
+  .prem-free{color:#a78bfa;font-size:.8rem;margin-bottom:6px;}
+  .prem-val{color:#fff;font-size:1.6rem;font-weight:700;}
+  .prem-period{color:rgba(255,255,255,.4);font-size:.72rem;}
+
   /* レビュー */
-  .reviews{padding:80px 60px;background:var(--dark);}
-  .reviews .section-tag{color:#a78bfa;}
-  .reviews .section-title{color:#fff;}
-  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto;}
-  .review-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:24px;border-radius:12px;}
-  .review-stars{color:var(--pink);margin-bottom:12px;}
-  .review-text{color:rgba(255,255,255,.7);font-size:.8rem;line-height:1.9;margin-bottom:14px;}
-  .review-name{color:rgba(255,255,255,.4);font-size:.72rem;}
+  .reviews{padding:80px 60px;background:var(--light);}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:960px;margin:40px auto 0;}
+  .rv{background:#fff;padding:22px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+  .rv-stars{color:var(--pink);font-size:.82rem;margin-bottom:10px;}
+  .rv-text{font-size:.78rem;line-height:1.9;color:#444;margin-bottom:12px;}
+  .rv-name{font-size:.72rem;color:var(--gray);}
+  .rv-store{display:inline-block;background:var(--light);color:var(--purple);font-size:.62rem;font-weight:700;padding:3px 9px;border-radius:4px;margin-bottom:8px;}
+
+  /* 比較 */
+  .compare{padding:80px 60px;background:#fff;}
+  .comp-table{max-width:800px;margin:0 auto;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;}
+  .comp-head{display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--dark);color:#fff;}
+  .comp-head div{padding:14px 20px;font-size:.78rem;font-weight:700;text-align:center;}
+  .comp-head div:first-child{text-align:left;}
+  .comp-head .hl{color:#a78bfa;}
+  .comp-row{display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid #f0f0f0;}
+  .comp-row:last-child{border-bottom:none;}
+  .comp-row div{padding:12px 20px;font-size:.78rem;text-align:center;display:flex;align-items:center;justify-content:center;}
+  .comp-row div:first-child{text-align:left;justify-content:flex-start;color:#444;}
+  .comp-row.alt{background:#fafafa;}
+  .check{color:var(--purple);font-size:1rem;}
+  .cross{color:#ccc;}
+
   /* CTA */
-  .cta{padding:80px 40px;background:linear-gradient(135deg,var(--purple),var(--pink));text-align:center;}
-  .cta h2{color:#fff;font-size:2.2rem;font-weight:900;margin-bottom:16px;line-height:1.4;}
-  .cta p{color:rgba(255,255,255,.8);margin-bottom:32px;font-size:.88rem;}
-  .cta .dl-btns{margin-bottom:0;}
+  .final{background:linear-gradient(135deg,var(--purple),var(--pink));padding:80px 40px;text-align:center;}
+  .final h2{color:#fff;font-size:2rem;font-weight:900;margin-bottom:12px;line-height:1.4;}
+  .final p{color:rgba(255,255,255,.8);margin-bottom:32px;font-size:.87rem;line-height:1.9;}
+  .final .dl-btns{justify-content:center;}
+  .final-note{color:rgba(255,255,255,.45);font-size:.7rem;margin-top:16px;}
+
   footer{background:#000;padding:24px;text-align:center;}
-  footer p{color:rgba(255,255,255,.3);font-size:.72rem;line-height:1.9;}
+  footer p{color:rgba(255,255,255,.25);font-size:.7rem;line-height:1.9;}
 </style>
 </head>
 <body>
 <div class="portfolio-note">※ ポートフォリオ用に制作した架空のアプリDLプロモーションLPです。実在するアプリ・会社とは一切関係ありません。</div>
 
+<!-- FV -->
 <section class="fv">
   <div class="fv-glow1"></div>
   <div class="fv-glow2"></div>
-  <div class="fv-tag">📲 App Store 4.9★ / 月間20万DL</div>
-  <h1>続かなかった習慣が、<br><span class="grad">続くようになる。</span></h1>
-  <p class="fv-sub">HABIFYは、行動科学に基づいた習慣化アプリ。小さな一歩を積み重ねることで、3ヶ月後には別人のような自分に出会えます。</p>
-  <div class="dl-btns">
-    <a href="#" class="dl-btn"><div class="dl-btn-icon">🍎</div><div class="dl-btn-text"><small>Download on the</small><strong>App Store</strong></div></a>
-    <a href="#" class="dl-btn"><div class="dl-btn-icon">▶</div><div class="dl-btn-text"><small>GET IT ON</small><strong>Google Play</strong></div></a>
-  </div>
-  <div class="fv-mockup">
-    <div class="phone-frame">
-      <div class="screen-item">
-        <div class="screen-title">TODAY'S PROGRESS</div>
-        <div class="screen-val">4 / 5 done ✓</div>
-        <div class="screen-bar"><div class="screen-bar-fill" style="width:80%"></div></div>
+  <div class="fv-inner">
+    <div class="fv-left">
+      <div class="fv-tag">📲 App Store 4.9★ ／ 月間20万DL達成</div>
+      <h1>続かなかった習慣が、<br><span class="grad">続くようになる。</span></h1>
+      <p class="fv-sub">HABIFYは、行動科学に基づいた習慣化アプリ。1日2分の小さな習慣から始めることで、3ヶ月後には別人のような自分に出会えます。ゲーム感覚で楽しく続けられる仕組みが他とは違います。</p>
+      <div class="fv-stats">
+        <div class="fvs"><div class="fvs-num">20<em>万</em></div><div class="fvs-lbl">月間DL数</div></div>
+        <div class="fvs"><div class="fvs-num">4.9<em>★</em></div><div class="fvs-lbl">App Store評価</div></div>
+        <div class="fvs"><div class="fvs-num">82<em>%</em></div><div class="fvs-lbl">3ヶ月継続率</div></div>
+        <div class="fvs"><div class="fvs-num">150<em>万人</em></div><div class="fvs-lbl">総ユーザー数</div></div>
       </div>
-      <div class="screen-item">
-        <div class="screen-title">🔥 STREAK</div>
-        <div class="screen-val">42日連続！</div>
+      <div class="dl-btns">
+        <a href="#" class="dl-btn"><div class="dl-icon">🍎</div><div class="dl-text"><small>Download on the</small><strong>App Store</strong></div></a>
+        <a href="#" class="dl-btn"><div class="dl-icon">▶</div><div class="dl-text"><small>GET IT ON</small><strong>Google Play</strong></div></a>
       </div>
-      <div class="screen-item">
-        <div class="screen-title">今日のひとこと</div>
-        <div class="screen-val" style="font-size:.85rem;line-height:1.6;">"小さな習慣が<br>大きな変化をつくる"</div>
+      <p class="fv-note">基本機能は永久無料 ／ プレミアムは7日間無料体験可能</p>
+    </div>
+    <div class="fv-right">
+      <div class="phone">
+        <div class="phone-item">
+          <div class="pi-lbl">TODAY'S PROGRESS</div>
+          <div class="pi-val">4 / 5 完了 ✓</div>
+          <div class="pi-bar"><div class="pi-fill" style="width:80%"></div></div>
+        </div>
+        <div class="phone-item">
+          <div class="pi-lbl">🔥 STREAK</div>
+          <div class="pi-val">42日連続！</div>
+        </div>
+        <div class="phone-item">
+          <div class="pi-lbl">📊 今月の達成率</div>
+          <div class="pi-val">88%</div>
+          <div class="pi-bar"><div class="pi-fill" style="width:88%"></div></div>
+        </div>
+        <div class="phone-item">
+          <div class="pi-lbl">💬 今日のひとこと</div>
+          <div class="pi-val" style="font-size:.8rem;line-height:1.6;">"小さな一歩が<br>大きな変化をつくる"</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="features">
-  <p class="section-tag">FEATURES</p>
-  <h2 class="section-title">続けられる3つの理由</h2>
+<!-- 数字バー -->
+<div class="num-bar" style="background:var(--mid);">
+  <div class="nb-item"><div class="nb-num">150<em>万人</em></div><div class="nb-lbl">累計ユーザー数</div></div>
+  <div class="nb-item"><div class="nb-num">4.9<em>★</em></div><div class="nb-lbl">App Store評価</div></div>
+  <div class="nb-item"><div class="nb-num">82<em>%</em></div><div class="nb-lbl">3ヶ月継続率</div></div>
+  <div class="nb-item"><div class="nb-num">1位</div><div class="nb-lbl">ライフスタイル部門</div></div>
+</div>
+
+<!-- 問題提起 -->
+<section class="sec" style="background:#fafafa;">
+  <p class="sec-tag">PROBLEM</p>
+  <h2 class="sec-title">こんな経験、ありませんか？</h2>
+  <p class="sec-sub">習慣化に失敗する原因は「意志の弱さ」ではありません。仕組みの問題です。</p>
+  <div class="prob-list">
+    <div class="prob-item yes"><span class="prob-icon">😩</span><p class="prob-text">「明日からやろう」がずっと続いている</p></div>
+    <div class="prob-item yes"><span class="prob-icon">📅</span><p class="prob-text">三日坊主が繰り返されて自己嫌悪になる</p></div>
+    <div class="prob-item yes"><span class="prob-icon">📝</span><p class="prob-text">手帳やメモで管理しようとしたが続かなかった</p></div>
+    <div class="prob-item yes"><span class="prob-icon">💪</span><p class="prob-text">運動・読書・英語など、やりたいことが山積みのまま</p></div>
+    <div class="prob-item yes"><span class="prob-icon">😔</span><p class="prob-text">続けている人を見ると焦るが自分はなぜかできない</p></div>
+  </div>
+</section>
+
+<!-- 機能 -->
+<section class="sec" style="background:#fff;">
+  <p class="sec-tag">FEATURES</p>
+  <h2 class="sec-title">HABIFYが選ばれる6つの理由</h2>
+  <p class="sec-sub">行動科学・ゲーミフィケーション・コミュニティの3つを組み合わせた唯一のアプリ</p>
   <div class="feat-grid">
-    <div class="feat-card">
-      <div class="feat-icon">🧠</div>
-      <h3 class="feat-name">行動科学ベースの設計</h3>
-      <p class="feat-text">「小さすぎる習慣」理論を応用。1日2分からスタートできるので、挫折しにくい仕組みになっています。</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🔥</div>
-      <h3 class="feat-name">ストリーク機能で継続欲UP</h3>
-      <p class="feat-text">連続記録が可視化されることで「途切らせたくない」という気持ちが生まれ、継続率が大幅にアップします。</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🤝</div>
-      <h3 class="feat-name">仲間と一緒に続けられる</h3>
-      <p class="feat-text">友達やグループで習慣をシェア。お互いの進捗を確認することで、孤独な継続に終止符を打ちます。</p>
-    </div>
+    <div class="fc"><div class="fc-icon">🧠</div><div class="fc-num">FEATURE 01</div><h3 class="fc-name">行動科学ベースの習慣設計</h3><p class="fc-text">「1日2分」から始められる極小ハビット理論を採用。脳が「やらなきゃ」と感じる前に自然と行動できる設計です。</p></div>
+    <div class="fc"><div class="fc-icon">🔥</div><div class="fc-num">FEATURE 02</div><h3 class="fc-name">ストリーク機能で継続欲UP</h3><p class="fc-text">連続記録を視覚化。「途切らせたくない」という心理が継続の原動力に変わります。他のアプリとは一線を画す継続率の秘密です。</p></div>
+    <div class="fc"><div class="fc-icon">🤝</div><div class="fc-num">FEATURE 03</div><h3 class="fc-name">仲間と一緒に続けられる</h3><p class="fc-text">友達やグループで習慣をシェア。お互いの進捗に「いいね」でき、孤独な継続に終止符を打ちます。</p></div>
+    <div class="fc"><div class="fc-icon">📊</div><div class="fc-num">FEATURE 04</div><h3 class="fc-name">詳細な統計・グラフ分析</h3><p class="fc-text">週・月・年単位での達成率グラフ。どの曜日に達成しやすいか、自分の傾向を把握して習慣を最適化できます。</p></div>
+    <div class="fc"><div class="fc-icon">🎯</div><div class="fc-num">FEATURE 05</div><h3 class="fc-name">AIコーチング機能</h3><p class="fc-text">あなたの達成パターンをAIが分析し、最適なリマインド時間・習慣の難易度調整を自動でサポートします。</p></div>
+    <div class="fc"><div class="fc-icon">🏆</div><div class="fc-num">FEATURE 06</div><h3 class="fc-name">バッジ・実績システム</h3><p class="fc-text">7日・30日・100日達成でバッジを獲得。コレクション要素がモチベーションを高め、楽しく継続できます。</p></div>
   </div>
 </section>
 
+<!-- 使い方 -->
+<section class="sec" style="background:var(--light);">
+  <p class="sec-tag">HOW TO START</p>
+  <h2 class="sec-title">始め方は3ステップだけ</h2>
+  <p class="sec-sub">ダウンロードから最初の習慣登録まで3分以内に完了します</p>
+  <div class="steps">
+    <div class="step"><div class="step-c">📲</div><p class="step-lbl">STEP 01</p><h3 class="step-title">アプリをDL</h3><p class="step-text">App Store / Google Playから無料でダウンロード。会員登録はメールまたはSNSで30秒。</p></div>
+    <div class="step"><div class="step-c">✏️</div><p class="step-lbl">STEP 02</p><h3 class="step-title">習慣を登録</h3><p class="step-text">続けたい習慣を登録。300種類以上のテンプレートから選ぶか、自由に設定できます。</p></div>
+    <div class="step"><div class="step-c">🔥</div><p class="step-lbl">STEP 03</p><h3 class="step-title">毎日チェック</h3><p class="step-text">達成したらチェックするだけ。ストリークが伸びるほど続けたくなる仕組みです。</p></div>
+  </div>
+</section>
+
+<!-- プレミアム -->
+<section class="premium">
+  <p class="sec-tag">PREMIUM</p>
+  <h2 class="sec-title">プレミアムプランでさらに加速</h2>
+  <p class="sec-sub">7日間無料で全機能をお試しいただけます</p>
+  <div class="prem-grid">
+    <div class="prem-item"><div class="prem-icon">🤖</div><div><div class="prem-name">AIコーチング（無制限）</div><div class="prem-text">あなたの習慣データをAIが分析し、毎日パーソナライズされたアドバイスを提供</div></div></div>
+    <div class="prem-item"><div class="prem-icon">📊</div><div><div class="prem-name">詳細統計・週次レポート</div><div class="prem-text">月・年単位の詳細グラフと、改善点を示すウィークリーレポートを自動生成</div></div></div>
+    <div class="prem-item"><div class="prem-icon">👥</div><div><div class="prem-name">無制限グループ作成</div><div class="prem-text">家族・友人・職場など複数グループを作成して習慣を共有・比較できる</div></div></div>
+    <div class="prem-item"><div class="prem-icon">🎨</div><div><div class="prem-name">テーマ・アイコンカスタマイズ</div><div class="prem-text">100種類以上のテーマとアイコンでアプリを自分好みにカスタマイズ</div></div></div>
+    <div class="prem-item"><div class="prem-icon">⏰</div><div><div class="prem-name">スマートリマインダー</div><div class="prem-text">AI が最適なタイミングを学習して、より効果的なタイミングで通知</div></div></div>
+    <div class="prem-item"><div class="prem-icon">🔒</div><div><div class="prem-name">広告完全非表示</div><div class="prem-text">集中を妨げる広告がすべて消え、習慣に集中できる環境に</div></div></div>
+  </div>
+  <div class="prem-price">
+    <div class="prem-free">7日間無料体験後</div>
+    <div class="prem-val">¥480<span style="font-size:1rem;color:rgba(255,255,255,.5);">/月</span></div>
+    <div class="prem-period">年払い：¥3,600（月あたり¥300）</div>
+  </div>
+</section>
+
+<!-- レビュー -->
 <section class="reviews">
-  <p class="section-tag">REVIEWS</p>
-  <h2 class="section-title">ユーザーの声</h2>
-  <div class="review-grid">
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">今まで3日坊主だった早起きが、このアプリを使い始めて3ヶ月継続できています。UIもおしゃれで使うのが楽しいです！</p>
-      <p class="review-name">App Store レビュー / 28歳・会社員</p>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">読書・筋トレ・英語の3つを同時管理。ストリーク機能があるから絶対サボれなくなりました（笑）。おすすめです。</p>
-      <p class="review-name">Google Play レビュー / 33歳・エンジニア</p>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★☆</div>
-      <p class="review-text">友達と一緒に習慣登録したら、お互い頑張れるようになりました。リマインダーのタイミングも細かく設定できて便利。</p>
-      <p class="review-name">App Store レビュー / 25歳・学生</p>
-    </div>
+  <p class="sec-tag">REVIEWS</p>
+  <h2 class="sec-title">ユーザーの声</h2>
+  <p class="sec-sub">★4.9 / 5.0（App Store 28,000件以上のレビューより）</p>
+  <div class="rev-grid">
+    <div class="rv"><span class="rv-store">App Store</span><div class="rv-stars">★★★★★</div><p class="rv-text">今まで三日坊主だった早起きが3ヶ月継続できています。ストリークが途切れるのが嫌で自然と続けられる。UIもおしゃれで使うのが楽しいです！</p><p class="rv-name">28歳・会社員</p></div>
+    <div class="rv"><span class="rv-store">Google Play</span><div class="rv-stars">★★★★★</div><p class="rv-text">読書・筋トレ・英語の3つを同時管理。ストリーク機能があるから絶対サボれなくなりました（笑）。AIのアドバイスも的確で助かっています。</p><p class="rv-name">33歳・エンジニア</p></div>
+    <div class="rv"><span class="rv-store">App Store</span><div class="rv-stars">★★★★★</div><p class="rv-text">夫と一緒に習慣を登録したら、お互い頑張れるように。コンペティション機能でいい意味で競い合っています。夫婦の会話も増えました！</p><p class="rv-name">31歳・主婦</p></div>
+    <div class="rv"><span class="rv-store">Google Play</span><div class="rv-stars">★★★★★</div><p class="rv-text">ダイエット目的で始めたけど、運動習慣が100日続いて-8kgを達成。アプリに感謝しています。プレミアムの統計機能が特に良かった。</p><p class="rv-name">36歳・パート</p></div>
+    <div class="rv"><span class="rv-store">App Store</span><div class="rv-stars">★★★★☆</div><p class="rv-text">朝5時起きを習慣にしたくて使い始めました。最初の1週間だけ辛かったけど、ストリーク30日を超えたら全然苦にならなくなりました。</p><p class="rv-name">24歳・学生</p></div>
+    <div class="rv"><span class="rv-store">Google Play</span><div class="rv-stars">★★★★★</div><p class="rv-text">50代でスマホアプリに不安でしたが、シンプルで使いやすいです。毎日のラジオ体操と薬を飲む習慣をきちんと記録できています。</p><p class="rv-name">52歳・主婦</p></div>
   </div>
 </section>
 
-<section class="cta">
-  <h2>無料でダウンロード<br>今日から習慣を変えよう</h2>
-  <p>基本機能は永久無料。プレミアムプランは7日間無料体験可能。</p>
-  <div class="dl-btns">
-    <a href="#" class="dl-btn"><div class="dl-btn-icon">🍎</div><div class="dl-btn-text"><small>Download on the</small><strong>App Store</strong></div></a>
-    <a href="#" class="dl-btn"><div class="dl-btn-icon">▶</div><div class="dl-btn-text"><small>GET IT ON</small><strong>Google Play</strong></div></a>
+<!-- 比較 -->
+<section class="compare">
+  <p class="sec-tag">COMPARE</p>
+  <h2 class="sec-title">他のアプリとの違い</h2>
+  <p class="sec-sub">HABIFYが習慣化アプリNo.1に選ばれる理由</p>
+  <div class="comp-table">
+    <div class="comp-head"><div>機能</div><div class="hl">HABIFY</div><div>他社アプリ</div></div>
+    <div class="comp-row"><div>AIコーチング機能</div><div><span class="check">✓</span></div><div><span class="cross">✗</span></div></div>
+    <div class="comp-row alt"><div>グループ・友達機能</div><div><span class="check">✓</span></div><div><span class="check" style="color:#ccc;">△</span></div></div>
+    <div class="comp-row"><div>詳細統計・グラフ</div><div><span class="check">✓</span></div><div><span class="cross">✗</span></div></div>
+    <div class="comp-row alt"><div>スマートリマインダー</div><div><span class="check">✓</span></div><div><span class="cross">✗</span></div></div>
+    <div class="comp-row"><div>基本機能の永久無料</div><div><span class="check">✓</span></div><div><span class="cross">✗</span></div></div>
+    <div class="comp-row alt"><div>日本語完全対応</div><div><span class="check">✓</span></div><div><span class="check" style="color:#ccc;">△</span></div></div>
   </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final">
+  <h2>無料でダウンロード<br>今日から習慣を変えよう</h2>
+  <p>基本機能は永久無料。プレミアムは7日間無料で全機能が使えます。<br>150万人が選んだ習慣化アプリを、まず試してみてください。</p>
+  <div class="dl-btns">
+    <a href="#" class="dl-btn"><div class="dl-icon">🍎</div><div class="dl-text"><small>Download on the</small><strong>App Store</strong></div></a>
+    <a href="#" class="dl-btn"><div class="dl-icon">▶</div><div class="dl-text"><small>GET IT ON</small><strong>Google Play</strong></div></a>
+  </div>
+  <p class="final-note">対応OS：iOS 14以降 ／ Android 8.0以降 ／ データはクラウドで同期</p>
 </section>
 
 <footer>
