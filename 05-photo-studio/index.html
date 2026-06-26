@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIKARI STUDIO | 写真家 / フォトグラファー</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0c0c0c;--white:#fafafa;--accent:#e8e0d5;--text:#2a2a2a;--muted:#888;}
+  body{font-family:'DM Sans','Noto Sans JP',sans-serif;background:var(--white);color:var(--text);cursor:none;}
+  .cursor{width:10px;height:10px;background:var(--black);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform .15s;mix-blend-mode:difference;}
+  .cursor-outline{width:40px;height:40px;border:1px solid rgba(0,0,0,.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all .3s;transform:translate(-15px,-15px);}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;mix-blend-mode:difference;}
+  .logo{font-family:'DM Serif Display',serif;font-size:1.1rem;letter-spacing:.05em;color:#fff;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:#fff;text-decoration:none;font-size:.78rem;letter-spacing:.12em;font-weight:300;transition:.2s;opacity:.7;}
+  nav ul a:hover{opacity:1;}
+
+  .hero{height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
+  .hero-left{background:var(--black);display:flex;flex-direction:column;justify-content:flex-end;padding:80px;}
+  .hero-left h1{font-family:'DM Serif Display',serif;color:#fff;font-size:5rem;line-height:1;margin-bottom:24px;}
+  .hero-left h1 em{font-style:italic;color:var(--accent);}
+  .hero-left p{color:rgba(255,255,255,.5);font-size:.88rem;line-height:1.9;max-width:340px;margin-bottom:36px;font-weight:300;}
+  .hero-left-links{display:flex;gap:24px;}
+  .hero-link{color:#fff;text-decoration:none;font-size:.75rem;letter-spacing:.2em;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:4px;transition:.3s;}
+  .hero-link:hover{border-color:#fff;}
+  .hero-right{display:grid;grid-template-rows:1fr 1fr;}
+  .hero-img-top{background:url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&q=80') center/cover;}
+  .hero-img-bottom{display:grid;grid-template-columns:1fr 1fr;}
+  .hero-img-bl{background:url('https://images.unsplash.com/photo-1604537466158-719b1972feb8?w=400&q=80') center/cover;}
+  .hero-img-br{background:var(--accent);display:flex;align-items:center;justify-content:center;flex-direction:column;}
+  .hero-img-br span{font-family:'DM Serif Display',serif;font-size:3.5rem;font-style:italic;color:var(--text);}
+  .hero-img-br small{font-size:.7rem;letter-spacing:.25em;color:var(--muted);margin-top:4px;}
+
+  .marquee{overflow:hidden;white-space:nowrap;border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;padding:14px 0;}
+  .marquee-inner{display:inline-block;animation:slide 18s linear infinite;}
+  .marquee-inner span{font-size:.72rem;letter-spacing:.3em;color:var(--muted);padding:0 48px;text-transform:uppercase;font-weight:300;}
+  @keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  .works{padding:100px 0;}
+  .works-header{padding:0 80px;margin-bottom:60px;}
+  .works-header .tag{color:var(--muted);font-size:.7rem;letter-spacing:.3em;margin-bottom:8px;}
+  .works-header h2{font-family:'DM Serif Display',serif;font-size:2.5rem;}
+  .masonry{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;gap:4px;padding:0 80px;}
+  .masonry-item{overflow:hidden;cursor:pointer;position:relative;}
+  .masonry-item:nth-child(1){grid-row:span 2;}
+  .masonry-item:nth-child(4){grid-row:span 2;}
+  .masonry-item .img{width:100%;height:100%;object-fit:cover;transition:.5s;background-size:cover;background-position:center;}
+  .masonry-item:hover .img{transform:scale(1.05);}
+  .masonry-item .cat{position:absolute;bottom:16px;left:16px;color:#fff;font-size:.68rem;letter-spacing:.2em;opacity:0;transition:.3s;font-weight:300;}
+  .masonry-item:hover .cat{opacity:1;}
+
+  .about{display:grid;grid-template-columns:1fr 1fr;min-height:80vh;margin-top:100px;}
+  .about-img{background:url('https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800&q=80') center/cover;}
+  .about-body{background:var(--black);padding:100px 80px;display:flex;flex-direction:column;justify-content:center;}
+  .about-body .tag{color:var(--accent);font-size:.7rem;letter-spacing:.3em;margin-bottom:24px;}
+  .about-body h2{font-family:'DM Serif Display',serif;color:#fff;font-size:2.8rem;line-height:1.2;margin-bottom:28px;}
+  .about-body h2 em{font-style:italic;color:var(--accent);}
+  .about-body p{color:rgba(255,255,255,.5);font-size:.87rem;line-height:2;font-weight:300;margin-bottom:16px;}
+  .about-sig{font-family:'DM Serif Display',serif;font-style:italic;color:var(--accent);font-size:1.5rem;margin-top:28px;}
+
+  .category{padding:100px 80px;background:#f4f1ee;}
+  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px;}
+  .cat-item{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;}
+  .cat-img{width:100%;height:100%;background-size:cover;background-position:center;transition:.5s;filter:brightness(.7);}
+  .cat-item:hover .cat-img{transform:scale(1.05);filter:brightness(.5);}
+  .cat-label{position:absolute;bottom:24px;left:24px;color:#fff;}
+  .cat-label-en{font-size:.65rem;letter-spacing:.3em;opacity:.7;margin-bottom:4px;}
+  .cat-label-ja{font-family:'DM Serif Display',serif;font-size:1.3rem;}
+
+  .price-section{padding:100px 80px;}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px;}
+  .price-box{padding:48px 36px;border:1px solid #e0e0e0;}
+  .price-box.featured{background:var(--black);border-color:var(--black);}
+  .price-en{font-size:.7rem;letter-spacing:.3em;color:var(--muted);margin-bottom:8px;}
+  .price-box.featured .price-en{color:var(--accent);}
+  .price-name{font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:20px;}
+  .price-box.featured .price-name,.price-box.featured .price-val{color:#fff;}
+  .price-val{font-size:2.2rem;font-weight:300;margin-bottom:4px;}
+  .price-note{color:var(--muted);font-size:.73rem;margin-bottom:24px;}
+  .price-box.featured .price-note{color:rgba(255,255,255,.4);}
+  .price-list{list-style:none;}
+  .price-list li{font-size:.8rem;color:var(--muted);padding:9px 0;border-bottom:1px solid #e8e8e8;display:flex;align-items:center;gap:8px;}
+  .price-box.featured .price-list li{border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5);}
+  .price-list li::before{content:'';width:6px;height:6px;background:#ccc;border-radius:50%;flex-shrink:0;}
+  .price-box.featured .price-list li::before{background:var(--accent);}
+
+  footer{background:var(--black);padding:60px 80px 36px;}
+  .footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:60px;}
+  .footer-logo{font-family:'DM Serif Display',serif;color:#fff;font-size:1.3rem;font-style:italic;}
+  .footer-logo span{display:block;color:rgba(255,255,255,.3);font-size:.72rem;font-style:normal;letter-spacing:.2em;margin-top:4px;}
+  .footer-links{display:flex;gap:48px;}
+  .footer-col h4{color:rgba(255,255,255,.3);font-size:.65rem;letter-spacing:.25em;margin-bottom:16px;}
+  .footer-col a{display:block;color:rgba(255,255,255,.5);text-decoration:none;font-size:.78rem;margin-bottom:8px;transition:.2s;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;color:rgba(255,255,255,.2);font-size:.72rem;}
+
+  .portfolio-note{background:#f0ede8;border-left:3px solid var(--muted);padding:12px 24px;text-align:center;font-size:.73rem;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-outline"></div>
+
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフォトスタジオです。実在する事業者・人物とは一切関係ありません。</div>
+
+<nav>
+  <div class="logo">HIKARI STUDIO</div>
+  <ul>
+    <li><a href="#">Works</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Category</a></li>
+    <li><a href="#">Price</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <h1>See the<br>world in<br><em>light.</em></h1>
+    <p>日常の光の中に宿る、ありふれているようで特別な瞬間を切り取る写真家・光川アキラのフォトスタジオ。</p>
+    <div class="hero-left-links">
+      <a href="#" class="hero-link">作品を見る</a>
+      <a href="#" class="hero-link">撮影を依頼する</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-top"></div>
+    <div class="hero-img-bottom">
+      <div class="hero-img-bl"></div>
+      <div class="hero-img-br">
+        <span>AKIRA</span>
+        <small>PHOTOGRAPHER</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-inner">
+    <span>Portrait</span><span>Wedding</span><span>Architecture</span><span>Product</span><span>Editorial</span><span>Landscape</span><span>Commercial</span><span>Fine Art</span>
+    <span>Portrait</span><span>Wedding</span><span>Architecture</span><span>Product</span><span>Editorial</span><span>Landscape</span><span>Commercial</span><span>Fine Art</span>
+  </div>
+</div>
+
+<section class="works">
+  <div class="works-header">
+    <p class="tag">SELECTED WORKS</p>
+    <h2>作品</h2>
+  </div>
+  <div class="masonry">
+    <div class="masonry-item">
+      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80');height:100%;"></div>
+      <span class="cat">PORTRAIT</span>
+    </div>
+    <div class="masonry-item">
+      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=600&q=80');height:100%;"></div>
+      <span class="cat">LANDSCAPE</span>
+    </div>
+    <div class="masonry-item">
+      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&q=80');height:100%;"></div>
+      <span class="cat">WEDDING</span>
+    </div>
+    <div class="masonry-item">
+      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80');height:100%;"></div>
+      <span class="cat">COMMERCIAL</span>
+    </div>
+    <div class="masonry-item">
+      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80');height:100%;"></div>
+      <span class="cat">EDITORIAL</span>
+    </div>
+    <div class="masonry-item">
+      <div class="img" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80');height:100%;"></div>
+      <span class="cat">PRODUCT</span>
+    </div>
+  </div>
+</section>
+
+<div class="about">
+  <div class="about-img"></div>
+  <div class="about-body">
+    <p class="tag">ABOUT</p>
+    <h2>光の中に、<br><em>物語がある。</em></h2>
+    <p>光川アキラ。1988年生まれ、京都出身。大阪芸術大学でフォトグラフィを学んだ後、東京に拠点を移し、人物・建築・商業撮影を中心に活動。</p>
+    <p>「写真は光を記録する行為ではなく、その場の空気と感情を封じ込める行為だ」という信念のもと、依頼者の内側にある"らしさ"を引き出す撮影スタイルで知られる。</p>
+    <p>雑誌・広告・ウェディングなど幅広く手がけ、国内外のコンペティションでの受賞歴も多数。</p>
+    <div class="about-sig">Akira Mitsukawa</div>
+  </div>
+</div>
+
+<section class="category">
+  <p style="color:var(--muted);font-size:.7rem;letter-spacing:.3em;margin-bottom:8px;">CATEGORY</p>
+  <h2 style="font-family:'DM Serif Display',serif;font-size:2.2rem;margin-bottom:0;">撮影カテゴリ</h2>
+  <div class="cat-grid">
+    <div class="cat-item">
+      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80');"></div>
+      <div class="cat-label"><div class="cat-label-en">PORTRAIT</div><div class="cat-label-ja">人物撮影</div></div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80');"></div>
+      <div class="cat-label"><div class="cat-label-en">WEDDING</div><div class="cat-label-ja">ウェディング</div></div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&q=80');"></div>
+      <div class="cat-label"><div class="cat-label-en">COMMERCIAL</div><div class="cat-label-ja">商業撮影</div></div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=400&q=80');"></div>
+      <div class="cat-label"><div class="cat-label-en">ARCHITECTURE</div><div class="cat-label-ja">建築・空間</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="price-section">
+  <p style="color:var(--muted);font-size:.7rem;letter-spacing:.3em;margin-bottom:8px;">PRICE</p>
+  <h2 style="font-family:'DM Serif Display',serif;font-size:2.2rem;margin-bottom:0;">料金</h2>
+  <div class="price-grid">
+    <div class="price-box">
+      <p class="price-en">LIGHT</p>
+      <h3 class="price-name">ライトプラン</h3>
+      <div class="price-val">¥30,000</div>
+      <p class="price-note">〜 2時間 / データ30枚納品</p>
+      <ul class="price-list">
+        <li>スタジオ or ロケーション選択</li>
+        <li>レタッチ込み</li>
+        <li>納品期間：2週間</li>
+        <li>1名〜2名対応</li>
+      </ul>
+    </div>
+    <div class="price-box featured">
+      <p class="price-en">STANDARD</p>
+      <h3 class="price-name">スタンダード</h3>
+      <div class="price-val">¥60,000</div>
+      <p class="price-note">〜 半日（4時間）/ 80枚納品</p>
+      <ul class="price-list">
+        <li>複数ロケーション対応</li>
+        <li>ヘアメイク手配可</li>
+        <li>納品期間：10日</li>
+        <li>グループ・カップル対応</li>
+      </ul>
+    </div>
+    <div class="price-box">
+      <p class="price-en">COMMERCIAL</p>
+      <h3 class="price-name">商業プラン</h3>
+      <div class="price-val">要相談</div>
+      <p class="price-note">広告・雑誌・ECサイト等</p>
+      <ul class="price-list">
+        <li>用途・媒体に合わせた料金</li>
+        <li>モデル・スタイリスト手配</li>
+        <li>二次使用権設定可</li>
+        <li>まずはご相談ください</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">
+      HIKARI STUDIO
+      <span>光川アキラ / Photographer</span>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>WORKS</h4>
+        <a href="#">Portrait</a><a href="#">Wedding</a><a href="#">Commercial</a>
+      </div>
+      <div class="footer-col">
+        <h4>INFO</h4>
+        <a href="#">About</a><a href="#">Price</a><a href="#">FAQ</a><a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2024 HIKARI STUDIO / Akira Mitsukawa. All Rights Reserved. | 東京都渋谷区神宮前X-X-X</div>
+</footer>
+
+<script>
+const cursor = document.querySelector('.cursor');
+const outline = document.querySelector('.cursor-outline');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX - 5 + 'px';
+  cursor.style.top = e.clientY - 5 + 'px';
+  outline.style.left = e.clientX - 20 + 'px';
+  outline.style.top = e.clientY - 20 + 'px';
+});
+</script>
+</body>
+</html>

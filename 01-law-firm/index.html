@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山田・中村法律事務所 | 東京・新宿</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--navy:#0d1b2a;--gold:#c9a84c;--light:#f5f3ee;--gray:#6b7280;}
+  body{font-family:'Noto Sans JP',sans-serif;color:var(--navy);background:#fff;}
+
+  /* ナビ */
+  nav{position:fixed;top:0;width:100%;background:rgba(13,27,42,0.97);z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{font-family:'Noto Serif JP',serif;color:#fff;font-size:1.1rem;letter-spacing:.15em;}
+  .logo span{color:var(--gold);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.82rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+
+  /* ヒーロー */
+  .hero{height:100vh;background:var(--navy);display:flex;align-items:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;right:0;top:0;width:55%;height:100%;background:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80') center/cover;opacity:.25;}
+  .hero-line{position:absolute;left:0;top:0;width:5px;height:100%;background:var(--gold);}
+  .hero-content{position:relative;z-index:1;padding:0 80px;max-width:700px;}
+  .hero-sub{color:var(--gold);font-size:.78rem;letter-spacing:.3em;margin-bottom:24px;font-weight:500;}
+  .hero h1{font-family:'Noto Serif JP',serif;color:#fff;font-size:3.2rem;line-height:1.4;margin-bottom:28px;font-weight:700;}
+  .hero p{color:rgba(255,255,255,.65);line-height:1.9;font-size:.92rem;margin-bottom:40px;font-weight:300;}
+  .btn-primary{display:inline-block;background:var(--gold);color:var(--navy);padding:14px 40px;font-size:.85rem;letter-spacing:.12em;text-decoration:none;font-weight:600;transition:.3s;}
+  .btn-primary:hover{background:#e0bb5a;}
+  .btn-outline{display:inline-block;border:1px solid rgba(255,255,255,.4);color:#fff;padding:14px 40px;font-size:.85rem;letter-spacing:.12em;text-decoration:none;margin-left:16px;transition:.3s;}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* 実績バー */
+  .stats{background:var(--gold);display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat{padding:32px 20px;text-align:center;border-right:1px solid rgba(13,27,42,.15);}
+  .stat:last-child{border:none;}
+  .stat-num{font-family:'Noto Serif JP',serif;font-size:2.4rem;color:var(--navy);font-weight:700;}
+  .stat-label{font-size:.75rem;color:var(--navy);margin-top:4px;opacity:.8;}
+
+  /* 専門分野 */
+  .section{padding:100px 80px;}
+  .section-tag{color:var(--gold);font-size:.75rem;letter-spacing:.3em;margin-bottom:12px;}
+  .section-title{font-family:'Noto Serif JP',serif;font-size:2rem;color:var(--navy);margin-bottom:16px;}
+  .section-lead{color:var(--gray);line-height:1.9;max-width:560px;font-size:.9rem;}
+  .practice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px;background:#e5e5e5;}
+  .practice-item{background:#fff;padding:48px 36px;position:relative;transition:.3s;}
+  .practice-item:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.08);}
+  .practice-num{font-family:'Noto Serif JP',serif;font-size:2.5rem;color:var(--gold);opacity:.3;margin-bottom:16px;}
+  .practice-title{font-family:'Noto Serif JP',serif;font-size:1.1rem;margin-bottom:12px;}
+  .practice-text{color:var(--gray);font-size:.83rem;line-height:1.8;}
+
+  /* 弁護士 */
+  .lawyers{background:var(--light);padding:100px 80px;}
+  .lawyer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:60px;}
+  .lawyer-card{background:#fff;overflow:hidden;}
+  .lawyer-img{height:260px;background:#ccc;position:relative;overflow:hidden;}
+  .lawyer-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%);}
+  .lawyer-info{padding:28px 28px 32px;}
+  .lawyer-role{color:var(--gold);font-size:.72rem;letter-spacing:.2em;margin-bottom:6px;}
+  .lawyer-name{font-family:'Noto Serif JP',serif;font-size:1.2rem;margin-bottom:4px;}
+  .lawyer-name-en{color:var(--gray);font-size:.75rem;letter-spacing:.1em;margin-bottom:14px;}
+  .lawyer-text{color:var(--gray);font-size:.8rem;line-height:1.8;}
+
+  /* アクセス */
+  .access{display:grid;grid-template-columns:1fr 1fr;}
+  .access-info{background:var(--navy);padding:80px;}
+  .access-info .section-tag,.access-info .section-title{color:#fff;}
+  .access-info .section-title{color:#fff;}
+  table{margin-top:40px;width:100%;border-collapse:collapse;}
+  td{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.75);font-size:.85rem;vertical-align:top;}
+  td:first-child{color:var(--gold);width:90px;font-size:.78rem;letter-spacing:.05em;}
+  .access-map{background:#1a2a3a;min-height:400px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:.85rem;}
+
+  /* フッター */
+  footer{background:#080f16;padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.35);font-size:.75rem;}
+  .footer-logo{font-family:'Noto Serif JP',serif;color:rgba(255,255,255,.5);font-size:.9rem;letter-spacing:.1em;}
+
+  /* ポートフォリオ注記 */
+  .portfolio-note{background:#f0ede8;border-left:3px solid var(--gold);padding:12px 20px;text-align:center;font-size:.75rem;color:var(--gray);}
+</style>
+</head>
+<body>
+
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空の法律事務所です。実在する事務所・人物とは一切関係ありません。</div>
+
+<nav>
+  <div class="logo"><span>山田・中村</span>法律事務所</div>
+  <ul>
+    <li><a href="#">事務所概要</a></li>
+    <li><a href="#">専門分野</a></li>
+    <li><a href="#">弁護士紹介</a></li>
+    <li><a href="#">解決事例</a></li>
+    <li><a href="#">アクセス</a></li>
+    <li><a href="#">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <p class="hero-sub">YAMADA & NAKAMURA LAW OFFICE</p>
+    <h1>あなたの権利を、<br>誠実に守る。</h1>
+    <p>企業法務から個人の相続・離婚問題まで、複雑な法律問題に正面から向き合います。<br>30年以上の実績と専門知識で、最善の解決策をご提案します。</p>
+    <a href="#" class="btn-primary">無料相談を予約する</a>
+    <a href="#" class="btn-outline">解決事例を見る</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">1,800<small style="font-size:1.2rem">+</small></div><div class="stat-label">解決実績</div></div>
+  <div class="stat"><div class="stat-num">32</div><div class="stat-label">創業年数</div></div>
+  <div class="stat"><div class="stat-num">96<small style="font-size:1.2rem">%</small></div><div class="stat-label">依頼者満足度</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">在籍弁護士</div></div>
+</div>
+
+<section class="section">
+  <p class="section-tag">PRACTICE AREAS</p>
+  <h2 class="section-title">専門分野</h2>
+  <p class="section-lead">企業の経営課題から個人の生活上のトラブルまで、幅広い法律問題に対応しています。</p>
+  <div class="practice-grid">
+    <div class="practice-item">
+      <div class="practice-num">01</div>
+      <h3 class="practice-title">企業法務・顧問契約</h3>
+      <p class="practice-text">契約書審査、労務管理、株主総会対応など、企業経営を法律面からサポートします。</p>
+    </div>
+    <div class="practice-item">
+      <div class="practice-num">02</div>
+      <h3 class="practice-title">相続・遺産分割</h3>
+      <p class="practice-text">遺言書作成から複雑な遺産分割協議まで、家族の将来を見据えたご提案をします。</p>
+    </div>
+    <div class="practice-item">
+      <div class="practice-num">03</div>
+      <h3 class="practice-title">離婚・家事問題</h3>
+      <p class="practice-text">離婚交渉、親権、養育費問題を依頼者の立場に寄り添い解決へと導きます。</p>
+    </div>
+    <div class="practice-item">
+      <div class="practice-num">04</div>
+      <h3 class="practice-title">不動産トラブル</h3>
+      <p class="practice-text">売買契約、賃貸借問題、境界線紛争など不動産に関するあらゆる問題に対応。</p>
+    </div>
+    <div class="practice-item">
+      <div class="practice-num">05</div>
+      <h3 class="practice-title">債務整理・破産</h3>
+      <p class="practice-text">任意整理、個人再生、自己破産を通じて経済的な再建をサポートします。</p>
+    </div>
+    <div class="practice-item">
+      <div class="practice-num">06</div>
+      <h3 class="practice-title">刑事弁護</h3>
+      <p class="practice-text">逮捕直後から対応。迅速な初動と緻密な弁護戦略で依頼者の権利を守ります。</p>
+    </div>
+  </div>
+</section>
+
+<section class="lawyers">
+  <p class="section-tag">OUR ATTORNEYS</p>
+  <h2 class="section-title">弁護士紹介</h2>
+  <p class="section-lead">経験豊富な弁護士が、依頼者一人ひとりの問題に真剣に向き合います。</p>
+  <div class="lawyer-grid">
+    <div class="lawyer-card">
+      <div class="lawyer-img" style="background:#c8cdd3;display:flex;align-items:center;justify-content:center;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="30" r="18" fill="#a0a8b0"/><ellipse cx="40" cy="70" rx="28" ry="18" fill="#a0a8b0"/></svg>
+      </div>
+      <div class="lawyer-info">
+        <p class="lawyer-role">代表弁護士 / FOUNDING PARTNER</p>
+        <h3 class="lawyer-name">山田 誠一郎</h3>
+        <p class="lawyer-name-en">Seiichiro Yamada</p>
+        <p class="lawyer-text">東京大学法学部卒。企業法務・M&Aを専門とし、国内外の大型案件を多数手がける。日本弁護士連合会会員。</p>
+      </div>
+    </div>
+    <div class="lawyer-card">
+      <div class="lawyer-img" style="background:#c8cdd3;display:flex;align-items:center;justify-content:center;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="30" r="18" fill="#a0a8b0"/><ellipse cx="40" cy="70" rx="28" ry="18" fill="#a0a8b0"/></svg>
+      </div>
+      <div class="lawyer-info">
+        <p class="lawyer-role">パートナー弁護士 / PARTNER</p>
+        <h3 class="lawyer-name">中村 真理子</h3>
+        <p class="lawyer-name-en">Mariko Nakamura</p>
+        <p class="lawyer-text">早稲田大学法科大学院修了。家事・相続問題を専門とし、女性・子どもの権利保護に精力的に取り組む。</p>
+      </div>
+    </div>
+    <div class="lawyer-card">
+      <div class="lawyer-img" style="background:#c8cdd3;display:flex;align-items:center;justify-content:center;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="30" r="18" fill="#a0a8b0"/><ellipse cx="40" cy="70" rx="28" ry="18" fill="#a0a8b0"/></svg>
+      </div>
+      <div class="lawyer-info">
+        <p class="lawyer-role">アソシエイト / ASSOCIATE</p>
+        <h3 class="lawyer-name">佐藤 健太</h3>
+        <p class="lawyer-name-en">Kenta Sato</p>
+        <p class="lawyer-text">慶應義塾大学法科大学院修了。刑事弁護・労働問題を中心に、若手ながら多くの困難な案件を解決してきた。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="access">
+  <div class="access-info">
+    <p class="section-tag">ACCESS</p>
+    <h2 class="section-title" style="color:#fff;">アクセス・<br>相談受付</h2>
+    <table>
+      <tr><td>所在地</td><td>東京都新宿区西新宿3-1-8<br>新宿ビジネスセンター12F</td></tr>
+      <tr><td>電話</td><td>03-XXXX-XXXX（平日9:00〜18:00）</td></tr>
+      <tr><td>アクセス</td><td>JR新宿駅 西口より徒歩8分<br>都営大江戸線 新宿西口駅より徒歩3分</td></tr>
+      <tr><td>相談料</td><td>初回30分 無料<br>以後30分 5,500円（税込）</td></tr>
+      <tr><td>受付時間</td><td>平日 9:00〜18:00<br>土曜 10:00〜15:00（要予約）</td></tr>
+    </table>
+  </div>
+  <div class="access-map">[ MAP ]</div>
+</div>
+
+<footer>
+  <p class="footer-logo">山田・中村法律事務所</p>
+  <p>© 2024 Yamada & Nakamura Law Office. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

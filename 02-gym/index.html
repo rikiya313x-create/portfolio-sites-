@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRON FORCE GYM | 本気のトレーニング</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0a0a0a;--yellow:#f5c400;--gray:#1a1a1a;--light-gray:#888;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:#fff;}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(10,10,10,0.95);border-bottom:2px solid var(--yellow);}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;color:#fff;}
+  .logo span{color:var(--yellow);}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;transition:.2s;}
+  nav ul a:hover{color:var(--yellow);}
+  .nav-cta{background:var(--yellow);color:var(--black)!important;padding:10px 24px;font-weight:900!important;}
+
+  .hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80') center/cover;filter:brightness(.35);}
+  .hero-stripe{position:absolute;left:0;top:0;width:8px;height:100%;background:var(--yellow);}
+  .hero-content{position:relative;z-index:1;padding:0 80px;}
+  .hero-tag{display:inline-block;background:var(--yellow);color:var(--black);padding:6px 16px;font-size:.7rem;letter-spacing:.25em;font-weight:900;margin-bottom:24px;text-transform:uppercase;}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:8rem;line-height:.9;margin-bottom:24px;letter-spacing:.02em;}
+  .hero h1 span{color:var(--yellow);display:block;}
+  .hero p{color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.9;max-width:500px;margin-bottom:40px;}
+  .btn-yellow{display:inline-block;background:var(--yellow);color:var(--black);padding:16px 48px;font-size:.85rem;font-weight:900;letter-spacing:.15em;text-decoration:none;text-transform:uppercase;transition:.3s;}
+  .btn-yellow:hover{background:#ffd700;}
+  .btn-ghost{display:inline-block;border:2px solid rgba(255,255,255,.4);color:#fff;padding:16px 48px;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-decoration:none;margin-left:16px;transition:.3s;text-transform:uppercase;}
+  .btn-ghost:hover{border-color:var(--yellow);color:var(--yellow);}
+
+  .ticker{background:var(--yellow);padding:12px 0;overflow:hidden;white-space:nowrap;}
+  .ticker-inner{display:inline-block;animation:tick 20s linear infinite;}
+  .ticker-inner span{color:var(--black);font-size:.75rem;font-weight:900;letter-spacing:.2em;padding:0 40px;text-transform:uppercase;}
+  @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  .programs{padding:100px 80px;background:var(--black);}
+  .section-label{color:var(--yellow);font-size:.7rem;letter-spacing:.35em;font-weight:900;text-transform:uppercase;margin-bottom:12px;}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:.05em;margin-bottom:48px;line-height:1;}
+  .program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .program-item{background:var(--gray);padding:40px 28px;position:relative;overflow:hidden;transition:.3s;cursor:pointer;}
+  .program-item::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--yellow);transition:.4s;}
+  .program-item:hover::before{width:100%;}
+  .program-item:hover{background:#222;}
+  .program-icon{font-size:2.5rem;margin-bottom:20px;}
+  .program-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.05em;margin-bottom:10px;}
+  .program-text{color:var(--light-gray);font-size:.78rem;line-height:1.8;}
+  .program-price{color:var(--yellow);font-size:.8rem;font-weight:700;margin-top:16px;}
+
+  .about{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
+  .about-img{background:url('https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=800&q=80') center/cover;position:relative;}
+  .about-img::after{content:'SINCE 2012';position:absolute;bottom:40px;left:40px;font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(245,196,0,.15);line-height:1;}
+  .about-content{background:#111;padding:80px;}
+  .about-content p{color:rgba(255,255,255,.65);line-height:2;font-size:.88rem;margin-bottom:20px;}
+  .about-nums{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
+  .about-num{border-left:3px solid var(--yellow);padding-left:16px;}
+  .about-num-val{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--yellow);}
+  .about-num-label{color:var(--light-gray);font-size:.75rem;margin-top:2px;}
+
+  .trainers{padding:100px 80px;background:#0d0d0d;}
+  .trainer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+  .trainer-card{position:relative;overflow:hidden;cursor:pointer;}
+  .trainer-img{height:360px;background:#1f1f1f;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+  .trainer-placeholder{width:120px;height:120px;background:#333;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .trainer-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.9));padding:32px 24px 24px;}
+  .trainer-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.05em;}
+  .trainer-spec{color:var(--yellow);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;}
+
+  .price{padding:100px 80px;background:var(--black);}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;}
+  .price-card{background:var(--gray);padding:48px 36px;position:relative;}
+  .price-card.featured{background:var(--yellow);}
+  .price-card.featured *{color:var(--black)!important;}
+  .price-badge{position:absolute;top:20px;right:20px;background:var(--black);color:var(--yellow);font-size:.65rem;padding:4px 10px;font-weight:900;letter-spacing:.1em;}
+  .price-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.1em;margin-bottom:8px;}
+  .price-amount{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;margin-bottom:4px;}
+  .price-period{color:var(--light-gray);font-size:.75rem;margin-bottom:28px;}
+  .price-features{list-style:none;}
+  .price-features li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.82rem;color:rgba(255,255,255,.7);}
+  .price-features li::before{content:'→ ';color:var(--yellow);}
+  .price-card.featured .price-features li{border-bottom-color:rgba(0,0,0,.15);}
+  .price-card.featured .price-features li::before{color:var(--black);}
+
+  footer{background:#050505;padding:40px 80px;display:grid;grid-template-columns:1fr auto;align-items:center;border-top:2px solid var(--yellow);}
+  footer p{color:rgba(255,255,255,.3);font-size:.75rem;}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#fff;}
+
+  .portfolio-note{background:#1a1500;border-left:3px solid var(--yellow);padding:12px 20px;text-align:center;font-size:.73rem;color:rgba(255,255,255,.5);}
+</style>
+</head>
+<body>
+
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフィットネスジムです。実在する施設・人物とは一切関係ありません。</div>
+
+<nav>
+  <div class="logo">IRON<span>FORCE</span></div>
+  <ul>
+    <li><a href="#">プログラム</a></li>
+    <li><a href="#">トレーナー</a></li>
+    <li><a href="#">料金</a></li>
+    <li><a href="#">アクセス</a></li>
+    <li><a href="#" class="nav-cta">無料体験</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Osaka Premium Gym</div>
+    <h1>BREAK<span>YOUR LIMIT.</span></h1>
+    <p>言い訳をやめた日から、変化は始まる。プロのトレーナーと最高の設備で、本気のフィジカルを手に入れろ。</p>
+    <a href="#" class="btn-yellow">無料体験に申し込む</a>
+    <a href="#" class="btn-ghost">施設を見る</a>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span>
+    <span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span>
+  </div>
+</div>
+
+<section class="programs">
+  <p class="section-label">Our Programs</p>
+  <h2 class="section-title">プログラム</h2>
+  <div class="program-grid">
+    <div class="program-item">
+      <div class="program-icon">💪</div>
+      <h3 class="program-name">パーソナル</h3>
+      <p class="program-text">専属トレーナーが完全マンツーマンで指導。目標・体質・生活スタイルに合わせたプログラムを設計します。</p>
+      <p class="program-price">¥8,800 / 60min</p>
+    </div>
+    <div class="program-item">
+      <div class="program-icon">🔥</div>
+      <h3 class="program-name">HIIT クラス</h3>
+      <p class="program-text">高強度インターバルトレーニング。短時間で最大限の脂肪燃焼効果を狙う人気グループレッスン。</p>
+      <p class="program-price">¥2,200 / session</p>
+    </div>
+    <div class="program-item">
+      <div class="program-icon">🏋️</div>
+      <h3 class="program-name">パワーリフティング</h3>
+      <p class="program-text">スクワット・ベンチ・デッドの3種目を徹底強化。競技者からアマチュアまで対応。</p>
+      <p class="program-price">¥3,300 / session</p>
+    </div>
+    <div class="program-item">
+      <div class="program-icon">🧘</div>
+      <h3 class="program-name">リカバリー</h3>
+      <p class="program-text">ストレッチ・モビリティワーク・スポーツマッサージで身体の回復を最適化する。</p>
+      <p class="program-price">¥4,400 / 60min</p>
+    </div>
+  </div>
+</section>
+
+<div class="about">
+  <div class="about-img"></div>
+  <div class="about-content">
+    <p class="section-label">About</p>
+    <h2 class="section-title">妥協しない<br>環境がある</h2>
+    <p>IRON FORCEは2012年に大阪・梅田でオープンした本格フィットネスジムです。プロアスリートから40代で初めてジムに来た人まで、すべての「本気」に応えてきました。</p>
+    <p>設備の充実度と、トレーナーの質。その両方で妥協しないことが私たちのポリシーです。プロテインや栄養面のカウンセリングも含め、トータルで結果にコミットします。</p>
+    <div class="about-nums">
+      <div class="about-num"><div class="about-num-val">2400+</div><div class="about-num-label">会員数</div></div>
+      <div class="about-num"><div class="about-num-val">12</div><div class="about-num-label">在籍トレーナー</div></div>
+      <div class="about-num"><div class="about-num-val">24H</div><div class="about-num-label">営業時間</div></div>
+      <div class="about-num"><div class="about-num-val">98%</div><div class="about-num-label">継続率</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="trainers">
+  <p class="section-label">Trainers</p>
+  <h2 class="section-title">トレーナー</h2>
+  <div class="trainer-grid">
+    <div class="trainer-card">
+      <div class="trainer-img">
+        <div class="trainer-placeholder"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="22" r="14" fill="#555"/><ellipse cx="30" cy="52" rx="22" ry="14" fill="#555"/></svg></div>
+        <div class="trainer-overlay">
+          <div class="trainer-name">KEISUKE TANAKA</div>
+          <div class="trainer-spec">Head Trainer / 元プロボクサー</div>
+        </div>
+      </div>
+    </div>
+    <div class="trainer-card">
+      <div class="trainer-img">
+        <div class="trainer-placeholder"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="22" r="14" fill="#555"/><ellipse cx="30" cy="52" rx="22" ry="14" fill="#555"/></svg></div>
+        <div class="trainer-overlay">
+          <div class="trainer-name">AYAKA NISHIMURA</div>
+          <div class="trainer-spec">Body Make / 栄養士資格保有</div>
+        </div>
+      </div>
+    </div>
+    <div class="trainer-card">
+      <div class="trainer-img">
+        <div class="trainer-placeholder"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="22" r="14" fill="#555"/><ellipse cx="30" cy="52" rx="22" ry="14" fill="#555"/></svg></div>
+        <div class="trainer-overlay">
+          <div class="trainer-name">RYO MATSUMOTO</div>
+          <div class="trainer-spec">Strength / パワーリフター</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="price">
+  <p class="section-label">Membership</p>
+  <h2 class="section-title">料金プラン</h2>
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="price-name">BASIC</div>
+      <div class="price-amount">¥8,800</div>
+      <div class="price-period">/ 月（税込）</div>
+      <ul class="price-features">
+        <li>フリーウェイトエリア利用</li>
+        <li>マシンエリア利用</li>
+        <li>グループクラス2回/月</li>
+        <li>ロッカー使用</li>
+      </ul>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">人気No.1</div>
+      <div class="price-name">STANDARD</div>
+      <div class="price-amount">¥14,800</div>
+      <div class="price-period">/ 月（税込）</div>
+      <ul class="price-features">
+        <li>全エリア利用（24時間）</li>
+        <li>グループクラス無制限</li>
+        <li>月1回パーソナル指導</li>
+        <li>栄養カウンセリング</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="price-name">PREMIUM</div>
+      <div class="price-amount">¥29,800</div>
+      <div class="price-period">/ 月（税込）</div>
+      <ul class="price-features">
+        <li>全エリア利用（24時間）</li>
+        <li>週1パーソナル指導</li>
+        <li>専属トレーナー担当</li>
+        <li>月次フィジカル測定</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">IRON FORCE GYM</div>
+    <p style="margin-top:8px;">大阪府大阪市北区梅田2-X-X IRONFORCE BLDG / TEL: 06-XXXX-XXXX</p>
+  </div>
+  <p>© 2024 IRON FORCE GYM. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
