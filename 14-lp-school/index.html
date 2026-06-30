@@ -10,6 +10,7 @@
   :root{--blue:#1a3af5;--navy:#0a0f3c;--orange:#ff6b2b;--text:#1a1a2e;--gray:#6b7280;--bg:#f5f7ff;--light:#eef1ff;}
   body{font-family:'Noto Sans JP',sans-serif;color:var(--text);overflow-x:hidden;}
   a{text-decoration:none;}
+  img{max-width:100%;display:block;}
   .portfolio-note{background:#eff2ff;border-left:3px solid var(--blue);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--gray);}
 
   /* NAV */
@@ -18,16 +19,20 @@
   .nav-links{display:flex;gap:28px;list-style:none;}
   .nav-links a{color:rgba(255,255,255,.6);font-size:.78rem;transition:.2s;}
   .nav-links a:hover{color:#fff;}
-  .nav-cta{background:var(--orange);color:#fff;padding:10px 24px;font-size:.78rem;font-weight:700;transition:.2s;}
+  .nav-cta{background:var(--orange);color:#fff;padding:10px 24px;font-size:.78rem;font-weight:700;transition:.2s;border-radius:4px;}
   .nav-cta:hover{opacity:.85;}
 
   /* FV */
-  .fv{background:var(--navy);padding:80px 60px;position:relative;overflow:hidden;}
-  .fv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;}
-  .fv-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,43,.15),transparent 70%);top:-100px;right:-100px;}
-  .fv-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1;}
+  .fv{background:var(--navy);padding:0;position:relative;overflow:hidden;}
+  .fv-img{height:600px;position:relative;overflow:hidden;}
+  .fv-img img{width:100%;height:100%;object-fit:cover;opacity:.3;}
+  .fv-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,15,60,.95) 50%,rgba(10,15,60,.5) 100%);}
+  .fv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+  .fv-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,43,.15),transparent 70%);top:-100px;right:-100px;pointer-events:none;}
+  .fv-content{position:absolute;inset:0;display:flex;align-items:center;padding:0 60px;}
+  .fv-inner{max-width:750px;position:relative;z-index:1;}
   .fv-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,43,.15);border:1px solid rgba(255,107,43,.3);color:var(--orange);padding:6px 16px;font-size:.72rem;font-weight:700;letter-spacing:.1em;margin-bottom:24px;border-radius:100px;}
-  .fv h1{color:#fff;font-size:3.6rem;font-weight:900;line-height:1.15;margin-bottom:16px;}
+  .fv h1{color:#fff;font-size:3.4rem;font-weight:900;line-height:1.15;margin-bottom:16px;}
   .fv h1 em{color:var(--orange);font-style:normal;}
   .fv-sub{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.95;max-width:620px;margin-bottom:36px;}
   .fv-stats{display:flex;gap:40px;margin-bottom:36px;flex-wrap:wrap;}
@@ -36,21 +41,29 @@
   .stat-num em{color:var(--orange);font-style:normal;font-size:1.3rem;}
   .stat-lbl{color:rgba(255,255,255,.45);font-size:.68rem;margin-top:4px;}
   .fv-btns{display:flex;gap:14px;flex-wrap:wrap;}
-  .btn-orange{background:var(--orange);color:#fff;padding:18px 40px;font-size:.98rem;font-weight:700;display:inline-block;transition:.3s;}
+  .btn-orange{background:var(--orange);color:#fff;padding:18px 40px;font-size:.98rem;font-weight:700;display:inline-block;transition:.3s;border-radius:4px;}
   .btn-orange:hover{background:#e05a20;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,43,.4);}
-  .btn-outline{border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);padding:18px 32px;font-size:.86rem;font-weight:500;display:inline-block;transition:.2s;}
+  .btn-outline{border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);padding:18px 32px;font-size:.86rem;font-weight:500;display:inline-block;transition:.2s;border-radius:4px;}
   .btn-outline:hover{border-color:#fff;color:#fff;}
   .fv-trust{display:flex;gap:20px;margin-top:20px;flex-wrap:wrap;}
   .fv-t{color:rgba(255,255,255,.45);font-size:.72rem;display:flex;align-items:center;gap:5px;}
   .fv-t::before{content:'✓';color:var(--orange);}
 
-  /* 受講後の変化 */
-  .change{padding:80px 60px;background:var(--bg);}
+  /* 信頼バー */
+  .trust-bar{background:#fff;padding:16px 60px;display:flex;align-items:center;border-bottom:1px solid #e5e7eb;}
+  .tb-item{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;font-size:.74rem;color:#555;border-right:1px solid #e5e7eb;padding:0 16px;}
+  .tb-item:last-child{border-right:none;}
+  .tb-icon{color:var(--orange);font-size:.9rem;}
+
+  /* 共通 */
   .sec-tag{color:var(--blue);font-size:.66rem;font-weight:700;letter-spacing:.25em;text-align:center;margin-bottom:6px;text-transform:uppercase;}
   .sec-title{font-size:1.85rem;font-weight:900;text-align:center;margin-bottom:10px;line-height:1.4;}
   .sec-sub{text-align:center;color:var(--gray);font-size:.85rem;line-height:1.9;margin-bottom:44px;}
+
+  /* 受講後の変化 */
+  .change{padding:80px 60px;background:var(--bg);}
   .change-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto;}
-  .cc{background:#fff;padding:32px 24px;text-align:center;border-bottom:3px solid var(--blue);}
+  .cc{background:#fff;padding:32px 24px;text-align:center;border-bottom:3px solid var(--blue);border-radius:8px;}
   .cc-icon{font-size:2.2rem;margin-bottom:14px;}
   .cc-before{color:var(--gray);font-size:.75rem;text-decoration:line-through;margin-bottom:6px;}
   .cc-arrow{color:var(--orange);font-size:1.1rem;margin-bottom:6px;}
@@ -63,26 +76,51 @@
   .tg-icon{color:var(--orange);font-size:1.2rem;flex-shrink:0;}
   .tg-text{font-size:.83rem;font-weight:500;}
 
+  /* ブランドストーリー */
+  .story-section{padding:80px 60px;background:var(--navy);}
+  .story-section .sec-tag{color:var(--orange);}
+  .story-section .sec-title{color:#fff;}
+  .story-section .sec-sub{color:rgba(255,255,255,.5);}
+  .story-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .story-img{border-radius:12px;overflow:hidden;height:380px;}
+  .story-img img{width:100%;height:100%;object-fit:cover;}
+  .story-text p{color:rgba(255,255,255,.65);font-size:.84rem;line-height:2;margin-bottom:14px;}
+  .story-nums{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
+  .sn{background:rgba(255,107,43,.1);border:1px solid rgba(255,107,43,.2);padding:16px 18px;border-radius:8px;text-align:center;}
+  .sn-num{color:var(--orange);font-family:'Poppins',sans-serif;font-size:1.8rem;font-weight:700;line-height:1;}
+  .sn-num em{font-size:.9rem;font-style:normal;}
+  .sn-lbl{color:rgba(255,255,255,.5);font-size:.68rem;margin-top:4px;}
+
   /* カリキュラム */
   .curriculum{padding:80px 60px;background:var(--bg);}
   .cur-list{max-width:800px;margin:0 auto;}
-  .cur-item{display:flex;gap:24px;padding:24px;background:#fff;margin-bottom:10px;align-items:flex-start;border-left:4px solid var(--blue);}
-  .cur-week{background:var(--navy);color:#fff;font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:700;padding:6px 12px;flex-shrink:0;white-space:nowrap;}
+  .cur-item{display:flex;gap:24px;padding:24px;background:#fff;margin-bottom:10px;align-items:flex-start;border-left:4px solid var(--blue);border-radius:0 8px 8px 0;}
+  .cur-week{background:var(--navy);color:#fff;font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:700;padding:6px 12px;flex-shrink:0;white-space:nowrap;border-radius:4px;}
   .cur-title{font-weight:700;margin-bottom:5px;font-size:.92rem;}
   .cur-desc{color:var(--gray);font-size:.78rem;line-height:1.8;}
   .cur-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
   .cur-tag{background:var(--light);color:var(--blue);font-size:.63rem;padding:3px 10px;border-radius:4px;font-weight:500;}
+  .cur-img{height:220px;overflow:hidden;border-radius:8px;margin:0 0 30px;}
+  .cur-img img{width:100%;height:100%;object-fit:cover;}
 
   /* 講師 */
   .mentor{padding:80px 60px;background:#fff;}
-  .mentor-card{max-width:800px;margin:0 auto;display:flex;gap:48px;align-items:center;background:var(--bg);padding:40px;}
-  .mentor-img{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue));display:flex;align-items:center;justify-content:center;font-size:3.5rem;flex-shrink:0;border:3px solid var(--orange);}
+  .mentor-card{max-width:800px;margin:0 auto;display:flex;gap:48px;align-items:flex-start;background:var(--bg);padding:40px;border-radius:12px;}
+  .mentor-img{width:160px;height:160px;border-radius:50%;overflow:hidden;flex-shrink:0;border:3px solid var(--orange);}
+  .mentor-img img{width:100%;height:100%;object-fit:cover;}
   .mentor-name{font-size:1.3rem;font-weight:700;margin-bottom:4px;}
   .mentor-title{color:var(--orange);font-size:.72rem;font-weight:700;letter-spacing:.1em;margin-bottom:14px;}
   .mentor-career{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
   .mc-item{display:flex;gap:8px;font-size:.78rem;color:var(--gray);}
   .mc-dot{color:var(--orange);flex-shrink:0;}
   .mentor-quote{background:#fff;border-left:3px solid var(--orange);padding:14px 18px;font-size:.8rem;line-height:1.9;color:var(--text);}
+  .mentor-sub{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:800px;margin:24px auto 0;}
+  .ms-card{background:var(--bg);padding:20px;border-radius:8px;text-align:center;}
+  .ms-img{width:80px;height:80px;border-radius:50%;margin:0 auto 10px;overflow:hidden;border:2px solid var(--orange);}
+  .ms-img img{width:100%;height:100%;object-fit:cover;}
+  .ms-name{font-size:.82rem;font-weight:700;margin-bottom:2px;}
+  .ms-title{color:var(--orange);font-size:.66rem;margin-bottom:8px;}
+  .ms-text{color:var(--gray);font-size:.72rem;line-height:1.75;}
 
   /* 実績 */
   .achievements{padding:80px 60px;background:var(--navy);}
@@ -115,12 +153,28 @@
   .vc-text{font-size:.77rem;line-height:1.9;color:#444;}
   .vc-badge{display:inline-block;background:var(--light);color:var(--blue);font-size:.62rem;font-weight:700;padding:3px 9px;border-radius:4px;margin-top:8px;}
 
+  /* ポートフォリオ例 */
+  .portfolio-sec{padding:80px 60px;background:#fff;}
+  .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;max-width:960px;margin:0 auto;}
+  .pf-item{height:200px;overflow:hidden;position:relative;}
+  .pf-item img{width:100%;height:100%;object-fit:cover;transition:.3s;}
+  .pf-item:hover img{transform:scale(1.05);}
+  .pf-overlay{position:absolute;inset:0;background:rgba(10,15,60,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:.3s;}
+  .pf-item:hover .pf-overlay{opacity:1;}
+  .pf-label{color:#fff;font-size:.78rem;font-weight:700;text-align:center;}
+
   /* 中間CTA */
   .mid-cta{background:var(--orange);padding:44px 60px;text-align:center;}
   .mid-cta h3{font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:6px;}
   .mid-cta p{color:rgba(255,255,255,.8);font-size:.82rem;margin-bottom:20px;}
-  .btn-white{display:inline-block;background:#fff;color:var(--orange);padding:16px 44px;font-size:.98rem;font-weight:900;transition:.3s;}
+  .btn-white{display:inline-block;background:#fff;color:var(--orange);padding:16px 44px;font-size:.98rem;font-weight:900;transition:.3s;border-radius:4px;}
   .btn-white:hover{background:#f5f5f5;transform:translateY(-2px);}
+
+  /* メディア */
+  .media-sec{padding:36px 60px;background:#fff;border-top:1px solid #eee;border-bottom:1px solid #eee;}
+  .media-lbl{text-align:center;color:var(--gray);font-size:.68rem;letter-spacing:.2em;margin-bottom:18px;}
+  .media-logos{display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap;}
+  .m-logo{background:#f4f6ff;padding:10px 22px;border-radius:4px;font-size:.82rem;font-weight:700;color:#999;}
 
   /* 料金 */
   .pricing{padding:80px 60px;background:#fff;}
@@ -143,6 +197,23 @@
   .plan-btn{display:block;background:var(--blue);color:#fff;padding:14px;font-size:.82rem;font-weight:700;text-align:center;transition:.2s;border-radius:4px;}
   .plan.featured .plan-btn{background:var(--orange);}
   .plan-btn:hover{opacity:.85;}
+  .plan-note{font-size:.68rem;color:var(--gray);margin-top:8px;}
+  .plan.featured .plan-note{color:rgba(255,255,255,.35);}
+
+  /* 比較 */
+  .compare-sec{padding:80px 60px;background:var(--bg);}
+  .comp-table{max-width:860px;margin:0 auto;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;}
+  .comp-head{display:grid;grid-template-columns:2.5fr 1fr 1fr;background:var(--navy);color:#fff;}
+  .comp-head div{padding:14px 20px;font-size:.78rem;font-weight:700;text-align:center;}
+  .comp-head div:first-child{text-align:left;}
+  .comp-head .hl{color:var(--orange);}
+  .comp-row{display:grid;grid-template-columns:2.5fr 1fr 1fr;border-bottom:1px solid #f0f0f0;}
+  .comp-row:last-child{border-bottom:none;}
+  .comp-row div{padding:12px 20px;font-size:.78rem;text-align:center;display:flex;align-items:center;justify-content:center;}
+  .comp-row div:first-child{text-align:left;justify-content:flex-start;color:#444;}
+  .comp-row.alt{background:#fafbff;}
+  .c-check{color:var(--blue);font-weight:900;}
+  .c-cross{color:#ccc;}
 
   /* FAQ */
   .faq{padding:80px 60px;background:var(--bg);}
@@ -159,6 +230,22 @@
   .final p{color:rgba(255,255,255,.65);margin-bottom:32px;line-height:1.9;font-size:.87rem;}
   .final .btn-orange{font-size:1.05rem;padding:20px 60px;display:inline-block;}
   .final-note{color:rgba(255,255,255,.3);font-size:.7rem;margin-top:14px;}
+  .final-points{display:flex;justify-content:center;gap:28px;margin-top:24px;flex-wrap:wrap;}
+  .fp{color:rgba(255,255,255,.45);font-size:.72rem;display:flex;align-items:center;gap:6px;}
+  .fp::before{content:'✓';color:var(--orange);}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}
+    .nav-links{display:none;}
+    .fv-img{height:400px;}
+    .fv-content{padding:0 24px;}
+    .fv h1{font-size:2rem;}
+    .change-grid,.story-inner,.result-cards,.voice-grid,.portfolio-grid,.plan-grid{grid-template-columns:1fr;}
+    .mentor-card{flex-direction:column;}
+    .mentor-sub{grid-template-columns:1fr;}
+    .ach-grid{grid-template-columns:1fr 1fr;}
+    .trust-bar{display:none;}
+  }
 
   footer{background:#000;padding:28px;text-align:center;}
   footer p{color:rgba(255,255,255,.25);font-size:.7rem;line-height:1.9;}
@@ -181,29 +268,45 @@
 
 <!-- FV -->
 <section class="fv">
-  <div class="fv-grid"></div>
-  <div class="fv-glow"></div>
-  <div class="fv-inner">
-    <div class="fv-badge">🎓 受講生2,400名突破 ／ 受講満足度4.8/5.0</div>
-    <h1>未経験から<em>6ヶ月</em>で<br>月収30万円の<br>Webデザイナーへ。</h1>
-    <p class="fv-sub">現役フリーランスデザイナーによるマンツーマン指導＋案件獲得サポート。副業月5万円から独立まで、あなたのペースで進められるオンラインスクールです。</p>
-    <div class="fv-stats">
-      <div class="stat"><div class="stat-num">96<em>%</em></div><div class="stat-lbl">副業収入達成率</div></div>
-      <div class="stat"><div class="stat-num">4.8<em>/5</em></div><div class="stat-lbl">受講満足度</div></div>
-      <div class="stat"><div class="stat-num">2,400<em>名</em></div><div class="stat-lbl">卒業生数</div></div>
-      <div class="stat"><div class="stat-num">6<em>ヶ月</em></div><div class="stat-lbl">最短期間</div></div>
-    </div>
-    <div class="fv-btns">
-      <a href="#" class="btn-orange">無料カウンセリングを予約する</a>
-      <a href="#" class="btn-outline">カリキュラムを見る</a>
-    </div>
-    <div class="fv-trust">
-      <div class="fv-t">分割払い対応（月々13,200円〜）</div>
-      <div class="fv-t">給付金制度の対象スクール</div>
-      <div class="fv-t">転職・副業どちらもサポート</div>
+  <div class="fv-img">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80" alt="Webデザイン学習">
+    <div class="fv-img-overlay"></div>
+    <div class="fv-grid"></div>
+    <div class="fv-glow"></div>
+  </div>
+  <div class="fv-content">
+    <div class="fv-inner">
+      <div class="fv-badge">🎓 受講生2,400名突破 ／ 受講満足度4.8/5.0</div>
+      <h1>未経験から<em>6ヶ月</em>で<br>月収30万円の<br>Webデザイナーへ。</h1>
+      <p class="fv-sub">現役フリーランスデザイナーによるマンツーマン指導＋案件獲得サポート。副業月5万円から独立まで、あなたのペースで進められるオンラインスクールです。</p>
+      <div class="fv-stats">
+        <div class="stat"><div class="stat-num">96<em>%</em></div><div class="stat-lbl">副業収入達成率</div></div>
+        <div class="stat"><div class="stat-num">4.8<em>/5</em></div><div class="stat-lbl">受講満足度</div></div>
+        <div class="stat"><div class="stat-num">2,400<em>名</em></div><div class="stat-lbl">卒業生数</div></div>
+        <div class="stat"><div class="stat-num">6<em>ヶ月</em></div><div class="stat-lbl">最短期間</div></div>
+      </div>
+      <div class="fv-btns">
+        <a href="#" class="btn-orange">無料カウンセリングを予約する</a>
+        <a href="#" class="btn-outline">カリキュラムを見る</a>
+      </div>
+      <div class="fv-trust">
+        <div class="fv-t">分割払い対応（月々8,250円〜）</div>
+        <div class="fv-t">給付金制度の対象スクール</div>
+        <div class="fv-t">転職・副業どちらもサポート</div>
+        <div class="fv-t">卒業後も3ヶ月サポート継続</div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- 信頼バー -->
+<div class="trust-bar">
+  <div class="tb-item"><span class="tb-icon">📚</span>給付金制度対象スクール</div>
+  <div class="tb-item"><span class="tb-icon">💬</span>毎日チャットサポート</div>
+  <div class="tb-item"><span class="tb-icon">🎯</span>案件獲得まで伴走</div>
+  <div class="tb-item"><span class="tb-icon">👨‍💻</span>現役デザイナーが指導</div>
+  <div class="tb-item"><span class="tb-icon">✅</span>卒業後3ヶ月サポート</div>
+</div>
 
 <!-- 受講後の変化 -->
 <section class="change">
@@ -229,6 +332,31 @@
     <div class="tg-item"><span class="tg-icon">✦</span><p class="tg-text">デザインやWeb制作に興味がある学生</p></div>
     <div class="tg-item"><span class="tg-icon">✦</span><p class="tg-text">40代・50代で新しいスキルを身につけたい方</p></div>
     <div class="tg-item"><span class="tg-icon">✦</span><p class="tg-text">今の職場でWeb担当を目指したいサラリーマン</p></div>
+    <div class="tg-item"><span class="tg-icon">✦</span><p class="tg-text">センスに自信はないが学んでみたい方</p></div>
+    <div class="tg-item"><span class="tg-icon">✦</span><p class="tg-text">デザイン×エンジニアで単価を上げたいITエンジニア</p></div>
+  </div>
+</section>
+
+<!-- スクールの想い -->
+<section class="story-section">
+  <p class="sec-tag">OUR STORY</p>
+  <h2 class="sec-title">なぜSKILL UP ACADEMYなのか</h2>
+  <p class="sec-sub">私たちが大切にしていること</p>
+  <div class="story-inner">
+    <div class="story-img">
+      <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="オンライン学習">
+    </div>
+    <div>
+      <p style="color:rgba(255,255,255,.65);font-size:.85rem;line-height:2;margin-bottom:16px;">「未経験者に正しいスキルを、正しい順序で教えれば、誰でも必ず結果が出る」という信念のもと、SKILL UP ACADEMYは設立されました。</p>
+      <p style="color:rgba(255,255,255,.65);font-size:.85rem;line-height:2;margin-bottom:16px;">他のスクールとの最大の違いは「案件獲得まで責任を持つ」こと。カリキュラムが終わったら終わりではなく、実際に報酬を得るところまで一緒に戦います。</p>
+      <p style="color:rgba(255,255,255,.65);font-size:.85rem;line-height:2;margin-bottom:24px;">講師は全員が現役のフリーランスデザイナー。教科書通りではなく、クライアントに喜ばれるリアルな知識だけをお伝えします。</p>
+      <div class="story-nums">
+        <div class="sn"><div class="sn-num">2,400<em>名</em></div><div class="sn-lbl">卒業生総数</div></div>
+        <div class="sn"><div class="sn-num">96<em>%</em></div><div class="sn-lbl">副業収入達成率</div></div>
+        <div class="sn"><div class="sn-num">4.2<em>ヶ月</em></div><div class="sn-lbl">初案件獲得平均</div></div>
+        <div class="sn"><div class="sn-num">68<em>%</em></div><div class="sn-lbl">1年内に独立</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -237,45 +365,48 @@
   <p class="sec-tag">CURRICULUM</p>
   <h2 class="sec-title">6ヶ月の学習ロードマップ</h2>
   <p class="sec-sub">ゼロから案件獲得まで、一切の迷いなく進めるカリキュラム設計</p>
+  <div class="cur-img">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80" alt="プログラミング学習">
+  </div>
   <div class="cur-list">
     <div class="cur-item">
       <div class="cur-week">WEEK<br>1〜4</div>
       <div>
         <h3 class="cur-title">デザイン基礎とツール習得</h3>
-        <p class="cur-desc">デザインの4原則（余白・フォント・色・整列）をゼロから学習。Figmaを使ったデザイン制作の基礎を固めます。センスは才能ではなくルールだと気づける週です。</p>
-        <div class="cur-tags"><span class="cur-tag">Figma</span><span class="cur-tag">色彩理論</span><span class="cur-tag">タイポグラフィ</span><span class="cur-tag">レイアウト</span></div>
+        <p class="cur-desc">デザインの4原則（余白・フォント・色・整列）をゼロから学習。Figmaを使ったデザイン制作の基礎を固めます。センスは才能ではなくルールだと気づける週です。現役デザイナーが実際の案件で使うテクニックを惜しみなく共有します。</p>
+        <div class="cur-tags"><span class="cur-tag">Figma</span><span class="cur-tag">色彩理論</span><span class="cur-tag">タイポグラフィ</span><span class="cur-tag">レイアウト</span><span class="cur-tag">UX基礎</span></div>
       </div>
     </div>
     <div class="cur-item">
       <div class="cur-week">WEEK<br>5〜12</div>
       <div>
         <h3 class="cur-title">HTML / CSS コーディング</h3>
-        <p class="cur-desc">デザインをWebサイトとして実装するコーディングスキルを習得。Flexbox・Grid・アニメーションを使ったレスポンシブ対応まで徹底的にマスターします。</p>
-        <div class="cur-tags"><span class="cur-tag">HTML</span><span class="cur-tag">CSS</span><span class="cur-tag">Flexbox</span><span class="cur-tag">Grid</span><span class="cur-tag">レスポンシブ</span></div>
+        <p class="cur-desc">デザインをWebサイトとして実装するコーディングスキルを習得。Flexbox・Grid・アニメーションを使ったレスポンシブ対応まで徹底的にマスターします。「デザインもコードも書ける」二刀流デザイナーを目指します。</p>
+        <div class="cur-tags"><span class="cur-tag">HTML</span><span class="cur-tag">CSS</span><span class="cur-tag">Flexbox</span><span class="cur-tag">Grid</span><span class="cur-tag">レスポンシブ</span><span class="cur-tag">CSS Animation</span></div>
       </div>
     </div>
     <div class="cur-item">
       <div class="cur-week">WEEK<br>13〜18</div>
       <div>
         <h3 class="cur-title">JavaScript / WordPress</h3>
-        <p class="cur-desc">動きのあるサイトを作るJavaScriptの基礎と、案件で必須のWordPressを習得。テーマ制作・プラグイン活用まで実践で学びます。</p>
-        <div class="cur-tags"><span class="cur-tag">JavaScript</span><span class="cur-tag">WordPress</span><span class="cur-tag">PHP基礎</span><span class="cur-tag">テーマ制作</span></div>
+        <p class="cur-desc">動きのあるサイトを作るJavaScriptの基礎と、案件で必須のWordPressを習得。テーマ制作・プラグイン活用まで実践で学びます。この段階で月3〜5万円の副業収入を得る受講生も多数います。</p>
+        <div class="cur-tags"><span class="cur-tag">JavaScript</span><span class="cur-tag">WordPress</span><span class="cur-tag">PHP基礎</span><span class="cur-tag">テーマ制作</span><span class="cur-tag">ACF</span></div>
       </div>
     </div>
     <div class="cur-item">
       <div class="cur-week">WEEK<br>19〜22</div>
       <div>
         <h3 class="cur-title">実践制作・ポートフォリオ完成</h3>
-        <p class="cur-desc">LP・コーポレートサイト・ECサイトを実際に制作し、案件獲得に使えるポートフォリオを完成させます。メンターが徹底フィードバック。</p>
-        <div class="cur-tags"><span class="cur-tag">LP制作</span><span class="cur-tag">コーポレートサイト</span><span class="cur-tag">ポートフォリオ</span></div>
+        <p class="cur-desc">LP・コーポレートサイト・ECサイトを実際に制作し、案件獲得に使えるポートフォリオを完成させます。メンターが徹底フィードバック。「見せられる実績」を作るための集中週です。</p>
+        <div class="cur-tags"><span class="cur-tag">LP制作</span><span class="cur-tag">コーポレートサイト</span><span class="cur-tag">ECサイト</span><span class="cur-tag">ポートフォリオ</span></div>
       </div>
     </div>
     <div class="cur-item">
       <div class="cur-week">WEEK<br>23〜24</div>
       <div>
         <h3 class="cur-title">案件獲得・営業完全サポート</h3>
-        <p class="cur-desc">クラウドソーシングでの提案文・料金設定・クライアントとのやり取り・契約書まで実践トレーニング。卒業後も最初の3案件を一緒に取りに行きます。</p>
-        <div class="cur-tags"><span class="cur-tag">クラウドワークス</span><span class="cur-tag">提案文</span><span class="cur-tag">営業戦略</span><span class="cur-tag">案件管理</span></div>
+        <p class="cur-desc">クラウドソーシングでの提案文・料金設定・クライアントとのやり取り・契約書まで実践トレーニング。卒業後も最初の3案件を一緒に取りに行きます。「受注できた！」という体験を必ず経験させます。</p>
+        <div class="cur-tags"><span class="cur-tag">クラウドワークス</span><span class="cur-tag">提案文</span><span class="cur-tag">ランサーズ</span><span class="cur-tag">営業戦略</span><span class="cur-tag">料金設定</span></div>
       </div>
     </div>
   </div>
@@ -284,20 +415,49 @@
 <!-- 講師 -->
 <section class="mentor">
   <p class="sec-tag">MENTOR</p>
-  <h2 class="sec-title">あなたを伴走する講師</h2>
+  <h2 class="sec-title">あなたを伴走する講師陣</h2>
   <p class="sec-sub">全員が現役のフリーランスデザイナー。リアルな現場の話を聞けます</p>
   <div class="mentor-card">
-    <div class="mentor-img">👨‍💻</div>
+    <div class="mentor-img">
+      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80" alt="チーフメンター">
+    </div>
     <div>
-      <h3 class="mentor-name">田中 陽介</h3>
+      <h3 class="mentor-name">田中 陽介（架空）</h3>
       <p class="mentor-title">CHIEF MENTOR / フリーランスWebデザイナー歴9年</p>
       <div class="mentor-career">
         <div class="mc-item"><span class="mc-dot">◆</span>大手広告代理店でUI/UXデザイナーとして5年勤務</div>
-        <div class="mc-item"><span class="mc-dot">◆</span>独立後、年間売上2,000万円超を達成</div>
-        <div class="mc-item"><span class="mc-dot">◆</span>これまでに300名以上のデザイナーをサポート</div>
+        <div class="mc-item"><span class="mc-dot">◆</span>独立後、年間売上2,000万円超を達成。主要クライアント50社以上</div>
+        <div class="mc-item"><span class="mc-dot">◆</span>これまでに300名以上のデザイナーをサポート、全員が初案件獲得</div>
         <div class="mc-item"><span class="mc-dot">◆</span>受講生満足度：4.9 / 5.0（累計評価より）</div>
+        <div class="mc-item"><span class="mc-dot">◆</span>著書「フリーランスWebデザイナーの仕事術」（架空）累計1万部</div>
       </div>
-      <div class="mentor-quote">「未経験でも大丈夫。センスは後からついてくる。まず正しい順序で学ぶことが全てです。」</div>
+      <div class="mentor-quote">「未経験でも大丈夫。センスは後からついてくる。まず正しい順序で学ぶことが全てです。私が300名以上指導して断言できます。」</div>
+    </div>
+  </div>
+  <div class="mentor-sub">
+    <div class="ms-card">
+      <div class="ms-img">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="メンター">
+      </div>
+      <div class="ms-name">山田 みなみ（架空）</div>
+      <div class="ms-title">UI/UXデザイン担当</div>
+      <p class="ms-text">元・IT企業UI担当。アプリデザイン・UXリサーチを専門とし、スマホ向けデザインを中心に指導。</p>
+    </div>
+    <div class="ms-card">
+      <div class="ms-img">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" alt="メンター">
+      </div>
+      <div class="ms-name">鈴木 健太（架空）</div>
+      <div class="ms-title">WordPress・フロントエンド担当</div>
+      <p class="ms-text">フルスタックデザイナー。WordPress・JavaScript・SEOまで幅広く対応。法人案件獲得のノウハウを共有。</p>
+    </div>
+    <div class="ms-card">
+      <div class="ms-img">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80" alt="メンター">
+      </div>
+      <div class="ms-name">佐藤 あかね（架空）</div>
+      <div class="ms-title">案件獲得・キャリア担当</div>
+      <p class="ms-text">在宅ワーカーとして月収40万を達成。主婦・育児中の受講生のキャリア構築を専門にサポート。</p>
     </div>
   </div>
 </section>
@@ -317,17 +477,17 @@
     <div class="rcard">
       <div class="rcard-top"><div class="rcard-av">👩</div><div><div class="rcard-name">M.Kさん（29歳）</div><div class="rcard-career">元・事務職 → フリーランスデザイナー</div></div></div>
       <div class="rcard-income">月収 → 42万円達成</div>
-      <p class="rcard-text">完全未経験からスタート。6ヶ月で副業収入が月15万を超え、8ヶ月で会社を退職できました。メンターの伴走が本当に心強かったです。</p>
+      <p class="rcard-text">完全未経験からスタート。6ヶ月で副業収入が月15万を超え、8ヶ月で会社を退職できました。メンターの伴走が本当に心強かったです。今では大手ECサイトのバナー制作を担当しています。</p>
     </div>
     <div class="rcard">
       <div class="rcard-top"><div class="rcard-av">👨</div><div><div class="rcard-name">T.Sさん（35歳）</div><div class="rcard-career">会社員（副業として受講）</div></div></div>
       <div class="rcard-income">副業収入 月+18万円</div>
-      <p class="rcard-text">子供が寝た後の2時間だけで勉強しました。マイペースに進められるカリキュラムで、育児しながらでも無理なく続けられました。</p>
+      <p class="rcard-text">子供が寝た後の2時間だけで勉強しました。マイペースに進められるカリキュラムで、育児しながらでも無理なく続けられました。今は本業の傍ら月18万を安定して稼いでいます。</p>
     </div>
     <div class="rcard">
       <div class="rcard-top"><div class="rcard-av">👩</div><div><div class="rcard-name">Y.Nさん（41歳）</div><div class="rcard-career">40代主婦 → 在宅ワーカー</div></div></div>
       <div class="rcard-income">月収 → 28万円達成</div>
-      <p class="rcard-text">「年齢的に遅いかも」と思っていましたが、丁寧なサポートのおかげで自信がつきました。今では地元企業のサイト制作を複数担当しています。</p>
+      <p class="rcard-text">「年齢的に遅いかも」と思っていましたが、丁寧なサポートのおかげで自信がつきました。今では地元企業のサイト制作を複数担当しています。子育てしながら稼げる仕事ができて本当に良かった。</p>
     </div>
   </div>
 </section>
@@ -374,6 +534,51 @@
       <p class="vc-text">50代でのパソコンスキルに不安がありましたが、基礎から丁寧に教えていただけました。地元の小さなお店のサイトを作るのが今の目標で、すでに2件受注しました。</p>
       <span class="vc-badge">50代でも成功</span>
     </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">Y.Sさん（34歳・看護師）</div><div class="vc-meta">受講期間：7ヶ月</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">看護師として体力の限界を感じていた時にWebデザインと出会いました。今はデザインの副業で月10万を確保し、少しずつ看護師の時間を減らしています。</p>
+      <span class="vc-badge">キャリア転換中</span>
+    </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👨</div><div><div class="vc-name">H.Mさん（28歳・営業職）</div><div class="vc-meta">受講期間：6ヶ月</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">営業スキルとWebデザインの組み合わせが最強でした。クライアントの要望を正確に理解してデザインに落とし込めるので、リピート率が高いと言われます。</p>
+      <span class="vc-badge">リピート率95%</span>
+    </div>
+  </div>
+</section>
+
+<!-- ポートフォリオ例 -->
+<section class="portfolio-sec">
+  <p class="sec-tag">PORTFOLIO</p>
+  <h2 class="sec-title">卒業生が実際に作った作品</h2>
+  <p class="sec-sub">これが6ヶ月後のあなたの実力。すべて受講生が制作したポートフォリオ作品です（架空）</p>
+  <div class="portfolio-grid">
+    <div class="pf-item">
+      <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80" alt="ポートフォリオ作品1">
+      <div class="pf-overlay"><div class="pf-label">LP制作<br>ECサイト</div></div>
+    </div>
+    <div class="pf-item">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="ポートフォリオ作品2">
+      <div class="pf-overlay"><div class="pf-label">コーポレートサイト<br>WordPress</div></div>
+    </div>
+    <div class="pf-item">
+      <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=80" alt="ポートフォリオ作品3">
+      <div class="pf-overlay"><div class="pf-label">アプリUI<br>Figmaデザイン</div></div>
+    </div>
+    <div class="pf-item">
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="ポートフォリオ作品4">
+      <div class="pf-overlay"><div class="pf-label">バナー広告<br>ブランドデザイン</div></div>
+    </div>
+    <div class="pf-item">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80" alt="ポートフォリオ作品5">
+      <div class="pf-overlay"><div class="pf-label">レスポンシブ<br>Webサイト</div></div>
+    </div>
+    <div class="pf-item">
+      <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?w=600&q=80" alt="ポートフォリオ作品6">
+      <div class="pf-overlay"><div class="pf-label">ランディングページ<br>HTML/CSS</div></div>
+    </div>
   </div>
 </section>
 
@@ -384,11 +589,67 @@
   <a href="#" class="btn-white">無料カウンセリングを予約する</a>
 </div>
 
+<!-- メディア -->
+<section class="media-sec">
+  <p class="media-lbl">MEDIA COVERAGE ／ メディア掲載・受賞実績</p>
+  <div class="media-logos">
+    <div class="m-logo">日経XTECH</div>
+    <div class="m-logo">フリーランス白書2024</div>
+    <div class="m-logo">Webデザインマガジン</div>
+    <div class="m-logo">副業メディアONE</div>
+    <div class="m-logo">ITmedia</div>
+  </div>
+</section>
+
+<!-- 比較 -->
+<section class="compare-sec">
+  <p class="sec-tag">COMPARE</p>
+  <h2 class="sec-title">他のスクールと何が違うのか</h2>
+  <p class="sec-sub">SKILL UP ACADEMYが選ばれる理由を一覧で確認</p>
+  <div class="comp-table">
+    <div class="comp-head">
+      <div>比較項目</div>
+      <div class="hl">SKILL UP ACADEMY</div>
+      <div>一般スクール</div>
+    </div>
+    <div class="comp-row">
+      <div>現役フリーランサーが指導</div>
+      <div><span class="c-check">全員が現役</span></div>
+      <div><span class="c-cross">講師専業多数</span></div>
+    </div>
+    <div class="comp-row alt">
+      <div>案件獲得まで伴走</div>
+      <div><span class="c-check">3案件まで同行</span></div>
+      <div><span class="c-cross">紹介のみ</span></div>
+    </div>
+    <div class="comp-row">
+      <div>給付金制度対応</div>
+      <div><span class="c-check">最大10万円支給</span></div>
+      <div><span class="c-cross">非対応が多数</span></div>
+    </div>
+    <div class="comp-row alt">
+      <div>卒業後サポート期間</div>
+      <div><span class="c-check">3ヶ月間継続</span></div>
+      <div><span class="c-cross">終了後は有料</span></div>
+    </div>
+    <div class="comp-row">
+      <div>マンツーマン指導</div>
+      <div><span class="c-check">月4〜8回</span></div>
+      <div><span class="c-cross">グループのみ</span></div>
+    </div>
+    <div class="comp-row alt">
+      <div>分割払い対応</div>
+      <div><span class="c-check">最大36回分割</span></div>
+      <div><span class="c-cross">12回まで</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- 料金 -->
 <section class="pricing">
   <p class="sec-tag">PRICING</p>
   <h2 class="sec-title">料金プラン</h2>
-  <p class="sec-sub">分割払い・給付金制度を利用すれば月々13,200円〜スタートできます</p>
+  <p class="sec-sub">分割払い・給付金制度を利用すれば月々8,250円〜スタートできます</p>
   <div class="plan-grid">
     <div class="plan">
       <p class="plan-name">LIGHT</p>
@@ -400,8 +661,10 @@
         <div class="pf"><span>✓</span>課題添削（無制限）</div>
         <div class="pf disabled"><span>✗</span>マンツーマン指導</div>
         <div class="pf disabled"><span>✗</span>案件獲得サポート</div>
+        <div class="pf disabled"><span>✗</span>卒業後サポート</div>
       </div>
       <a href="#" class="plan-btn">このプランを選ぶ</a>
+      <p class="plan-note">月々4,083円〜（24回払い）</p>
     </div>
     <div class="plan featured">
       <div class="plan-badge">✦ 人気 No.1</div>
@@ -414,8 +677,10 @@
         <div class="pf"><span>✓</span>課題添削（無制限）</div>
         <div class="pf"><span>✓</span>マンツーマン指導（月4回）</div>
         <div class="pf"><span>✓</span>案件獲得サポート（3案件）</div>
+        <div class="pf"><span>✓</span>卒業後3ヶ月サポート</div>
       </div>
       <a href="#" class="plan-btn">このプランを選ぶ</a>
+      <p class="plan-note">月々8,250円〜（24回払い）</p>
     </div>
     <div class="plan">
       <p class="plan-name">PREMIUM</p>
@@ -427,8 +692,10 @@
         <div class="pf"><span>✓</span>課題添削（無制限）</div>
         <div class="pf"><span>✓</span>マンツーマン指導（週1回）</div>
         <div class="pf"><span>✓</span>案件獲得サポート（無制限）</div>
+        <div class="pf"><span>✓</span>卒業後6ヶ月サポート</div>
       </div>
       <a href="#" class="plan-btn">このプランを選ぶ</a>
+      <p class="plan-note">月々12,416円〜（24回払い）</p>
     </div>
   </div>
 </section>
@@ -438,12 +705,38 @@
   <p class="sec-tag">FAQ</p>
   <h2 class="sec-title">よくある質問</h2>
   <div class="faq-list">
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>パソコンが苦手でも大丈夫ですか？</div><div class="faq-a">はい、問題ありません。受講生の約30%が完全なPC初心者からのスタートです。入会前に「PC基礎講座」を無料で受講できますので、まず試してみてください。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>1日何時間の学習が必要ですか？</div><div class="faq-a">週10〜15時間（1日1.5〜2時間程度）が目安です。忙しい会社員の方でも、通勤時間や昼休みを活用して続けられるよう設計しています。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>卒業後も質問できますか？</div><div class="faq-a">STANDARDプラン・PREMIUMプランの方は卒業後も3ヶ月間、チャットサポートをご利用いただけます。また、卒業生コミュニティへの招待もあります。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>給付金制度は使えますか？</div><div class="faq-a">当スクールは「一般教育訓練給付制度」の対象講座です。条件を満たす方は受講料の20%（最大10万円）がハローワークから支給されます。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>途中で挫折しそうで不安です。</div><div class="faq-a">メンターとの定期面談・チャットサポートに加え、同期受講生とのコミュニティグループをご用意しています。一人で悩まない環境が整っています。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>分割払いはできますか？</div><div class="faq-a">クレジットカードによる分割払い（最大36回）が利用可能です。STANDARDプランを24回払いにした場合、月々8,250円から始められます。</div></div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>パソコンが苦手でも大丈夫ですか？</div>
+      <div class="faq-a">はい、問題ありません。受講生の約30%が完全なPC初心者からのスタートです。入会前に「PC基礎講座」を無料で受講できますので、まず試してみてください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>1日何時間の学習が必要ですか？</div>
+      <div class="faq-a">週10〜15時間（1日1.5〜2時間程度）が目安です。忙しい会社員の方でも、通勤時間や昼休みを活用して続けられるよう設計しています。動画は全て倍速対応で、繰り返し視聴OKです。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>卒業後も質問できますか？</div>
+      <div class="faq-a">STANDARDプラン・PREMIUMプランの方は卒業後も3〜6ヶ月間、チャットサポートをご利用いただけます。また、卒業生コミュニティへの招待もあります。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>給付金制度は使えますか？</div>
+      <div class="faq-a">当スクールは「一般教育訓練給付制度」の対象講座です。条件を満たす方は受講料の20%（最大10万円）がハローワークから支給されます。手続き方法は無料カウンセリング時に詳しくご説明します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>途中で挫折しそうで不安です。</div>
+      <div class="faq-a">メンターとの定期面談・チャットサポートに加え、同期受講生とのコミュニティグループをご用意しています。一人で悩まない環境が整っています。受講完了率は94%と業界最高水準です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>分割払いはできますか？</div>
+      <div class="faq-a">クレジットカードによる分割払い（最大36回）が利用可能です。STANDARDプランを24回払いにした場合、月々8,250円から始められます。給付金を活用すれば実質月5,000円台も可能です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>仕事は取れますか？未経験でも発注してもらえますか？</div>
+      <div class="faq-a">卒業生の96%が副業収入を達成しています。クラウドソーシングは未経験でも案件が取りやすい場所です。私たちが実際の提案文から一緒に作り、最初の受注まで伴走します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>無料カウンセリングで勧誘されますか？</div>
+      <div class="faq-a">しつこい勧誘は一切しません。カウンセリングは「あなたにとって最適な学習プランを考える場」です。入会しなくても何ら問題ありません。むしろ「今は入会すべきではない」と正直にお伝えすることもあります。</div>
+    </div>
   </div>
 </section>
 
@@ -452,11 +745,18 @@
   <h2>まずは<em>無料カウンセリング</em>で<br>あなたに合う最短ルートを確認しよう</h2>
   <p>現状のスキルや目標をヒアリングして、最短でゴールに到達するルートをご提案します。<br>しつこい勧誘は一切しません。まずは気軽にご相談ください。</p>
   <a href="#" class="btn-orange">無料カウンセリングを予約する（所要30分）</a>
-  <p class="final-note">※ オンライン（Zoom）で実施します ／ 当日キャンセル可</p>
+  <p class="final-note">※ オンライン（Zoom）で実施します ／ 当日キャンセル可 ／ 完全無料</p>
+  <div class="final-points">
+    <div class="fp">現役デザイナーが直接対応</div>
+    <div class="fp">しつこい勧誘なし</div>
+    <div class="fp">給付金の説明あり</div>
+    <div class="fp">カリキュラム詳細の説明あり</div>
+    <div class="fp">当日キャンセル可</div>
+  </div>
 </section>
 
 <footer>
-  <p>SKILL UP ACADEMY / 株式会社スキルアップラボ（架空）<br>© 2024 SKILL UP ACADEMY. All Rights Reserved.</p>
+  <p>SKILL UP ACADEMY / 株式会社スキルアップラボ（架空）<br>〒150-XXXX 東京都渋谷区XX-XX ／ info@skillupacademy.jp（架空）<br>© 2024 SKILL UP ACADEMY. All Rights Reserved. ／ このサイトはポートフォリオ用の架空サイトです。</p>
 </footer>
 </body>
 </html>

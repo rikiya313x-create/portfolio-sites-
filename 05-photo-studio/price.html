@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Price | HIKARI STUDIO</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0c0c0c;--white:#fafafa;--accent:#e8e0d5;--text:#2a2a2a;--muted:#888;--warm:#c4a882;}
+  body{font-family:'DM Sans','Noto Sans JP',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#f5f0ea;border-left:3px solid var(--warm);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--muted);}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(250,250,250,.96);border-bottom:1px solid rgba(0,0,0,.06);}
+  .logo{font-family:'DM Serif Display',serif;font-size:1.1rem;letter-spacing:.05em;color:var(--black);}
+  .logo span{font-style:italic;color:var(--warm);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--muted);font-size:.75rem;letter-spacing:.08em;transition:.2s;}
+  nav ul a:hover{color:var(--black);}
+  .nav-cta{color:var(--black)!important;border-bottom:1px solid var(--black);}
+
+  .page-hero{padding-top:72px;height:360px;background:url('https://images.unsplash.com/photo-1604537466158-719b1972feb8?w=1400&q=80') center/cover;position:relative;display:flex;align-items:flex-end;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(12,12,12,.55);}
+  .page-hero-inner{position:relative;z-index:1;padding:0 80px 56px;}
+  .page-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:10px;text-transform:uppercase;}
+  .page-title{font-family:'DM Serif Display',serif;font-size:3.4rem;color:#fff;line-height:1.1;}
+  .page-title em{font-style:italic;color:var(--warm);}
+
+  .breadcrumb{padding:20px 80px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;gap:8px;align-items:center;}
+  .breadcrumb a{color:var(--muted);font-size:.72rem;}
+  .breadcrumb span{color:var(--muted);font-size:.72rem;}
+  .breadcrumb .current{color:var(--text);font-size:.72rem;}
+
+  .sec{padding:100px 80px;}
+  .sec-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--black);margin-bottom:36px;line-height:1.15;}
+  .sec-title em{font-style:italic;color:var(--warm);}
+
+  /* 料金表 */
+  .price-intro{max-width:640px;color:var(--muted);font-size:.84rem;line-height:2;margin-bottom:60px;}
+
+  .price-category{margin-bottom:60px;}
+  .pc-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(0,0,0,.06);}
+  .pc-icon{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--warm);}
+  .pc-name{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--black);}
+  .price-table{width:100%;border-collapse:collapse;}
+  .price-table th{background:var(--black);color:var(--white);padding:14px 20px;text-align:left;font-size:.76rem;letter-spacing:.08em;font-weight:400;}
+  .price-table td{padding:16px 20px;border-bottom:1px solid rgba(0,0,0,.06);font-size:.82rem;vertical-align:top;}
+  .price-table tr:hover td{background:var(--accent);}
+  .price-table td:last-child{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--warm);text-align:right;white-space:nowrap;}
+  .price-table .sub{color:var(--muted);font-size:.72rem;margin-top:4px;}
+
+  /* オプション */
+  .options-sec{background:var(--accent);padding:100px 80px;}
+  .options-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#ddd;margin-top:48px;}
+  .opt{background:var(--white);padding:28px 24px;}
+  .opt-name{font-size:.88rem;font-weight:500;color:var(--black);margin-bottom:6px;}
+  .opt-desc{color:var(--muted);font-size:.76rem;line-height:1.9;margin-bottom:12px;}
+  .opt-price{color:var(--warm);font-size:.82rem;font-weight:500;}
+
+  /* 注意事項 */
+  .notes-sec{padding:80px 80px;}
+  .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .note-block h3{font-size:.82rem;font-weight:500;color:var(--black);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,.06);}
+  .note-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .note-list li{color:var(--muted);font-size:.76rem;line-height:1.8;padding-left:16px;position:relative;}
+  .note-list li::before{content:'—';position:absolute;left:0;color:var(--warm);}
+
+  /* キャンセルポリシー */
+  .cancel-sec{background:var(--black);padding:80px;}
+  .cancel-title{font-family:'DM Serif Display',serif;font-size:1.6rem;color:#fff;margin-bottom:24px;}
+  .cancel-table{width:100%;border-collapse:collapse;max-width:600px;}
+  .cancel-table th{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);padding:12px 16px;text-align:left;font-size:.74rem;font-weight:400;}
+  .cancel-table td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5);font-size:.78rem;}
+  .cancel-table td:last-child{color:var(--warm);text-align:right;}
+
+  /* CTA */
+  .cta-sec{display:grid;grid-template-columns:1fr 1fr;}
+  .cta-img{background:url('https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=800&q=80') center/cover;min-height:380px;}
+  .cta-content{background:var(--black);padding:80px;display:flex;flex-direction:column;justify-content:center;}
+  .cta-title{font-family:'DM Serif Display',serif;font-size:2.4rem;color:var(--white);line-height:1.1;margin-bottom:16px;}
+  .cta-title em{font-style:italic;color:var(--warm);}
+  .cta-text{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.9;margin-bottom:28px;}
+  .btn-warm{display:inline-block;background:var(--warm);color:#fff;padding:14px 36px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-warm:hover{background:#b09070;}
+
+  footer{background:var(--black);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);}
+  .footer-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:rgba(255,255,255,.4);letter-spacing:.05em;}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}
+    nav ul{gap:14px;}
+    .page-hero{height:240px;}
+    .page-hero-inner{padding:0 20px 32px;}
+    .page-title{font-size:2rem;}
+    .breadcrumb{padding:14px 20px;}
+    .sec{padding:60px 20px;}
+    .options-sec{padding:60px 20px;}
+    .options-grid{grid-template-columns:1fr;}
+    .notes-sec{padding:60px 20px;}
+    .notes-grid{grid-template-columns:1fr;}
+    .cancel-sec{padding:60px 20px;}
+    .cta-sec{grid-template-columns:1fr;}
+    .cta-content{padding:40px 20px;}
+    footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center;}
+    .price-table{font-size:.75rem;}
+    .price-table th,.price-table td{padding:10px 12px;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフォトスタジオサイトです。実在する写真家・スタジオとは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html"><div class="logo">HIKARI <span>STUDIO</span></div></a>
+  <ul>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="service.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">Price</p>
+    <h1 class="page-title">料金案内<em>。</em></h1>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>/</span>
+  <span class="current">Price</span>
+</div>
+
+<!-- 料金表 -->
+<section class="sec">
+  <p class="sec-label">Price List</p>
+  <h2 class="sec-title">明確な<em>料金体系</em></h2>
+  <p class="price-intro">すべての料金は税込表示です。交通費・駐車場代等は別途実費をご請求します。撮影内容・枚数・時間によって変動することがありますので、正式なお見積もりはお問い合わせください。</p>
+
+  <!-- ウェディング -->
+  <div class="price-category">
+    <div class="pc-header">
+      <span class="pc-icon">01</span>
+      <h2 class="pc-name">ウェディング</h2>
+    </div>
+    <table class="price-table">
+      <thead>
+        <tr><th>プラン</th><th>内容</th><th>料金（税込）</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>前撮り・フォトウェディング<div class="sub">半日プラン</div></td>
+          <td>ロケーション撮影（3〜4時間）・セレクト60枚以上・レタッチ済みデータ納品<div class="sub">スタジオ撮影の場合スタジオ費別途</div></td>
+          <td>¥48,000〜</td>
+        </tr>
+        <tr>
+          <td>挙式のみプラン</td>
+          <td>挙式・セレモニーのみ（3〜4時間）・セレクト100枚以上<div class="sub">少人数婚・フォトウェディング向け</div></td>
+          <td>¥65,000〜</td>
+        </tr>
+        <tr>
+          <td>全日プラン<div class="sub" style="color:var(--warm);">最人気</div></td>
+          <td>支度から二次会まで（8〜10時間）・セレクト400〜600枚・レタッチ済みデータ納品<div class="sub">2カメラマン体制オプションあり</div></td>
+          <td>¥120,000〜</td>
+        </tr>
+        <tr>
+          <td>海外挙式プラン</td>
+          <td>海外での挙式・前撮り撮影・全日対応<div class="sub">渡航費・宿泊費は別途実費</div></td>
+          <td>¥200,000〜</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ポートレート -->
+  <div class="price-category">
+    <div class="pc-header">
+      <span class="pc-icon">02</span>
+      <h2 class="pc-name">ポートレート</h2>
+    </div>
+    <table class="price-table">
+      <thead>
+        <tr><th>プラン</th><th>内容</th><th>料金（税込）</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ライトプラン</td>
+          <td>30分撮影・セレクト8枚・レタッチ込み<div class="sub">プロフィール更新・SNS用途に</div></td>
+          <td>¥10,000〜</td>
+        </tr>
+        <tr>
+          <td>スタンダードプラン</td>
+          <td>1時間撮影・セレクト15〜20枚・レタッチ込み<div class="sub">スタジオ／屋外どちらでも対応</div></td>
+          <td>¥18,000〜</td>
+        </tr>
+        <tr>
+          <td>プレミアムプラン</td>
+          <td>2時間撮影・セレクト30〜40枚・衣装チェンジ1回・場所移動あり<div class="sub">書籍著者・ビジネス用に最適</div></td>
+          <td>¥32,000〜</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 家族写真 -->
+  <div class="price-category">
+    <div class="pc-header">
+      <span class="pc-icon">03</span>
+      <h2 class="pc-name">家族写真</h2>
+    </div>
+    <table class="price-table">
+      <thead>
+        <tr><th>プラン</th><th>内容</th><th>料金（税込）</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ファミリーミニプラン</td>
+          <td>45分撮影・セレクト15枚・レタッチ込み<div class="sub">3〜4人家族向け</div></td>
+          <td>¥16,000〜</td>
+        </tr>
+        <tr>
+          <td>ファミリースタンダードプラン</td>
+          <td>1.5時間撮影・セレクト30枚・レタッチ込み<div class="sub">七五三・お宮参り・誕生日向け</div></td>
+          <td>¥28,000〜</td>
+        </tr>
+        <tr>
+          <td>ニューボーンプラン</td>
+          <td>2時間（赤ちゃんペース）・セレクト25枚<div class="sub">生後100日・お宮参りに</div></td>
+          <td>¥28,000〜</td>
+        </tr>
+        <tr>
+          <td>マタニティプラン</td>
+          <td>1時間撮影・セレクト20枚<div class="sub">パートナーとの2ショット含む</div></td>
+          <td>¥22,000〜</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 商業撮影 -->
+  <div class="price-category">
+    <div class="pc-header">
+      <span class="pc-icon">04</span>
+      <h2 class="pc-name">商業・イベント撮影</h2>
+    </div>
+    <table class="price-table">
+      <thead>
+        <tr><th>プラン</th><th>内容</th><th>料金（税込）</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>商品撮影（ライト）</td>
+          <td>商品5点まで・白背景・各3カット<div class="sub">ECサイト向けシンプル撮影</div></td>
+          <td>¥15,000〜</td>
+        </tr>
+        <tr>
+          <td>商業撮影（半日）</td>
+          <td>4時間・商品・料理・インテリア等<div class="sub">EC・カタログ・PR素材向け</div></td>
+          <td>¥40,000〜</td>
+        </tr>
+        <tr>
+          <td>商業撮影（全日）</td>
+          <td>8時間・ブランドビジュアル・広告素材<div class="sub">スタイリスト・ヘアメイク手配別途</div></td>
+          <td>¥75,000〜</td>
+        </tr>
+        <tr>
+          <td>イベント撮影（3時間〜）</td>
+          <td>企業イベント・セミナー・展示会等・セレクト50枚〜<div class="sub">翌日〜3日後スピード納品対応可</div></td>
+          <td>¥35,000〜</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- オプション -->
+<div class="options-sec">
+  <p class="sec-label">Options</p>
+  <h2 class="sec-title">オプション一覧</h2>
+  <div class="options-grid">
+    <div class="opt">
+      <h3 class="opt-name">RAWデータ提供</h3>
+      <p class="opt-desc">現像前のRAWファイルをすべてご提供します。自分でレタッチしたい方向け。</p>
+      <p class="opt-price">+¥15,000</p>
+    </div>
+    <div class="opt">
+      <h3 class="opt-name">フィルム撮影追加</h3>
+      <p class="opt-desc">デジタル撮影に加えてフィルム（35mm）での撮影を追加。プリント代別途。</p>
+      <p class="opt-price">+¥12,000〜（フィルム代込み）</p>
+    </div>
+    <div class="opt">
+      <h3 class="opt-name">アルバム制作</h3>
+      <p class="opt-desc">厳選した写真でフォトブック・アルバムを制作します。サイズ・ページ数によって価格が変わります。</p>
+      <p class="opt-price">¥18,000〜</p>
+    </div>
+    <div class="opt">
+      <h3 class="opt-name">フレーミング・プリント</h3>
+      <p class="opt-desc">A4〜A1サイズの高品質プリントを額装してお届けします。プレゼントにも。</p>
+      <p class="opt-price">¥5,000〜（サイズによる）</p>
+    </div>
+    <div class="opt">
+      <h3 class="opt-name">スピード納品（3日以内）</h3>
+      <p class="opt-desc">通常1〜2週間の納品を3日以内に対応。イベント翌日納品も相談可。</p>
+      <p class="opt-price">+¥8,000</p>
+    </div>
+    <div class="opt">
+      <h3 class="opt-name">高度レタッチ（5枚）</h3>
+      <p class="opt-desc">背景除去・肌の高度補正・合成などの複雑なレタッチに対応します。</p>
+      <p class="opt-price">+¥10,000（5枚）</p>
+    </div>
+  </div>
+</div>
+
+<!-- キャンセルポリシー -->
+<div class="cancel-sec">
+  <p class="sec-label" style="color:var(--warm);">Cancellation Policy</p>
+  <h2 class="cancel-title">キャンセルポリシー</h2>
+  <table class="cancel-table">
+    <thead>
+      <tr><th>キャンセル時期</th><th>キャンセル料</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>撮影日の30日以上前</td><td>無料</td></tr>
+      <tr><td>撮影日の29〜15日前</td><td>料金の20%</td></tr>
+      <tr><td>撮影日の14〜8日前</td><td>料金の40%</td></tr>
+      <tr><td>撮影日の7日前〜前日</td><td>料金の70%</td></tr>
+      <tr><td>撮影当日・無連絡キャンセル</td><td>料金の100%</td></tr>
+    </tbody>
+  </table>
+  <p style="color:rgba(255,255,255,.3);font-size:.72rem;margin-top:20px;line-height:1.8;">※ 台風・大雪などの自然災害による中止はキャンセル料が発生しません。<br>※ カメラマン側の都合によるキャンセルは全額返金いたします。</p>
+</div>
+
+<!-- 注意事項 -->
+<div class="notes-sec">
+  <p class="sec-label">Notes</p>
+  <h2 class="sec-title">ご注意・<em>利用規約</em></h2>
+  <div class="notes-grid">
+    <div class="note-block">
+      <h3>料金について</h3>
+      <ul class="note-list">
+        <li>表示価格はすべて税込価格です</li>
+        <li>交通費（電車・バス実費、車は1km20円）を別途いただきます</li>
+        <li>スタジオレンタル費用は別途実費となります</li>
+        <li>深夜・早朝（22時〜6時）の撮影は割増料金となります</li>
+        <li>正式な見積もりはお問い合わせフォームよりご依頼ください</li>
+      </ul>
+    </div>
+    <div class="note-block">
+      <h3>データ・著作権について</h3>
+      <ul class="note-list">
+        <li>撮影した写真の著作権はカメラマン（光原一輝）に帰属します</li>
+        <li>個人利用・SNS投稿は自由に行えます</li>
+        <li>商用利用・転売・二次配布は事前にご相談ください</li>
+        <li>ポートフォリオ・SNSへの掲載にご同意いただける場合は撮影代を割引します</li>
+        <li>データの有効期限は納品から1年間です（再ダウンロード要問合せ）</li>
+      </ul>
+    </div>
+    <div class="note-block">
+      <h3>撮影当日について</h3>
+      <ul class="note-list">
+        <li>天候・体調などによる日程変更は7日前まで無料で承ります</li>
+        <li>撮影中は安全最優先でお願いします</li>
+        <li>未成年者の撮影には保護者の同意書が必要です</li>
+        <li>撮影時間は準備・移動時間を除いた純粋な撮影時間です</li>
+      </ul>
+    </div>
+    <div class="note-block">
+      <h3>お支払いについて</h3>
+      <ul class="note-list">
+        <li>銀行振込・クレジットカード対応（VISA・Master・JCB）</li>
+        <li>撮影前日までにお支払いをお願いしております</li>
+        <li>継続依頼の場合は月末締め翌月払いに対応します</li>
+        <li>領収書の発行は可能です（インボイス対応）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-img"></div>
+  <div class="cta-content">
+    <h2 class="cta-title">まずはお気軽に<em>ご相談ください。</em></h2>
+    <p class="cta-text">お見積もりは無料です。ご予算・ご希望に応じて最適なプランをご提案します。お問い合わせからお返事まで通常24時間以内。</p>
+    <a href="contact.html" class="btn-warm">お問い合わせ・お見積もり</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">HIKARI STUDIO</div>
+  <p>© 2024 HIKARI STUDIO. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

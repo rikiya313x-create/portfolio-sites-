@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エリア別旅行 | VOYAGE JAPAN</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--deep:#0a2540;--teal:#0d7377;--gold:#f0a500;--cream:#faf7f2;--text:#2d3748;--gray:#718096;--border:#e2e8f0;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 64px;display:flex;align-items:center;justify-content:space-between;height:76px;background:rgba(10,37,64,.97);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;letter-spacing:.05em;}
+  .logo span{color:var(--gold);font-style:italic;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.7);font-size:.74rem;letter-spacing:.1em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--deep)!important;padding:9px 20px;font-size:.73rem!important;font-weight:700!important;}
+  .page-hero{height:420px;background:url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;justify-content:center;padding-top:76px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(10,37,64,.68);}
+  .page-hero-content{position:relative;z-index:1;text-align:center;}
+  .page-hero-content p{color:var(--gold);font-size:.68rem;letter-spacing:.3em;margin-bottom:12px;text-transform:uppercase;}
+  .page-hero-content h1{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;line-height:1.2;}
+  .sec{padding:80px;}
+  .sec-tag{color:var(--teal);font-size:.62rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--deep);margin-bottom:12px;}
+  .teal-line{width:32px;height:2px;background:var(--teal);margin:12px 0 40px;}
+  .areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .ac{position:relative;height:300px;overflow:hidden;cursor:pointer;}
+  .ac img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+  .ac:hover img{transform:scale(1.06);}
+  .ac-overlay{position:absolute;inset:0;background:rgba(10,37,64,.35);transition:.3s;}
+  .ac:hover .ac-overlay{background:rgba(10,37,64,.55);}
+  .ac-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;}
+  .ac-region{color:rgba(255,255,255,.65);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:4px;}
+  .ac-name{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;}
+  .ac-count{color:rgba(255,255,255,.5);font-size:.7rem;margin-top:4px;}
+  .ac-btn{display:inline-block;margin-top:10px;border:1px solid rgba(255,255,255,.5);color:#fff;padding:6px 16px;font-size:.68rem;letter-spacing:.1em;transition:.2s;}
+  .ac:hover .ac-btn{background:var(--gold);border-color:var(--gold);color:var(--deep);}
+  footer{background:var(--deep);padding:48px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.4);font-size:.72rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content h1{font-size:2rem;}
+    .sec{padding:48px 24px;} .areas-grid{grid-template-columns:1fr;}
+    .ac{height:240px;} footer{padding:32px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">VOYAGE <span>JAPAN</span></a>
+  <ul>
+    <li><a href="tours.html">ツアー検索</a></li>
+    <li><a href="destinations.html">エリア別</a></li>
+    <li><a href="tours.html">プラン</a></li>
+    <li><a href="about.html">担当者</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>DESTINATIONS</p>
+    <h1>エリア別旅行ガイド</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-tag">DESTINATIONS</p>
+  <h2 class="sec-title">行きたいエリアを選ぼう</h2>
+  <div class="teal-line"></div>
+  <div class="areas-grid">
+    <div class="ac">
+      <img src="https://images.unsplash.com/photo-1580502304784-8985b7eb7260?w=800&q=80" alt="北海道">
+      <div class="ac-overlay"></div>
+      <div class="ac-content">
+        <p class="ac-region">North Japan</p>
+        <p class="ac-name">北海道</p>
+        <p class="ac-count">ツアー12件</p>
+        <a href="tours.html" class="ac-btn">プランを見る</a>
+      </div>
+    </div>
+    <div class="ac">
+      <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=800&q=80" alt="東北">
+      <div class="ac-overlay"></div>
+      <div class="ac-content">
+        <p class="ac-region">North Japan</p>
+        <p class="ac-name">東北</p>
+        <p class="ac-count">ツアー8件</p>
+        <a href="tours.html" class="ac-btn">プランを見る</a>
+      </div>
+    </div>
+    <div class="ac">
+      <img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&q=80" alt="関東">
+      <div class="ac-overlay"></div>
+      <div class="ac-content">
+        <p class="ac-region">Central Japan</p>
+        <p class="ac-name">関東・東京</p>
+        <p class="ac-count">ツアー15件</p>
+        <a href="tours.html" class="ac-btn">プランを見る</a>
+      </div>
+    </div>
+    <div class="ac">
+      <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=80" alt="関西">
+      <div class="ac-overlay"></div>
+      <div class="ac-content">
+        <p class="ac-region">West Japan</p>
+        <p class="ac-name">関西・京都・奈良</p>
+        <p class="ac-count">ツアー18件</p>
+        <a href="tours.html" class="ac-btn">プランを見る</a>
+      </div>
+    </div>
+    <div class="ac">
+      <img src="https://images.unsplash.com/photo-1570521462033-3015e76e7432?w=800&q=80" alt="九州">
+      <div class="ac-overlay"></div>
+      <div class="ac-content">
+        <p class="ac-region">South Japan</p>
+        <p class="ac-name">九州</p>
+        <p class="ac-count">ツアー10件</p>
+        <a href="tours.html" class="ac-btn">プランを見る</a>
+      </div>
+    </div>
+    <div class="ac">
+      <img src="https://images.unsplash.com/photo-1499810631641-541e76d678a2?w=800&q=80" alt="沖縄">
+      <div class="ac-overlay"></div>
+      <div class="ac-content">
+        <p class="ac-region">Okinawa</p>
+        <p class="ac-name">沖縄・離島</p>
+        <p class="ac-count">ツアー14件</p>
+        <a href="tours.html" class="ac-btn">プランを見る</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 VOYAGE JAPAN. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

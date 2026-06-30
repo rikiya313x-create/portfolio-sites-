@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | HIKARI STUDIO</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0c0c0c;--white:#fafafa;--accent:#e8e0d5;--text:#2a2a2a;--muted:#888;--warm:#c4a882;}
+  body{font-family:'DM Sans','Noto Sans JP',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#f5f0ea;border-left:3px solid var(--warm);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--muted);}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(250,250,250,.96);border-bottom:1px solid rgba(0,0,0,.06);}
+  .logo{font-family:'DM Serif Display',serif;font-size:1.1rem;letter-spacing:.05em;color:var(--black);}
+  .logo span{font-style:italic;color:var(--warm);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--muted);font-size:.75rem;letter-spacing:.08em;transition:.2s;}
+  nav ul a:hover{color:var(--black);}
+  .nav-cta{color:var(--black)!important;border-bottom:1px solid var(--black);}
+
+  .page-hero{padding-top:72px;height:420px;background:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1400&q=80') center/cover;position:relative;display:flex;align-items:flex-end;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(12,12,12,.5);}
+  .page-hero-inner{position:relative;z-index:1;padding:0 80px 56px;}
+  .page-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:10px;text-transform:uppercase;}
+  .page-title{font-family:'DM Serif Display',serif;font-size:3.4rem;color:#fff;line-height:1.1;}
+  .page-title em{font-style:italic;color:var(--warm);}
+
+  .breadcrumb{padding:20px 80px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;gap:8px;align-items:center;}
+  .breadcrumb a{color:var(--muted);font-size:.72rem;}
+  .breadcrumb span{color:var(--muted);font-size:.72rem;}
+  .breadcrumb .current{color:var(--text);font-size:.72rem;}
+
+  .sec{padding:100px 80px;}
+  .sec-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--black);margin-bottom:36px;line-height:1.15;}
+  .sec-title em{font-style:italic;color:var(--warm);}
+
+  /* サービスリスト */
+  .service-list{display:flex;flex-direction:column;gap:2px;background:#eee;}
+  .service-item{background:var(--white);display:grid;grid-template-columns:300px 1fr 200px;gap:0;}
+  .si-img{overflow:hidden;}
+  .si-img img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+  .service-item:hover .si-img img{transform:scale(1.05);}
+  .si-content{padding:44px 40px;}
+  .si-num{font-family:'DM Serif Display',serif;font-size:3rem;color:rgba(12,12,12,.05);line-height:1;margin-bottom:8px;}
+  .si-name{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--black);margin-bottom:6px;}
+  .si-en{font-size:.62rem;letter-spacing:.2em;color:var(--warm);margin-bottom:16px;text-transform:uppercase;}
+  .si-text{color:var(--muted);font-size:.8rem;line-height:2;margin-bottom:16px;}
+  .si-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .si-tag{background:var(--accent);color:var(--text);font-size:.64rem;padding:4px 10px;letter-spacing:.05em;}
+  .si-price{background:var(--accent);padding:44px 28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+  .si-price-num{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--black);margin-bottom:4px;}
+  .si-price-label{color:var(--muted);font-size:.68rem;line-height:1.6;}
+
+  /* ウェディング詳細 */
+  .wedding-sec{background:var(--black);padding:100px 80px;}
+  .wedding-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  .wg-title{font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;margin-bottom:20px;line-height:1.2;}
+  .wg-text{color:rgba(255,255,255,.5);font-size:.82rem;line-height:2.1;margin-bottom:24px;}
+  .wg-plans{display:flex;flex-direction:column;gap:2px;}
+  .wg-plan{background:rgba(255,255,255,.04);padding:20px 24px;border-left:3px solid var(--warm);}
+  .wg-plan-name{color:#fff;font-size:.86rem;font-weight:500;margin-bottom:6px;}
+  .wg-plan-price{color:var(--warm);font-size:.82rem;margin-bottom:6px;}
+  .wg-plan-desc{color:rgba(255,255,255,.4);font-size:.74rem;line-height:1.8;}
+  .wg-imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+  .wg-img{overflow:hidden;}
+  .wg-img img{width:100%;height:200px;object-fit:cover;}
+
+  /* FAQ */
+  .faq-sec{background:var(--accent);padding:100px 80px;}
+  .faq-list{max-width:700px;}
+  .faq-item{border-bottom:1px solid rgba(0,0,0,.08);padding:22px 0;}
+  .faq-q{display:flex;gap:12px;font-size:.86rem;font-weight:500;color:var(--black);margin-bottom:10px;}
+  .fq-i{color:var(--warm);font-family:'DM Serif Display',serif;font-size:1rem;flex-shrink:0;}
+  .faq-a{color:var(--muted);font-size:.8rem;line-height:1.95;padding-left:22px;}
+
+  /* 流れ */
+  .flow-sec{padding:100px 80px;}
+  .flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#eee;margin-top:48px;}
+  .fs{background:var(--white);padding:36px 28px;}
+  .fs-num{font-family:'DM Serif Display',serif;font-size:3rem;color:rgba(12,12,12,.06);line-height:1;margin-bottom:14px;}
+  .fs-title{font-size:.88rem;font-weight:500;color:var(--black);margin-bottom:8px;}
+  .fs-text{color:var(--muted);font-size:.76rem;line-height:1.9;}
+
+  /* CTA */
+  .cta-sec{display:grid;grid-template-columns:1fr 1fr;}
+  .cta-img{background:url('https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=800&q=80') center/cover;min-height:380px;}
+  .cta-content{background:var(--black);padding:80px;display:flex;flex-direction:column;justify-content:center;}
+  .cta-title{font-family:'DM Serif Display',serif;font-size:2.4rem;color:var(--white);line-height:1.1;margin-bottom:16px;}
+  .cta-title em{font-style:italic;color:var(--warm);}
+  .cta-text{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.9;margin-bottom:28px;}
+  .btn-warm{display:inline-block;background:var(--warm);color:#fff;padding:14px 36px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-warm:hover{background:#b09070;}
+
+  footer{background:var(--black);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);}
+  .footer-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:rgba(255,255,255,.4);letter-spacing:.05em;}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}
+    nav ul{gap:14px;}
+    .page-hero{height:260px;}
+    .page-hero-inner{padding:0 20px 32px;}
+    .page-title{font-size:2rem;}
+    .breadcrumb{padding:14px 20px;}
+    .sec{padding:60px 20px;}
+    .service-item{grid-template-columns:1fr;}
+    .si-img{height:220px;}
+    .si-content{padding:24px 20px;}
+    .si-price{padding:20px;}
+    .wedding-sec{padding:60px 20px;}
+    .wedding-grid{grid-template-columns:1fr;}
+    .wg-imgs{grid-template-columns:1fr;}
+    .faq-sec{padding:60px 20px;}
+    .flow-sec{padding:60px 20px;}
+    .flow-steps{grid-template-columns:1fr;}
+    .cta-sec{grid-template-columns:1fr;}
+    .cta-content{padding:40px 20px;}
+    footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフォトスタジオサイトです。実在する写真家・スタジオとは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html"><div class="logo">HIKARI <span>STUDIO</span></div></a>
+  <ul>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="service.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">Services</p>
+    <h1 class="page-title">撮影メニュー<em>。</em></h1>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>/</span>
+  <span class="current">Services</span>
+</div>
+
+<!-- サービスイントロ -->
+<section class="sec">
+  <p class="sec-label">Services</p>
+  <h2 class="sec-title">光原一輝が手がける、<em>6つの撮影メニュー。</em></h2>
+  <p style="color:var(--muted);font-size:.86rem;line-height:2;max-width:620px;">ウェディングから商業撮影まで。すべてのメニューで「自然光へのこだわり」と「被写体との対話」を軸に、あなたの大切な瞬間・ブランドの世界観を最大限に引き出します。</p>
+</section>
+
+<!-- サービスリスト -->
+<div style="padding:0 80px 80px;">
+  <div class="service-list">
+    <div class="service-item">
+      <div class="si-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=600&q=80" alt="Wedding"></div>
+      <div class="si-content">
+        <div class="si-num">01</div>
+        <h2 class="si-name">ウェディング</h2>
+        <p class="si-en">Wedding Photography</p>
+        <p class="si-text">挙式・披露宴から前撮り・後撮りまで、結婚に関わるすべてのシーンを一貫して記録します。二人の自然な表情を引き出す「ドキュメンタリー×ポートレート」スタイルで、式全体の流れを美しい物語として残します。海外挙式（バリ・パリ・ハワイ等）にも対応。写真データはクラウドにてご納品。</p>
+        <div class="si-tags">
+          <span class="si-tag">挙式・披露宴</span>
+          <span class="si-tag">前撮り</span>
+          <span class="si-tag">後撮り</span>
+          <span class="si-tag">海外挙式対応</span>
+          <span class="si-tag">フィルム撮影オプション</span>
+        </div>
+      </div>
+      <div class="si-price">
+        <p class="si-price-num">¥120,000〜</p>
+        <p class="si-price-label">全日撮影<br>（8〜10時間）</p>
+      </div>
+    </div>
+
+    <div class="service-item">
+      <div class="si-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80" alt="Portrait"></div>
+      <div class="si-content">
+        <div class="si-num">02</div>
+        <h2 class="si-name">ポートレート</h2>
+        <p class="si-en">Portrait Photography</p>
+        <p class="si-text">プロフィール写真・SNS用・書籍著者用・就活用まで、目的に合わせた最高の一枚を追求します。スタジオ撮影・屋外ロケーション撮影のどちらも対応。撮影前のコミュニケーションを大切にしているため、「緊張している」という方にも好評です。</p>
+        <div class="si-tags">
+          <span class="si-tag">プロフィール</span>
+          <span class="si-tag">SNS用</span>
+          <span class="si-tag">書籍著者用</span>
+          <span class="si-tag">ビジネス用</span>
+          <span class="si-tag">屋外・スタジオ</span>
+        </div>
+      </div>
+      <div class="si-price">
+        <p class="si-price-num">¥18,000〜</p>
+        <p class="si-price-label">1時間<br>（セレクト15枚〜）</p>
+      </div>
+    </div>
+
+    <div class="service-item">
+      <div class="si-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&q=80" alt="Family"></div>
+      <div class="si-content">
+        <div class="si-num">03</div>
+        <h2 class="si-name">家族写真</h2>
+        <p class="si-en">Family Photography</p>
+        <p class="si-text">お誕生日・七五三・お宮参り・100日・成人式など、家族の節目を自然なスタイルで記録します。ご自宅・公園・海などロケーション撮影が中心で、その家族らしい自然な表情を大切にします。お子さんのペースに合わせた撮影スタイルで、泣いたり笑ったりそのままを残します。</p>
+        <div class="si-tags">
+          <span class="si-tag">七五三</span>
+          <span class="si-tag">お宮参り</span>
+          <span class="si-tag">100日</span>
+          <span class="si-tag">誕生日</span>
+          <span class="si-tag">ロケーション撮影</span>
+        </div>
+      </div>
+      <div class="si-price">
+        <p class="si-price-num">¥28,000〜</p>
+        <p class="si-price-label">1.5時間<br>（セレクト30枚〜）</p>
+      </div>
+    </div>
+
+    <div class="service-item">
+      <div class="si-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1504439904031-93ded9f93e4e?w=600&q=80" alt="Commercial"></div>
+      <div class="si-content">
+        <div class="si-num">04</div>
+        <h2 class="si-name">商業撮影</h2>
+        <p class="si-en">Commercial Photography</p>
+        <p class="si-text">ECサイト商品・料理・インテリア・ブランドビジュアル・PR素材など、広告・販促用途の商業撮影に対応します。商品の魅力を最大限に引き出す光の使い方と、売れるビジュアル作りに定評があります。継続案件・定期撮影の割引あり。</p>
+        <div class="si-tags">
+          <span class="si-tag">EC商品</span>
+          <span class="si-tag">料理・飲食</span>
+          <span class="si-tag">インテリア</span>
+          <span class="si-tag">ブランドビジュアル</span>
+          <span class="si-tag">継続割引あり</span>
+        </div>
+      </div>
+      <div class="si-price">
+        <p class="si-price-num">¥40,000〜</p>
+        <p class="si-price-label">半日（4時間）<br>成果物数による</p>
+      </div>
+    </div>
+
+    <div class="service-item">
+      <div class="si-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80" alt="Event"></div>
+      <div class="si-content">
+        <div class="si-num">05</div>
+        <h2 class="si-name">イベント撮影</h2>
+        <p class="si-en">Event Photography</p>
+        <p class="si-text">企業イベント・セミナー・コンサート・展示会・パーティーなどのイベント記録撮影に対応。納品スピードが早く、翌日〜3日後の納品も相談可。SNS投稿用の縦横両フォーマット対応。サブカメラマンの手配も可能です。</p>
+        <div class="si-tags">
+          <span class="si-tag">企業イベント</span>
+          <span class="si-tag">セミナー</span>
+          <span class="si-tag">コンサート</span>
+          <span class="si-tag">展示会</span>
+          <span class="si-tag">スピード納品</span>
+        </div>
+      </div>
+      <div class="si-price">
+        <p class="si-price-num">¥35,000〜</p>
+        <p class="si-price-label">3時間<br>（セレクト50枚〜）</p>
+      </div>
+    </div>
+
+    <div class="service-item">
+      <div class="si-img" style="height:240px;"><img src="https://images.unsplash.com/photo-1541727816860-d9a2f1e77ea2?w=600&q=80" alt="Location"></div>
+      <div class="si-content">
+        <div class="si-num">06</div>
+        <h2 class="si-name">出張撮影</h2>
+        <p class="si-en">Location Photography</p>
+        <p class="si-text">関東圏を中心に全国対応。カフェ・ショップ・オフィス・自宅・公園などご指定の場所への出張撮影が可能です。土地勘のない場所でも事前ロケハン（+オプション）で対応します。新幹線での移動は実費。宿泊が必要な場合は別途相談。</p>
+        <div class="si-tags">
+          <span class="si-tag">全国対応</span>
+          <span class="si-tag">ロケハン可</span>
+          <span class="si-tag">カフェ・ショップ</span>
+          <span class="si-tag">自宅・オフィス</span>
+          <span class="si-tag">屋外ロケ</span>
+        </div>
+      </div>
+      <div class="si-price">
+        <p class="si-price-num">¥25,000〜</p>
+        <p class="si-price-label">交通費実費別<br>内容による</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ウェディング詳細 -->
+<div class="wedding-sec">
+  <p class="sec-label" style="color:var(--warm);">Wedding Plans</p>
+  <h2 style="font-family:'DM Serif Display',serif;font-size:2.4rem;color:#fff;margin-bottom:48px;line-height:1.15;">ウェディングプランの<em style="font-style:italic;color:var(--warm);">詳細</em></h2>
+  <div class="wedding-grid">
+    <div>
+      <h3 class="wg-title">特別な一日を、丸ごと残したい。</h3>
+      <p class="wg-text">結婚式は人生で最も輝く一日のひとつ。その日の光、笑顔、感動、緊張——すべてを漏れなく記録するために、HIKARIスタジオは準備から撮影まで全力で臨みます。</p>
+      <p class="wg-text" style="margin-bottom:32px;">前撮りから挙式・披露宴・二次会まで、ご要望に応じたプランをご提案します。</p>
+      <div class="wg-plans">
+        <div class="wg-plan">
+          <p class="wg-plan-name">前撮りプラン</p>
+          <p class="wg-plan-price">¥48,000〜（半日・3〜4時間）</p>
+          <p class="wg-plan-desc">挙式前の前撮り・フォトウェディングに対応。ロケーション・スタジオ選択可。フィルム撮影オプションあり。</p>
+        </div>
+        <div class="wg-plan">
+          <p class="wg-plan-name">挙式のみプラン</p>
+          <p class="wg-plan-price">¥65,000〜（3〜4時間）</p>
+          <p class="wg-plan-desc">挙式・セレモニーのみの撮影。少人数婚・フォトウェディング向け。セレクト100枚以上。</p>
+        </div>
+        <div class="wg-plan">
+          <p class="wg-plan-name">全日プラン（最人気）</p>
+          <p class="wg-plan-price">¥120,000〜（8〜10時間）</p>
+          <p class="wg-plan-desc">支度から二次会まで一日全体を撮影。400〜600枚の写真データをセレクト・レタッチしてご納品。</p>
+        </div>
+        <div class="wg-plan">
+          <p class="wg-plan-name">海外挙式プラン</p>
+          <p class="wg-plan-price">¥200,000〜（渡航費別）</p>
+          <p class="wg-plan-desc">バリ・パリ・ハワイ・プラハなど海外での挙式に対応。旅費・宿泊費は別途実費。</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wg-imgs">
+        <div class="wg-img"><img src="https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=600&q=80" alt="Wedding"></div>
+        <div class="wg-img"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80" alt="Wedding Ring"></div>
+        <div class="wg-img"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&q=80" alt="Wedding"></div>
+        <div class="wg-img"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" alt="Wedding Couple"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 流れ -->
+<div class="flow-sec">
+  <p class="sec-label">Process</p>
+  <h2 class="sec-title">撮影の<em>流れ</em></h2>
+  <div class="flow-steps">
+    <div class="fs"><div class="fs-num">01</div><h3 class="fs-title">お問い合わせ</h3><p class="fs-text">フォームまたはメールでご連絡ください。希望日・撮影内容・人数をお知らせいただけるとスムーズです。</p></div>
+    <div class="fs"><div class="fs-num">02</div><h3 class="fs-title">事前ヒアリング</h3><p class="fs-text">オンラインまたはお電話で、ご希望のイメージ・雰囲気・使用用途などを丁寧にヒアリングします。</p></div>
+    <div class="fs"><div class="fs-num">03</div><h3 class="fs-title">撮影当日</h3><p class="fs-text">リラックスできる雰囲気を大切に。撮影中も声をかけながら進めるので初めての方も安心です。</p></div>
+    <div class="fs"><div class="fs-num">04</div><h3 class="fs-title">データ納品</h3><p class="fs-text">撮影から1〜2週間でセレクト済みのデータをクラウドでお届け。RAWデータの提供も対応可能です。</p></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-sec">
+  <p class="sec-label">FAQ</p>
+  <h2 class="sec-title">サービスについての<em>よくある質問</em></h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>撮影当日に雨が降った場合はどうなりますか？</div><div class="faq-a">屋外撮影の場合、雨天時は日程の変更をご提案します。また、雨の中での撮影をご希望の場合はその場で対応しますので、ご相談ください。キャンセル料は撮影7日前から発生します。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>データの納品枚数はどのくらいですか？</div><div class="faq-a">撮影メニューによって異なりますが、ポートレート（1時間）で15〜30枚、ウェディング全日で400〜600枚程度が目安です。枚数の増加を希望される場合はご相談ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>RAWデータのお渡しは可能ですか？</div><div class="faq-a">有料オプションにて対応可能です。RAWデータの提供をご希望の場合は、事前にお知らせください。通常のJPEGデータに加えて提供します。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>撮影データの商用利用は可能ですか？</div><div class="faq-a">個人利用・SNS投稿は標準的に可能です。商用利用（広告・書籍など）はお申込み時にお知らせください。別途ライセンス費用が発生する場合があります。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>修正・レタッチはしてもらえますか？</div><div class="faq-a">すべての納品データに基本的なカラーグレーディング・レタッチを施しています。肌の補正・背景除去などの高度なレタッチは有料オプションとなります。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>全国への出張は可能ですか？</div><div class="faq-a">可能です。交通費・宿泊費は実費でご請求します。新幹線・飛行機での移動を伴う場合も、お気軽にご相談ください。</div></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-img"></div>
+  <div class="cta-content">
+    <h2 class="cta-title">ご依頼・お見積もりは<em>お気軽に。</em></h2>
+    <p class="cta-text">まずはご相談だけでも構いません。撮影のご依頼・お見積もり・ご質問はお気軽にどうぞ。通常24時間以内にお返事いたします。</p>
+    <a href="contact.html" class="btn-warm">お問い合わせ・撮影依頼</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">HIKARI STUDIO</div>
+  <p>© 2024 HIKARI STUDIO. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

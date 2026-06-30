@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>担当コンシェルジュ | VOYAGE JAPAN</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--deep:#0a2540;--teal:#0d7377;--gold:#f0a500;--cream:#faf7f2;--text:#2d3748;--gray:#718096;--border:#e2e8f0;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 64px;display:flex;align-items:center;justify-content:space-between;height:76px;background:rgba(10,37,64,.97);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;letter-spacing:.05em;}
+  .logo span{color:var(--gold);font-style:italic;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.7);font-size:.74rem;letter-spacing:.1em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--deep)!important;padding:9px 20px;font-size:.73rem!important;font-weight:700!important;}
+  .page-hero{height:380px;background:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;padding-top:76px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(10,37,64,.72);}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;}
+  .page-hero-content p{color:var(--gold);font-size:.68rem;letter-spacing:.3em;margin-bottom:12px;text-transform:uppercase;}
+  .page-hero-content h1{font-family:'Playfair Display',serif;font-size:2.8rem;color:#fff;line-height:1.2;}
+  .sec{padding:80px;}
+  .sec-tag{color:var(--teal);font-size:.62rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--deep);margin-bottom:12px;}
+  .teal-line{width:32px;height:2px;background:var(--teal);margin:12px 0 40px;}
+  .concierge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .cc{background:#fff;}
+  .cc-photo{height:280px;background-size:cover;background-position:center top;}
+  .cc-body{padding:24px 24px 28px;}
+  .cc-area{color:var(--teal);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:4px;}
+  .cc-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--deep);margin-bottom:4px;}
+  .cc-years{color:var(--gray);font-size:.7rem;margin-bottom:12px;}
+  .cc-text{color:var(--gray);font-size:.78rem;line-height:1.9;margin-bottom:14px;}
+  .cc-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .cc-tag{background:var(--cream);color:var(--teal);font-size:.62rem;padding:4px 10px;border:1px solid var(--border);}
+  footer{background:var(--deep);padding:48px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.4);font-size:.72rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;} .page-hero-content h1{font-size:2rem;}
+    .sec{padding:48px 24px;} .concierge-grid{grid-template-columns:1fr;}
+    footer{padding:32px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">VOYAGE <span>JAPAN</span></a>
+  <ul>
+    <li><a href="tours.html">ツアー検索</a></li>
+    <li><a href="destinations.html">エリア別</a></li>
+    <li><a href="tours.html">プラン</a></li>
+    <li><a href="about.html">担当者</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>OUR TEAM</p>
+    <h1>旅のプロが<br>あなたをサポート</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-tag">CONCIERGE</p>
+  <h2 class="sec-title">担当コンシェルジュ</h2>
+  <div class="teal-line"></div>
+  <div class="concierge-grid">
+    <div class="cc">
+      <div class="cc-photo" style="background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80');"></div>
+      <div class="cc-body">
+        <p class="cc-area">北海道 / 東北専門</p>
+        <h3 class="cc-name">佐藤 真由美</h3>
+        <p class="cc-years">担当歴 12年</p>
+        <p class="cc-text">北海道・東北の温泉・グルメ・アウトドアに精通。地元の人しか知らない隠れた名所を案内します。</p>
+        <div class="cc-tags">
+          <span class="cc-tag">温泉</span>
+          <span class="cc-tag">グルメ</span>
+          <span class="cc-tag">ハイキング</span>
+        </div>
+      </div>
+    </div>
+    <div class="cc">
+      <div class="cc-photo" style="background-image:url('https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?w=600&q=80');"></div>
+      <div class="cc-body">
+        <p class="cc-area">関西・四国専門</p>
+        <h3 class="cc-name">田中 雄一</h3>
+        <p class="cc-years">担当歴 8年</p>
+        <p class="cc-text">京都・奈良の歴史・文化に深い造詣。茶道・着物体験から最新グルメまで幅広くアレンジします。</p>
+        <div class="cc-tags">
+          <span class="cc-tag">歴史・文化</span>
+          <span class="cc-tag">伝統体験</span>
+          <span class="cc-tag">寺社仏閣</span>
+        </div>
+      </div>
+    </div>
+    <div class="cc">
+      <div class="cc-photo" style="background-image:url('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80');"></div>
+      <div class="cc-body">
+        <p class="cc-area">沖縄・離島専門</p>
+        <h3 class="cc-name">比嘉 さくら</h3>
+        <p class="cc-years">担当歴 6年</p>
+        <p class="cc-text">沖縄本島から宮古・石垣・与那国まで全島を熟知。ダイビング・マリンスポーツの手配も得意です。</p>
+        <div class="cc-tags">
+          <span class="cc-tag">マリンスポーツ</span>
+          <span class="cc-tag">離島</span>
+          <span class="cc-tag">リゾート</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 VOYAGE JAPAN. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

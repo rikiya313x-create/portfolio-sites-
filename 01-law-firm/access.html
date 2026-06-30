@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アクセス | 山田・中村法律事務所</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--navy:#0d1b2a;--gold:#c9a84c;--light:#f5f3ee;--gray:#6b7280;--border:#e5e0d8;}
+  body{font-family:'Noto Sans JP',sans-serif;color:var(--navy);background:#fff;overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:var(--navy);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .logo{font-family:'Noto Serif JP',serif;color:#fff;font-size:1.1rem;letter-spacing:.15em;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.65);font-size:.73rem;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:#fff!important;padding:9px 22px;font-size:.73rem!important;}
+  .page-hero{height:340px;background:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;padding-top:68px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(13,27,42,.8);}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;}
+  .page-hero-content p{color:var(--gold);font-size:.65rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .page-hero-content h1{font-family:'Noto Serif JP',serif;font-size:2.4rem;color:#fff;line-height:1.4;}
+  .sec{padding:80px;}
+  .sec-label{color:var(--gold);font-size:.62rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .gold-line{width:28px;height:2px;background:var(--gold);margin:12px 0 36px;}
+  .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .map-placeholder{width:100%;height:380px;background:var(--light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:.85rem;}
+  .info-block{margin-bottom:28px;}
+  .info-block h3{font-family:'Noto Serif JP',serif;font-size:1rem;color:var(--navy);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+  .info-row{display:flex;gap:16px;margin-bottom:10px;font-size:.82rem;line-height:1.75;}
+  .info-label{color:var(--gray);width:72px;flex-shrink:0;}
+  .info-val{color:var(--navy);}
+  .route-item{border-left:2px solid var(--gold);padding:12px 16px;margin-bottom:12px;background:var(--light);}
+  .route-item h4{font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .route-item p{font-size:.76rem;color:var(--gray);line-height:1.8;}
+  footer{background:var(--navy);padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.4);font-size:.7rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;} .page-hero-content h1{font-size:1.7rem;}
+    .sec{padding:48px 24px;} .access-grid{grid-template-columns:1fr;}
+    footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <span class="logo">山田・中村法律事務所</span>
+  <ul>
+    <li><a href="about.html">事務所概要</a></li>
+    <li><a href="service.html">専門分野</a></li>
+    <li><a href="lawyers.html">弁護士紹介</a></li>
+    <li><a href="cases.html">解決事例</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談予約</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>ACCESS</p>
+    <h1>アクセス</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-label">ACCESS</p>
+  <h2 style="font-family:'Noto Serif JP',serif;font-size:1.8rem;color:var(--navy);">事務所へのアクセス</h2>
+  <div class="gold-line"></div>
+  <div class="access-grid">
+    <div class="map-placeholder">[ MAP ]<br>東京都新宿区西新宿X-X-X</div>
+    <div>
+      <div class="info-block">
+        <h3>所在地・連絡先</h3>
+        <div class="info-row"><span class="info-label">住所</span><span class="info-val">東京都新宿区西新宿1-X-X<br>新宿法律ビル 8F</span></div>
+        <div class="info-row"><span class="info-label">電話</span><span class="info-val">03-XXXX-XXXX</span></div>
+        <div class="info-row"><span class="info-label">FAX</span><span class="info-val">03-XXXX-XXXX</span></div>
+        <div class="info-row"><span class="info-label">受付時間</span><span class="info-val">平日 9:00〜18:00<br>（土日祝・時間外は要予約）</span></div>
+      </div>
+      <div class="info-block">
+        <h3>交通アクセス</h3>
+        <div class="route-item">
+          <h4>🚃 JR新宿駅より</h4>
+          <p>西口より徒歩5分<br>地下通路経由も可能</p>
+        </div>
+        <div class="route-item">
+          <h4>🚇 都営新宿線・大江戸線より</h4>
+          <p>新宿西口駅 D5出口より徒歩3分</p>
+        </div>
+        <div class="route-item">
+          <h4>🚗 お車でお越しの方</h4>
+          <p>近隣コインパーキングをご利用ください<br>（法律相談時間分の駐車費用補助あり）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 山田・中村法律事務所. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | HIKARI STUDIO</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0c0c0c;--white:#fafafa;--accent:#e8e0d5;--text:#2a2a2a;--muted:#888;--warm:#c4a882;}
+  body{font-family:'DM Sans','Noto Sans JP',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#f5f0ea;border-left:3px solid var(--warm);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--muted);}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(250,250,250,.96);border-bottom:1px solid rgba(0,0,0,.06);}
+  .logo{font-family:'DM Serif Display',serif;font-size:1.1rem;letter-spacing:.05em;color:var(--black);}
+  .logo span{font-style:italic;color:var(--warm);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--muted);font-size:.75rem;letter-spacing:.08em;transition:.2s;}
+  nav ul a:hover{color:var(--black);}
+  .nav-cta{color:var(--black)!important;border-bottom:1px solid var(--black);}
+
+  /* ページヒーロー */
+  .page-hero{padding-top:72px;height:420px;background:url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1400&q=80') center/cover;position:relative;display:flex;align-items:flex-end;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(12,12,12,.45);}
+  .page-hero-inner{position:relative;z-index:1;padding:0 80px 56px;}
+  .page-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:10px;text-transform:uppercase;}
+  .page-title{font-family:'DM Serif Display',serif;font-size:3.4rem;color:#fff;line-height:1.1;}
+  .page-title em{font-style:italic;color:var(--warm);}
+
+  /* パンくず */
+  .breadcrumb{padding:20px 80px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;gap:8px;align-items:center;}
+  .breadcrumb a{color:var(--muted);font-size:.72rem;}
+  .breadcrumb span{color:var(--muted);font-size:.72rem;}
+  .breadcrumb .current{color:var(--text);font-size:.72rem;}
+
+  /* 共通 */
+  .sec{padding:100px 80px;}
+  .sec-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--black);margin-bottom:36px;line-height:1.15;}
+  .sec-title em{font-style:italic;color:var(--warm);}
+
+  /* プロフィール */
+  .profile{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .profile-img{background:url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&q=80') center/cover;min-height:600px;}
+  .profile-content{background:var(--accent);padding:80px;}
+  .profile-content h2{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--black);margin-bottom:8px;}
+  .profile-en{color:var(--warm);font-size:.72rem;letter-spacing:.2em;margin-bottom:28px;}
+  .profile-content p{color:var(--text);font-size:.86rem;line-height:2.1;margin-bottom:18px;}
+
+  /* 受賞歴 */
+  .awards-list{display:flex;flex-direction:column;gap:16px;margin-top:36px;}
+  .award-item{display:flex;gap:16px;align-items:flex-start;padding:16px;background:rgba(255,255,255,.5);}
+  .award-yr{color:var(--warm);font-size:.72rem;font-weight:500;white-space:nowrap;padding-top:2px;min-width:36px;}
+  .award-text{color:var(--text);font-size:.8rem;line-height:1.7;}
+
+  /* 信条・フィロソフィー */
+  .philosophy{background:var(--black);padding:100px 80px;}
+  .philosophy-inner{max-width:900px;margin:0 auto;text-align:center;}
+  .phi-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:20px;text-transform:uppercase;}
+  .phi-quote{font-family:'DM Serif Display',serif;font-size:3rem;line-height:1.2;color:#fff;margin-bottom:36px;}
+  .phi-quote em{font-style:italic;color:var(--warm);}
+  .phi-text{color:rgba(255,255,255,.5);font-size:.86rem;line-height:2.2;max-width:680px;margin:0 auto;}
+
+  /* 3つのこだわり */
+  .beliefs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#eee;}
+  .belief{background:var(--white);padding:44px 32px;}
+  .belief-num{font-family:'DM Serif Display',serif;font-size:4rem;color:rgba(12,12,12,.05);line-height:1;margin-bottom:14px;}
+  .belief-title{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--black);margin-bottom:14px;}
+  .belief-text{color:var(--muted);font-size:.8rem;line-height:2;}
+
+  /* 機材紹介 */
+  .gear-sec{background:var(--accent);padding:100px 80px;}
+  .gear-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px;}
+  .gear-item{background:var(--white);padding:28px 24px;}
+  .gear-category{font-size:.62rem;letter-spacing:.2em;color:var(--warm);margin-bottom:10px;text-transform:uppercase;}
+  .gear-name{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--black);margin-bottom:8px;}
+  .gear-desc{color:var(--muted);font-size:.78rem;line-height:1.9;}
+
+  /* 年表 */
+  .timeline{padding:100px 80px;}
+  .timeline-inner{max-width:700px;margin:0 auto;}
+  .tl-item{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid rgba(0,0,0,.06);}
+  .tl-year{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--warm);}
+  .tl-event{font-size:.84rem;color:var(--text);line-height:1.8;}
+  .tl-sub{color:var(--muted);font-size:.76rem;margin-top:4px;line-height:1.7;}
+
+  /* インタビュー風 */
+  .interview{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .interview-img{background:url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80') center/cover;min-height:500px;}
+  .interview-content{padding:80px;}
+  .interview-q{font-size:.68rem;letter-spacing:.2em;color:var(--warm);margin-bottom:6px;text-transform:uppercase;}
+  .interview-a{font-family:'DM Serif Display',serif;font-size:1.6rem;line-height:1.5;color:var(--black);margin-bottom:20px;}
+  .interview-body{color:var(--muted);font-size:.82rem;line-height:2.1;margin-bottom:32px;}
+
+  /* クライアントロゴ */
+  .clients-sec{background:var(--black);padding:80px;}
+  .clients-label{font-size:.62rem;letter-spacing:.35em;color:rgba(255,255,255,.3);margin-bottom:36px;text-align:center;text-transform:uppercase;}
+  .clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .client-item{background:rgba(255,255,255,.03);padding:32px;text-align:center;border:1px solid rgba(255,255,255,.04);}
+  .client-name{color:rgba(255,255,255,.3);font-size:.78rem;letter-spacing:.1em;}
+
+  /* CTA */
+  .cta-sec{display:grid;grid-template-columns:1fr 1fr;}
+  .cta-img{background:url('https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=800&q=80') center/cover;min-height:380px;}
+  .cta-content{background:var(--black);padding:80px;display:flex;flex-direction:column;justify-content:center;}
+  .cta-title{font-family:'DM Serif Display',serif;font-size:2.4rem;color:var(--white);line-height:1.1;margin-bottom:16px;}
+  .cta-title em{font-style:italic;color:var(--warm);}
+  .cta-text{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.9;margin-bottom:28px;}
+  .btn-warm{display:inline-block;background:var(--warm);color:#fff;padding:14px 36px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-warm:hover{background:#b09070;}
+
+  footer{background:var(--black);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);}
+  .footer-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:rgba(255,255,255,.4);letter-spacing:.05em;}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}
+    nav ul{gap:16px;}
+    nav ul a{font-size:.68rem;}
+    .page-hero{height:280px;}
+    .page-hero-inner{padding:0 20px 36px;}
+    .page-title{font-size:2.2rem;}
+    .breadcrumb{padding:16px 20px;}
+    .sec{padding:60px 20px;}
+    .profile{grid-template-columns:1fr;}
+    .profile-img{min-height:300px;}
+    .profile-content{padding:40px 24px;}
+    .philosophy{padding:60px 20px;}
+    .phi-quote{font-size:2rem;}
+    .beliefs-grid{grid-template-columns:1fr;}
+    .gear-sec{padding:60px 20px;}
+    .gear-grid{grid-template-columns:1fr;}
+    .timeline{padding:60px 20px;}
+    .interview{grid-template-columns:1fr;}
+    .interview-img{min-height:280px;}
+    .interview-content{padding:40px 24px;}
+    .clients-sec{padding:60px 20px;}
+    .clients-grid{grid-template-columns:repeat(2,1fr);}
+    .cta-sec{grid-template-columns:1fr;}
+    .cta-img{min-height:220px;}
+    .cta-content{padding:40px 24px;}
+    footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフォトスタジオサイトです。実在する写真家・スタジオとは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html"><div class="logo">HIKARI <span>STUDIO</span></div></a>
+  <ul>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="service.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">About</p>
+    <h1 class="page-title">光原 一輝について<em>。</em></h1>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>/</span>
+  <span class="current">About</span>
+</div>
+
+<!-- プロフィール -->
+<div class="profile">
+  <div class="profile-img"></div>
+  <div class="profile-content">
+    <p class="sec-label">Photographer</p>
+    <h2 class="profile-content h2">光原 一輝</h2>
+    <p class="profile-en">KAZUKI MITSUHARA / HIKARI STUDIO</p>
+    <p>1987年東京都生まれ。慶應義塾大学文学部在学中に写真の魅力に目覚め、在学中から独学でフィルム写真を学ぶ。卒業後は国内有数の広告制作会社・株式会社フォトワークスにカメラマンとして入社し、約8年間にわたって商業写真・ブライダル・ファッションを中心に幅広い撮影経験を積む。</p>
+    <p>2018年に独立し、HIKARI STUDIOを設立。「光を写す、物語を残す。」を信念に、ウェディング・ファミリー・ポートレート・商業撮影まで多岐にわたる撮影を手がける。現在は東京を拠点に全国各地での撮影に対応。年間撮影件数は150件以上にのぼる。</p>
+    <p>撮影スタイルの核は「自然光の追求」と「被写体との対話」。撮影前のコミュニケーションを特に大切にしており、「緊張していたのに気づいたらリラックスして笑っていた」という声を多くのクライアントからいただいている。重いストロボを使わず、窓光・環境光を最大限に活用した柔らかい撮影を得意とする。</p>
+    <p>趣味は旅行と料理。世界20カ国以上を訪れ、各地で出会った文化や光の多様性が現在の作風の礎となっている。愛猫の「コダック」と東京・目黒区で暮らしている。</p>
+    <div class="awards-list">
+      <div class="award-item"><span class="award-yr">2024</span><span class="award-text">Japan Photo Award — ライフスタイル部門 優秀賞</span></div>
+      <div class="award-item"><span class="award-yr">2023</span><span class="award-text">Wedding Photo Awards Japan — ベストウェディング賞 受賞</span></div>
+      <div class="award-item"><span class="award-yr">2022</span><span class="award-text">Nikon Photo Contest International — ポートレート部門 入選</span></div>
+      <div class="award-item"><span class="award-yr">2021</span><span class="award-text">日本写真家協会 — 新進気鋭フォトグラファー賞 ノミネート</span></div>
+      <div class="award-item"><span class="award-yr">2020</span><span class="award-text">写真新世紀 — 優秀賞 受賞（キヤノン主催）</span></div>
+      <div class="award-item"><span class="award-yr">2019</span><span class="award-text">日本広告写真家協会 — 年鑑掲載作品選出</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- フィロソフィー -->
+<div class="philosophy">
+  <div class="philosophy-inner">
+    <p class="phi-label">Philosophy</p>
+    <h2 class="phi-quote">"写真は光の<em>彫刻</em>だ。"</h2>
+    <p class="phi-text">すべての写真は光の産物です。光が被写体に当たり、レンズを通り、センサーに刻まれる——その一瞬の積み重ねが、一枚の物語になる。私が追いかけているのは、その「光の瞬間」です。完璧な照明よりも、窓から差し込む斜光に感動します。セットアップされたポーズより、不意に浮かんだ本物の笑顔に価値を見出します。撮影とは、その人の「今」を永遠に残すことだと信じています。</p>
+  </div>
+</div>
+
+<!-- 3つのこだわり -->
+<section class="sec">
+  <p class="sec-label">Beliefs</p>
+  <h2 class="sec-title">撮影への、<em>3つのこだわり。</em></h2>
+  <div class="beliefs-grid">
+    <div class="belief">
+      <div class="belief-num">01</div>
+      <h3 class="belief-title">自然光へのこだわり</h3>
+      <p class="belief-text">ストロボよりも自然光。窓から入る光、木漏れ日、夕暮れの斜光——環境が生み出す光は、人工光では絶対に再現できない温かさを持っています。HIKARI STUDIOの名前は「光」から来ています。その瞬間の光を最大限に活かした撮影を、常に心がけています。</p>
+    </div>
+    <div class="belief">
+      <div class="belief-num">02</div>
+      <h3 class="belief-title">コミュニケーション最優先</h3>
+      <p class="belief-text">カメラを構える前の「雑談」が、最高の一枚を生み出すと信じています。撮影前のヒアリングで、あなたが大切にしている価値観・好み・ライフスタイルを丁寧に聞かせてください。その情報が、普段の自分らしさを最大限に引き出す撮影につながります。</p>
+    </div>
+    <div class="belief">
+      <div class="belief-num">03</div>
+      <h3 class="belief-title">「後で使いたくなる」写真</h3>
+      <p class="belief-text">美しく撮れても、実際に使いたいと思えない写真は意味がありません。SNSに投稿したい、壁に飾りたい、名刺に使いたい——具体的な用途を意識した構図・色調の写真を届けることが、私の仕事の本質だと考えています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 機材 -->
+<div class="gear-sec">
+  <p class="sec-label">Equipment</p>
+  <h2 class="sec-title">使用機材</h2>
+  <div class="gear-grid">
+    <div class="gear-item">
+      <p class="gear-category">Main Camera</p>
+      <h3 class="gear-name">Sony α1 / α7R V</h3>
+      <p class="gear-desc">メインボディはSony α1を使用。高解像度・高速連写・優れたAF性能で、決定的瞬間を確実に捉えます。バックアップにα7R Vを使用し、高画素が求められる商業撮影でも対応します。</p>
+    </div>
+    <div class="gear-item">
+      <p class="gear-category">Lens — Portrait</p>
+      <h3 class="gear-name">Sony FE 85mm F1.4 GM</h3>
+      <p class="gear-desc">ポートレート撮影のメインレンズ。開放F1.4のボケ感と、Gマスターならではのシャープな描写が、被写体を際立たせます。自然光撮影との相性が抜群。</p>
+    </div>
+    <div class="gear-item">
+      <p class="gear-category">Lens — Wide/Environment</p>
+      <h3 class="gear-name">Sony FE 24-70mm F2.8 GM II</h3>
+      <p class="gear-desc">ウェディング・家族写真・環境ポートレートに使用する万能ズーム。第2世代GMの軽量化と描写力の両立が、長時間の撮影現場を支えます。</p>
+    </div>
+    <div class="gear-item">
+      <p class="gear-category">Film Camera</p>
+      <h3 class="gear-name">Leica M6 / Contax T2</h3>
+      <p class="gear-desc">フィルム作品にはLeica M6とContax T2を使用。フィルムならではの粒子感と色の深みが、デジタルとは異なる情感を生み出します。前撮り・アート作品で積極的に活用しています。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 年表 -->
+<section class="timeline">
+  <p class="sec-label">Timeline</p>
+  <h2 class="sec-title">歩んできた<em>道のり</em></h2>
+  <div class="timeline-inner">
+    <div class="tl-item">
+      <div class="tl-year">1987</div>
+      <div>
+        <div class="tl-event">東京都目黒区生まれ</div>
+        <div class="tl-sub">幼少期から父親の影響でカメラに興味を持ち始める</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2006</div>
+      <div>
+        <div class="tl-event">慶應義塾大学文学部入学</div>
+        <div class="tl-sub">写真部に入部。フィルムカメラを独学で習得し、大学祭でグループ展を開催</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2010</div>
+      <div>
+        <div class="tl-event">株式会社フォトワークス入社</div>
+        <div class="tl-sub">商業写真・ブライダル・ファッション撮影のプロカメラマンとしてキャリアスタート</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2014</div>
+      <div>
+        <div class="tl-event">チーフカメラマンに昇格</div>
+        <div class="tl-sub">大手ファッションブランドの広告撮影を担当。年間100件以上のウェディング撮影を経験</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2016</div>
+      <div>
+        <div class="tl-event">ヨーロッパ遊学（6ヶ月）</div>
+        <div class="tl-sub">フランス・イタリア・ドイツを中心に欧州各地を撮影旅行。光と色の多様性に衝撃を受ける</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2018</div>
+      <div>
+        <div class="tl-event">HIKARI STUDIO 設立</div>
+        <div class="tl-sub">フリーランスフォトグラファーとして独立。「光を写す、物語を残す。」をコンセプトに活動開始</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2020</div>
+      <div>
+        <div class="tl-event">写真新世紀 優秀賞 受賞</div>
+        <div class="tl-sub">コロナ禍のポートレート連作「Still Life — 静かな日常」が評価される</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2022</div>
+      <div>
+        <div class="tl-event">Nikon Photo Contest 入選</div>
+        <div class="tl-sub">ポートレート部門で国際入選。海外メディアへの掲載を機に海外クライアントの依頼も増加</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2023</div>
+      <div>
+        <div class="tl-event">Wedding Photo Awards Japan — ベストウェディング賞</div>
+        <div class="tl-sub">年間150件以上の撮影実績を誇るフォトグラファーとして業界から高い評価を受ける</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">現在</div>
+      <div>
+        <div class="tl-event">東京を拠点に全国で活動中</div>
+        <div class="tl-sub">ウェディング・ポートレート・商業撮影を中心に、年間150件以上の依頼に対応</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- インタビュー -->
+<div class="interview">
+  <div class="interview-img"></div>
+  <div class="interview-content">
+    <p class="sec-label">Interview</p>
+    <p class="interview-q">Q. 写真を始めたきっかけは？</p>
+    <h2 class="interview-a">"父のフィルムカメラを<br>こっそり持ち出した、<br>あの夏休みから。"</h2>
+    <p class="interview-body">中学1年の夏休み、父の書斎に古いNikonFMが置いてあるのを見つけました。こっそり持ち出して近所の公園を撮り歩いた一日が、すべての始まりです。現像された写真が手元に届いた時の驚きと喜びは、今でも忘れられません。あの感動が、今の自分のすべての原点です。</p>
+    <p class="interview-body">「残す」という行為が、こんなにも力を持つのかと子ながらに感じました。日常の何気ない瞬間——公園で遊ぶ友達、夕暮れの光が当たる木の葉——それが写真になると永遠になる。その魔法を信じて、今も続けています。</p>
+    <a href="works.html" style="display:inline-block;color:var(--black);font-size:.78rem;letter-spacing:.15em;border-bottom:1px solid var(--black);padding-bottom:2px;transition:.2s;">作品集を見る</a>
+  </div>
+</div>
+
+<!-- クライアント -->
+<div class="clients-sec">
+  <p class="clients-label">Clients & Publications</p>
+  <div class="clients-grid">
+    <div class="client-item"><p class="client-name">Wedding Hall Mariage</p></div>
+    <div class="client-item"><p class="client-name">URBAN FASHION TOKYO</p></div>
+    <div class="client-item"><p class="client-name">THE RESTAURANT KYOTO</p></div>
+    <div class="client-item"><p class="client-name">BLOOM Interior Design</p></div>
+    <div class="client-item"><p class="client-name">光と影 / 写真誌</p></div>
+    <div class="client-item"><p class="client-name">ELLE JAPON</p></div>
+    <div class="client-item"><p class="client-name">NAKAMURA JEWELLERY</p></div>
+    <div class="client-item"><p class="client-name">Green + Co. PR Agency</p></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-img"></div>
+  <div class="cta-content">
+    <h2 class="cta-title">大切な瞬間を、<em>一緒に残しませんか。</em></h2>
+    <p class="cta-text">まずはご相談だけでも構いません。撮影のご依頼・お見積もり・ご質問はお気軽にどうぞ。お返事は通常24時間以内にいたします。</p>
+    <a href="contact.html" class="btn-warm">お問い合わせ・撮影依頼</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">HIKARI STUDIO</div>
+  <p>© 2024 HIKARI STUDIO. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

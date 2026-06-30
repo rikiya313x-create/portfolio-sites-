@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料査定・お問い合わせ | PREMIER HOME</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--dark:#111215;--gold:#b8975a;--cream:#f8f4ee;--gray:#6d6d6d;--border:rgba(184,151,90,.25);--light:#fafaf8;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(17,18,21,.97);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo-mark{width:36px;height:36px;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Playfair Display',serif;font-size:.9rem;}
+  .logo-text{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.18em;color:#fff;text-transform:uppercase;margin-left:12px;}
+  .logo{display:flex;align-items:center;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.55);font-size:.7rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:#fff!important;padding:9px 22px;font-size:.7rem!important;}
+  .page-hero{height:340px;background:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;padding-top:72px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(17,18,21,.72);}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;}
+  .page-hero-content p{color:var(--gold);font-size:.62rem;letter-spacing:.35em;margin-bottom:10px;text-transform:uppercase;}
+  .page-hero-content h1{font-family:'Playfair Display',serif;font-size:2.8rem;color:#fff;line-height:1.3;}
+  .sec{padding:80px;}
+  .sec-label{color:var(--gold);font-size:.62rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .gold-line{width:28px;height:1px;background:var(--gold);margin:12px 0 40px;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+  .info-box{background:var(--cream);border:1px solid var(--border);padding:28px 32px;margin-bottom:24px;}
+  .info-box h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--dark);margin-bottom:12px;}
+  .info-box p{color:var(--gray);font-size:.8rem;line-height:2;}
+  .feature-row{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start;}
+  .feature-row span{font-size:1.2rem;flex-shrink:0;}
+  .feature-row div h4{font-size:.82rem;font-weight:700;color:var(--dark);margin-bottom:2px;}
+  .feature-row div p{font-size:.75rem;color:var(--gray);line-height:1.7;margin:0;}
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;font-size:.72rem;color:var(--gray);margin-bottom:6px;letter-spacing:.08em;}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1px solid rgba(184,151,90,.3);background:var(--light);font-family:'Noto Sans JP',sans-serif;font-size:.82rem;outline:none;transition:.2s;color:var(--dark);}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);}
+  .form-group textarea{height:140px;resize:vertical;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .btn-submit{background:var(--gold);color:#fff;border:none;padding:15px 48px;font-size:.84rem;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:.3s;width:100%;margin-top:8px;letter-spacing:.08em;}
+  .btn-submit:hover{background:#a08040;}
+  footer{background:var(--dark);padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.3);font-size:.7rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;} .page-hero-content h1{font-size:1.9rem;}
+    .sec{padding:48px 24px;} .contact-grid{grid-template-columns:1fr;gap:40px;}
+    .form-row{grid-template-columns:1fr;} footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">P</div>
+    <span class="logo-text">PREMIER HOME</span>
+  </a>
+  <ul>
+    <li><a href="properties.html">物件情報</a></li>
+    <li><a href="service.html">サービス</a></li>
+    <li><a href="agents.html">エージェント</a></li>
+    <li><a href="about.html">会社概要</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html" class="nav-cta">無料査定</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>FREE ASSESSMENT</p>
+    <h1>無料査定・お問い合わせ</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-label">CONTACT</p>
+  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--dark);">まずは無料査定から</h2>
+  <div class="gold-line"></div>
+  <div class="contact-grid">
+    <div>
+      <div class="info-box">
+        <h3>無料査定について</h3>
+        <p>所有物件の現在の市場価値を、港区専門エージェントが無料で査定します。売却のご予定がなくてもOKです。まずは現在の価値を知ることから始めましょう。</p>
+      </div>
+      <div class="feature-row"><span>🏠</span><div><h4>物件の種別を問わず対応</h4><p>マンション・一戸建て・土地・ビルすべて対応</p></div></div>
+      <div class="feature-row"><span>⚡</span><div><h4>最短翌日に査定結果</h4><p>物件情報をいただければ最短翌日に詳細査定書を提出</p></div></div>
+      <div class="feature-row"><span>🔒</span><div><h4>完全守秘義務</h4><p>ご相談内容・物件情報は厳重に管理します</p></div></div>
+      <div class="feature-row"><span>💰</span><div><h4>完全無料・成約ゼロでも費用なし</h4><p>査定・相談のみでのご利用も歓迎します</p></div></div>
+    </div>
+    <div>
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label>お名前 *</label>
+            <input type="text" placeholder="山田 太郎">
+          </div>
+          <div class="form-group">
+            <label>電話番号 *</label>
+            <input type="tel" placeholder="090-XXXX-XXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>メールアドレス</label>
+          <input type="email" placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label>お問い合わせ種別</label>
+          <select>
+            <option>売却査定（無料）</option>
+            <option>物件購入のご相談</option>
+            <option>賃貸・資産運用のご相談</option>
+            <option>その他お問い合わせ</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>物件種別</label>
+            <select>
+              <option>マンション（区分）</option>
+              <option>一戸建て・邸宅</option>
+              <option>土地</option>
+              <option>ビル・収益物件</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>物件所在地（エリア）</label>
+            <input type="text" placeholder="例：港区赤坂">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>ご要望・備考</label>
+          <textarea placeholder="売却のご事情・ご希望・気になることなどご自由にご記入ください。"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">無料査定を依頼する</button>
+      </form>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 PREMIER HOME. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

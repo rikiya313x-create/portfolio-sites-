@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>診療内容 | さくら皮膚科クリニック</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--pink:#e91e8c;--light-pink:#fce4ec;--soft:#fff8fb;--blue:#1976d2;--teal:#00897b;--text:#333;--gray:#666;--border:#f0dde8;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:var(--light-pink);border-left:3px solid var(--pink);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--gray);}
+  .info-bar{background:var(--pink);color:#fff;text-align:center;padding:8px;font-size:.75rem;letter-spacing:.05em;}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:#fff;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:72px;border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(0,0,0,.04);}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-icon{width:40px;height:40px;background:var(--pink);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;}
+  .logo-text{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:600;color:var(--text);}
+  .logo-sub{font-size:.62rem;color:var(--gray);display:block;font-weight:400;}
+  nav ul{list-style:none;display:flex;gap:26px;}
+  nav ul a{color:var(--gray);font-size:.76rem;font-weight:500;transition:.2s;}
+  nav ul a:hover,nav ul a.active{color:var(--pink);}
+  .nav-cta{background:var(--pink);color:#fff!important;padding:9px 20px;border-radius:6px;font-size:.74rem!important;font-weight:700!important;}
+  .page-hero{padding-top:72px;background:var(--soft);border-bottom:1px solid var(--border);}
+  .page-hero-inner{padding:56px 80px;}
+  .breadcrumb{font-size:.72rem;color:var(--gray);margin-bottom:12px;}
+  .breadcrumb a{color:var(--pink);}
+  .page-hero h1{font-family:'Noto Serif JP',serif;font-size:2.2rem;color:var(--text);margin-bottom:12px;line-height:1.4;}
+  .page-hero h1 span{color:var(--pink);}
+  .page-hero-lead{color:var(--gray);font-size:.88rem;line-height:2.1;max-width:720px;}
+  .sec{padding:80px 80px;}
+  .sec-label{color:var(--pink);font-size:.65rem;letter-spacing:.2em;font-weight:700;margin-bottom:8px;text-transform:uppercase;}
+  .sec-title{font-family:'Noto Serif JP',serif;font-size:1.8rem;color:var(--text);margin-bottom:32px;line-height:1.4;}
+  /* 診療カテゴリー */
+  .dept-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px;}
+  .dc-cat{padding:8px 18px;border:1px solid var(--border);border-radius:100px;font-size:.76rem;color:var(--gray);cursor:pointer;transition:.2s;}
+  .dc-cat:hover,.dc-cat.active{background:var(--pink);color:#fff;border-color:var(--pink);}
+  /* 診療詳細 */
+  .dept-detail{padding:72px 80px;border-bottom:1px solid var(--border);}
+  .dept-detail:nth-child(even){background:var(--soft);}
+  .dd-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .dd-inner.reverse{grid-template-columns:1fr 1fr;}
+  .dd-label{color:var(--pink);font-size:.65rem;letter-spacing:.2em;font-weight:700;margin-bottom:6px;text-transform:uppercase;}
+  .dd-title{font-family:'Noto Serif JP',serif;font-size:1.6rem;color:var(--text);margin-bottom:14px;line-height:1.35;}
+  .dd-lead{color:var(--gray);font-size:.84rem;line-height:2.1;margin-bottom:22px;}
+  .dd-symptoms{background:#fff;border-radius:10px;padding:20px;border:1px solid var(--border);margin-bottom:20px;}
+  .dd-sym-title{font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:12px;}
+  .sym-list{display:flex;flex-wrap:wrap;gap:6px;}
+  .sym{background:var(--light-pink);color:var(--pink);font-size:.68rem;padding:4px 10px;border-radius:100px;}
+  .dd-note{background:var(--soft);border-radius:10px;padding:16px 20px;font-size:.78rem;color:var(--gray);line-height:1.85;border-left:3px solid var(--pink);}
+  .dd-img-bg{width:100%;height:340px;border-radius:12px;background-size:cover;background-position:center;box-shadow:0 6px 24px rgba(0,0,0,.08);}
+  .dd-fee{background:var(--light-pink);border-radius:10px;padding:16px 20px;margin-top:20px;}
+  .dd-fee-label{font-size:.72rem;color:var(--pink);font-weight:700;margin-bottom:4px;}
+  .dd-fee-val{font-size:.88rem;font-weight:700;color:var(--text);}
+  /* 治療の流れ */
+  .flow-sec{background:var(--light-pink);padding:80px;}
+  .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:40px;}
+  .flow-steps::before{content:'';position:absolute;top:21px;left:10%;right:10%;height:2px;background:rgba(233,30,140,.2);}
+  .fs{text-align:center;padding:0 12px;position:relative;z-index:1;}
+  .fs-num{width:42px;height:42px;border-radius:50%;background:var(--pink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.84rem;font-weight:700;margin:0 auto 14px;}
+  .fs-title{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:5px;}
+  .fs-text{color:var(--gray);font-size:.7rem;line-height:1.8;}
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);padding:20px 0;}
+  .faq-q{display:flex;gap:12px;font-size:.84rem;font-weight:700;color:var(--text);margin-bottom:8px;}
+  .fq-i{color:var(--pink);font-weight:900;flex-shrink:0;}
+  .faq-a{color:var(--gray);font-size:.78rem;line-height:1.95;padding-left:20px;}
+  /* CTA */
+  .cta-sec{background:var(--pink);padding:70px 80px;text-align:center;}
+  .cta-title{font-family:'Noto Serif JP',serif;font-size:2rem;color:#fff;margin-bottom:10px;line-height:1.4;}
+  .cta-sub{color:rgba(255,255,255,.75);font-size:.84rem;margin-bottom:28px;}
+  .btn-white{display:inline-block;background:#fff;color:var(--pink);padding:14px 40px;border-radius:8px;font-size:.84rem;font-weight:700;transition:.3s;margin:0 6px;}
+  .btn-white:hover{background:var(--light-pink);}
+  footer{background:var(--text);padding:32px 80px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-family:'Noto Serif JP',serif;font-size:.9rem;color:rgba(255,255,255,.5);}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のクリニックサイトです。実在する医院・人物とは一切関係ありません。</div>
+<div class="info-bar">📢 2024年4月より火曜日の診療時間が変わりました。詳しくは<a href="hours.html" style="color:#fff;text-decoration:underline;">診療時間表</a>をご確認ください。</div>
+
+<nav>
+  <a href="index.html" class="logo"><div class="logo-icon">🌸</div><div><div class="logo-text">さくら皮膚科クリニック</div><span class="logo-sub">岡山市北区 / 皮膚科・美容皮膚科</span></div></a>
+  <ul>
+    <li><a href="treatment.html" class="active">診療科目</a></li>
+    <li><a href="doctors.html">医師紹介</a></li>
+    <li><a href="index.html">特徴</a></li>
+    <li><a href="hours.html">診療時間</a></li>
+    <li><a href="hours.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">WEB予約</a></li>
+  </ul>
+</nav>
+
+<!-- ページヘッダー -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">ホーム</a> &gt; 診療内容</p>
+    <h1>さくら皮膚科クリニックの<br><span>診療内容</span></h1>
+    <p class="page-hero-lead">一般皮膚科から美容皮膚科まで、皮膚に関するあらゆるお悩みに対応しています。保険診療と自由診療を組み合わせ、一人ひとりに最適な治療をご提案します。お気軽にご相談ください。</p>
+  </div>
+</div>
+
+<!-- カテゴリーナビ -->
+<section class="sec" style="padding-bottom:0;">
+  <p class="sec-label">Departments</p>
+  <h2 class="sec-title">診療科目一覧</h2>
+  <div class="dept-cats">
+    <div class="dc-cat active">すべて</div>
+    <div class="dc-cat">一般皮膚科</div>
+    <div class="dc-cat">美容皮膚科</div>
+    <div class="dc-cat">小児皮膚科</div>
+    <div class="dc-cat">レーザー治療</div>
+    <div class="dc-cat">アレルギー</div>
+    <div class="dc-cat">皮膚外科</div>
+    <div class="dc-cat">AGA治療</div>
+  </div>
+</section>
+
+<!-- 一般皮膚科 -->
+<div class="dept-detail" id="general">
+  <div class="dd-inner">
+    <div>
+      <p class="dd-label">General Dermatology</p>
+      <h2 class="dd-title">一般皮膚科</h2>
+      <p class="dd-lead">湿疹・かぶれ・アトピー性皮膚炎・蕁麻疹・水虫（足白癬）・帯状疱疹・脂漏性皮膚炎など、日常的な皮膚のお悩みから難治性の疾患まで、幅広く診察・治療を行います。症状の原因をしっかり調べ、再発しにくい治療を目指します。</p>
+      <div class="dd-symptoms">
+        <div class="dd-sym-title">対応している主な症状・疾患</div>
+        <div class="sym-list">
+          <span class="sym">湿疹・かぶれ</span>
+          <span class="sym">アトピー性皮膚炎</span>
+          <span class="sym">蕁麻疹</span>
+          <span class="sym">水虫（足白癬・爪白癬）</span>
+          <span class="sym">帯状疱疹・ヘルペス</span>
+          <span class="sym">乾癬</span>
+          <span class="sym">脂漏性皮膚炎</span>
+          <span class="sym">多汗症</span>
+          <span class="sym">じんましん</span>
+          <span class="sym">乾燥肌（皮脂欠乏性湿疹）</span>
+        </div>
+      </div>
+      <div class="dd-note">💡 保険診療対象です。健康保険証をお持ちください。初診・再診ともに対応しています。</div>
+      <div class="dd-fee"><div class="dd-fee-label">費用目安</div><div class="dd-fee-val">保険診療（3割負担で初診 1,500〜2,500円程度）</div></div>
+    </div>
+    <div>
+      <div class="dd-img-bg" style="background-image:url('https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=800&q=80');"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 美容皮膚科 -->
+<div class="dept-detail" id="beauty">
+  <div class="dd-inner">
+    <div>
+      <div class="dd-img-bg" style="background-image:url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&q=80');"></div>
+    </div>
+    <div>
+      <p class="dd-label">Aesthetic Dermatology</p>
+      <h2 class="dd-title">美容皮膚科</h2>
+      <p class="dd-lead">シミ・シワ・たるみ・ニキビ跡・毛穴・くすみなど、お肌の美容に関するお悩みを皮膚科専門医が科学的なアプローチで治療します。カウンセリングでお悩みをしっかり伺い、最適な治療法をご提案。焦らず、無理のないペースで進めます。</p>
+      <div class="dd-symptoms">
+        <div class="dd-sym-title">対応している主なお悩み</div>
+        <div class="sym-list">
+          <span class="sym">シミ・そばかす</span>
+          <span class="sym">シワ・たるみ</span>
+          <span class="sym">ニキビ跡（赤み・色素沈着）</span>
+          <span class="sym">毛穴の開き・黒ずみ</span>
+          <span class="sym">くすみ・肌質改善</span>
+          <span class="sym">目の下のクマ</span>
+          <span class="sym">お肌のハリ・潤い不足</span>
+        </div>
+      </div>
+      <div class="dd-note">💡 美容目的の治療は自由診療（保険外）です。施術前に無料カウンセリングで費用・効果・リスクを詳しくご説明します。</div>
+      <div class="dd-fee"><div class="dd-fee-label">費用目安</div><div class="dd-fee-val">無料カウンセリング後にご案内（施術内容により異なります）</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- レーザー治療 -->
+<div class="dept-detail" id="laser">
+  <div class="dd-inner">
+    <div>
+      <p class="dd-label">Laser Treatment</p>
+      <h2 class="dd-title">レーザー治療</h2>
+      <p class="dd-lead">当院では最新レーザー機器を複数導入し、症状・肌質・ご希望に合わせて使い分けています。シミ取り・毛穴縮小・肌質改善・血管病変など、レーザーでしか効果を出せない悩みに専門的に対応しています。</p>
+      <div class="dd-symptoms">
+        <div class="dd-sym-title">主なレーザー施術メニュー</div>
+        <div class="sym-list">
+          <span class="sym">シミ取りレーザー（Qスイッチ）</span>
+          <span class="sym">フォトフェイシャル（IPL）</span>
+          <span class="sym">フラクショナルレーザー（毛穴・肌質）</span>
+          <span class="sym">炭酸ガスレーザー（イボ・色素性母斑）</span>
+          <span class="sym">ダイオードレーザー脱毛</span>
+          <span class="sym">血管治療レーザー（赤ら顔・毛細血管拡張）</span>
+        </div>
+      </div>
+      <div class="dd-note">💡 すべて自由診療です。施術前の無料カウンセリングで、肌の状態を診た上で最適な機器・回数をご提案します。</div>
+      <div class="dd-fee"><div class="dd-fee-label">費用目安（例）</div><div class="dd-fee-val">シミ取りレーザー1箇所：5,500円〜 / フォトフェイシャル1回：22,000円〜</div></div>
+    </div>
+    <div>
+      <div class="dd-img-bg" style="background-image:url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80');"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ニキビ治療 -->
+<div class="dept-detail" id="acne">
+  <div class="dd-inner">
+    <div>
+      <div class="dd-img-bg" style="background-image:url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80');"></div>
+    </div>
+    <div>
+      <p class="dd-label">Acne Treatment</p>
+      <h2 class="dd-title">ニキビ治療</h2>
+      <p class="dd-lead">「市販薬では治らない」「繰り返すニキビ」に悩む方に、皮膚科専門医が原因から向き合う治療を提供します。ニキビの種類・重症度・部位に応じて、保険診療と自由診療を組み合わせた最適な治療法をご提案します。</p>
+      <div class="dd-symptoms">
+        <div class="dd-sym-title">対応しているニキビの種類</div>
+        <div class="sym-list">
+          <span class="sym">白ニキビ・黒ニキビ</span>
+          <span class="sym">炎症性ニキビ（赤い）</span>
+          <span class="sym">のう胞性ニキビ（重症）</span>
+          <span class="sym">大人ニキビ（あご・口周り）</span>
+          <span class="sym">背中・胸のニキビ</span>
+          <span class="sym">ニキビ跡（凹凸・色素沈着・赤み）</span>
+        </div>
+      </div>
+      <div class="dd-note">💡 初診では保険診療で対応できるものを優先します。自由診療のケミカルピーリング・光治療との併用もご相談いただけます。</div>
+      <div class="dd-fee"><div class="dd-fee-label">費用目安</div><div class="dd-fee-val">保険診療（3割負担）+ 自由診療オプション（要相談）</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 小児皮膚科 -->
+<div class="dept-detail" id="children">
+  <div class="dd-inner">
+    <div>
+      <p class="dd-label">Pediatric Dermatology</p>
+      <h2 class="dd-title">小児皮膚科</h2>
+      <p class="dd-lead">赤ちゃんから子どもの肌は非常にデリケートです。乳児湿疹・とびひ・水いぼ・アトピーなど、小児特有の皮膚疾患に専門的に対応します。子どもが安心して診察を受けられるよう、優しく穏やかな雰囲気で接します。お子さまのペースを最優先にします。</p>
+      <div class="dd-symptoms">
+        <div class="dd-sym-title">主な対応疾患</div>
+        <div class="sym-list">
+          <span class="sym">乳児湿疹・おむつかぶれ</span>
+          <span class="sym">アトピー性皮膚炎</span>
+          <span class="sym">とびひ（伝染性膿痂疹）</span>
+          <span class="sym">水いぼ（伝染性軟属腫）</span>
+          <span class="sym">手足口病・ヘルパンギーナ</span>
+          <span class="sym">小児乾燥肌・あせも</span>
+          <span class="sym">頭皮の湿疹・かさぶた</span>
+        </div>
+      </div>
+      <div class="dd-note">💡 保険診療対応です。薬の量・強さは年齢・体重・肌の状態に合わせて慎重に処方します。保護者の方への丁寧な説明を心がけています。</div>
+    </div>
+    <div>
+      <div class="dd-img-bg" style="background-image:url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&q=80');"></div>
+    </div>
+  </div>
+</div>
+
+<!-- アレルギー科 -->
+<div class="dept-detail" id="allergy">
+  <div class="dd-inner">
+    <div>
+      <div class="dd-img-bg" style="background-image:url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80');"></div>
+    </div>
+    <div>
+      <p class="dd-label">Allergy</p>
+      <h2 class="dd-title">アレルギー科</h2>
+      <p class="dd-lead">食物アレルギー・花粉症・ハウスダスト・金属アレルギーなど、アレルギー疾患全般の診察・検査・治療を行います。アレルゲン検査（血液検査・パッチテスト）で原因を特定し、回避策と治療を組み合わせて症状を改善します。</p>
+      <div class="dd-symptoms">
+        <div class="dd-sym-title">対応するアレルギーの種類</div>
+        <div class="sym-list">
+          <span class="sym">食物アレルギー</span>
+          <span class="sym">花粉症（皮膚症状）</span>
+          <span class="sym">ハウスダスト・ダニアレルギー</span>
+          <span class="sym">金属アレルギー（接触性皮膚炎）</span>
+          <span class="sym">薬疹（薬によるアレルギー反応）</span>
+          <span class="sym">蕁麻疹（アレルギー性）</span>
+        </div>
+      </div>
+      <div class="dd-note">💡 血液検査・パッチテスト・プリックテストなどのアレルゲン検査に対応しています。結果を元に具体的な治療方針をご提案します。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 治療の流れ -->
+<div class="flow-sec">
+  <p class="sec-label" style="text-align:center;">Flow</p>
+  <h2 class="sec-title" style="text-align:center;margin-bottom:0;">初めてご来院の方へ<br>診察の流れ</h2>
+  <div class="flow-steps">
+    <div class="fs"><div class="fs-num">01</div><h3 class="fs-title">WEB予約</h3><p class="fs-text">24時間対応のWEB予約で診察時間を確保できます。</p></div>
+    <div class="fs"><div class="fs-num">02</div><h3 class="fs-title">来院・受付</h3><p class="fs-text">受付で保険証をご提示。電子問診票に記入いただきます。</p></div>
+    <div class="fs"><div class="fs-num">03</div><h3 class="fs-title">待合室でお待ち</h3><p class="fs-text">WEB予約の方を優先してご案内します。待ち時間を最小限に。</p></div>
+    <div class="fs"><div class="fs-num">04</div><h3 class="fs-title">診察</h3><p class="fs-text">医師が丁寧に症状を確認し、治療方針を説明します。</p></div>
+    <div class="fs"><div class="fs-num">05</div><h3 class="fs-title">会計・お薬</h3><p class="fs-text">処方箋を発行。院内または近隣薬局でお受け取りいただけます。</p></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="sec" style="background:var(--soft);">
+  <p class="sec-label">FAQ</p>
+  <h2 class="sec-title">診療に関するよくあるご質問</h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>保険診療と自由診療を同日に受けられますか？</div><div class="faq-a">はい、同日に受けていただくことが可能です。一般皮膚科（保険）で湿疹を診察し、同日に美容皮膚科（自由診療）でシミの相談をすることもできます。受付時にその旨をお伝えください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>美容皮膚科の施術は予約なしでも受けられますか？</div><div class="faq-a">美容皮膚科の施術は、事前カウンセリングが必要です。当日突然の施術はお受けできません。まずはカウンセリングのご予約をお取りください（カウンセリング自体は無料です）。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>レーザー治療後のダウンタイムはどのくらいですか？</div><div class="faq-a">施術の種類によって異なります。シミ取りレーザーは施術後に一時的に患部が暗くなり、約1〜2週間でかさぶたが剥がれます。フォトフェイシャルはほぼダウンタイムなしです。詳しくはカウンセリング時にご説明します。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>ニキビ治療はどのくらいで効果が出ますか？</div><div class="faq-a">症状の程度にもよりますが、保険診療（外用薬＋内服薬）の場合、多くの方が1〜2ヶ月で症状が改善してきます。重症のニキビや繰り返すケースでは、長期的な治療計画を立てて対応します。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>AGA治療（薄毛）も対応していますか？</div><div class="faq-a">はい、AGA（男性型脱毛症）の診察・治療に対応しています。内服薬・外用薬・注入療法など、ご希望と進行度に応じた治療をご提案します。自由診療となります。</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <h2 class="cta-title">お肌のお悩み、まずはご相談ください。</h2>
+  <p class="cta-sub">WEB予約は24時間受付 ／ 初診・お問い合わせ歓迎</p>
+  <a href="contact.html" class="btn-white">WEB予約はこちら</a>
+  <a href="hours.html" class="btn-white">診療時間・アクセス</a>
+</div>
+
+<footer>
+  <div class="footer-logo">🌸 さくら皮膚科クリニック</div>
+  <p>© 2024 さくら皮膚科クリニック. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

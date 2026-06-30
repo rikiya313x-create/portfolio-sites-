@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | NEXUS AI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--bg:#04060f;--purple:#7c3aed;--cyan:#06b6d4;--pink:#ec4899;--text:#e2e8f0;--muted:#64748b;--card:#0d1225;--border:rgba(124,58,237,.2);}
+  body{font-family:'Space Grotesk','Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  body::before{content:'';position:fixed;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.15),transparent 70%);top:-200px;left:-200px;pointer-events:none;z-index:0;}
+  body::after{content:'';position:fixed;width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,.1),transparent 70%);bottom:-200px;right:-200px;pointer-events:none;z-index:0;}
+  .portfolio-note{background:#0d1225;border-left:3px solid var(--purple);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--muted);position:relative;z-index:1;}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(4,6,15,.9);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);}
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--purple),var(--cyan));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;}
+  .logo-text{font-size:.9rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:var(--muted);font-size:.75rem;letter-spacing:.08em;transition:.2s;}
+  nav ul a:hover{color:var(--text);}
+  .nav-cta{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff!important;padding:9px 22px;border-radius:6px;font-size:.75rem!important;}
+
+  /* ページヒーロー */
+  .page-hero{padding-top:68px;min-height:380px;display:flex;align-items:flex-end;position:relative;overflow:hidden;}
+  .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.05) 1px,transparent 1px);background-size:60px 60px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,transparent 80%);}
+  .page-hero-inner{position:relative;z-index:1;padding:0 80px 60px;}
+  .page-badge{display:inline-block;background:rgba(124,58,237,.1);border:1px solid var(--border);color:var(--purple);font-size:.62rem;letter-spacing:.2em;padding:4px 12px;border-radius:100px;margin-bottom:14px;text-transform:uppercase;}
+  .page-title{font-size:3.2rem;font-weight:700;line-height:1.1;margin-bottom:12px;}
+  .page-title span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .page-lead{color:var(--muted);font-size:.88rem;max-width:560px;line-height:2;}
+
+  .breadcrumb{padding:20px 80px;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;position:relative;z-index:1;}
+  .breadcrumb a{color:var(--muted);font-size:.72rem;}
+  .breadcrumb span{color:var(--muted);font-size:.72rem;}
+  .breadcrumb .current{color:var(--text);font-size:.72rem;}
+
+  .sec{padding:100px 80px;position:relative;z-index:1;}
+  .sec-badge{display:inline-block;background:rgba(124,58,237,.1);border:1px solid var(--border);color:var(--purple);font-size:.62rem;letter-spacing:.2em;padding:4px 12px;border-radius:100px;margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-size:2.4rem;font-weight:700;margin-bottom:36px;line-height:1.15;}
+  .sec-title span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+  /* ミッション */
+  .mission-sec{padding:100px 80px;position:relative;z-index:1;background:rgba(13,18,37,.4);}
+  .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .mission-label{font-size:.62rem;letter-spacing:.2em;color:var(--purple);margin-bottom:14px;text-transform:uppercase;}
+  .mission-title{font-size:2.8rem;font-weight:700;line-height:1.15;margin-bottom:20px;}
+  .mission-title span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .mission-text{color:var(--muted);font-size:.86rem;line-height:2.1;margin-bottom:16px;}
+  .mission-nums{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px;}
+  .mn{background:var(--card);border:1px solid var(--border);padding:20px;border-radius:8px;}
+  .mn-num{font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .mn-label{color:var(--muted);font-size:.72rem;margin-top:4px;}
+  .mission-img{height:440px;background:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80') center/cover;border-radius:12px;position:relative;overflow:hidden;}
+  .mission-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(6,182,212,.1));}
+
+  /* 価値観 */
+  .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+  .vc{background:var(--card);padding:36px 28px;transition:.3s;}
+  .vc:hover{background:#101828;}
+  .vc-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px;line-height:1;}
+  .vc-title{font-size:1rem;font-weight:600;margin-bottom:10px;}
+  .vc-text{color:var(--muted);font-size:.78rem;line-height:1.9;}
+
+  /* 会社概要 */
+  .company-sec{background:rgba(13,18,37,.5);padding:100px 80px;position:relative;z-index:1;}
+  .company-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .company-table{width:100%;border-collapse:collapse;}
+  .company-table tr{border-bottom:1px solid var(--border);}
+  .company-table td{padding:16px 0;font-size:.82rem;vertical-align:top;}
+  .company-table td:first-child{color:var(--muted);width:140px;font-size:.74rem;}
+  .company-table td:last-child{color:var(--text);}
+  .company-img{height:360px;background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80') center/cover;border-radius:12px;}
+
+  /* 沿革 */
+  .history-sec{padding:100px 80px;position:relative;z-index:1;}
+  .history-list{max-width:720px;margin:0 auto;}
+  .hl-item{display:grid;grid-template-columns:100px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--border);}
+  .hl-year{font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hl-event{color:var(--text);font-size:.84rem;line-height:1.8;}
+  .hl-sub{color:var(--muted);font-size:.76rem;margin-top:4px;line-height:1.7;}
+
+  /* 拠点 */
+  .office-sec{background:rgba(13,18,37,.4);padding:80px;position:relative;z-index:1;}
+  .office-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;}
+  .office-card{background:var(--card);border:1px solid var(--border);padding:28px;border-radius:8px;}
+  .office-badge{background:rgba(6,182,212,.1);color:var(--cyan);font-size:.62rem;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:12px;}
+  .office-name{font-size:1rem;font-weight:600;margin-bottom:8px;}
+  .office-addr{color:var(--muted);font-size:.78rem;line-height:1.8;}
+
+  /* CTA */
+  .cta-sec{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.08));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 80px;text-align:center;position:relative;z-index:1;}
+  .cta-title{font-size:2.8rem;font-weight:700;margin-bottom:14px;}
+  .cta-title span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .cta-sub{color:var(--muted);font-size:.88rem;margin-bottom:32px;}
+  .btn-gradient{display:inline-block;background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff;padding:14px 36px;border-radius:8px;font-size:.82rem;font-weight:600;letter-spacing:.08em;transition:.3s;margin:0 6px;}
+  .btn-gradient:hover{opacity:.85;transform:translateY(-2px);}
+  .btn-ghost{display:inline-block;border:1px solid var(--border);color:var(--text);padding:14px 32px;border-radius:8px;font-size:.82rem;transition:.3s;margin:0 6px;}
+  .btn-ghost:hover{border-color:var(--purple);color:var(--purple);}
+
+  footer{background:#020409;padding:36px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);position:relative;z-index:1;}
+  .footer-logo{font-size:.9rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.3);}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}
+    nav ul{gap:14px;}
+    .page-hero-inner{padding:0 20px 40px;}
+    .page-title{font-size:2rem;}
+    .breadcrumb{padding:14px 20px;}
+    .sec{padding:60px 20px;}
+    .mission-sec{padding:60px 20px;}
+    .mission-grid{grid-template-columns:1fr;}
+    .mission-img{height:240px;}
+    .values-grid{grid-template-columns:1fr;}
+    .company-sec{padding:60px 20px;}
+    .company-grid{grid-template-columns:1fr;}
+    .company-img{height:220px;}
+    .history-sec{padding:60px 20px;}
+    .office-sec{padding:60px 20px;}
+    .office-grid{grid-template-columns:1fr;}
+    .cta-sec{padding:60px 20px;}
+    .cta-title{font-size:1.8rem;}
+    footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のITスタートアップサイトです。実在する会社・サービスとは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html"><div class="logo"><div class="logo-mark">N</div><div class="logo-text">NEXUS AI</div></div></a>
+  <ul>
+    <li><a href="service.html">サービス</a></li>
+    <li><a href="product.html">導入事例</a></li>
+    <li><a href="team.html">チーム</a></li>
+    <li><a href="news.html">ニュース</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html" class="nav-cta">無料トライアル</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-badge">About NEXUS AI</div>
+    <h1 class="page-title">AIで、社会を<span>変える。</span></h1>
+    <p class="page-lead">NEXUS AIは「AIの民主化」をミッションに掲げる、東京発のAIスタートアップです。</p>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>/</span>
+  <span class="current">About</span>
+</div>
+
+<!-- ミッション -->
+<div class="mission-sec">
+  <div class="mission-grid">
+    <div>
+      <p class="mission-label">Mission</p>
+      <h2 class="mission-title">AIを、すべての<span>企業の力に。</span></h2>
+      <p class="mission-text">NEXUS AIは2021年に設立されたAIスタートアップです。「AIの民主化」をミッションに掲げ、大企業だけでなく中小企業・スタートアップでも使えるAIソリューションを提供しています。</p>
+      <p class="mission-text">生成AI・機械学習・コンピュータビジョンなど最先端のAI技術を、専門知識なしに活用できるプラットフォームとして提供することで、日本のビジネスDXを推進します。</p>
+      <p class="mission-text">現在は320社以上の企業に導入いただき、平均68%の業務削減を実現。顧客満足度4.8/5.0という高い評価をいただいています。</p>
+      <div class="mission-nums">
+        <div class="mn"><div class="mn-num">320社+</div><div class="mn-label">導入企業数</div></div>
+        <div class="mn"><div class="mn-num">68%</div><div class="mn-label">平均業務削減率</div></div>
+        <div class="mn"><div class="mn-num">4.8</div><div class="mn-label">顧客満足度</div></div>
+        <div class="mn"><div class="mn-num">2021</div><div class="mn-label">設立年</div></div>
+      </div>
+    </div>
+    <div class="mission-img"></div>
+  </div>
+</div>
+
+<!-- 価値観 -->
+<section class="sec">
+  <div class="sec-badge">Values</div>
+  <h2 class="sec-title">私たちの<span>バリュー</span></h2>
+  <div class="values-grid">
+    <div class="vc">
+      <div class="vc-num">01</div>
+      <h3 class="vc-title">Technology First</h3>
+      <p class="vc-text">最新のAI技術を常に追い求めます。研究段階の技術を実用化し、クライアントに最先端のソリューションを届けることが私たちの使命です。技術的な卓越性にこだわり続けます。</p>
+    </div>
+    <div class="vc">
+      <div class="vc-num">02</div>
+      <h3 class="vc-title">Customer Impact</h3>
+      <p class="vc-text">技術は手段であり、目的は顧客の成果です。導入効果・ROIを常に数値で測定し、実際のビジネス成果を追求します。「使えるAI」にこだわり、形だけのDXはしません。</p>
+    </div>
+    <div class="vc">
+      <div class="vc-num">03</div>
+      <h3 class="vc-title">Responsible AI</h3>
+      <p class="vc-text">AIの倫理・安全性・透明性を最優先に考えます。説明可能なAI・プライバシー保護・バイアスの排除に積極的に取り組み、社会から信頼されるAI企業であり続けます。</p>
+    </div>
+    <div class="vc">
+      <div class="vc-num">04</div>
+      <h3 class="vc-title">Radical Transparency</h3>
+      <p class="vc-text">社内外に対して徹底的に透明であることを大切にします。良いことも悪いことも正直に伝え、信頼関係の上にビジネスを構築します。隠し事のない組織文化を育てます。</p>
+    </div>
+    <div class="vc">
+      <div class="vc-num">05</div>
+      <h3 class="vc-title">Diversity & Inclusion</h3>
+      <p class="vc-text">多様なバックグラウンドを持つメンバーが活躍できる組織を目指しています。現在の社員のうち女性比率42%、外国籍メンバー28%と、多様性の高いチームを誇っています。</p>
+    </div>
+    <div class="vc">
+      <div class="vc-num">06</div>
+      <h3 class="vc-title">Speed & Agility</h3>
+      <p class="vc-text">AIの世界は変化が速い。私たちは常に素早く動き、学び、改善します。完璧主義より速い行動を優先し、フィードバックをもとに素早く改善するアジャイルな文化を持っています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 会社概要 -->
+<div class="company-sec">
+  <div class="sec-badge">Company Info</div>
+  <h2 class="sec-title" style="margin-bottom:48px;">会社<span>概要</span></h2>
+  <div class="company-grid">
+    <div>
+      <table class="company-table">
+        <tr><td>社名</td><td>NEXUS AI 株式会社</td></tr>
+        <tr><td>英語表記</td><td>NEXUS AI Inc.</td></tr>
+        <tr><td>設立</td><td>2021年4月</td></tr>
+        <tr><td>代表取締役CEO</td><td>木村 拓郎</td></tr>
+        <tr><td>資本金</td><td>5億円（2024年3月時点）</td></tr>
+        <tr><td>従業員数</td><td>87名（2024年3月時点）</td></tr>
+        <tr><td>本社所在地</td><td>東京都渋谷区渋谷X-X-X<br>NEXUS TOWER 18F</td></tr>
+        <tr><td>事業内容</td><td>AIプラットフォームの開発・提供<br>企業向けAIコンサルティング<br>AI技術研究・開発</td></tr>
+        <tr><td>主要投資家</td><td>SoftBank Vision Fund<br>Sequoia Capital Japan<br>DOCOMO Ventures</td></tr>
+        <tr><td>認定・資格</td><td>ISO 27001認証取得<br>SOC 2 Type II準拠<br>プライバシーマーク取得</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="company-img"></div>
+      <div style="margin-top:16px;background:var(--card);border:1px solid var(--border);padding:20px;border-radius:8px;">
+        <p style="color:var(--cyan);font-size:.62rem;letter-spacing:.15em;margin-bottom:8px;">FUNDING HISTORY</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;justify-content:space-between;font-size:.78rem;">
+            <span style="color:var(--muted);">2021年 - シード</span>
+            <span style="color:var(--text);">3,000万円</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem;">
+            <span style="color:var(--muted);">2022年 - Series A</span>
+            <span style="color:var(--text);">2億円</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem;">
+            <span style="color:var(--muted);">2023年 - Series B</span>
+            <span style="color:var(--text);">8億円</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem;border-top:1px solid var(--border);padding-top:12px;">
+            <span style="color:var(--muted);">累計調達額</span>
+            <span style="background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;">10億3,000万円</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 沿革 -->
+<section class="history-sec">
+  <div class="sec-badge">History</div>
+  <h2 class="sec-title">会社の<span>歩み</span></h2>
+  <div class="history-list">
+    <div class="hl-item">
+      <div class="hl-year">2021.04</div>
+      <div>
+        <div class="hl-event">NEXUS AI 株式会社 設立</div>
+        <div class="hl-sub">木村拓郎（CEO）・山田彩子（CTO）の2名でスタート。渋谷区のシェアオフィスから事業開始。シードラウンドで3,000万円を調達。</div>
+      </div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-year">2021.09</div>
+      <div>
+        <div class="hl-event">AIチャットボット「NEXUS Chat」β版リリース</div>
+        <div class="hl-sub">初のプロダクトとして顧客サポートAIをリリース。β版には20社が参加し、好評を得る。</div>
+      </div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-year">2022.03</div>
+      <div>
+        <div class="hl-event">Series A 2億円調達 / 社員数20名に</div>
+        <div class="hl-sub">DOCOMO Venturesからシリーズ Aで2億円を調達。エンジニアを中心に採用を加速。</div>
+      </div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-year">2022.10</div>
+      <div>
+        <div class="hl-event">NEXUS AI Platform 正式リリース</div>
+        <div class="hl-sub">6つのAIサービスを統合したプラットフォームとして正式リリース。導入企業数100社を突破。</div>
+      </div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-year">2023.06</div>
+      <div>
+        <div class="hl-event">Series B 8億円調達 / ISO 27001認証取得</div>
+        <div class="hl-sub">SoftBank Vision Fund・Sequoia Capital JapanからシリーズBで8億円を調達。セキュリティ強化としてISO 27001を取得。</div>
+      </div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-year">2023.11</div>
+      <div>
+        <div class="hl-event">「AI企業 成長率ランキング」1位獲得</div>
+        <div class="hl-sub">日経XTECHが発表する「日本AIスタートアップ 成長率」部門で1位を獲得。メディア露出が急増し、問い合わせ数が月間10倍に。</div>
+      </div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-year">2024.01</div>
+      <div>
+        <div class="hl-event">導入企業数320社突破 / 大阪オフィス開設</div>
+        <div class="hl-sub">導入企業数が320社を突破。関西エリアの需要増加を受け大阪・梅田にオフィスを開設。</div>
+      </div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-year">現在</div>
+      <div>
+        <div class="hl-event">社員数87名、新プロダクト開発中</div>
+        <div class="hl-sub">さらなる成長に向けて積極採用中。次世代AIエージェントプロダクトを2024年下半期にリリース予定。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 拠点 -->
+<div class="office-sec">
+  <div class="sec-badge">Offices</div>
+  <h2 class="sec-title" style="margin-bottom:0;">拠点<span>情報</span></h2>
+  <div class="office-grid">
+    <div class="office-card">
+      <span class="office-badge">HQ / 本社</span>
+      <h3 class="office-name">東京オフィス</h3>
+      <p class="office-addr">東京都渋谷区渋谷X-X-X<br>NEXUS TOWER 18F<br>（渋谷駅 徒歩5分）</p>
+    </div>
+    <div class="office-card">
+      <span class="office-badge">Branch</span>
+      <h3 class="office-name">大阪オフィス</h3>
+      <p class="office-addr">大阪府大阪市北区梅田X-X-X<br>グランフロント大阪 タワーA<br>（大阪駅 直結）</p>
+    </div>
+    <div class="office-card">
+      <span class="office-badge">Research</span>
+      <h3 class="office-name">東京リサーチラボ</h3>
+      <p class="office-addr">東京都文京区本郷X-X-X<br>東京大学本郷キャンパス近隣<br>AI研究・R&D拠点</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <h2 class="cta-title">一緒に、<span>未来を作りませんか。</span></h2>
+  <p class="cta-sub">私たちは積極採用中です / パートナーシップも歓迎</p>
+  <a href="contact.html" class="btn-gradient">お問い合わせ</a>
+  <a href="team.html" class="btn-ghost">チームを見る</a>
+</div>
+
+<footer>
+  <div class="footer-logo">NEXUS AI</div>
+  <p>© 2024 NEXUS AI Inc. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

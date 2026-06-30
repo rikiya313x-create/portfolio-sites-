@@ -121,6 +121,17 @@
   .f-links a{color:rgba(255,255,255,.3);font-size:.72rem;letter-spacing:.1em;transition:.2s;}
   .f-links a:hover{color:var(--accent);}
   .f-copy{border-top:1px solid rgba(255,255,255,.05);margin-top:32px;padding-top:20px;color:rgba(255,255,255,.2);font-size:.65rem;text-align:center;grid-column:1/4;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .hero{grid-template-columns:1fr!important;height:auto;} .hero-img{height:70vw;min-height:280px;}
+    .hero-content{padding:40px 24px 36px;} .hero h1{font-size:4rem;}
+    .sec{padding:52px 24px;}
+    .category-grid,.products-grid{grid-template-columns:1fr 1fr;}
+    .about{grid-template-columns:1fr!important;} .about-img{height:260px;}
+    .features-grid{grid-template-columns:1fr 1fr;} .styling-grid{grid-template-columns:1fr;}
+    footer{padding:28px 24px;grid-template-columns:1fr!important;gap:28px;text-align:center;}
+    .f-copy{grid-column:1/2!important;}
+  }
 </style>
 </head>
 <body>
@@ -131,12 +142,12 @@
 <nav>
   <div class="logo">MONOCHROME</div>
   <ul>
-    <li><a href="#">NEW</a></li>
-    <li><a href="#">MEN</a></li>
-    <li><a href="#">WOMEN</a></li>
-    <li><a href="#">ACCESSORIES</a></li>
-    <li><a href="#">SALE</a></li>
-    <li><a href="#">ABOUT</a></li>
+    <li><a href="collection.html">NEW</a></li>
+    <li><a href="collection.html">MEN</a></li>
+    <li><a href="collection.html">WOMEN</a></li>
+    <li><a href="brands.html">ACCESSORIES</a></li>
+    <li><a href="collection.html">SALE</a></li>
+    <li><a href="about.html">ABOUT</a></li>
   </ul>
   <div class="nav-icons">
     <span class="nav-icon">🔍</span>
@@ -155,8 +166,8 @@
     <h1>LESS<br>IS<br><em>MORE.</em></h1>
     <p class="hero-lead">本物のシンプルさは豊かさを語る。世界から厳選したミニマルな逸品をあなたのもとへ。</p>
     <div>
-      <a href="#" class="btn-black">SHOP NOW</a>
-      <a href="#" class="btn-border">LOOKBOOK</a>
+      <a href="collection.html" class="btn-black">SHOP NOW</a>
+      <a href="collection.html" class="btn-border">LOOKBOOK</a>
     </div>
   </div>
 </section>
@@ -171,7 +182,7 @@
 
 <!-- 新着 -->
 <section style="padding:80px 0 0;">
-  <div style="padding:0 60px 32px;display:flex;justify-content:space-between;align-items:flex-end;"><div><p style="font-size:.62rem;letter-spacing:.35em;color:var(--lgray);text-transform:uppercase;margin-bottom:6px;">New Arrival</p><h2 style="font-size:1.4rem;font-weight:700;letter-spacing:.05em;">新着アイテム</h2></div><a href="#" style="font-size:.72rem;letter-spacing:.15em;color:var(--gray);text-decoration:underline;text-underline-offset:3px;text-transform:uppercase;">View All</a></div>
+  <div style="padding:0 60px 32px;display:flex;justify-content:space-between;align-items:flex-end;"><div><p style="font-size:.62rem;letter-spacing:.35em;color:var(--lgray);text-transform:uppercase;margin-bottom:6px;">New Arrival</p><h2 style="font-size:1.4rem;font-weight:700;letter-spacing:.05em;">新着アイテム</h2></div><a href="collection.html" style="font-size:.72rem;letter-spacing:.15em;color:var(--gray);text-decoration:underline;text-underline-offset:3px;text-transform:uppercase;">View All</a></div>
   <div class="products-grid">
     <div class="pc"><div class="pc-img"><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80" alt="コート"><span class="pc-tag">NEW</span></div><div class="pc-body"><p class="pc-brand">Aesther Ekme</p><p class="pc-name">ウールカシミアロングコート</p><p class="pc-price">¥68,000</p></div></div>
     <div class="pc"><div class="pc-img"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4f5b?w=400&q=80" alt="ニット"><span class="pc-tag">NEW</span></div><div class="pc-body"><p class="pc-brand">Studio Nicholson</p><p class="pc-name">リブニットプルオーバー</p><p class="pc-price">¥32,000</p></div></div>
@@ -188,7 +199,7 @@
     <h2>時代を超える<br><em>一枚</em>を届ける</h2>
     <p>MONOCHROMEは2018年に東京・代官山でオープンしたセレクトショップです。「流行に左右されない、本質的な服」をテーマに、ヨーロッパを中心とした世界各地のデザイナーズブランドを厳選してお届けしています。</p>
     <p>バイヤーが年2回ヨーロッパに渡り、サステナブルな素材・生産背景にこだわったブランドを直接選定。試着し、納得したものだけを店頭に並べます。</p>
-    <a href="#" class="about-btn">OUR STORY</a>
+    <a href="about.html" class="about-btn">OUR STORY</a>
   </div>
 </div>
 
@@ -258,11 +269,11 @@
   <div>
     <p style="font-size:.62rem;letter-spacing:.2em;color:rgba(255,255,255,.2);margin-bottom:10px;text-transform:uppercase;">Links</p>
     <ul class="f-links">
-      <li><a href="#">About</a></li>
-      <li><a href="#">Stores</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="stores.html">Stores</a></li>
       <li><a href="#">Careers</a></li>
       <li><a href="#">Press</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
   <div>
@@ -277,3 +288,4 @@
 </footer>
 </body>
 </html>
+

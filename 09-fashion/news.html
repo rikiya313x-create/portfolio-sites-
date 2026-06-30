@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEWS | MONOCHROME</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0a0a0a;--white:#fafafa;--gray:#666;--lgray:#999;--border:#e8e8e8;--accent:#d4a847;--cream:#faf8f5;}
+  body{font-family:'Montserrat','Noto Sans JP',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+  a{text-decoration:none;}img{max-width:100%;display:block;}
+
+  .portfolio-note{background:#f5f0ea;border-left:3px solid var(--accent);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--lgray);}
+  .topbar{background:var(--black);color:rgba(255,255,255,.5);text-align:center;padding:8px;font-size:.68rem;letter-spacing:.2em;}
+  .topbar span{color:var(--accent);}
+  nav{position:fixed;top:34px;width:100%;z-index:100;background:var(--white);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid var(--border);}
+  .logo{font-size:1rem;font-weight:700;letter-spacing:.25em;}
+  nav ul{list-style:none;display:flex;gap:28px;}
+  nav ul a{color:var(--gray);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;transition:.2s;}
+  nav ul a:hover,nav ul a.active{color:var(--black);}
+  .nav-icons{display:flex;gap:16px;}
+  .nav-icon{color:var(--gray);font-size:.82rem;cursor:pointer;}
+
+  .page-hero{padding-top:98px;height:360px;background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80') center 40%/cover;position:relative;display:flex;align-items:center;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(10,10,10,.6);}
+  .page-hero-inner{position:relative;z-index:1;padding:0 80px;}
+  .page-label{font-size:.62rem;letter-spacing:.4em;color:var(--accent);margin-bottom:10px;text-transform:uppercase;}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--white);line-height:1.1;}
+
+  .breadcrumb{padding:20px 80px;background:var(--cream);border-bottom:1px solid var(--border);}
+  .breadcrumb a,.breadcrumb span{font-size:.65rem;letter-spacing:.1em;color:var(--lgray);text-transform:uppercase;}
+  .breadcrumb a:hover{color:var(--black);}
+
+  /* カテゴリフィルター */
+  .cat-filter{padding:24px 80px;border-bottom:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;}
+  .cat-btn{padding:8px 18px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--border);background:transparent;cursor:pointer;font-family:'Montserrat',sans-serif;color:var(--gray);transition:.2s;}
+  .cat-btn.active,.cat-btn:hover{background:var(--black);color:var(--white);border-color:var(--black);}
+
+  /* フィーチャード記事 */
+  .featured-post{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:2px;}
+  .fp-img{overflow:hidden;min-height:480px;position:relative;}
+  .fp-img img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+  .fp-img:hover img{transform:scale(1.03);}
+  .fp-content{background:var(--cream);padding:64px;}
+  .fp-cat{font-size:.6rem;letter-spacing:.3em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;}
+  .fp-title{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:16px;line-height:1.25;}
+  .fp-date{font-size:.62rem;color:var(--lgray);letter-spacing:.1em;margin-bottom:16px;}
+  .fp-text{color:var(--gray);font-size:.8rem;line-height:2;margin-bottom:24px;}
+  .fp-link{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:2px;}
+
+  /* 記事グリッド */
+  .news-main{padding:60px 80px;}
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;}
+  .article{cursor:pointer;}
+  .article-img{height:260px;overflow:hidden;margin-bottom:16px;position:relative;}
+  .article-img img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+  .article:hover .article-img img{transform:scale(1.04);}
+  .article-cat{font-size:.58rem;letter-spacing:.25em;color:var(--accent);text-transform:uppercase;margin-bottom:6px;}
+  .article-title{font-size:.88rem;font-weight:600;margin-bottom:8px;line-height:1.5;letter-spacing:.03em;}
+  .article-date{font-size:.62rem;color:var(--lgray);letter-spacing:.1em;margin-bottom:8px;}
+  .article-excerpt{font-size:.74rem;color:var(--gray);line-height:1.9;}
+  .article-link{display:inline-block;margin-top:10px;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--black);text-decoration:underline;text-underline-offset:3px;}
+
+  /* 注目ピックアップ */
+  .pickup-strip{background:var(--black);padding:48px 80px;}
+  .pickup-strip h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--white);margin-bottom:24px;}
+  .pickup-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .pk{cursor:pointer;}
+  .pk-img{height:160px;overflow:hidden;margin-bottom:10px;}
+  .pk-img img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+  .pk:hover .pk-img img{transform:scale(1.04);}
+  .pk-cat{font-size:.58rem;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:4px;}
+  .pk-title{font-size:.76rem;color:var(--white);line-height:1.6;font-weight:600;}
+  .pk-date{font-size:.6rem;color:rgba(255,255,255,.3);margin-top:4px;}
+
+  /* メルマガCTA */
+  .newsletter{background:var(--cream);padding:60px 80px;text-align:center;}
+  .newsletter h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:10px;}
+  .newsletter p{color:var(--gray);font-size:.8rem;margin-bottom:24px;}
+  .newsletter-form{display:flex;gap:0;max-width:400px;margin:0 auto;}
+  .newsletter input{flex:1;padding:12px 16px;border:1px solid var(--border);background:var(--white);font-size:.78rem;letter-spacing:.05em;outline:none;font-family:'Montserrat',sans-serif;}
+  .newsletter input::placeholder{color:var(--lgray);}
+  .newsletter button{background:var(--black);color:#fff;border:none;padding:12px 20px;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;}
+
+  /* タグクラウド */
+  .tags-sec{padding:48px 80px;border-top:1px solid var(--border);}
+  .tags-sec h3{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--lgray);margin-bottom:16px;}
+  .tag-cloud{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{font-size:.65rem;letter-spacing:.12em;color:var(--gray);border:1px solid var(--border);padding:6px 14px;cursor:pointer;transition:.2s;text-transform:uppercase;}
+  .tag:hover{border-color:var(--black);color:var(--black);}
+
+  footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:48px 80px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;}
+  .f-logo{font-size:.9rem;font-weight:700;letter-spacing:.25em;color:rgba(255,255,255,.3);margin-bottom:12px;}
+  .f-text{color:rgba(255,255,255,.2);font-size:.72rem;line-height:1.9;}
+  .f-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .f-links a{color:rgba(255,255,255,.3);font-size:.72rem;letter-spacing:.1em;transition:.2s;}
+  .f-links a:hover{color:var(--accent);}
+  .f-copy{border-top:1px solid rgba(255,255,255,.05);margin-top:32px;padding-top:20px;color:rgba(255,255,255,.2);font-size:.65rem;text-align:center;grid-column:1/4;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}nav ul{gap:14px;}
+    .page-hero-inner,.breadcrumb,.cat-filter,.news-main,.pickup-strip,.newsletter,.tags-sec{padding-left:24px;padding-right:24px;}
+    .page-title{font-size:2.5rem;}
+    .featured-post{grid-template-columns:1fr;}
+    .fp-img{min-height:240px;}
+    .fp-content{padding:32px 24px;}
+    .news-grid{grid-template-columns:1fr;}
+    .pickup-grid{grid-template-columns:repeat(2,1fr);}
+    footer{grid-template-columns:1fr;gap:28px;padding:40px 24px;}
+    .f-copy{grid-column:1;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のセレクトショップサイトです。実在するブランド・店舗とは一切関係ありません。</div>
+<div class="topbar">NEW ARRIVAL — 2024 AUTUMN/WINTER COLLECTION <span>NOW IN STORE</span></div>
+<nav>
+  <div class="logo"><a href="index.html" style="color:var(--black);text-decoration:none;">MONOCHROME</a></div>
+  <ul>
+    <li><a href="collection.html">COLLECTION</a></li>
+    <li><a href="brands.html">BRANDS</a></li>
+    <li><a href="news.html" class="active">NEWS</a></li>
+    <li><a href="stores.html">STORES</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+  <div class="nav-icons">
+    <span class="nav-icon">🔍</span>
+    <span class="nav-icon">♡</span>
+    <span class="nav-icon">🛒</span>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">Latest Updates</p>
+    <h1 class="page-title">News &<br>Journal</h1>
+  </div>
+</div>
+<div class="breadcrumb">
+  <a href="index.html">HOME</a>
+  <span> &nbsp;/&nbsp; </span>
+  <span>NEWS</span>
+</div>
+
+<!-- カテゴリフィルター -->
+<div class="cat-filter">
+  <button class="cat-btn active">ALL</button>
+  <button class="cat-btn">NEW ARRIVAL</button>
+  <button class="cat-btn">BRAND STORY</button>
+  <button class="cat-btn">STYLING</button>
+  <button class="cat-btn">EVENT</button>
+  <button class="cat-btn">SUSTAINABILITY</button>
+  <button class="cat-btn">PRESS</button>
+</div>
+
+<!-- フィーチャード -->
+<div class="featured-post">
+  <div class="fp-img">
+    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80" alt="フィーチャード記事">
+  </div>
+  <div class="fp-content">
+    <p class="fp-cat">New Arrival</p>
+    <h2 class="fp-title">Lemaire 2024 A/W コレクション入荷のお知らせ</h2>
+    <p class="fp-date">2024.10.15</p>
+    <p class="fp-text">パリ発のデザイナーズブランド「Lemaire」より、2024年秋冬コレクションが入荷いたしました。今季テーマは「Volumes」。ボリューミーなシルエットと、素材の重力に従うようなドレープが特徴です。オーガニックウール、リサイクルカシミア、リネン混紡など、サステナブルな素材が豊富に使用されています。</p>
+    <a href="#" class="fp-link">READ MORE →</a>
+  </div>
+</div>
+
+<!-- 記事グリッド -->
+<div class="news-main">
+  <div class="news-grid">
+    <div class="article">
+      <div class="article-img">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="スタイリング">
+      </div>
+      <p class="article-cat">Styling</p>
+      <h3 class="article-title">秋冬のモノクロームスタイリング：5つの鉄板コーデ</h3>
+      <p class="article-date">2024.10.10</p>
+      <p class="article-excerpt">今季のコレクションから、スタイリストの田村美咲がセレクトした5つの着こなしを紹介します。ニュートラルカラーを軸に、素材感の違いでメリハリをつけるのが今年のポイント。</p>
+      <a href="#" class="article-link">Read More →</a>
+    </div>
+    <div class="article">
+      <div class="article-img">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="ブランドストーリー">
+      </div>
+      <p class="article-cat">Brand Story</p>
+      <h3 class="article-title">Totemeのデザイナーに聞く：ミニマリズムとは何か</h3>
+      <p class="article-date">2024.10.01</p>
+      <p class="article-excerpt">スウェーデン・ストックホルムを拠点とするTotemeの共同創設者Ellinor Holmとのインタビュー。彼女の考えるミニマリズム、そしてスカンジナビアのデザイン哲学について語っていただきました。</p>
+      <a href="#" class="article-link">Read More →</a>
+    </div>
+    <div class="article">
+      <div class="article-img">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80" alt="サステナ">
+      </div>
+      <p class="article-cat">Sustainability</p>
+      <h3 class="article-title">MONOCHROMEのサステナビリティ報告書2024</h3>
+      <p class="article-date">2024.09.20</p>
+      <p class="article-excerpt">2024年度のサステナビリティ活動をまとめました。CO2排出量30%削減、全包装材のリサイクル化、取扱ブランドのオーガニック比率70%達成など、具体的な数字でご報告します。</p>
+      <a href="#" class="article-link">Read More →</a>
+    </div>
+    <div class="article">
+      <div class="article-img">
+        <img src="https://images.unsplash.com/photo-1622219809260-8f03e5a8dae8?w=600&q=80" alt="イベント">
+      </div>
+      <p class="article-cat">Event</p>
+      <h3 class="article-title">【11月開催】Lemaire バイヤートークイベントのご案内</h3>
+      <p class="article-date">2024.09.15</p>
+      <p class="article-excerpt">11月2日（土）、代官山店にてバイヤーの中島翔によるトークイベントを開催します。パリで見てきたLemaireの最新コレクションの裏話、買い付けのこだわりなどをお話しします。参加無料・要予約。</p>
+      <a href="#" class="article-link">Read More →</a>
+    </div>
+    <div class="article">
+      <div class="article-img">
+        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80" alt="新着">
+      </div>
+      <p class="article-cat">New Arrival</p>
+      <h3 class="article-title">Aesther Ekme 待望のウィンターバッグコレクション</h3>
+      <p class="article-date">2024.09.05</p>
+      <p class="article-excerpt">コペンハーゲン発Aesther Ekmeより、今冬の新作バッグが入荷。クロスボディタイプの新シルエット「Demi」シリーズは、柔らかいグレインレザーと洗練されたデザインが特徴です。</p>
+      <a href="#" class="article-link">Read More →</a>
+    </div>
+    <div class="article">
+      <div class="article-img">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80" alt="プレス">
+      </div>
+      <p class="article-cat">Press</p>
+      <h3 class="article-title">VOGUE JAPAN 11月号にMONOCHROMEが掲載されました</h3>
+      <p class="article-date">2024.08.28</p>
+      <p class="article-excerpt">VOGUE JAPAN 2024年11月号の「TOKYO BOUTIQUE GUIDE」特集にMONOCHROMEが掲載されました。「知る人ぞ知る本物のセレクトショップ」として紹介していただき、大変光栄に存じます。</p>
+      <a href="#" class="article-link">Read More →</a>
+    </div>
+    <div class="article">
+      <div class="article-img">
+        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="シューズ">
+      </div>
+      <p class="article-cat">New Arrival</p>
+      <h3 class="article-title">Studio Nicholson ウィンターシューズ 先行予約スタート</h3>
+      <p class="article-date">2024.08.20</p>
+      <p class="article-excerpt">Studio Nicholsonより2024-25年秋冬シューズコレクションの先行予約を受け付けています。チャンキーソールのローファーとアンクルブーツは特に人気が高く、先着順となります。</p>
+      <a href="#" class="article-link">Read More →</a>
+    </div>
+    <div class="article">
+      <div class="article-img">
+        <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=80" alt="メンズ">
+      </div>
+      <p class="article-cat">Styling</p>
+      <h3 class="article-title">メンズコレクション入門：MONOCHROMEが考えるメンズウェア</h3>
+      <p class="article-date">2024.08.10</p>
+      <p class="article-excerpt">「メンズって何を買えばいいかわからない」という声をよくいただきます。バイヤーの中島が、MONOCHROMEのメンズセレクションの考え方を解説。テーラリングとカジュアルの融合がテーマです。</p>
+      <a href="#" class="article-link">Read More →</a>
+    </div>
+    <div class="article">
+      <div class="article-img">
+        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4f5b?w=600&q=80" alt="ニット">
+      </div>
+      <p class="article-cat">Brand Story</p>
+      <h3 class="article-title">Rier（リエール）との出会い：オーストリアの小さなニット工房</h3>
+      <p class="article-date">2024.07.25</p>
+      <p class="article-excerpt">2024年秋より新たに取り扱いを開始したオーストリアのニットブランド「Rier」。ウィーン郊外の小さな工房で、牧場直送のメリノウールを職人が手作業で仕上げる、妥協を知らないブランドとの出会いをお届けします。</p>
+      <a href="#" class="article-link">Read More →</a>
+    </div>
+  </div>
+
+  <!-- ページネーション -->
+  <div style="display:flex;justify-content:center;gap:4px;margin-top:48px;">
+    <div style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--black);color:var(--white);font-size:.72rem;">1</div>
+    <div style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);font-size:.72rem;cursor:pointer;">2</div>
+    <div style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);font-size:.72rem;cursor:pointer;">3</div>
+    <div style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);font-size:.72rem;cursor:pointer;">→</div>
+  </div>
+</div>
+
+<!-- ピックアップ -->
+<div class="pickup-strip">
+  <h3>関連ピックアップ</h3>
+  <div class="pickup-grid">
+    <div class="pk">
+      <div class="pk-img"><img src="https://images.unsplash.com/photo-1542295669297-4d352b042bca?w=400&q=80" alt=""></div>
+      <p class="pk-cat">New Arrival</p>
+      <p class="pk-title">Lemaire テーパードパンツ 2024 A/W</p>
+      <p class="pk-date">2024.10.12</p>
+    </div>
+    <div class="pk">
+      <div class="pk-img"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80" alt=""></div>
+      <p class="pk-cat">Styling</p>
+      <p class="pk-title">カシミアストールの巻き方5選</p>
+      <p class="pk-date">2024.10.08</p>
+    </div>
+    <div class="pk">
+      <div class="pk-img"><img src="https://images.unsplash.com/photo-1555529733268-f0a67d2ef0c3?w=400&q=80" alt=""></div>
+      <p class="pk-cat">Event</p>
+      <p class="pk-title">恵比寿店 ポップアップ開催のご案内</p>
+      <p class="pk-date">2024.10.05</p>
+    </div>
+    <div class="pk">
+      <div class="pk-img"><img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80" alt=""></div>
+      <p class="pk-cat">New Arrival</p>
+      <p class="pk-title">Celine サングラス 秋冬モデル入荷</p>
+      <p class="pk-date">2024.10.02</p>
+    </div>
+  </div>
+</div>
+
+<!-- メルマガCTA -->
+<div class="newsletter">
+  <h2>メールマガジン登録</h2>
+  <p>新着情報・イベント・セールをいち早くお届けします。</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="YOUR EMAIL ADDRESS">
+    <button>JOIN</button>
+  </div>
+</div>
+
+<!-- タグクラウド -->
+<div class="tags-sec">
+  <h3>Tags</h3>
+  <div class="tag-cloud">
+    <span class="tag">New Arrival</span>
+    <span class="tag">Lemaire</span>
+    <span class="tag">Toteme</span>
+    <span class="tag">The Row</span>
+    <span class="tag">Styling</span>
+    <span class="tag">Sustainability</span>
+    <span class="tag">Women's</span>
+    <span class="tag">Men's</span>
+    <span class="tag">Accessories</span>
+    <span class="tag">Event</span>
+    <span class="tag">Sale</span>
+    <span class="tag">Lookbook</span>
+    <span class="tag">Interview</span>
+    <span class="tag">Brand Story</span>
+    <span class="tag">Press</span>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="f-logo">MONOCHROME</div>
+    <p class="f-text">東京都渋谷区代官山町XX-X<br>Tel: 03-XXXX-XXXX<br>Open: 11:00〜20:00（火曜定休）</p>
+  </div>
+  <div>
+    <p style="font-size:.62rem;letter-spacing:.2em;color:rgba(255,255,255,.2);margin-bottom:10px;text-transform:uppercase;">Links</p>
+    <ul class="f-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="stores.html">Stores</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="brands.html">Brands</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <p style="font-size:.62rem;letter-spacing:.2em;color:rgba(255,255,255,.2);margin-bottom:10px;text-transform:uppercase;">Follow</p>
+    <ul class="f-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Pinterest</a></li>
+      <li><a href="#">Twitter</a></li>
+    </ul>
+  </div>
+  <div class="f-copy">© 2024 MONOCHROME. All Rights Reserved.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アクセス | blanc wedding</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--blush:#f2e8e0;--rose:#c9927a;--gold:#c4a882;--ivory:#faf8f5;--brown:#5c3d2e;--gray:#9a8a80;--border:#e8ddd4;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--ivory);color:var(--brown);overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(250,248,245,.97);backdrop-filter:blur(8px);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;border-bottom:1px solid var(--border);}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:.12em;color:var(--brown);font-style:italic;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:var(--gray);font-size:.72rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a:hover{color:var(--rose);}
+  .nav-cta{background:var(--rose);color:#fff!important;padding:9px 22px;font-size:.72rem!important;}
+  .page-hero{height:360px;background:url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;justify-content:center;padding-top:72px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(92,61,46,.55);}
+  .page-hero-content{position:relative;z-index:1;text-align:center;}
+  .page-hero-content p{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:.75rem;letter-spacing:.4em;margin-bottom:12px;text-transform:uppercase;}
+  .page-hero-content h1{font-family:'Cormorant Garamond',serif;font-size:3rem;color:#fff;font-style:italic;}
+  .sec{padding:80px;}
+  .sec-label{color:var(--rose);font-family:'Cormorant Garamond',serif;font-size:.78rem;letter-spacing:.35em;margin-bottom:10px;text-transform:uppercase;}
+  .rose-line{width:24px;height:1px;background:var(--rose);margin:12px 0 36px;}
+  .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .map-placeholder{width:100%;height:400px;background:var(--blush);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:.85rem;font-family:'Cormorant Garamond',serif;font-style:italic;}
+  .info-block{margin-bottom:28px;}
+  .info-block h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--brown);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+  .info-row{display:flex;gap:16px;margin-bottom:10px;font-size:.82rem;line-height:1.8;}
+  .info-label{color:var(--gray);width:72px;flex-shrink:0;}
+  .route-item{border-left:2px solid var(--rose);padding:12px 16px;margin-bottom:12px;background:var(--blush);}
+  .route-item h4{font-size:.82rem;font-weight:600;color:var(--brown);margin-bottom:4px;}
+  .route-item p{font-size:.76rem;color:var(--gray);line-height:1.8;}
+  footer{background:var(--brown);padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.4);font-size:.7rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content h1{font-size:2rem;}
+    .sec{padding:48px 24px;} .access-grid{grid-template-columns:1fr;}
+    footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">blanc wedding</a>
+  <ul>
+    <li><a href="plan.html">プラン</a></li>
+    <li><a href="gallery.html">実績</a></li>
+    <li><a href="about.html">こだわり</a></li>
+    <li><a href="about.html">スタッフ</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>ACCESS</p>
+    <h1>Access</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-label">ACCESS</p>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--brown);">サロンへのアクセス</h2>
+  <div class="rose-line"></div>
+  <div class="access-grid">
+    <div class="map-placeholder">[ MAP ]<br>神戸市中央区北野町X-X-X</div>
+    <div>
+      <div class="info-block">
+        <h3>サロン情報</h3>
+        <div class="info-row"><span class="info-label">住所</span><span>兵庫県神戸市中央区北野町1-X-X<br>北野ウェディングサロン 2F</span></div>
+        <div class="info-row"><span class="info-label">電話</span><span>078-XXXX-XXXX</span></div>
+        <div class="info-row"><span class="info-label">営業時間</span><span>10:00〜19:00（定休：火・水）</span></div>
+        <div class="info-row"><span class="info-label">相談</span><span>完全予約制（無料）</span></div>
+      </div>
+      <div class="info-block">
+        <h3>交通アクセス</h3>
+        <div class="route-item">
+          <h4>🚃 電車でお越しの方</h4>
+          <p>JR三ノ宮駅より徒歩12分<br>神戸市営地下鉄 三宮駅より徒歩10分</p>
+        </div>
+        <div class="route-item">
+          <h4>🚌 バスでお越しの方</h4>
+          <p>市バス「北野」停留所より徒歩2分</p>
+        </div>
+        <div class="route-item">
+          <h4>🚗 お車でお越しの方</h4>
+          <p>近隣有料駐車場をご利用ください<br>（相談時間分の駐車補助券をご用意しています）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 blanc wedding. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

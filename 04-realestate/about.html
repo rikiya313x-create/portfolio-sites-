@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会社概要 | PREMIER HOME | 高級不動産・東京港区</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--dark:#111215;--gold:#b8975a;--cream:#f8f4ee;--gray:#6d6d6d;--border:rgba(184,151,90,.25);--light:#fafaf8;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#1a1612;border-left:3px solid var(--gold);padding:10px 24px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.4);}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 64px;display:flex;align-items:center;justify-content:space-between;height:80px;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-mark{width:36px;height:36px;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Playfair Display',serif;font-size:.9rem;}
+  .logo-text{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.18em;color:var(--dark);text-transform:uppercase;}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--gray);font-size:.73rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--dark);color:#fff!important;padding:11px 24px;font-size:.72rem!important;letter-spacing:.12em;}
+
+  .hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80') center/cover;}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(17,18,21,.92) 40%,rgba(17,18,21,.3));}
+  .hero-content{position:relative;z-index:1;padding:0 80px;}
+  .hero-tag{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:6px 18px;font-size:.62rem;letter-spacing:.3em;margin-bottom:24px;text-transform:uppercase;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:4.5rem;color:#fff;line-height:1.15;max-width:600px;margin-bottom:20px;}
+  .hero h1 em{color:var(--gold);font-style:italic;}
+  .hero-lead{color:rgba(255,255,255,.6);font-size:.88rem;line-height:2.1;max-width:500px;margin-bottom:40px;}
+  .btn-gold{display:inline-block;background:var(--gold);color:#fff;padding:15px 44px;font-size:.8rem;letter-spacing:.15em;transition:.3s;}
+  .btn-gold:hover{background:#a5844a;}
+  .btn-dark-ghost{display:inline-block;border:1px solid rgba(255,255,255,.3);color:#fff;padding:15px 36px;font-size:.8rem;letter-spacing:.15em;margin-left:14px;transition:.3s;}
+  .btn-dark-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+  .stats-bar{background:var(--dark);padding:24px 80px;display:grid;grid-template-columns:repeat(4,1fr);}
+  .sb{text-align:center;border-right:1px solid rgba(184,151,90,.2);padding:8px 0;}
+  .sb:last-child{border:none;}
+  .sb-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);}
+  .sb-label{color:rgba(255,255,255,.4);font-size:.65rem;letter-spacing:.1em;margin-top:4px;}
+
+  .sec{padding:100px 80px;}
+  .sec-tag{color:var(--gold);font-size:.62rem;letter-spacing:.35em;margin-bottom:10px;text-transform:uppercase;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--dark);margin-bottom:12px;line-height:1.2;}
+  .gold-line{width:32px;height:1px;background:var(--gold);margin:14px 0 36px;}
+  .btn-gold{display:inline-block;background:var(--gold);color:#fff;padding:15px 44px;font-size:.8rem;letter-spacing:.15em;transition:.3s;}
+  .btn-gold:hover{background:#a5844a;}
+
+  .why{background:var(--cream);}
+  .why-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .why-img{height:500px;background-size:cover;background-position:center;}
+  .why-content p{color:var(--gray);font-size:.85rem;line-height:2;margin-bottom:16px;}
+  .why-points{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;}
+  .wp{padding:16px;background:#fff;border-left:2px solid var(--gold);}
+  .wp-title{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:4px;}
+  .wp-text{font-size:.72rem;color:var(--gray);}
+
+  .cta-sec{background:var(--dark);padding:100px 80px;text-align:center;}
+  .cta-title{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;margin-bottom:12px;line-height:1.2;}
+  .cta-sub{color:rgba(255,255,255,.4);font-size:.84rem;margin-bottom:32px;}
+
+  footer{background:#0a0b0e;padding:36px 80px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-family:'Playfair Display',serif;font-size:.95rem;color:rgba(255,255,255,.5);letter-spacing:.2em;}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+
+  /* page-specific */
+  .company-table{width:100%;border-collapse:collapse;max-width:780px;}
+  .company-table tr{border-bottom:1px solid var(--border);}
+  .company-table td{padding:18px 0;font-size:.84rem;vertical-align:top;}
+  .company-table td:first-child{color:var(--dark);width:140px;font-size:.76rem;font-weight:700;letter-spacing:.04em;}
+  .company-table td:last-child{color:var(--gray);line-height:1.9;}
+
+  .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:48px;}
+  .value-card{background:#fff;padding:50px 36px;text-align:center;}
+  .value-num{font-family:'Playfair Display',serif;font-size:4rem;color:var(--gold);opacity:.3;line-height:1;margin-bottom:16px;}
+  .value-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);margin-bottom:12px;}
+  .value-text{color:var(--gray);font-size:.78rem;line-height:2;}
+
+  .timeline{max-width:700px;margin:0 auto;position:relative;padding-top:20px;}
+  .timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:1px;background:var(--border);}
+  .tl-item{display:flex;gap:36px;align-items:flex-start;margin-bottom:40px;padding-left:10px;}
+  .tl-dot{width:22px;height:22px;border-radius:50%;border:1px solid var(--gold);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+  .tl-dot-inner{width:8px;height:8px;border-radius:50%;background:var(--gold);}
+  .tl-year{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);flex-shrink:0;width:52px;line-height:1;}
+  .tl-content-wrap{flex:1;}
+  .tl-title{font-size:.85rem;font-weight:700;color:var(--dark);margin-bottom:4px;}
+  .tl-text{color:var(--gray);font-size:.78rem;line-height:1.9;}
+
+  .awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;}
+  .award-card{border:1px solid var(--border);padding:28px 20px;text-align:center;}
+  .award-icon{font-size:2rem;margin-bottom:12px;}
+  .award-title{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:6px;}
+  .award-text{color:var(--gray);font-size:.7rem;line-height:1.8;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .sec{padding:60px 24px;}
+    .hero-content{padding:0 24px;}
+    .hero h1{font-size:2.8rem;}
+    .stats-bar{grid-template-columns:1fr 1fr;padding:20px;}
+    .why-inner{grid-template-columns:1fr;}
+    .value-grid{grid-template-columns:1fr;}
+    .awards-grid{grid-template-columns:1fr 1fr;}
+    footer{flex-direction:column;gap:10px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空の不動産会社サイトです。実在する会社・物件とは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">P</div>
+    <div class="logo-text">Premier Home</div>
+  </a>
+  <ul>
+    <li><a href="properties.html">物件情報</a></li>
+    <li><a href="service.html">サービス</a></li>
+    <li><a href="agents.html">エージェント</a></li>
+    <li><a href="about.html">会社概要</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html" class="nav-cta">無料査定</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">ABOUT PREMIER HOME</div>
+    <h1>東京の不動産に、<br><em>18年</em>の実績。</h1>
+    <p class="hero-lead">2006年の創業以来、東京都心の高級不動産市場に特化してきたPREMIER HOME。1,200件超の取引実績と97%の顧客満足度が、私たちの誇りです。</p>
+    <div>
+      <a href="properties.html" class="btn-gold">物件を探す</a>
+      <a href="contact.html" class="btn-dark-ghost">無料相談を申し込む</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="sb"><div class="sb-num">1,200+</div><div class="sb-label">取引実績（棟）</div></div>
+  <div class="sb"><div class="sb-num">18</div><div class="sb-label">年の実績</div></div>
+  <div class="sb"><div class="sb-num">97%</div><div class="sb-label">顧客満足度</div></div>
+  <div class="sb"><div class="sb-num">¥4.2億</div><div class="sb-label">平均成約価格</div></div>
+</div>
+
+<!-- 会社概要テーブル -->
+<section class="sec" style="background:var(--cream);">
+  <p class="sec-tag">Company Profile</p>
+  <h2 class="sec-title">会社概要</h2>
+  <div class="gold-line"></div>
+  <table class="company-table">
+    <tr>
+      <td>会社名</td>
+      <td>PREMIER HOME株式会社（プレミアホーム）</td>
+    </tr>
+    <tr>
+      <td>設立</td>
+      <td>2006年（平成18年）4月</td>
+    </tr>
+    <tr>
+      <td>代表取締役</td>
+      <td>山田 誠一郎（Seiichiro Yamada）</td>
+    </tr>
+    <tr>
+      <td>資本金</td>
+      <td>5,000万円</td>
+    </tr>
+    <tr>
+      <td>所在地</td>
+      <td>〒106-0032　東京都港区六本木X-X-X プレミアホームビル7F</td>
+    </tr>
+    <tr>
+      <td>電話</td>
+      <td>03-XXXX-XXXX（受付：10:00〜19:00）</td>
+    </tr>
+    <tr>
+      <td>FAX</td>
+      <td>03-XXXX-XXXX</td>
+    </tr>
+    <tr>
+      <td>メール</td>
+      <td>info@premierhome-example.jp（架空）</td>
+    </tr>
+    <tr>
+      <td>従業員数</td>
+      <td>42名（2024年現在）</td>
+    </tr>
+    <tr>
+      <td>取引件数</td>
+      <td>累計1,200件以上（2024年実績）</td>
+    </tr>
+    <tr>
+      <td>対応エリア</td>
+      <td>港区・渋谷区・千代田区・新宿区・品川区を中心とした東京23区全域</td>
+    </tr>
+    <tr>
+      <td>免許番号</td>
+      <td>宅地建物取引業者 東京都知事（5）第XXXXX号（架空）</td>
+    </tr>
+    <tr>
+      <td>所属団体</td>
+      <td>（公社）東京都宅地建物取引業協会会員<br>（公財）不動産流通推進センター会員<br>東京商工会議所会員</td>
+    </tr>
+    <tr>
+      <td>主要取引銀行</td>
+      <td>三井住友銀行 六本木支店 / みずほ銀行 麻布支店</td>
+    </tr>
+    <tr>
+      <td>営業時間</td>
+      <td>10:00〜19:00（年中無休）<br>※年末年始のみ休業（12月31日〜1月3日）</td>
+    </tr>
+  </table>
+</section>
+
+<!-- なぜPREMIER HOMEか -->
+<section class="sec why">
+  <div class="why-inner">
+    <div class="why-img" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80');"></div>
+    <div class="why-content">
+      <p class="sec-tag">Why PREMIER HOME</p>
+      <h2 class="sec-title">なぜPREMIER HOMEか</h2>
+      <div class="gold-line"></div>
+      <p>PREMIER HOMEは2006年の創業以来、東京都心の高級不動産に特化した仲介会社として1,200件以上の取引をサポートしてきました。単なる「仲介業者」ではなく、お客様にとっての「資産パートナー」を目指しています。</p>
+      <p>私たちが大切にしているのは、物件を「売る・買う」ではなく「最適な資産形成」のお手伝いをするということ。マーケットの動向を熟知したエージェントが、長期的な視点でご提案します。港区・渋谷区エリアの非公開物件を含む独自ネットワークにより、市場に出回らない優良物件をいち早くご紹介することが可能です。</p>
+      <p>また、弁護士・税理士・ファイナンシャルプランナーとの強固な連携体制により、不動産取引に関わるあらゆる側面でお客様をサポートいたします。</p>
+      <div class="why-points">
+        <div class="wp"><div class="wp-title">独自ネットワーク</div><div class="wp-text">非公開物件を含む港区・渋谷区の豊富な情報を独自に保有。希少物件を最速でご紹介します</div></div>
+        <div class="wp"><div class="wp-title">ワンストップ対応</div><div class="wp-text">売買・賃貸・管理・リノベまで一社で完結。窓口をひとつにすることで手間とコストを最小化</div></div>
+        <div class="wp"><div class="wp-title">資産運用サポート</div><div class="wp-text">税理士・ファイナンシャルプランナーと連携し、節税・ローン・出口戦略まで一貫サポート</div></div>
+        <div class="wp"><div class="wp-title">多言語対応</div><div class="wp-text">英語・中国語対応エージェント在籍。外国籍のお客様の物件購入・ビザ手続きにも対応</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 経営理念 -->
+<section class="sec">
+  <p class="sec-tag">Our Philosophy</p>
+  <h2 class="sec-title">経営理念</h2>
+  <div class="gold-line"></div>
+  <p style="color:var(--gray);font-size:.88rem;line-height:2.2;max-width:640px;margin-bottom:14px;">私たちは、「不動産を通じてお客様の人生を豊かにする」という理念のもと、日々業務に取り組んでいます。単に物件を売り買いするのではなく、お客様の夢や目標を実現するための最良のパートナーでありたいと考えています。</p>
+  <div class="value-grid">
+    <div class="value-card">
+      <div class="value-num">01</div>
+      <div class="value-title">誠実なコンサルティング</div>
+      <p class="value-text">お客様の利益を最優先に考え、都合の良いことだけでなく、リスクも含めた正直な情報をお伝えします。短期的な成約より、長期的な信頼関係を大切にしています。どんな小さな疑問にも誠実に向き合うことが、私たちの出発点です。</p>
+    </div>
+    <div class="value-card">
+      <div class="value-num">02</div>
+      <div class="value-title">最高のネットワーク</div>
+      <p class="value-text">18年間かけて構築してきた売主・買主・金融機関・専門家との人的ネットワークが、PREMIER HOMEの最大の強みです。市場に出回る前の情報へのアクセスと、最良のマッチングを実現します。</p>
+    </div>
+    <div class="value-card">
+      <div class="value-num">03</div>
+      <div class="value-title">長期的な価値の創造</div>
+      <p class="value-text">一時的な売買益ではなく、資産としての不動産が時間をかけて生み出す長期的価値を大切にします。購入後の管理・運用・売却まで、お客様の不動産ライフサイクル全体を見守るパートナーです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 沿革 -->
+<section class="sec" style="background:var(--cream);">
+  <p class="sec-tag">History</p>
+  <h2 class="sec-title">沿革</h2>
+  <div class="gold-line"></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-year">2006</div>
+      <div class="tl-content-wrap">
+        <div class="tl-title">PREMIER HOME株式会社 設立</div>
+        <p class="tl-text">東京都港区六本木にて創業。代表取締役・山田誠一郎が前職の大手デベロッパーで培った知識とネットワークをもとに、高級不動産仲介に特化した会社として設立。初年度より港区エリアを中心に実績を積み重ねる。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-year">2008</div>
+      <div class="tl-content-wrap">
+        <div class="tl-title">累計取引100件達成</div>
+        <p class="tl-text">創業からわずか2年で累計取引件数100件を達成。リーマンショックの逆境の中、誠実なコンサルティングで信頼を積み上げ、富裕層顧客からの紹介・リピート率が業界平均を大きく上回る水準に。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-year">2010</div>
+      <div class="tl-content-wrap">
+        <div class="tl-title">港区特化チーム発足・渋谷区エリア拡大</div>
+        <p class="tl-text">港区専門エージェントチームを発足。同時に渋谷区・千代田区エリアへの対応を開始。外資系金融機関・医師・起業家を中心とした顧客層が拡大し、非公開物件ネットワークを強化。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-year">2013</div>
+      <div class="tl-content-wrap">
+        <div class="tl-title">投資不動産部門 設立</div>
+        <p class="tl-text">投資用不動産に特化した専門部門を設立。ファイナンシャルプランナー資格保有のスペシャリストを採用し、利回り分析・ローン戦略・節税プランを含むトータルコンサルティングを開始。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-year">2015</div>
+      <div class="tl-content-wrap">
+        <div class="tl-title">英語・中国語対応開始・外国人顧客向けサービス拡充</div>
+        <p class="tl-text">在日外国人・海外からの投資家向けに、英語・中国語対応エージェントを採用。ビザ申請サポート・外国語契約書の作成対応など、外国籍のお客様が安心して取引できる体制を整備。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-year">2018</div>
+      <div class="tl-content-wrap">
+        <div class="tl-title">累計取引1,000件達成・リノベーション事業参入</div>
+        <p class="tl-text">創業12年目に累計取引1,000件の大台を達成。同年、信頼できる施工パートナーとの連携によりリノベーション・リフォームサービスを開始。物件購入から改修まで一気通貫でサポートする体制が整う。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-year">2021</div>
+      <div class="tl-content-wrap">
+        <div class="tl-title">オンライン相談・バーチャル内覧 開始</div>
+        <p class="tl-text">コロナ禍を契機にオンライン相談システムを整備。ビデオ通話を活用したバーチャル内覧サービスにより、地方在住・海外在住のお客様でもスムーズに不動産取引を進められる環境を実現。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-year">2024</div>
+      <div class="tl-content-wrap">
+        <div class="tl-title">累計取引1,200件超・顧客満足度97%達成</div>
+        <p class="tl-text">現在も港区・渋谷区を中心に東京23区全域をカバー。累計取引1,200件超、顧客満足度97%を誇る東京高級不動産のトップエージェンシーとして、さらなる成長を続けています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 受賞・メディア掲載実績 -->
+<section class="sec">
+  <p class="sec-tag">Awards & Media</p>
+  <h2 class="sec-title">受賞・メディア掲載実績</h2>
+  <div class="gold-line"></div>
+  <p style="color:var(--gray);font-size:.84rem;line-height:2;max-width:640px;margin-bottom:8px;">PREMIER HOMEはその実績と顧客満足度の高さから、国内外のメディア・業界団体より多数の評価をいただいています。</p>
+  <div class="awards-grid">
+    <div class="award-card">
+      <div class="award-icon">🏆</div>
+      <div class="award-title">東京都宅建協会<br>優秀業者表彰</div>
+      <p class="award-text">2022年・2023年 連続受賞<br>高い成約率と顧客満足度が評価</p>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">📰</div>
+      <div class="award-title">日経不動産マーケット情報<br>掲載</div>
+      <p class="award-text">2023年3月号「東京高級不動産エージェント特集」にて紹介</p>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">⭐</div>
+      <div class="award-title">Google口コミ<br>4.9/5.0 獲得</div>
+      <p class="award-text">累計350件以上の口コミでトップ評価を獲得。顧客からの信頼の証</p>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🌏</div>
+      <div class="award-title">Asia Property Awards<br>Finalist</div>
+      <p class="award-text">2023年アジア不動産アワード・ベストエージェンシー部門ファイナリスト選出</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-sec">
+  <h2 class="cta-title">まず、話してみてください。</h2>
+  <p class="cta-sub">無料相談 ／ 無料査定 ／ 秘密厳守</p>
+  <a href="contact.html" class="btn-gold">無料相談・査定を申し込む</a>
+</div>
+
+<footer>
+  <div class="footer-logo">PREMIER HOME</div>
+  <p>© 2024 PREMIER HOME Real Estate. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

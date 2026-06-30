@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メニュー | SHIZUKU COFFEE | 京都・四条のスペシャルティコーヒー専門店</title>
+  <meta name="description" content="SHIZUKU COFFEEのメニュー一覧。スペシャルティコーヒー・フード・テイクアウトメニューをご確認いただけます。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--brown:#4a2c1a;--brown-mid:#7a4f35;--caramel:#c8884a;--cream:#fdf6ed;--beige:#f0e4d0;--text:#2a1a0e;--text-muted:#8a7060;--white:#fff;}
+    *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+    body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--white);line-height:1.8;}
+
+    .portfolio-notice{background:#222;color:#aaa;text-align:center;font-size:0.72rem;padding:6px 16px;letter-spacing:0.05em;}
+
+    header{position:fixed;top:32px;left:0;right:0;z-index:1000;padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;}
+    header.scrolled{top:0;background:rgba(253,246,237,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 24px rgba(74,44,26,0.08);}
+    .logo{display:flex;flex-direction:column;text-decoration:none;}
+    .logo-main{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--brown);letter-spacing:0.1em;line-height:1;}
+    .logo-sub{font-family:'Lato',sans-serif;font-size:0.6rem;color:var(--caramel);letter-spacing:0.3em;font-weight:300;}
+    nav ul{display:flex;gap:36px;list-style:none;}
+    nav a{font-family:'Lato',sans-serif;font-size:0.82rem;letter-spacing:0.12em;color:var(--brown);text-decoration:none;font-weight:400;transition:color 0.2s;}
+    nav a:hover,nav a.active{color:var(--caramel);}
+    .header-btn{font-family:'Lato',sans-serif;font-size:0.78rem;letter-spacing:0.15em;border:1.5px solid var(--brown);color:var(--brown);padding:9px 22px;text-decoration:none;transition:all 0.2s;font-weight:700;}
+    .header-btn:hover{background:var(--brown);color:#fff;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+    .hamburger span{display:block;width:24px;height:1.5px;background:var(--brown);transition:all 0.3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:104px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--beige);padding:24px 32px;z-index:999;flex-direction:column;gap:4px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-size:0.95rem;color:var(--brown);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--beige);letter-spacing:0.05em;}
+
+    /* ページヒーロー */
+    .page-hero{margin-top:104px;background:var(--brown);padding:80px 20px 60px;text-align:center;color:#fff;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80') center/cover;opacity:0.15;}
+    .page-hero-breadcrumb{font-family:'Lato',sans-serif;font-size:0.72rem;letter-spacing:0.2em;opacity:0.6;margin-bottom:16px;position:relative;z-index:1;}
+    .page-hero-breadcrumb a{color:rgba(255,255,255,0.6);text-decoration:none;}
+    .page-hero-breadcrumb span{margin:0 10px;}
+    .page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:16px;position:relative;z-index:1;}
+    .page-hero p{font-family:'Lato',sans-serif;font-size:0.9rem;opacity:0.8;max-width:500px;margin:0 auto;line-height:1.9;position:relative;z-index:1;font-weight:300;letter-spacing:0.05em;}
+
+    section{padding:88px 20px;}
+    .container{max-width:1060px;margin:0 auto;}
+    .sec-eyebrow{font-family:'Lato',sans-serif;font-size:0.7rem;letter-spacing:0.35em;color:var(--caramel);text-align:center;margin-bottom:14px;text-transform:uppercase;}
+    .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;text-align:center;color:var(--brown);margin-bottom:16px;}
+    .sec-line{width:40px;height:1px;background:var(--caramel);margin:0 auto 16px;}
+    .sec-desc{text-align:center;color:var(--text-muted);font-size:0.9rem;max-width:520px;margin:0 auto 56px;font-weight:300;line-height:1.9;}
+
+    /* メニュータブ */
+    .menu-tabs{display:flex;justify-content:center;gap:0;margin-bottom:48px;border-bottom:1px solid var(--beige);}
+    .tab-btn{font-family:'Lato',sans-serif;font-size:0.82rem;letter-spacing:0.15em;color:var(--text-muted);background:none;border:none;padding:14px 32px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;}
+    .tab-btn.active{color:var(--brown);border-bottom-color:var(--caramel);font-weight:700;}
+    .tab-btn:hover{color:var(--brown);}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+
+    /* メニューグリッド */
+    .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .menu-card{background:var(--cream);border-radius:2px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;}
+    .menu-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(74,44,26,0.12);}
+    .menu-card-img{aspect-ratio:4/3;overflow:hidden;position:relative;}
+    .menu-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+    .menu-card:hover .menu-card-img img{transform:scale(1.05);}
+    .menu-card-img-ph{width:100%;height:100%;background:var(--beige);display:flex;align-items:center;justify-content:center;font-size:3rem;}
+    .menu-card-body{padding:22px 20px;}
+    .menu-card-tag{font-family:'Lato',sans-serif;font-size:0.62rem;letter-spacing:0.2em;color:var(--caramel);margin-bottom:6px;text-transform:uppercase;}
+    .menu-card-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);margin-bottom:8px;}
+    .menu-card-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-weight:300;margin-bottom:14px;}
+    .menu-card-price{font-family:'Lato',sans-serif;font-size:0.9rem;color:var(--caramel);font-weight:700;}
+    .menu-card-note{font-size:0.72rem;color:var(--text-muted);margin-top:4px;font-weight:300;}
+
+    /* コーヒー豆セクション */
+    .beans-bg{background:var(--cream);}
+    .beans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(74,44,26,0.08);}
+    .bean-card{background:#fff;padding:32px 28px;}
+    .bean-origin{font-family:'Lato',sans-serif;font-size:0.65rem;letter-spacing:0.25em;color:var(--caramel);margin-bottom:8px;text-transform:uppercase;}
+    .bean-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);margin-bottom:10px;}
+    .bean-note{font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;font-style:italic;font-weight:300;}
+    .bean-detail{font-size:0.78rem;color:var(--text-muted);line-height:1.8;font-weight:300;}
+    .bean-process{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+    .bean-tag{background:var(--beige);font-size:0.65rem;padding:3px 10px;color:var(--brown-mid);border-radius:2px;font-family:'Lato',sans-serif;}
+
+    /* 季節のメニュー */
+    .seasonal{background:var(--brown);color:#fff;padding:80px 20px;}
+    .seasonal .sec-eyebrow{color:rgba(255,255,255,0.5);}
+    .seasonal .sec-title{color:#fff;}
+    .seasonal .sec-line{background:rgba(255,255,255,0.3);}
+    .seasonal .sec-desc{color:rgba(255,255,255,0.7);}
+    .seasonal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;max-width:1060px;margin:0 auto;background:rgba(255,255,255,0.08);}
+    .seasonal-card{padding:36px;background:rgba(255,255,255,0.05);}
+    .seasonal-badge{display:inline-block;border:1px solid rgba(255,255,255,0.3);font-family:'Lato',sans-serif;font-size:0.62rem;letter-spacing:0.2em;padding:3px 10px;color:rgba(255,255,255,0.7);margin-bottom:12px;}
+    .seasonal-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;margin-bottom:10px;}
+    .seasonal-desc{font-size:0.84rem;color:rgba(255,255,255,0.65);line-height:1.8;font-weight:300;margin-bottom:12px;}
+    .seasonal-price{font-family:'Lato',sans-serif;color:rgba(200,136,74,0.9);font-size:0.9rem;font-weight:700;}
+
+    /* テイクアウト */
+    .takeout-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+    .takeout-img{aspect-ratio:1;border-radius:2px;overflow:hidden;}
+    .takeout-img img{width:100%;height:100%;object-fit:cover;}
+    .takeout-content h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--brown);margin-bottom:20px;line-height:1.4;}
+    .takeout-content p{font-size:0.88rem;color:var(--text-muted);line-height:2;font-weight:300;margin-bottom:24px;}
+    .takeout-list{display:flex;flex-direction:column;gap:12px;}
+    .takeout-item{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--cream);}
+    .takeout-item-name{font-size:0.88rem;color:var(--brown);}
+    .takeout-item-price{font-family:'Lato',sans-serif;font-size:0.85rem;color:var(--caramel);font-weight:700;}
+
+    /* CTA */
+    .cta-section{background:var(--cream);padding:80px 20px;text-align:center;}
+    .cta-section h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--brown);margin-bottom:12px;}
+    .cta-section p{font-size:0.88rem;color:var(--text-muted);font-weight:300;margin-bottom:28px;line-height:1.9;}
+    .cta-btn{display:inline-block;background:var(--brown);color:#fff;padding:14px 40px;font-family:'Lato',sans-serif;font-size:0.82rem;letter-spacing:0.15em;font-weight:700;text-decoration:none;transition:background 0.2s;}
+    .cta-btn:hover{background:var(--brown-mid);}
+
+    footer{background:var(--text);color:rgba(255,255,255,0.5);padding:64px 20px 28px;}
+    .footer-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+    .footer-logo-main{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;letter-spacing:0.1em;margin-bottom:4px;}
+    .footer-logo-sub{font-family:'Lato',sans-serif;font-size:0.6rem;letter-spacing:0.3em;color:rgba(255,255,255,0.35);margin-bottom:16px;}
+    .footer-desc{font-size:0.8rem;line-height:1.8;font-weight:300;}
+    .footer-h{font-family:'Lato',sans-serif;font-size:0.72rem;letter-spacing:0.2em;color:#fff;margin-bottom:16px;}
+    .footer-links{display:flex;flex-direction:column;gap:10px;}
+    .footer-links a{font-size:0.8rem;color:rgba(255,255,255,0.5);text-decoration:none;font-weight:300;transition:color 0.2s;}
+    .footer-links a:hover{color:#fff;}
+    .footer-bottom{max-width:1060px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;flex-wrap:wrap;gap:8px;}
+    .footer-portfolio{color:rgba(255,255,255,0.3);font-size:0.7rem;}
+
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    .back-top{position:fixed;bottom:32px;right:32px;width:48px;height:48px;background:var(--brown);color:#fff;border:none;font-size:1rem;cursor:pointer;opacity:0;transform:translateY(12px);transition:all 0.3s;z-index:900;font-family:'Lato',sans-serif;}
+    .back-top.visible{opacity:1;transform:translateY(0);}
+    .back-top:hover{background:var(--brown-mid);}
+
+    @media(max-width:768px){
+      header{padding:0 24px;}
+      nav,.header-btn{display:none;}
+      .hamburger{display:flex;}
+      .menu-grid{grid-template-columns:1fr;}
+      .beans-grid{grid-template-columns:1fr;}
+      .seasonal-grid{grid-template-columns:1fr;}
+      .takeout-grid{grid-template-columns:1fr;}
+      .footer-inner{grid-template-columns:1fr;gap:36px;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="portfolio-notice">⚠ これはポートフォリオ提出用に作成した架空のサイトです。実在する店舗ではありません。</div>
+
+<header id="header">
+  <a href="index.html" class="logo">
+    <span class="logo-main">SHIZUKU COFFEE</span>
+    <span class="logo-sub">SPECIALTY COFFEE · KYOTO</span>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="concept.html">CONCEPT</a></li>
+      <li><a href="menu.html" class="active">MENU</a></li>
+      <li><a href="news.html">NEWS</a></li>
+      <li><a href="access.html">ACCESS</a></li>
+    </ul>
+  </nav>
+  <a href="contact.html" class="header-btn">CONTACT</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="concept.html" onclick="closeMobile()">CONCEPT</a>
+  <a href="menu.html" onclick="closeMobile()">MENU</a>
+  <a href="news.html" onclick="closeMobile()">NEWS</a>
+  <a href="access.html" onclick="closeMobile()">ACCESS</a>
+  <a href="contact.html" onclick="closeMobile()">CONTACT</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-breadcrumb"><a href="index.html">HOME</a><span>/</span>MENU</div>
+  <h1>Menu</h1>
+  <p>One cup at a time, with care.<br>こだわりの一杯と、ゆったりとした時間を。</p>
+</div>
+
+<!-- コーヒーメニュー -->
+<section>
+  <div class="container">
+    <div class="sec-eyebrow fade-in">Our Menu</div>
+    <h2 class="sec-title fade-in">こだわりの一杯</h2>
+    <div class="sec-line fade-in"></div>
+    <p class="sec-desc fade-in">季節やその日の気分に合わせてお選びください。<br>すべてのコーヒーはバリスタが一杯ずつ丁寧に淹れます。</p>
+
+    <div class="menu-tabs fade-in">
+      <button class="tab-btn active" onclick="switchTab('coffee',this)">COFFEE</button>
+      <button class="tab-btn" onclick="switchTab('food',this)">FOOD</button>
+      <button class="tab-btn" onclick="switchTab('takeout',this)">TAKE OUT</button>
+      <button class="tab-btn" onclick="switchTab('gift',this)">GIFT</button>
+    </div>
+
+    <!-- コーヒー -->
+    <div class="tab-panel active" id="panel-coffee">
+      <div class="menu-grid">
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="ドリップコーヒー"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Hand Drip</div>
+            <div class="menu-card-name">シングルオリジン ドリップ</div>
+            <div class="menu-card-desc">その日入荷した産地の豆を一杯ずつ丁寧にハンドドリップ。テイスティングノート付きでお届けします。産地・農園の変わりゆく個性をお楽しみください。</div>
+            <div class="menu-card-price">¥680〜</div>
+            <div class="menu-card-note">※ 豆の種類により価格が異なります</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80" alt="カフェラテ"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Espresso Based</div>
+            <div class="menu-card-name">カフェラテ</div>
+            <div class="menu-card-desc">自家焙煎エスプレッソに北海道産牛乳をブレンド。バリスタが丁寧に仕上げるラテアートをお楽しみください。ホット・アイス対応。</div>
+            <div class="menu-card-price">¥750</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=800&q=80" alt="水出しアイスコーヒー"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Cold Brew</div>
+            <div class="menu-card-name">水出しアイスコーヒー</div>
+            <div class="menu-card-desc">12時間かけてゆっくりと水で抽出。苦みを抑えた、すっきりとした飲み口。夏季限定・夏の午後のおともに。</div>
+            <div class="menu-card-price">¥720</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=800&q=80" alt="カプチーノ"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Espresso Based</div>
+            <div class="menu-card-name">カプチーノ</div>
+            <div class="menu-card-desc">エスプレッソ1:ミルク1:フォーム1の黄金比。ふわふわのミルクフォームとエスプレッソの調和。本場イタリアスタイルでお届けします。</div>
+            <div class="menu-card-price">¥700</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=800&q=80" alt="エスプレッソ"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Espresso</div>
+            <div class="menu-card-name">エスプレッソ</div>
+            <div class="menu-card-desc">15〜18barの高圧で抽出するSHIZUKUの原点。浅煎りのフルーティな酸味から深煎りのコクまで、お好みの豆をお選びいただけます。</div>
+            <div class="menu-card-price">¥550〜</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=800&q=80" alt="フラットホワイト"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Espresso Based</div>
+            <div class="menu-card-name">フラット ホワイト</div>
+            <div class="menu-card-desc">オーストラリア発祥のマイクロフォームラテ。カフェラテより濃いめのエスプレッソと繊細なフォームミルクが特徴。コーヒー好きに人気。</div>
+            <div class="menu-card-price">¥780</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- フード -->
+    <div class="tab-panel" id="panel-food">
+      <div class="menu-grid">
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=800&q=80" alt="厚切りトースト"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Toast</div>
+            <div class="menu-card-name">厚切りトースト</div>
+            <div class="menu-card-desc">京都・烏丸の老舗パン屋から毎朝仕入れる食パンを3.5cm厚にスライス。バター・はちみつ・あんバターの3種類からお選びください。</div>
+            <div class="menu-card-price">¥480〜</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="バスクチーズケーキ"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Cake</div>
+            <div class="menu-card-name">バスクチーズケーキ</div>
+            <div class="menu-card-desc">毎朝スタッフの手作り。外はしっかり焦げ目がつくまでオーブンで焼き上げ、中はとろとろ。コーヒーとの相性は最高です。</div>
+            <div class="menu-card-price">¥520</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80" alt="クロワッサン"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Pastry</div>
+            <div class="menu-card-name">クロワッサン</div>
+            <div class="menu-card-desc">フランス産発酵バターを贅沢に使用した本格クロワッサン。外はパリッとサクサク、中はもちっとした食感。ハム・チーズ入りもあります。</div>
+            <div class="menu-card-price">¥380〜</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80" alt="プレート"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Breakfast Plate</div>
+            <div class="menu-card-name">モーニングプレート</div>
+            <div class="menu-card-desc">トースト・ゆで卵・サラダ・スープのセット。京都の朝をゆっくりと楽しみたい方に。ドリンクとのセットでお得になります。</div>
+            <div class="menu-card-price">¥980</div>
+            <div class="menu-card-note">※ 平日 8:00〜11:00 限定</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&q=80" alt="ティラミス"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Dessert</div>
+            <div class="menu-card-name">コーヒーティラミス</div>
+            <div class="menu-card-desc">SHIZUKUのエスプレッソをたっぷり染み込ませたサヴォイアルディと、マスカルポーネクリームの贅沢なデザート。大人のデザートです。</div>
+            <div class="menu-card-price">¥580</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1504387432042-8aca549e4729?w=800&q=80" alt="スコーン"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Scone</div>
+            <div class="menu-card-name">スコーン（プレーン/チーズ）</div>
+            <div class="menu-card-desc">毎朝手焼きのほかほかスコーン。クロテッドクリームとジャム付き。ドリップコーヒーのお供にぴったりです。なくなり次第終了。</div>
+            <div class="menu-card-price">¥420</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- テイクアウト -->
+    <div class="tab-panel" id="panel-takeout">
+      <div class="menu-grid">
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><div class="menu-card-img-ph">☕</div></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Take Out Coffee</div>
+            <div class="menu-card-name">テイクアウトドリップ</div>
+            <div class="menu-card-desc">イートインと同じ豆・同じバリスタの技術でテイクアウト対応。専用の断熱カップでご提供します。通勤・観光のお供にどうぞ。</div>
+            <div class="menu-card-price">¥600〜</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80" alt="豆販売"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Coffee Beans</div>
+            <div class="menu-card-name">豆の販売（100g〜）</div>
+            <div class="menu-card-desc">店内焙煎の豆をご自宅用に販売しています。挽き具合のご要望にも対応。焙煎日を明記した新鮮な豆を提供します。</div>
+            <div class="menu-card-price">¥1,200〜（100g）</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&q=80" alt="ドリップバッグ"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Drip Bag</div>
+            <div class="menu-card-name">ドリップバッグ（5袋）</div>
+            <div class="menu-card-desc">手軽においしいコーヒーを楽しんでいただける、SHIZUKUオリジナルのドリップバッグ。オフィスや自宅用に。5袋セット。</div>
+            <div class="menu-card-price">¥1,500</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ギフト -->
+    <div class="tab-panel" id="panel-gift">
+      <div class="menu-grid">
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="ギフトセット"></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Gift Set S</div>
+            <div class="menu-card-name">ギフトセット S（2種）</div>
+            <div class="menu-card-desc">シングルオリジン豆2種（各100g）をオリジナルボックスに。のし・包装対応。誕生日・お礼の贈り物に。</div>
+            <div class="menu-card-price">¥2,800</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><div class="menu-card-img-ph">🎁</div></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Gift Set M</div>
+            <div class="menu-card-name">ギフトセット M（3種）</div>
+            <div class="menu-card-desc">シングルオリジン豆3種（各100g）にドリップバッグ5袋をセット。コーヒー好きへの贈り物に最適です。</div>
+            <div class="menu-card-price">¥3,800</div>
+          </div>
+        </div>
+        <div class="menu-card fade-in">
+          <div class="menu-card-img"><div class="menu-card-img-ph">✨</div></div>
+          <div class="menu-card-body">
+            <div class="menu-card-tag">Gift Set L</div>
+            <div class="menu-card-name">ギフトセット L（プレミアム）</div>
+            <div class="menu-card-desc">厳選豆3種（各200g）＋ドリップバッグ10袋＋オリジナルドリッパーのプレミアムセット。特別な方への贈り物に。</div>
+            <div class="menu-card-price">¥6,800</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 使用豆の産地 -->
+<section class="beans-bg">
+  <div class="container">
+    <div class="sec-eyebrow fade-in">Our Beans</div>
+    <h2 class="sec-title fade-in">厳選された豆たち</h2>
+    <div class="sec-line fade-in"></div>
+    <p class="sec-desc fade-in">スペシャルティグレード（SCA80点以上）の豆のみを世界中から仕入れています。</p>
+    <div class="beans-grid fade-in">
+      <div class="bean-card">
+        <div class="bean-origin">Ethiopia</div>
+        <div class="bean-name">エチオピア イルガチェフェ</div>
+        <div class="bean-note">"ブルーベリーのような甘みと、フローラルな香り"</div>
+        <div class="bean-detail">コーヒーの故郷エチオピアから。ナチュラル精製で干したぶどうのような甘みと、明るいフローラルな香りが特徴。SHIZUKUの定番の一つ。</div>
+        <div class="bean-process"><span class="bean-tag">Natural</span><span class="bean-tag">Light Roast</span><span class="bean-tag">Fruity</span></div>
+      </div>
+      <div class="bean-card">
+        <div class="bean-origin">Guatemala</div>
+        <div class="bean-name">グアテマラ アンティグア</div>
+        <div class="bean-note">"チョコレートのようなコクと、なめらかなボディ"</div>
+        <div class="bean-detail">アンティグア地方の高地農園から。しっかりとしたボディとチョコレートのような甘みのコク。飲みやすく、コーヒー初心者にもお勧めの豆。</div>
+        <div class="bean-process"><span class="bean-tag">Washed</span><span class="bean-tag">Medium Roast</span><span class="bean-tag">Chocolate</span></div>
+      </div>
+      <div class="bean-card">
+        <div class="bean-origin">Colombia</div>
+        <div class="bean-name">コロンビア ウイラ</div>
+        <div class="bean-note">"赤いりんごのような酸味と、クリーンな後味"</div>
+        <div class="bean-detail">世界最高峰のコーヒー産地の一つ、ウイラ地方。明るい酸味とクリーンな後味が特徴。ハンドドリップで引き立つ繊細な豆です。</div>
+        <div class="bean-process"><span class="bean-tag">Washed</span><span class="bean-tag">Light-Medium</span><span class="bean-tag">Bright Acid</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 季節のメニュー -->
+<div class="seasonal">
+  <div style="text-align:center;margin-bottom:56px;">
+    <div class="sec-eyebrow">Seasonal</div>
+    <h2 class="sec-title">季節のスペシャルメニュー</h2>
+    <div class="sec-line"></div>
+    <p class="sec-desc">その季節だけの特別な一杯をどうぞ。</p>
+  </div>
+  <div class="seasonal-grid">
+    <div class="seasonal-card">
+      <div class="seasonal-badge">SUMMER 2026</div>
+      <div class="seasonal-name">コーヒートニック</div>
+      <div class="seasonal-desc">シングルオリジンのコールドブリューをトニックウォーターで割った、爽やかな夏の一杯。スライスレモンとミントを添えて。</div>
+      <div class="seasonal-price">¥820</div>
+    </div>
+    <div class="seasonal-card">
+      <div class="seasonal-badge">SUMMER 2026</div>
+      <div class="seasonal-name">京都宇治抹茶ラテ</div>
+      <div class="seasonal-desc">京都・宇治産の上質な抹茶をエスプレッソと合わせた、京都らしい一杯。甘さ控えめ、抹茶の深い香りが広がります。</div>
+      <div class="seasonal-price">¥880</div>
+    </div>
+    <div class="seasonal-card">
+      <div class="seasonal-badge">SUMMER 2026</div>
+      <div class="seasonal-name">かき氷コーヒー</div>
+      <div class="seasonal-desc">自家製コーヒーシロップを贅沢にかけた、大人のかき氷。コールドブリューのエスプレッソシロップが絶品。数量限定。</div>
+      <div class="seasonal-price">¥950</div>
+    </div>
+    <div class="seasonal-card">
+      <div class="seasonal-badge">COMING SOON</div>
+      <div class="seasonal-name">オータムブレンド（秋）</div>
+      <div class="seasonal-desc">秋に向けて特別ブレンドを準備中。スパイスを効かせた深みのある一杯をお届けする予定です。お楽しみに。</div>
+      <div class="seasonal-price">近日公開</div>
+    </div>
+  </div>
+</div>
+
+<!-- テイクアウト説明 -->
+<section>
+  <div class="container">
+    <div class="takeout-grid fade-in">
+      <div class="takeout-img">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=80" alt="テイクアウト">
+      </div>
+      <div class="takeout-content">
+        <h3>Takeout &amp; Beans<br>いつでも、どこでも。</h3>
+        <p>お急ぎの方・お散歩のお供に。イートインと変わらないクオリティのコーヒーを専用カップでご提供します。また、ご自宅でSHIZUKUの味を楽しんでいただける豆の販売もしています。</p>
+        <div class="takeout-list">
+          <div class="takeout-item"><span class="takeout-item-name">テイクアウトドリップ</span><span class="takeout-item-price">¥600〜</span></div>
+          <div class="takeout-item"><span class="takeout-item-name">テイクアウトラテ</span><span class="takeout-item-price">¥700〜</span></div>
+          <div class="takeout-item"><span class="takeout-item-name">豆の販売（100g）</span><span class="takeout-item-price">¥1,200〜</span></div>
+          <div class="takeout-item"><span class="takeout-item-name">ドリップバッグ（5袋）</span><span class="takeout-item-price">¥1,500</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>ご予約・お問い合わせ</h2>
+  <p>貸し切りや大量のコーヒー豆注文など、お気軽にご連絡ください。</p>
+  <a href="contact.html" class="cta-btn">CONTACT →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-main">SHIZUKU COFFEE</div>
+      <div class="footer-logo-sub">SPECIALTY COFFEE · KYOTO</div>
+      <div class="footer-desc">京都・四条のスペシャルティコーヒー専門店。一杯ずつ丁寧に淹れるハンドドリップコーヒーをどうぞ。</div>
+    </div>
+    <div>
+      <div class="footer-h">NAVIGATION</div>
+      <div class="footer-links">
+        <a href="concept.html">CONCEPT</a>
+        <a href="menu.html">MENU</a>
+        <a href="news.html">NEWS</a>
+        <a href="access.html">ACCESS</a>
+        <a href="contact.html">CONTACT</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">HOURS</div>
+      <div class="footer-desc">平日 8:00〜20:00<br>土日祝 9:00〜19:00<br>定休日：火曜日<br><br>📍 京都市下京区四条烏丸1-1<br>📞 075-XXX-XXXX</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-portfolio">⚠ ポートフォリオ提出用の架空サンプルサイトです</div>
+    <div>© 2026 SHIZUKU COFFEE All rights reserved.</div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 80);
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+  });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  function closeMobile() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

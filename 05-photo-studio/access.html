@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access | HIKARI STUDIO</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0c0c0c;--white:#fafafa;--accent:#e8e0d5;--text:#2a2a2a;--muted:#888;--warm:#c4a882;}
+  body{font-family:'DM Sans','Noto Sans JP',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#f5f0ea;border-left:3px solid var(--warm);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--muted);}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(250,250,250,.96);border-bottom:1px solid rgba(0,0,0,.06);}
+  .logo{font-family:'DM Serif Display',serif;font-size:1.1rem;letter-spacing:.05em;color:var(--black);}
+  .logo span{font-style:italic;color:var(--warm);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--muted);font-size:.75rem;letter-spacing:.08em;transition:.2s;}
+  nav ul a:hover{color:var(--black);}
+  .nav-cta{color:var(--black)!important;border-bottom:1px solid var(--black);}
+
+  .page-hero{padding-top:72px;height:360px;background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80') center/cover;position:relative;display:flex;align-items:flex-end;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(12,12,12,.55);}
+  .page-hero-inner{position:relative;z-index:1;padding:0 80px 56px;}
+  .page-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:10px;text-transform:uppercase;}
+  .page-title{font-family:'DM Serif Display',serif;font-size:3.4rem;color:#fff;line-height:1.1;}
+  .page-title em{font-style:italic;color:var(--warm);}
+
+  .breadcrumb{padding:20px 80px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;gap:8px;align-items:center;}
+  .breadcrumb a{color:var(--muted);font-size:.72rem;}
+  .breadcrumb span{color:var(--muted);font-size:.72rem;}
+  .breadcrumb .current{color:var(--text);font-size:.72rem;}
+
+  .sec{padding:100px 80px;}
+  .sec-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--black);margin-bottom:36px;line-height:1.15;}
+  .sec-title em{font-style:italic;color:var(--warm);}
+
+  /* マップ */
+  .map-sec{display:grid;grid-template-columns:1fr 1fr;min-height:500px;}
+  .map-placeholder{background:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&q=80') center/cover;position:relative;}
+  .map-overlay{position:absolute;inset:0;background:rgba(12,12,12,.15);}
+  .map-info{background:var(--accent);padding:80px 64px;display:flex;flex-direction:column;justify-content:center;}
+  .map-title{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--black);margin-bottom:28px;}
+  .info-table{width:100%;border-collapse:collapse;}
+  .info-table tr{border-bottom:1px solid rgba(0,0,0,.06);}
+  .info-table td{padding:16px 0;vertical-align:top;font-size:.82rem;}
+  .info-table td:first-child{color:var(--warm);font-size:.68rem;letter-spacing:.1em;width:80px;padding-top:18px;text-transform:uppercase;}
+  .info-table td:last-child{color:var(--text);line-height:1.8;}
+
+  /* アクセス手段 */
+  .access-ways{padding:100px 80px;}
+  .access-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#eee;}
+  .aw{background:var(--white);padding:40px 28px;}
+  .aw-icon{font-size:2rem;margin-bottom:14px;}
+  .aw-title{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--black);margin-bottom:12px;}
+  .aw-text{color:var(--muted);font-size:.8rem;line-height:2;}
+
+  /* スタジオについて */
+  .studio-sec{background:var(--black);padding:100px 80px;}
+  .studio-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .studio-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:12px;text-transform:uppercase;}
+  .studio-title{font-family:'DM Serif Display',serif;font-size:2.4rem;color:#fff;margin-bottom:20px;line-height:1.2;}
+  .studio-text{color:rgba(255,255,255,.5);font-size:.82rem;line-height:2.1;margin-bottom:20px;}
+  .studio-features{display:flex;flex-direction:column;gap:10px;margin-top:24px;}
+  .sf{display:flex;gap:12px;align-items:flex-start;}
+  .sf-dot{width:6px;height:6px;background:var(--warm);border-radius:50%;flex-shrink:0;margin-top:6px;}
+  .sf-text{color:rgba(255,255,255,.5);font-size:.8rem;line-height:1.7;}
+  .studio-imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+  .studio-img{overflow:hidden;}
+  .studio-img img{width:100%;height:200px;object-fit:cover;}
+
+  /* 出張撮影エリア */
+  .area-sec{background:var(--accent);padding:100px 80px;}
+  .area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#ddd;margin-top:48px;}
+  .area-item{background:var(--white);padding:24px 18px;}
+  .area-pref{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--black);margin-bottom:8px;}
+  .area-text{color:var(--muted);font-size:.74rem;line-height:1.8;}
+  .area-fee{color:var(--warm);font-size:.72rem;margin-top:8px;font-weight:500;}
+
+  /* CTA */
+  .cta-sec{display:grid;grid-template-columns:1fr 1fr;}
+  .cta-img{background:url('https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=800&q=80') center/cover;min-height:360px;}
+  .cta-content{background:var(--black);padding:80px;display:flex;flex-direction:column;justify-content:center;}
+  .cta-title{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--white);line-height:1.2;margin-bottom:16px;}
+  .cta-title em{font-style:italic;color:var(--warm);}
+  .cta-text{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.9;margin-bottom:28px;}
+  .btn-warm{display:inline-block;background:var(--warm);color:#fff;padding:14px 36px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-warm:hover{background:#b09070;}
+
+  footer{background:var(--black);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);}
+  .footer-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:rgba(255,255,255,.4);letter-spacing:.05em;}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}
+    nav ul{gap:14px;}
+    .page-hero{height:240px;}
+    .page-hero-inner{padding:0 20px 32px;}
+    .page-title{font-size:2rem;}
+    .breadcrumb{padding:14px 20px;}
+    .map-sec{grid-template-columns:1fr;}
+    .map-placeholder{min-height:240px;}
+    .map-info{padding:40px 24px;}
+    .access-ways{padding:60px 20px;}
+    .access-grid{grid-template-columns:1fr;}
+    .studio-sec{padding:60px 20px;}
+    .studio-grid{grid-template-columns:1fr;}
+    .studio-imgs{grid-template-columns:1fr;}
+    .area-sec{padding:60px 20px;}
+    .area-grid{grid-template-columns:1fr 1fr;}
+    .cta-sec{grid-template-columns:1fr;}
+    .cta-content{padding:40px 20px;}
+    footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフォトスタジオサイトです。実在する写真家・スタジオとは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html"><div class="logo">HIKARI <span>STUDIO</span></div></a>
+  <ul>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="service.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">Access</p>
+    <h1 class="page-title">スタジオ案内<em>。</em></h1>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>/</span>
+  <span class="current">Access</span>
+</div>
+
+<!-- マップ・基本情報 -->
+<div class="map-sec">
+  <div class="map-placeholder">
+    <div class="map-overlay"></div>
+  </div>
+  <div class="map-info">
+    <h2 class="map-title">HIKARI STUDIO</h2>
+    <table class="info-table">
+      <tr>
+        <td>Address</td>
+        <td>東京都目黒区中目黒X-X-X<br>HIKARIビル 2F</td>
+      </tr>
+      <tr>
+        <td>Tel</td>
+        <td>03-XXXX-XXXX</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>hello@hikaristudio.jp</td>
+      </tr>
+      <tr>
+        <td>Hours</td>
+        <td>撮影予約制<br>平日 9:00〜20:00<br>土日祝 8:00〜18:00</td>
+      </tr>
+      <tr>
+        <td>Holiday</td>
+        <td>不定休（要問合せ）</td>
+      </tr>
+      <tr>
+        <td>Parking</td>
+        <td>近隣コインパーキングをご利用ください<br>（徒歩2分以内に複数あり）</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- アクセス手段 -->
+<section class="access-ways">
+  <p class="sec-label">Access</p>
+  <h2 class="sec-title">アクセス<em>案内</em></h2>
+  <div class="access-grid">
+    <div class="aw">
+      <div class="aw-icon">🚃</div>
+      <h3 class="aw-title">電車でお越しの方</h3>
+      <p class="aw-text">東急東横線・東京メトロ日比谷線「中目黒駅」正面口より徒歩5分。目黒川沿いを北に向かって歩き、橋を渡ってすぐ左のHIKARIビル2Fです。1Fに「TULLY'S COFFEE」が入っているビルが目印です。</p>
+    </div>
+    <div class="aw">
+      <div class="aw-icon">🚌</div>
+      <h3 class="aw-title">バスでお越しの方</h3>
+      <p class="aw-text">東急バス「中目黒」バス停より徒歩2分。都営バス「中目黒駅前」バス停より徒歩3分。目黒区コミュニティバス「めぐろ区民まつり」期間中は経路が変わることがあります。</p>
+    </div>
+    <div class="aw">
+      <div class="aw-icon">🚗</div>
+      <h3 class="aw-title">お車でお越しの方</h3>
+      <p class="aw-text">首都高速3号渋谷線「中目黒IC」より約10分。スタジオ専用駐車場はありません。周辺のコインパーキングをご利用ください（半径200m以内に3カ所あります）。長時間撮影の場合は近隣の最大料金設定のある駐車場をご利用されることをお勧めします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- スタジオについて -->
+<div class="studio-sec">
+  <p class="studio-label">About Studio</p>
+  <div class="studio-grid">
+    <div>
+      <h2 class="studio-title">撮影スタジオについて</h2>
+      <p class="studio-text">2018年に設立したHIKARI STUDIOは、東京・中目黒に自然光が豊かに入るスタジオを構えています。白壁とコンクリートが融合したミニマルな空間で、ポートレート・商品・料理など多様な撮影に対応しています。</p>
+      <p class="studio-text">スタジオには大型窓が2面あり、午前中は南東からの朝光、午後は柔らかい拡散光が入ります。季節と時間帯によって変わる自然光の表情が、HIKARI STUDIOの一番のこだわりです。</p>
+      <div class="studio-features">
+        <div class="sf"><div class="sf-dot"></div><div class="sf-text">広さ：60㎡（撮影スペース約40㎡）</div></div>
+        <div class="sf"><div class="sf-dot"></div><div class="sf-text">大型窓2面（自然光豊富）</div></div>
+        <div class="sf"><div class="sf-dot"></div><div class="sf-text">白壁・コンクリート・木材の3種バック</div></div>
+        <div class="sf"><div class="sf-dot"></div><div class="sf-text">メイクルーム完備（鏡・照明・収納あり）</div></div>
+        <div class="sf"><div class="sf-dot"></div><div class="sf-text">貸しスタジオとしてもご利用可（要問合せ）</div></div>
+        <div class="sf"><div class="sf-dot"></div><div class="sf-text">Wi-Fi完備・コーヒーサービスあり</div></div>
+      </div>
+    </div>
+    <div class="studio-imgs">
+      <div class="studio-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Studio"></div>
+      <div class="studio-img"><img src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600&q=80" alt="Studio"></div>
+      <div class="studio-img"><img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=600&q=80" alt="Studio"></div>
+      <div class="studio-img"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80" alt="Studio Interior"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 出張撮影エリア -->
+<div class="area-sec">
+  <p class="sec-label">Shooting Area</p>
+  <h2 class="sec-title">出張撮影<em>対応エリア</em></h2>
+  <p style="color:var(--muted);font-size:.82rem;line-height:2;max-width:600px;margin-bottom:0;">東京を拠点に、関東圏を中心に全国対応しています。遠方への出張は交通費・宿泊費の実費が追加でかかりますが、お気軽にご相談ください。</p>
+  <div class="area-grid">
+    <div class="area-item">
+      <h3 class="area-pref">東京都内</h3>
+      <p class="area-text">23区・多摩地区全域対応。ロケーション選びも一緒にご相談できます。</p>
+      <p class="area-fee">交通費：電車実費のみ</p>
+    </div>
+    <div class="area-item">
+      <h3 class="area-pref">神奈川・埼玉・千葉</h3>
+      <p class="area-text">横浜・川崎・さいたま市・千葉市等、主要都市は問題なく対応しています。</p>
+      <p class="area-fee">交通費：電車実費のみ</p>
+    </div>
+    <div class="area-item">
+      <h3 class="area-pref">関東圏（茨城・栃木・群馬）</h3>
+      <p class="area-text">日帰り可能なエリアは基本的に対応。新幹線利用の場合は実費をいただきます。</p>
+      <p class="area-fee">交通費：新幹線等実費</p>
+    </div>
+    <div class="area-item">
+      <h3 class="area-pref">関西・東海・北陸</h3>
+      <p class="area-text">大阪・京都・名古屋・金沢など主要都市への出張に対応しています。</p>
+      <p class="area-fee">交通費・宿泊費：実費</p>
+    </div>
+    <div class="area-item">
+      <h3 class="area-pref">九州・北海道・東北</h3>
+      <p class="area-text">飛行機移動が必要なエリアも対応可能。ウェディングや大型案件を中心にご依頼いただいています。</p>
+      <p class="area-fee">交通費・宿泊費：実費</p>
+    </div>
+    <div class="area-item">
+      <h3 class="area-pref">海外（要相談）</h3>
+      <p class="area-text">バリ・ハワイ・パリ・プラハなど海外挙式への同行実績多数。ビザ・航空券等は別途相談。</p>
+      <p class="area-fee">渡航費：実費＋別途相談</p>
+    </div>
+    <div class="area-item">
+      <h3 class="area-pref">沖縄</h3>
+      <p class="area-text">沖縄でのウェディング・フォトウェディングの依頼を毎年複数件受けております。</p>
+      <p class="area-fee">交通費・宿泊費：実費</p>
+    </div>
+    <div class="area-item">
+      <h3 class="area-pref">その他エリア</h3>
+      <p class="area-text">上記以外のエリアもご相談ください。撮影内容・予算に応じて最善のご提案をします。</p>
+      <p class="area-fee">要お問い合わせ</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-img"></div>
+  <div class="cta-content">
+    <h2 class="cta-title">ご来店前に<em>ご連絡ください。</em></h2>
+    <p class="cta-text">スタジオへのご来訪・出張撮影のご依頼はすべて事前予約制です。まずはお問い合わせフォームかメールにてご連絡ください。</p>
+    <a href="contact.html" class="btn-warm">お問い合わせ・予約</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">HIKARI STUDIO</div>
+  <p>© 2024 HIKARI STUDIO. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

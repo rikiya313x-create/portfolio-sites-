@@ -10,12 +10,14 @@
   :root{--green:#1a7a4a;--dgreen:#0d4a2a;--light:#e8f5ee;--yellow:#f5c842;--red:#e63946;--text:#1a2a1a;--gray:#5a6a5a;}
   body{font-family:'Noto Sans JP',sans-serif;color:var(--text);overflow-x:hidden;}
   a{text-decoration:none;}
+  img{max-width:100%;display:block;}
   .portfolio-note{background:#e8f5ee;border-left:3px solid var(--green);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--gray);}
   .top-bar{background:var(--red);color:#fff;text-align:center;padding:10px;font-size:.78rem;font-weight:500;}
   .top-bar em{color:var(--yellow);font-style:normal;font-weight:900;}
 
   /* FV */
   .fv{background:linear-gradient(150deg,#083020 0%,#1a7a4a 55%,#2ea868 100%);padding:60px 80px 80px;position:relative;overflow:hidden;}
+  .fv-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=80') center/cover;opacity:.1;}
   .fv::before{content:'';position:absolute;right:-80px;top:-80px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,.04);}
   .fv-inner{display:flex;align-items:center;gap:60px;max-width:1100px;margin:0 auto;position:relative;z-index:1;}
   .fv-left{flex:1;}
@@ -36,8 +38,9 @@
   .fv-trust{display:flex;gap:16px;margin-top:16px;flex-wrap:wrap;}
   .trust-i{color:rgba(255,255,255,.65);font-size:.72rem;display:flex;align-items:center;gap:5px;}
   .trust-i::before{content:'✓';color:var(--yellow);font-weight:900;}
-  .fv-right{width:320px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;align-items:center;}
-  .product-img{background:rgba(255,255,255,.08);border-radius:50%;width:240px;height:240px;display:flex;align-items:center;justify-content:center;font-size:6rem;border:2px solid rgba(255,255,255,.12);}
+  .fv-right{width:340px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;align-items:center;}
+  .product-img-wrap{width:280px;height:280px;border-radius:12px;overflow:hidden;border:2px solid rgba(255,255,255,.15);}
+  .product-img-wrap img{width:100%;height:100%;object-fit:cover;}
   .rank-box{background:rgba(0,0,0,.25);border:1px solid var(--yellow);padding:14px 20px;text-align:center;width:100%;}
   .rank-label{color:var(--yellow);font-size:.62rem;font-weight:700;letter-spacing:.15em;margin-bottom:4px;}
   .rank-num{color:#fff;font-size:1.6rem;font-weight:900;}
@@ -63,12 +66,31 @@
   .prob-cta{text-align:center;}
   .prob-cta p{color:var(--green);font-weight:900;font-size:.95rem;margin-bottom:16px;}
 
+  /* ブランドストーリー */
+  .story-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .story-img{border-radius:12px;overflow:hidden;height:400px;}
+  .story-img img{width:100%;height:100%;object-fit:cover;}
+  .story-text h3{font-size:1.5rem;font-weight:900;margin-bottom:16px;line-height:1.4;color:var(--dgreen);}
+  .story-text p{color:var(--gray);font-size:.84rem;line-height:2;margin-bottom:14px;}
+  .story-quote{border-left:3px solid var(--green);padding:14px 18px;background:var(--light);font-size:.88rem;font-weight:500;color:var(--dgreen);margin-top:20px;line-height:1.8;}
+
+  /* 数字 */
+  .nums-bar{background:var(--dgreen);padding:0;display:grid;grid-template-columns:repeat(4,1fr);}
+  .nb{padding:32px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.1);}
+  .nb:last-child{border-right:none;}
+  .nb-num{color:var(--yellow);font-family:'Montserrat',sans-serif;font-size:2.6rem;font-weight:900;line-height:1;}
+  .nb-num em{font-size:1.2rem;font-style:normal;}
+  .nb-lbl{color:rgba(255,255,255,.5);font-size:.68rem;margin-top:5px;}
+
   /* 理由 */
   .reason-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto;}
-  .reason-card{border:2px solid var(--light);padding:32px 24px;text-align:center;border-radius:12px;position:relative;transition:.3s;}
+  .reason-card{border:2px solid var(--light);padding:0;text-align:center;border-radius:12px;position:relative;transition:.3s;overflow:hidden;}
   .reason-card:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(26,122,74,.1);}
-  .r-num{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;}
-  .r-icon{font-size:2.6rem;margin-bottom:14px;margin-top:6px;}
+  .r-img{height:180px;overflow:hidden;}
+  .r-img img{width:100%;height:100%;object-fit:cover;}
+  .r-body{padding:28px 22px;}
+  .r-num{background:var(--green);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;margin:0 auto 12px;}
+  .r-icon{font-size:2rem;margin-bottom:12px;}
   .r-title{font-size:.92rem;font-weight:700;margin-bottom:10px;line-height:1.4;}
   .r-text{color:var(--gray);font-size:.76rem;line-height:1.85;}
   .r-hl{background:var(--light);border-radius:4px;padding:6px 10px;font-size:.72rem;font-weight:700;color:var(--green);margin-top:10px;display:inline-block;}
@@ -76,7 +98,8 @@
   /* 成分 */
   .ingr-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:960px;margin:0 auto 52px;}
   .ingr-visual{display:flex;align-items:center;justify-content:center;}
-  .ingr-circle{width:260px;height:260px;border-radius:50%;background:linear-gradient(135deg,var(--dgreen),var(--green));display:flex;align-items:center;justify-content:center;font-size:5.5rem;box-shadow:0 20px 60px rgba(13,74,42,.2);}
+  .ingr-photo{border-radius:12px;overflow:hidden;width:100%;height:320px;}
+  .ingr-photo img{width:100%;height:100%;object-fit:cover;}
   .ingr-list{display:flex;flex-direction:column;gap:18px;}
   .ingr-item{display:flex;gap:14px;align-items:flex-start;padding-bottom:18px;border-bottom:1px solid var(--light);}
   .ingr-item:last-child{border-bottom:none;}
@@ -89,6 +112,20 @@
   .is-icon{font-size:1.5rem;margin-bottom:7px;}
   .is-name{font-size:.73rem;font-weight:700;margin-bottom:3px;}
   .is-text{font-size:.63rem;color:var(--gray);line-height:1.7;}
+
+  /* 比較表 */
+  .compare-wrap{max-width:860px;margin:0 auto;border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;}
+  .comp-head{display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--dgreen);color:#fff;}
+  .comp-head div{padding:14px 20px;font-size:.78rem;font-weight:700;text-align:center;}
+  .comp-head div:first-child{text-align:left;}
+  .comp-head .hl{color:var(--yellow);}
+  .comp-row{display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid #f0f0f0;}
+  .comp-row:last-child{border-bottom:none;}
+  .comp-row div{padding:13px 20px;font-size:.78rem;text-align:center;display:flex;align-items:center;justify-content:center;}
+  .comp-row div:first-child{justify-content:flex-start;color:#444;}
+  .comp-row.alt{background:#f9fdf9;}
+  .c-check{color:var(--green);font-weight:900;font-size:1rem;}
+  .c-cross{color:#ccc;}
 
   /* 使い方 */
   .howto-steps{display:flex;gap:0;max-width:860px;margin:0 auto;position:relative;}
@@ -138,11 +175,27 @@
   .vc-badge{display:inline-block;background:var(--light);color:var(--green);font-size:.63rem;font-weight:700;padding:3px 9px;border-radius:4px;margin-top:8px;}
   .vc-date{color:var(--gray);font-size:.62rem;margin-top:6px;}
 
+  /* 専門家推薦 */
+  .expert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto;}
+  .expert-card{background:#fff;border-radius:12px;padding:28px 24px;text-align:center;box-shadow:0 2px 14px rgba(0,0,0,.06);}
+  .ex-img{width:90px;height:90px;border-radius:50%;margin:0 auto 14px;overflow:hidden;border:3px solid var(--light);}
+  .ex-img img{width:100%;height:100%;object-fit:cover;}
+  .ex-name{font-size:.92rem;font-weight:700;margin-bottom:3px;}
+  .ex-title{color:var(--green);font-size:.68rem;font-weight:700;margin-bottom:12px;}
+  .ex-text{color:var(--gray);font-size:.76rem;line-height:1.85;}
+
   /* メディア */
   .media-sec{padding:40px 60px;background:#fff;border-top:1px solid #eee;border-bottom:1px solid #eee;}
   .media-lbl{text-align:center;color:var(--gray);font-size:.68rem;letter-spacing:.2em;margin-bottom:20px;}
   .media-logos{display:flex;justify-content:center;align-items:center;gap:28px;flex-wrap:wrap;}
   .m-logo{background:#f4f4f4;padding:10px 22px;border-radius:4px;font-size:.82rem;font-weight:700;color:#999;}
+
+  /* 品質証明 */
+  .cert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:900px;margin:0 auto;}
+  .cert-item{text-align:center;padding:24px 16px;}
+  .cert-icon{font-size:2.8rem;margin-bottom:12px;}
+  .cert-name{font-size:.82rem;font-weight:700;color:var(--dgreen);margin-bottom:6px;}
+  .cert-text{font-size:.7rem;color:var(--gray);line-height:1.7;}
 
   /* FAQ */
   .faq-list{max-width:740px;margin:0 auto;}
@@ -163,6 +216,28 @@
   .guar-pt{color:rgba(255,255,255,.75);font-size:.75rem;display:flex;gap:7px;}
   .guar-pt::before{content:'◆';color:var(--yellow);flex-shrink:0;}
 
+  /* 料金プラン */
+  .plan-grid{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:20px;max-width:900px;margin:0 auto;}
+  .plan{background:var(--light);padding:32px 24px;text-align:center;border:2px solid transparent;border-radius:10px;}
+  .plan.featured{background:var(--dgreen);border-color:var(--yellow);}
+  .plan-badge{background:var(--yellow);color:var(--text);font-size:.63rem;font-weight:700;padding:4px 14px;letter-spacing:.1em;margin-bottom:14px;display:inline-block;border-radius:100px;}
+  .plan-name{font-size:.72rem;font-weight:700;letter-spacing:.15em;color:var(--gray);margin-bottom:8px;}
+  .plan.featured .plan-name{color:rgba(255,255,255,.5);}
+  .plan-count{font-size:2.2rem;font-weight:900;color:var(--text);margin-bottom:4px;line-height:1;}
+  .plan.featured .plan-count{color:#fff;}
+  .plan-price{font-size:1.4rem;font-weight:700;color:var(--green);margin-bottom:4px;}
+  .plan.featured .plan-price{color:var(--yellow);}
+  .plan-period{color:var(--gray);font-size:.7rem;margin-bottom:20px;}
+  .plan.featured .plan-period{color:rgba(255,255,255,.45);}
+  .plan-features{text-align:left;margin-bottom:22px;}
+  .pf{display:flex;align-items:flex-start;gap:8px;font-size:.78rem;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.06);color:var(--gray);}
+  .plan.featured .pf{border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.65);}
+  .pf span{color:var(--green);flex-shrink:0;margin-top:2px;}
+  .plan.featured .pf span{color:var(--yellow);}
+  .plan-btn{display:block;background:var(--green);color:#fff;padding:14px;font-size:.82rem;font-weight:700;text-align:center;transition:.2s;border-radius:6px;}
+  .plan.featured .plan-btn{background:var(--yellow);color:var(--text);}
+  .plan-btn:hover{opacity:.85;}
+
   /* 最終CTA */
   .final{background:linear-gradient(160deg,var(--dgreen),var(--green));padding:80px 60px;text-align:center;}
   .final h2{color:#fff;font-size:2rem;font-weight:900;margin-bottom:8px;line-height:1.4;}
@@ -177,6 +252,27 @@
   .trust-row{display:flex;justify-content:center;gap:20px;margin-top:20px;flex-wrap:wrap;}
   .trust-row span{color:rgba(255,255,255,.5);font-size:.7rem;display:flex;align-items:center;gap:5px;}
 
+  /* イメージギャラリー */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-width:960px;margin:0 auto;}
+  .gallery-item{height:200px;overflow:hidden;}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:.3s;}
+  .gallery-item:hover img{transform:scale(1.05);}
+  .gallery-item.tall{grid-row:span 2;height:404px;}
+
+  @media(max-width:768px){
+    .fv-inner{flex-direction:column;}
+    .fv{padding:40px 24px 60px;}
+    .fv-right{width:100%;}
+    .sec{padding:60px 24px;}
+    .story-inner,.ingr-wrap{grid-template-columns:1fr;}
+    .reason-grid,.result-grid,.voice-grid,.expert-grid{grid-template-columns:1fr;}
+    .nums-bar{grid-template-columns:1fr 1fr;}
+    .plan-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .gallery-item.tall{grid-row:auto;height:200px;}
+    .trust-bar{flex-direction:column;padding:14px 24px;}
+  }
+
   footer{background:#0a2a1a;padding:32px 60px;text-align:center;}
   footer p{color:rgba(255,255,255,.25);font-size:.68rem;line-height:1.9;}
 </style>
@@ -184,19 +280,21 @@
 <body>
 
 <div class="portfolio-note">※ ポートフォリオ用に制作した架空のサプリメントLPです。実在する商品・会社とは一切関係ありません。</div>
-<div class="top-bar">【本日限定】初回注文に送料無料＋<em>特典プレゼント</em> ／ 残り在庫 <em>47個</em></div>
+<div class="top-bar">【本日限定】初回注文に送料無料＋<em>特典プレゼント</em> ／ 残り在庫 <em>47個</em>。本日23:59まで</div>
 
 <!-- FV -->
 <section class="fv">
+  <div class="fv-bg"></div>
   <div class="fv-inner">
     <div class="fv-left">
       <div class="fv-kv">🌿 累計販売数 30万袋突破 ／ リピート率82%</div>
       <h1>腸から、<em>まるごとリセット。</em></h1>
-      <p class="fv-copy">毎朝たった1粒。国産植物由来成分だけを凝縮した「KARADA RESET」が、なんとなくの不調をスッキリ流します。飲み始め3日で変化を実感した方が続出中。</p>
+      <p class="fv-copy">毎朝たった1粒。国産植物由来成分だけを凝縮した「KARADA RESET」が、なんとなくの不調をスッキリ流します。飲み始め3日で変化を実感した方が続出中。腸と美容と体型を、1粒でまとめてケアできる唯一のサプリメントです。</p>
       <div class="fv-badges">
         <span class="fv-badge">📺 TV放映実績あり</span>
         <span class="fv-badge">🏆 健康食品ランキング1位</span>
         <span class="fv-badge">🌿 無添加・無着色</span>
+        <span class="fv-badge">🏭 GMP認定工場製造</span>
       </div>
       <div class="price-box">
         <div class="price-cross">通常価格 ¥5,980</div>
@@ -209,10 +307,13 @@
         <div class="trust-i">農薬不使用原料</div>
         <div class="trust-i">定期縛り一切なし</div>
         <div class="trust-i">SSL暗号化通信</div>
+        <div class="trust-i">最短翌日発送</div>
       </div>
     </div>
     <div class="fv-right">
-      <div class="product-img">🌿</div>
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="KARADA RESET サプリメント">
+      </div>
       <div class="rank-box">
         <div class="rank-label">🏆 腸活サプリ部門</div>
         <div class="rank-num">年間売上1位</div>
@@ -231,11 +332,19 @@
   <div class="tb-item"><span class="tb-icon">🔓</span>定期縛りなし</div>
 </div>
 
+<!-- 数字バー -->
+<div class="nums-bar">
+  <div class="nb"><div class="nb-num">30<em>万袋</em></div><div class="nb-lbl">累計販売数</div></div>
+  <div class="nb"><div class="nb-num">82<em>%</em></div><div class="nb-lbl">リピート率</div></div>
+  <div class="nb"><div class="nb-num">4.7<em>/5</em></div><div class="nb-lbl">総合評価（6,240件）</div></div>
+  <div class="nb"><div class="nb-num">3<em>日</em></div><div class="nb-lbl">変化を実感した平均日数</div></div>
+</div>
+
 <!-- 問題提起 -->
 <section class="sec" style="background:var(--light);">
   <p class="sec-tag">PROBLEM</p>
   <h2 class="sec-title">こんな「なんとなく不調」<br>ずっと放置していませんか？</h2>
-  <p class="sec-sub">多くの方が「歳のせい」と諦めています。でもその原因、腸かもしれません。</p>
+  <p class="sec-sub">多くの方が「歳のせい」と諦めています。でもその原因、腸かもしれません。腸は「第二の脳」と呼ばれ、全身の健康に深く関わっています。</p>
   <div class="prob-grid">
     <div class="prob-item"><span class="prob-icon">😴</span><div class="prob-text">朝起きても疲れが取れず、日中ずっとだるい</div></div>
     <div class="prob-item"><span class="prob-icon">🤦</span><div class="prob-text">食事に気をつけているのに体重が全然変わらない</div></div>
@@ -243,6 +352,8 @@
     <div class="prob-item"><span class="prob-icon">💆</span><div class="prob-text">肌のくすみ・乾燥・ゴワつきが気になってきた</div></div>
     <div class="prob-item"><span class="prob-icon">😩</span><div class="prob-text">やる気が出ない、気分がなんとなく重い日が多い</div></div>
     <div class="prob-item"><span class="prob-icon">🍽</span><div class="prob-text">食後に胃が重い・ガスが溜まりやすい</div></div>
+    <div class="prob-item"><span class="prob-icon">🌡</span><div class="prob-text">なかなか痩せない、食事を減らしても変化がない</div></div>
+    <div class="prob-item"><span class="prob-icon">😰</span><div class="prob-text">免疫が弱くて風邪をひきやすい、体調を崩しやすい</div></div>
   </div>
   <div class="prob-cta">
     <p>→ これらすべて「腸内環境の乱れ」が原因かもしれません</p>
@@ -250,32 +361,117 @@
   </div>
 </section>
 
-<!-- 他との違い -->
+<!-- ブランドストーリー -->
 <section class="sec" style="background:#fff;">
+  <p class="sec-tag">OUR STORY</p>
+  <h2 class="sec-title">KARADA RESETが生まれた理由</h2>
+  <p class="sec-sub">1粒に込められた、私たちの想い</p>
+  <div class="story-inner">
+    <div class="story-img">
+      <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80" alt="自然素材のサプリメント開発">
+    </div>
+    <div class="story-text">
+      <h3>「なんとなく不調」を「なんとなく元気」に変えたい</h3>
+      <p>KARADA RESETは、腸活研究20年のベテラン管理栄養士・増田博子（仮名）が「日本人の腸内環境をもっと良くしたい」という想いで開発した腸活サプリです。</p>
+      <p>市販のサプリメントは「成分は入っているけど量が少なすぎる」「効果を感じにくい」という問題を抱えています。私たちはこれを解決するため、有効成分を医薬品レベルの配合量で設計し、吸収率を最大化する独自のカプセル技術を開発しました。</p>
+      <p>農薬不使用の国産原料だけを使い、着色料・保存料・人工甘味料はゼロ。「飲み続けられる安全性」と「実感できる効果」を両立させたのがKARADA RESETです。</p>
+      <div class="story-quote">「腸が整うと、人生が変わる。その体験を一人でも多くの方に届けたい。」<br>— 開発者 管理栄養士・増田 博子（架空）</div>
+    </div>
+  </div>
+</section>
+
+<!-- 他との違い -->
+<section class="sec" style="background:var(--light);">
   <p class="sec-tag">WHY</p>
   <h2 class="sec-title">市販サプリと何が違うのか</h2>
   <p class="sec-sub">3つの決定的な違いが、多くの方に選ばれ続ける理由です</p>
   <div class="reason-grid">
     <div class="reason-card">
-      <div class="r-num">01</div>
-      <div class="r-icon">🦠</div>
-      <h3 class="r-title">生きたまま腸まで届く<br>植物性乳酸菌200億個</h3>
-      <p class="r-text">一般的なサプリは胃酸で死滅しますが、KARADA RESETの乳酸菌は耐酸性が高く、生きたまま大腸まで届きます。</p>
-      <div class="r-hl">一般品の約10倍の配合量</div>
+      <div class="r-img">
+        <img src="https://images.unsplash.com/photo-1559181567-c3190b2adcb6?w=600&q=80" alt="植物性乳酸菌">
+      </div>
+      <div class="r-body">
+        <div class="r-num">01</div>
+        <h3 class="r-title">生きたまま腸まで届く<br>植物性乳酸菌200億個</h3>
+        <p class="r-text">一般的なサプリは胃酸で死滅しますが、KARADA RESETの乳酸菌は耐酸性が高く、生きたまま大腸まで届きます。腸内に定着して善玉菌を増やし、悪玉菌の繁殖を抑制します。</p>
+        <div class="r-hl">一般品の約10倍の配合量</div>
+      </div>
     </div>
     <div class="reason-card">
-      <div class="r-num">02</div>
-      <div class="r-icon">🌾</div>
-      <h3 class="r-title">水溶性×不溶性の<br>食物繊維を最適配合</h3>
-      <p class="r-text">どちらか一方では効果が半減。2種類を最適比率でブレンドし、善玉菌のエサとして腸内環境を総合的に整えます。</p>
-      <div class="r-hl">管理栄養士監修の独自配合</div>
+      <div class="r-img">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="食物繊維豊富な野菜">
+      </div>
+      <div class="r-body">
+        <div class="r-num">02</div>
+        <h3 class="r-title">水溶性×不溶性の<br>食物繊維を最適配合</h3>
+        <p class="r-text">どちらか一方では効果が半減。2種類を最適比率でブレンドし、善玉菌のエサとして腸内環境を総合的に整えます。食後血糖値の急上昇を抑える効果も期待されています。</p>
+        <div class="r-hl">管理栄養士監修の独自配合</div>
+      </div>
     </div>
     <div class="reason-card">
-      <div class="r-num">03</div>
-      <div class="r-icon">✨</div>
-      <h3 class="r-title">腸を整えながら<br>美容成分も同時補給</h3>
-      <p class="r-text">コラーゲン・ビタミンC・ヒアルロン酸を配合。腸が整うことで栄養吸収率が上がり、美容効果が最大化されます。</p>
-      <div class="r-hl">1粒で腸活＋美容ケア</div>
+      <div class="r-img">
+        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80" alt="美容と健康">
+      </div>
+      <div class="r-body">
+        <div class="r-num">03</div>
+        <h3 class="r-title">腸を整えながら<br>美容成分も同時補給</h3>
+        <p class="r-text">コラーゲン・ビタミンC・ヒアルロン酸を配合。腸が整うことで栄養吸収率が上がり、美容効果が最大化されます。1粒で腸活と美容を同時にケアできます。</p>
+        <div class="r-hl">1粒で腸活＋美容ケア</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 競合比較 -->
+<section class="sec" style="background:#fff;">
+  <p class="sec-tag">COMPARE</p>
+  <h2 class="sec-title">他社サプリと徹底比較</h2>
+  <p class="sec-sub">KARADA RESETが選ばれる理由が一目でわかります</p>
+  <div class="compare-wrap">
+    <div class="comp-head">
+      <div>比較項目</div>
+      <div class="hl">KARADA RESET</div>
+      <div>一般的な腸活サプリ</div>
+    </div>
+    <div class="comp-row">
+      <div>植物性乳酸菌配合量</div>
+      <div><span class="c-check">200億個/粒</span></div>
+      <div><span class="c-cross">10〜20億個</span></div>
+    </div>
+    <div class="comp-row alt">
+      <div>食物繊維（水溶性＋不溶性）</div>
+      <div><span class="c-check">両方配合</span></div>
+      <div><span class="c-cross">どちらか一方のみ</span></div>
+    </div>
+    <div class="comp-row">
+      <div>美容成分（コラーゲン等）</div>
+      <div><span class="c-check">同時配合</span></div>
+      <div><span class="c-cross">含まれない</span></div>
+    </div>
+    <div class="comp-row alt">
+      <div>国産・農薬不使用原料</div>
+      <div><span class="c-check">100%</span></div>
+      <div><span class="c-cross">海外産混在</span></div>
+    </div>
+    <div class="comp-row">
+      <div>GMP認定工場製造</div>
+      <div><span class="c-check">認定済み</span></div>
+      <div><span class="c-cross">非認定多数</span></div>
+    </div>
+    <div class="comp-row alt">
+      <div>無添加・無着色</div>
+      <div><span class="c-check">完全無添加</span></div>
+      <div><span class="c-cross">添加物使用あり</span></div>
+    </div>
+    <div class="comp-row">
+      <div>返金保証</div>
+      <div><span class="c-check">30日間全額</span></div>
+      <div><span class="c-cross">保証なし多数</span></div>
+    </div>
+    <div class="comp-row alt">
+      <div>定期縛り</div>
+      <div><span class="c-check">一切なし</span></div>
+      <div><span class="c-cross">縛りあり多数</span></div>
     </div>
   </div>
 </section>
@@ -286,14 +482,18 @@
   <h2 class="sec-title">厳選3大成分を深掘り</h2>
   <p class="sec-sub">すべて国産・農薬不使用の原料のみを使用しています</p>
   <div class="ingr-wrap">
-    <div class="ingr-visual"><div class="ingr-circle">🌿</div></div>
+    <div class="ingr-visual">
+      <div class="ingr-photo">
+        <img src="https://images.unsplash.com/photo-1517673400267-52fc4090f16a?w=800&q=80" alt="国産植物由来成分">
+      </div>
+    </div>
     <div class="ingr-list">
       <div class="ingr-item">
         <div class="ingr-num">1</div>
         <div>
           <div class="ingr-name">植物性乳酸菌（LP-FLORA33）</div>
           <div class="ingr-amount">配合量：200億個/粒</div>
-          <p class="ingr-text">耐酸性の高い植物由来の乳酸菌。胃酸・胆汁酸に強く、生きたまま大腸まで届いて定着。善玉菌を増やし、悪玉菌の繁殖を抑制します。</p>
+          <p class="ingr-text">耐酸性の高い植物由来の乳酸菌。胃酸・胆汁酸に強く、生きたまま大腸まで届いて定着。善玉菌を増やし、悪玉菌の繁殖を抑制します。植物性は動物性より腸への定着率が高く、長期的な腸内環境改善に優れています。</p>
         </div>
       </div>
       <div class="ingr-item">
@@ -301,7 +501,7 @@
         <div>
           <div class="ingr-name">難消化性デキストリン＋水溶性食物繊維</div>
           <div class="ingr-amount">配合量：1,500mg/粒</div>
-          <p class="ingr-text">乳酸菌のエサとなるプレバイオティクス成分。善玉菌の繁殖を助け、腸壁を整えます。食後血糖値の急上昇を抑える効果も期待されています。</p>
+          <p class="ingr-text">乳酸菌のエサとなるプレバイオティクス成分。善玉菌の繁殖を助け、腸壁を整えます。食後血糖値の急上昇を抑える効果も期待されており、体重管理にも役立ちます。</p>
         </div>
       </div>
       <div class="ingr-item">
@@ -309,18 +509,37 @@
         <div>
           <div class="ingr-name">低分子コラーゲン＋ビタミンC複合体</div>
           <div class="ingr-amount">配合量：300mg/粒</div>
-          <p class="ingr-text">腸が整うことで体内への吸収率が大幅UP。肌のハリ・ツヤに関わるコラーゲン生成をビタミンCが強力にサポートします。</p>
+          <p class="ingr-text">腸が整うことで体内への吸収率が大幅UP。肌のハリ・ツヤに関わるコラーゲン生成をビタミンCが強力にサポートします。分子量を小さくすることで腸壁からの吸収を最大化しています。</p>
         </div>
       </div>
     </div>
   </div>
   <div class="ingr-sub">
-    <div class="ingr-sub-item"><div class="is-icon">🍵</div><div class="is-name">乳酸菌生産物質</div><div class="is-text">免疫細胞を活性化する乳酸菌由来の物質</div></div>
-    <div class="ingr-sub-item"><div class="is-icon">🌸</div><div class="is-name">桜花エキス</div><div class="is-text">抗酸化作用で体内のサビを防ぐ国産原料</div></div>
-    <div class="ingr-sub-item"><div class="is-icon">🫐</div><div class="is-name">ブルーベリーエキス</div><div class="is-text">アントシアニンで腸粘膜を保護・強化</div></div>
-    <div class="ingr-sub-item"><div class="is-icon">🧴</div><div class="is-name">ヒアルロン酸Na</div><div class="is-text">肌の水分保持を腸内から根本サポート</div></div>
+    <div class="ingr-sub-item"><div class="is-icon">🍵</div><div class="is-name">乳酸菌生産物質</div><div class="is-text">免疫細胞を活性化する乳酸菌由来の物質。体の防衛力を底上げします。</div></div>
+    <div class="ingr-sub-item"><div class="is-icon">🌸</div><div class="is-name">桜花エキス</div><div class="is-text">抗酸化作用で体内のサビを防ぐ国産原料。ポリフェノールが豊富。</div></div>
+    <div class="ingr-sub-item"><div class="is-icon">🫐</div><div class="is-name">ブルーベリーエキス</div><div class="is-text">アントシアニンで腸粘膜を保護・強化。目の健康にも効果的。</div></div>
+    <div class="ingr-sub-item"><div class="is-icon">🧴</div><div class="is-name">ヒアルロン酸Na</div><div class="is-text">肌の水分保持を腸内から根本サポート。潤いを内側から補います。</div></div>
   </div>
 </section>
+
+<!-- イメージギャラリー -->
+<div class="gallery-grid" style="max-width:100%;margin:0;">
+  <div class="gallery-item tall">
+    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="健康的な生活">
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="ヨガ・健康">
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="サプリメント">
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&q=80" alt="美容と健康">
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80" alt="朝食・健康習慣">
+  </div>
+</div>
 
 <!-- 使い方 -->
 <section class="sec" style="background:#fff;">
@@ -332,19 +551,19 @@
       <div class="step-circle">🌅</div>
       <p class="step-lbl">STEP 01</p>
       <h3 class="step-title">朝食と一緒に</h3>
-      <p class="step-text">1日1粒、朝食後に水で飲むだけ。忙しい朝でも30秒で完了します。</p>
+      <p class="step-text">1日1粒、朝食後に水で飲むだけ。忙しい朝でも30秒で完了します。無臭・無味のカプセルで飲みやすさも抜群です。</p>
     </div>
     <div class="howto-step">
       <div class="step-circle">⏰</div>
       <p class="step-lbl">STEP 02</p>
       <h3 class="step-title">3日後に変化を実感</h3>
-      <p class="step-text">多くの方が3〜7日以内に腸の動きの変化を感じ始めます。</p>
+      <p class="step-text">多くの方が3〜7日以内に腸の動きの変化を感じ始めます。「スッキリした」「体が軽い」という声が多数届いています。</p>
     </div>
     <div class="howto-step">
       <div class="step-circle">✨</div>
       <p class="step-lbl">STEP 03</p>
       <h3 class="step-title">1ヶ月で体質が変わる</h3>
-      <p class="step-text">継続することで腸内フローラが整い、体の内側から変化を感じられます。</p>
+      <p class="step-text">継続することで腸内フローラが整い、体の内側から変化を感じられます。肌・体型・エネルギーレベルの向上を多くの方が実感。</p>
     </div>
   </div>
 </section>
@@ -391,7 +610,7 @@
 <!-- 中間CTA -->
 <div class="mid-cta">
   <h3>今なら初回50%OFFでお試しいただけます</h3>
-  <p>まずは1袋。30日間返金保証付きで安心してお試しください。</p>
+  <p>まずは1袋。30日間返金保証付きで安心してお試しください。定期縛り一切なし。</p>
   <a href="#" class="btn-dark">今すぐ注文する（送料無料）</a>
 </div>
 
@@ -399,19 +618,19 @@
 <section class="sec" style="background:#f9fdf9;">
   <p class="sec-tag">CUSTOMER VOICE</p>
   <h2 class="sec-title">お客様の声（6,200件以上）</h2>
-  <p class="sec-sub">★4.7 / 5.0（6,240件のレビューより）</p>
+  <p class="sec-sub">★4.7 / 5.0（6,240件のレビューより）累計30万袋を支えるリアルな声</p>
   <div class="voice-grid">
     <div class="vc">
       <div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">M.Oさん（34歳・看護師）</div><div class="vc-meta">購入：5回目</div></div></div>
       <div class="vc-stars">★★★★★</div>
-      <p class="vc-text">腸の大切さはわかっていましたが、これほど効果を感じたサプリは初めてです。3日で変化を感じ、今は職場の同僚にもすすめています。</p>
+      <p class="vc-text">腸の大切さはわかっていましたが、これほど効果を感じたサプリは初めてです。3日で変化を感じ、今は職場の同僚にもすすめています。医療職として成分の安全性も確認済みで、安心して飲めます。</p>
       <span class="vc-badge">体の軽さが変わった</span>
       <p class="vc-date">2024年10月購入</p>
     </div>
     <div class="vc">
       <div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">R.Iさん（29歳・OL）</div><div class="vc-meta">購入：3回目</div></div></div>
       <div class="vc-stars">★★★★★</div>
-      <p class="vc-text">便秘がひどくて色々試しましたが全部続きませんでした。これは飲みやすくて1週間で毎日スッキリ。返金保証があったので試しやすかったです！</p>
+      <p class="vc-text">便秘がひどくて色々試しましたが全部続きませんでした。これは飲みやすくて1週間で毎日スッキリ。返金保証があったので試しやすかったです！肌の調子も明らかによくなりました。</p>
       <span class="vc-badge">便秘が解消</span>
       <p class="vc-date">2024年9月購入</p>
     </div>
@@ -443,6 +662,53 @@
       <span class="vc-badge">ニキビが改善</span>
       <p class="vc-date">2024年10月購入</p>
     </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">F.Kさん（62歳・退職者）</div><div class="vc-meta">購入：8回目</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">60代になると腸の働きが弱まると聞いていましたが、KARADA RESETを始めてから快便が続いています。孫にも「おばあちゃん顔色がいい」と言われました！</p>
+      <span class="vc-badge">シニアにも効果的</span>
+      <p class="vc-date">2024年10月購入</p>
+    </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👨</div><div><div class="vc-name">N.Yさん（39歳・フリーランス）</div><div class="vc-meta">購入：3回目</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">在宅ワークで運動不足になってから腸の調子が悪くなりました。KARADA RESETで腸内環境を整えたら、食欲のコントロールもできるようになり体重が3kg落ちました。</p>
+      <span class="vc-badge">体重-3kg</span>
+      <p class="vc-date">2024年9月購入</p>
+    </div>
+  </div>
+</section>
+
+<!-- 専門家推薦 -->
+<section class="sec" style="background:#fff;">
+  <p class="sec-tag">EXPERT VOICE</p>
+  <h2 class="sec-title">専門家からの推薦</h2>
+  <p class="sec-sub">医療・栄養の専門家がKARADA RESETを評価しています</p>
+  <div class="expert-grid">
+    <div class="expert-card">
+      <div class="ex-img">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80" alt="専門家">
+      </div>
+      <div class="ex-name">田中 麗子 先生（架空）</div>
+      <div class="ex-title">消化器内科医 ／ 医学博士</div>
+      <p class="ex-text">「植物性乳酸菌の配合量と耐酸性の高さは、臨床的に十分な効果が期待できるレベルです。プレバイオティクスとの組み合わせも理にかなっています。」</p>
+    </div>
+    <div class="expert-card">
+      <div class="ex-img">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=80" alt="栄養士">
+      </div>
+      <div class="ex-name">山口 美樹 先生（架空）</div>
+      <div class="ex-title">管理栄養士 ／ 腸活研究家</div>
+      <p class="ex-text">「国産原料・無添加という点は患者様へもすすめやすい品質基準。水溶性・不溶性食物繊維のバランスは、長年の研究結果が反映されています。」</p>
+    </div>
+    <div class="expert-card">
+      <div class="ex-img">
+        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&q=80" alt="皮膚科医">
+      </div>
+      <div class="ex-name">佐藤 りな 先生（架空）</div>
+      <div class="ex-title">皮膚科専門医</div>
+      <p class="ex-text">「腸内環境と皮膚の関連（腸皮膚軸）は近年の研究で明確になっています。腸活と美容成分の同時ケアは、肌荒れに悩む患者様に有効なアプローチです。」</p>
+    </div>
   </div>
 </section>
 
@@ -455,20 +721,129 @@
     <div class="m-logo">ウェルネス週刊</div>
     <div class="m-logo">腸活マガジン</div>
     <div class="m-logo">女性健康新聞</div>
+    <div class="m-logo">ビューティーポスト</div>
+  </div>
+</section>
+
+<!-- 料金プラン -->
+<section class="sec" style="background:var(--light);">
+  <p class="sec-tag">PRICING</p>
+  <h2 class="sec-title">お得な購入プランを選べます</h2>
+  <p class="sec-sub">まずは1袋からOK。続けるほどお得になります。すべて定期縛りなし。</p>
+  <div class="plan-grid">
+    <div class="plan">
+      <p class="plan-name">まずは試してみたい方</p>
+      <div class="plan-count">1袋</div>
+      <div class="plan-price">¥2,980</div>
+      <p class="plan-period">（税込）通常¥5,980 → 50%OFF</p>
+      <div class="plan-features">
+        <div class="pf"><span>✓</span>30日分（30粒）</div>
+        <div class="pf"><span>✓</span>送料無料</div>
+        <div class="pf"><span>✓</span>30日間全額返金保証</div>
+        <div class="pf"><span>✓</span>定期縛りなし</div>
+      </div>
+      <a href="#" class="plan-btn">このプランを選ぶ</a>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">✦ 一番人気</div>
+      <p class="plan-name">しっかり実感したい方</p>
+      <div class="plan-count">3袋</div>
+      <div class="plan-price">¥7,480</div>
+      <p class="plan-period">（税込）1袋あたり¥2,493 ／ 3ヶ月分</p>
+      <div class="plan-features">
+        <div class="pf"><span>✓</span>90日分（90粒）</div>
+        <div class="pf"><span>✓</span>送料無料</div>
+        <div class="pf"><span>✓</span>30日間全額返金保証</div>
+        <div class="pf"><span>✓</span>定期縛りなし</div>
+        <div class="pf"><span>✓</span>腸活ガイドブック付き</div>
+      </div>
+      <a href="#" class="plan-btn">このプランを選ぶ</a>
+    </div>
+    <div class="plan">
+      <p class="plan-name">本気で体質改善したい方</p>
+      <div class="plan-count">6袋</div>
+      <div class="plan-price">¥13,980</div>
+      <p class="plan-period">（税込）1袋あたり¥2,330 ／ 6ヶ月分</p>
+      <div class="plan-features">
+        <div class="pf"><span>✓</span>180日分（180粒）</div>
+        <div class="pf"><span>✓</span>送料無料</div>
+        <div class="pf"><span>✓</span>30日間全額返金保証</div>
+        <div class="pf"><span>✓</span>定期縛りなし</div>
+        <div class="pf"><span>✓</span>腸活ガイドブック付き</div>
+        <div class="pf"><span>✓</span>LINEサポート相談権付き</div>
+      </div>
+      <a href="#" class="plan-btn">このプランを選ぶ</a>
+    </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="sec" style="background:var(--light);">
+<section class="sec" style="background:#fff;">
   <p class="sec-tag">FAQ</p>
   <h2 class="sec-title">よくある質問</h2>
+  <p class="sec-sub">ご注文前のご不安を解消します</p>
   <div class="faq-list">
-    <div class="faq-item"><div class="faq-q"><span class="faq-q-icon">Q</span>いつ飲めばいいですか？</div><div class="faq-a">朝食後が推奨です。消化酵素が活発な食後に飲むことで成分の吸収率が高まります。夜寝る前でも効果に大きな差はなく、飲み忘れのない時間帯で続けることが一番大切です。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="faq-q-icon">Q</span>いつから効果が出ますか？</div><div class="faq-a">腸の動きの変化は3〜7日で感じる方が多いです。体型や肌への変化は2〜4週間継続してから現れることが多く、腸内環境が整うには1〜3ヶ月が目安です。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="faq-q-icon">Q</span>他のサプリや薬と一緒に飲んでも大丈夫ですか？</div><div class="faq-a">食品に分類されるため、多くの方が他のサプリと併用されています。処方薬を服用中の方は念のため医師・薬剤師にご相談ください。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="faq-q-icon">Q</span>定期購入や縛りはありますか？</div><div class="faq-a">一切ありません。今回の初回購入は完全な1回限りの購入です。定期コースへの強制移行・勧誘等も行いません。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="faq-q-icon">Q</span>返金保証の条件を教えてください。</div><div class="faq-a">商品到着後30日以内であれば、理由を問わず全額返金いたします。返品不要の場合もございます（詳細はお問い合わせください）。手続きはメールで完結します。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="faq-q-icon">Q</span>妊娠中・授乳中でも飲めますか？</div><div class="faq-a">妊娠中・授乳中・持病のある方は、念のため医師にご相談の上でご使用ください。</div></div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-icon">Q</span>いつ飲めばいいですか？</div>
+      <div class="faq-a">朝食後が推奨です。消化酵素が活発な食後に飲むことで成分の吸収率が高まります。夜寝る前でも効果に大きな差はなく、飲み忘れのない時間帯で続けることが一番大切です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-icon">Q</span>いつから効果が出ますか？</div>
+      <div class="faq-a">腸の動きの変化は3〜7日で感じる方が多いです。体型や肌への変化は2〜4週間継続してから現れることが多く、腸内環境が整うには1〜3ヶ月が目安です。個人差がありますが、3ヶ月を目安に継続されることをおすすめします。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-icon">Q</span>他のサプリや薬と一緒に飲んでも大丈夫ですか？</div>
+      <div class="faq-a">食品に分類されるため、多くの方が他のサプリと併用されています。処方薬を服用中の方は念のため医師・薬剤師にご相談ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-icon">Q</span>定期購入や縛りはありますか？</div>
+      <div class="faq-a">一切ありません。今回の購入は完全な1回限りの購入です。定期コースへの強制移行・勧誘等も行いません。次回注文のタイミングはお客様が自由に決めていただけます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-icon">Q</span>返金保証の条件を教えてください。</div>
+      <div class="faq-a">商品到着後30日以内であれば、理由を問わず全額返金いたします。返品不要の場合もございます（詳細はお問い合わせください）。手続きはメールで完結します。返金は5営業日以内に対応します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-icon">Q</span>妊娠中・授乳中でも飲めますか？</div>
+      <div class="faq-a">妊娠中・授乳中・持病のある方は、念のため医師にご相談の上でご使用ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-icon">Q</span>アレルギーがありますが大丈夫ですか？</div>
+      <div class="faq-a">本製品は7大アレルゲン（小麦、そば、卵、乳、落花生、えび、かに）を使用していません。ただし、製造工場では他の食品も扱っている場合があります。詳しい成分表はお問い合わせください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-icon">Q</span>どのくらいの期間続ければいいですか？</div>
+      <div class="faq-a">腸内環境の根本的な改善には最低3ヶ月の継続をおすすめしています。短期間でも効果を感じる方は多いですが、体質の根本から変えるためには継続が重要です。3袋セットや6袋セットがコスパも良くおすすめです。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 品質証明 -->
+<section class="sec" style="background:var(--light);">
+  <p class="sec-tag">QUALITY</p>
+  <h2 class="sec-title">品質への徹底したこだわり</h2>
+  <p class="sec-sub">あなたに安心して飲んでいただくための厳格な品質管理体制</p>
+  <div class="cert-grid">
+    <div class="cert-item">
+      <div class="cert-icon">🏭</div>
+      <div class="cert-name">GMP認定工場</div>
+      <p class="cert-text">医薬品と同等の品質管理基準「GMP（適正製造規範）」を取得した国内工場で製造。製造から出荷まで全工程をトレース。</p>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🌱</div>
+      <div class="cert-name">農薬不使用原料</div>
+      <p class="cert-text">使用するすべての植物原料は農薬不使用で栽培されたものだけを厳選。産地・栽培方法を全量把握した透明性ある原料調達。</p>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🔬</div>
+      <div class="cert-name">第三者機関検査</div>
+      <p class="cert-text">残留農薬・重金属・微生物の検査を第三者機関が実施。ロットごとに検査証明書を発行し、安全性を保証しています。</p>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">💊</div>
+      <div class="cert-name">完全無添加</div>
+      <p class="cert-text">着色料・保存料・人工甘味料・香料・防腐剤を一切使用しません。カプセルも植物由来のHPMCカプセルを採用しています。</p>
+    </div>
   </div>
 </section>
 
@@ -481,11 +856,12 @@
     </div>
     <div class="guar-text">
       <h3>効果を感じられなければ<br>全額返金します</h3>
-      <p>「続けたけれど変化を感じられなかった」そんな方のために、30日間の全額返金保証をご用意しています。長年のリピーター様に支持されてきた自信の証です。</p>
+      <p>「続けたけれど変化を感じられなかった」そんな方のために、30日間の全額返金保証をご用意しています。長年のリピーター様に支持されてきた自信の証です。お客様にリスクゼロで試していただくために、この保証を設けています。</p>
       <div class="guar-pts">
         <div class="guar-pt">返品不要の場合あり（詳しくはお問い合わせください）</div>
         <div class="guar-pt">手続きはメール・LINEで完結、電話不要</div>
         <div class="guar-pt">お問い合わせ後、5営業日以内に返金対応</div>
+        <div class="guar-pt">理由を問わず対応。「合わなかった」でもOK</div>
       </div>
     </div>
   </div>
@@ -494,7 +870,7 @@
 <!-- 最終CTA -->
 <section class="final">
   <h2>今だけ初回<em>50%OFF</em><br>まずは1袋試してみてください</h2>
-  <p>定期縛りなし・30日間全額返金保証。リスクゼロで始められます。</p>
+  <p>定期縛りなし・30日間全額返金保証。リスクゼロで始められます。<br>腸が変われば、肌が変わる。体が変わる。毎日が変わる。</p>
   <div class="order-box">
     <div class="ob-cross">通常価格 ¥5,980（税込）</div>
     <div class="ob-price">¥2,980<small>円（税込）</small></div>
@@ -507,12 +883,13 @@
     <span>🌱 無添加・無着色</span>
     <span>📦 翌日発送</span>
     <span>↩ 全額返金保証</span>
+    <span>🔓 定期縛りなし</span>
   </div>
-  <p style="color:rgba(255,255,255,.3);font-size:.68rem;margin-top:16px;">※ 本商品は食品であり、疾病の診断・治療を目的としたものではありません。</p>
+  <p style="color:rgba(255,255,255,.3);font-size:.68rem;margin-top:16px;">※ 本商品は食品であり、疾病の診断・治療を目的としたものではありません。効果・効能には個人差があります。</p>
 </section>
 
 <footer>
-  <p>KARADA RESET / 株式会社グリーンウェルネス（架空）<br>〒100-XXXX 東京都千代田区XX-XX ／ カスタマーサポート：support@karada-reset.jp（架空）<br>© 2024 KARADA RESET. All Rights Reserved.</p>
+  <p>KARADA RESET / 株式会社グリーンウェルネス（架空）<br>〒100-XXXX 東京都千代田区XX-XX ／ カスタマーサポート：support@karada-reset.jp（架空）<br>営業時間：平日 10:00〜18:00 ／ 土日祝休<br>© 2024 KARADA RESET. All Rights Reserved. ／ このサイトはポートフォリオ用の架空サイトです。</p>
 </footer>
 </body>
 </html>

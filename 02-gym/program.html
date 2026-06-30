@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プログラム | IRON FORCE GYM 大阪・梅田</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700;900&family=Oswald:wght@400;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0a0a0a;--yellow:#f5c400;--gray:#1a1a1a;--mid:#111;--lgray:#888;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:#fff;overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#1a1500;border-left:3px solid var(--yellow);padding:12px 20px;text-align:center;font-size:.73rem;color:rgba(255,255,255,.5);}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(10,10,10,.97);border-bottom:2px solid var(--yellow);}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;}
+  .logo span{color:var(--yellow);}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.7);font-size:.78rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;transition:.2s;}
+  nav ul a:hover{color:var(--yellow);}
+  .nav-cta{background:var(--yellow);color:var(--black)!important;padding:10px 24px;font-weight:900!important;}
+
+  /* TICKER */
+  .ticker{background:var(--yellow);padding:12px 0;overflow:hidden;white-space:nowrap;}
+  .ticker-inner{display:inline-block;animation:tick 20s linear infinite;}
+  .ticker-inner span{color:var(--black);font-size:.75rem;font-weight:900;letter-spacing:.2em;padding:0 40px;text-transform:uppercase;}
+  @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  /* HERO */
+  .hero{height:60vh;position:relative;display:flex;align-items:center;overflow:hidden;margin-top:33px;}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1400&q=80') center/cover;filter:brightness(.3);}
+  .hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.9) 50%,transparent 100%);}
+  .hero-stripe{position:absolute;left:0;top:0;width:8px;height:100%;background:var(--yellow);}
+  .hero-content{position:relative;z-index:1;padding:0 80px;}
+  .hero-tag{display:inline-block;background:var(--yellow);color:var(--black);padding:6px 16px;font-size:.7rem;letter-spacing:.25em;font-weight:900;margin-bottom:24px;text-transform:uppercase;}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:7rem;line-height:.9;margin-bottom:20px;letter-spacing:.02em;}
+  .hero-lead{color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.9;max-width:540px;}
+
+  /* 共通 */
+  .sec{padding:100px 80px;}
+  .sec-label{color:var(--yellow);font-size:.7rem;letter-spacing:.35em;font-weight:900;text-transform:uppercase;margin-bottom:12px;}
+  .sec-title{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:.05em;margin-bottom:48px;line-height:1;}
+  .btn-yellow{display:inline-block;background:var(--yellow);color:var(--black);padding:16px 48px;font-size:.85rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
+  .btn-yellow:hover{background:#ffd700;transform:translateY(-2px);}
+  .btn-ghost{display:inline-block;border:2px solid rgba(255,255,255,.4);color:#fff;padding:16px 48px;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
+  .btn-ghost:hover{border-color:var(--yellow);color:var(--yellow);}
+  .btn-black{display:inline-block;background:var(--black);color:var(--yellow);padding:18px 56px;font-size:.9rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
+  .btn-black:hover{background:#111;}
+
+  /* プログラム詳細セクション */
+  .prog-detail{display:grid;grid-template-columns:1fr 1fr;min-height:560px;align-items:stretch;}
+  .prog-detail.reverse{direction:rtl;}
+  .prog-detail.reverse > *{direction:ltr;}
+  .prog-img{background-size:cover;background-position:center;}
+  .prog-content{padding:80px;}
+  .prog-content p{color:rgba(255,255,255,.65);line-height:2;font-size:.88rem;margin-bottom:18px;}
+  .prog-tag{display:inline-block;background:var(--yellow);color:var(--black);padding:4px 12px;font-size:.65rem;letter-spacing:.2em;font-weight:900;text-transform:uppercase;margin-bottom:16px;}
+  .prog-h2{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:.04em;margin-bottom:20px;line-height:1;}
+  .prog-price-table{margin-top:24px;border-collapse:collapse;width:100%;}
+  .prog-price-table td{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.82rem;color:rgba(255,255,255,.7);}
+  .prog-price-table td:first-child{color:var(--yellow);font-weight:700;font-size:.75rem;width:120px;}
+  .prog-benefits{list-style:none;margin:16px 0 24px;}
+  .prog-benefits li{padding:7px 0;font-size:.82rem;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.05);}
+  .prog-benefits li::before{content:'→ ';color:var(--yellow);}
+
+  /* 時間割 */
+  .timetable{width:100%;border-collapse:collapse;margin-top:40px;}
+  .timetable th{background:var(--yellow);color:var(--black);padding:12px;font-size:.75rem;font-weight:900;letter-spacing:.1em;text-align:center;}
+  .timetable td{border:1px solid rgba(255,255,255,.06);padding:10px 12px;font-size:.75rem;color:rgba(255,255,255,.6);text-align:center;vertical-align:middle;}
+  .timetable td.class{background:rgba(245,196,0,.12);color:var(--yellow);font-weight:700;font-size:.72rem;}
+  .timetable td.personal{background:rgba(255,255,255,.05);color:rgba(255,255,255,.8);}
+  .timetable tr:hover td{background:rgba(255,255,255,.03);}
+
+  /* 追加プログラム */
+  .add-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .pi{background:var(--gray);padding:40px 28px;transition:.3s;position:relative;overflow:hidden;}
+  .pi::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--yellow);transition:.4s;}
+  .pi:hover::before{width:100%;}
+  .pi:hover{background:#222;}
+  .pi-icon{font-size:2.5rem;margin-bottom:20px;}
+  .pi-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.05em;margin-bottom:10px;}
+  .pi-text{color:var(--lgray);font-size:.78rem;line-height:1.85;}
+  .pi-price{color:var(--yellow);font-size:.8rem;font-weight:700;margin-top:16px;}
+
+  /* 体験の流れ */
+  .flow-sec{background:var(--gray);padding:100px 80px;}
+  .flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative;}
+  .flow-steps::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:2px;background:rgba(245,196,0,.2);}
+  .fs{text-align:center;padding:0 20px;position:relative;z-index:1;}
+  .fs-num{width:64px;height:64px;border-radius:50%;background:var(--yellow);color:var(--black);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.6rem;margin:0 auto 20px;}
+  .fs-title{font-size:.88rem;font-weight:700;margin-bottom:8px;color:#fff;}
+  .fs-text{color:var(--lgray);font-size:.74rem;line-height:1.85;}
+
+  /* CTA */
+  .cta-sec{background:var(--yellow);padding:80px;text-align:center;}
+  .cta-title{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--black);letter-spacing:.05em;line-height:1;margin-bottom:12px;}
+  .cta-sub{color:rgba(0,0,0,.6);font-size:.88rem;margin-bottom:28px;}
+
+  footer{background:#050505;padding:40px 80px;display:grid;grid-template-columns:1fr auto;align-items:center;border-top:2px solid var(--yellow);}
+  footer p{color:rgba(255,255,255,.3);font-size:.75rem;}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#fff;margin-bottom:6px;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}nav ul{display:none;}
+    .sec{padding:60px 24px;}
+    .hero-content{padding:0 24px;}
+    .prog-detail{grid-template-columns:1fr;}
+    .prog-detail.reverse{direction:ltr;}
+    .prog-content{padding:40px 24px;}
+    .add-grid{grid-template-columns:1fr 1fr;}
+    .flow-steps{grid-template-columns:1fr 1fr;}
+    footer{grid-template-columns:1fr;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフィットネスジムです。実在する施設・人物とは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html" class="logo">IRON<span>FORCE</span></a>
+  <ul>
+    <li><a href="program.html">プログラム</a></li>
+    <li><a href="about.html">施設</a></li>
+    <li><a href="trainers.html">トレーナー</a></li>
+    <li><a href="price.html">料金</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料体験</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Training Programs</div>
+    <h1>OUR PROGRAMS</h1>
+    <p class="hero-lead">目標は人それぞれ。だから私たちは、あなたの「今」に合ったプログラムを提供します。体験してから決めてください。</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span><span>2,400+ MEMBERS</span><span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span><span>2,400+ MEMBERS</span>
+  </div>
+</div>
+
+<!-- 01 パーソナルトレーニング -->
+<div class="prog-detail">
+  <div class="prog-img" style="background-image:url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80');min-height:500px;"></div>
+  <div class="prog-content" style="background:var(--mid);">
+    <span class="prog-tag">Program 01</span>
+    <h2 class="prog-h2">パーソナル<br>トレーニング</h2>
+    <p>専属トレーナーがあなたの目標・体質・生活リズムを徹底的にヒアリングし、完全オーダーメイドのプログラムを設計します。一般的な「みんな同じメニュー」は提供しません。</p>
+    <p>初回はカウンセリング30分＋トレーニング60分の計90分。体組成測定・姿勢分析・動作評価を行い、あなたの現在地を正確に把握します。2回目以降はそのデータをもとに最適化されたプログラムで指導します。</p>
+    <p>ダイエット・筋肥大・姿勢改善・競技力向上・産後ケアなど、あらゆる目標に対応。トレーナーは全員 NSCA-CSCS または JATI-ATI の資格保有者です。</p>
+    <ul class="prog-benefits">
+      <li>完全マンツーマン・専属担当制</li>
+      <li>体組成測定＆定期フォロー</li>
+      <li>食事・栄養アドバイス込み</li>
+      <li>LINEで随時フォローアップ</li>
+      <li>セッション録画サービスあり（オプション）</li>
+    </ul>
+    <table class="prog-price-table">
+      <tr><td>60分 × 1回</td><td>¥8,800（税込）</td></tr>
+      <tr><td>60分 × 4回パック</td><td>¥32,000（税込）¥8,000/回</td></tr>
+      <tr><td>60分 × 8回パック</td><td>¥59,200（税込）¥7,400/回</td></tr>
+      <tr><td>60分 × 12回パック</td><td>¥84,000（税込）¥7,000/回</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 02 HIIT クラス -->
+<div class="prog-detail reverse">
+  <div class="prog-img" style="background-image:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80');min-height:500px;"></div>
+  <div class="prog-content" style="background:var(--gray);">
+    <span class="prog-tag">Program 02</span>
+    <h2 class="prog-h2">HIIT<br>クラス</h2>
+    <p>高強度インターバルトレーニング（HIIT）は、短時間で最大限の脂肪燃焼効果を得られる科学的に実証されたトレーニング法です。IRON FORCEのHIITクラスは定員12名制で、全員が指導を受けながら追い込める環境を提供します。</p>
+    <p>セッションは45分構成。ウォームアップ5分・メインワーク35分・クールダウン5分。全身の有酸素能力と筋持久力を同時に鍛えます。トレーナー主導で強度を管理するため、初心者でも安全に参加可能です。</p>
+    <p>週2〜3回参加することで代謝が上がり、運動していない時間も脂肪が燃焼し続けるアフターバーン効果が期待できます。</p>
+    <ul class="prog-benefits">
+      <li>45分・定員12名の少人数制</li>
+      <li>初心者から上級者まで強度調整可能</li>
+      <li>有酸素＋筋力を同時に鍛える</li>
+      <li>週14クラス開催（平日・週末対応）</li>
+      <li>STANDARDプラン以上は参加費込み</li>
+    </ul>
+    <table class="prog-price-table">
+      <tr><td>都度参加</td><td>¥2,200（税込）/ 1回</td></tr>
+      <tr><td>10回チケット</td><td>¥18,000（税込）¥1,800/回</td></tr>
+      <tr><td>月額無制限</td><td>¥8,800（税込）/月</td></tr>
+      <tr><td>STANDARD会員</td><td>無制限参加込み</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 03 パワーリフティング -->
+<div class="prog-detail">
+  <div class="prog-img" style="background-image:url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=800&q=80');min-height:500px;"></div>
+  <div class="prog-content" style="background:var(--mid);">
+    <span class="prog-tag">Program 03</span>
+    <h2 class="prog-h2">パワー<br>リフティング</h2>
+    <p>スクワット・ベンチプレス・デッドリフトの3種目を「THE BIG 3」と呼びます。この3つを正しいフォームで極限まで鍛えることが、あらゆるスポーツパフォーマンス向上の基礎となります。</p>
+    <p>元全日本パワーリフティング選手権出場者の松本トレーナーを中心に、フォーム分析・プログラム設計・試合対策まで一貫してサポート。競技者から「重量を増やしたい」初心者まで対応します。</p>
+    <p>専用プラットフォーム4台・競技用バーベル完備。フォームをビデオ撮影し、その場でフィードバックする「フォームチェックセッション」も人気です。</p>
+    <ul class="prog-benefits">
+      <li>競技用プラットフォーム4台完備</li>
+      <li>フォームビデオ分析付き</li>
+      <li>試合用ルール・装備の指導対応</li>
+      <li>初心者向けBIG 3入門コースあり</li>
+      <li>コンペ参加サポート（エントリー等）</li>
+    </ul>
+    <table class="prog-price-table">
+      <tr><td>パーソナル 60分</td><td>¥8,800（税込）</td></tr>
+      <tr><td>グループ 90分</td><td>¥3,300（税込）/ 1人</td></tr>
+      <tr><td>フォームチェック</td><td>¥5,500（税込）/ 30分</td></tr>
+      <tr><td>月額 通い放題</td><td>¥11,000（税込）/月</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 04 リカバリー -->
+<div class="prog-detail reverse">
+  <div class="prog-img" style="background-image:url('https://images.unsplash.com/photo-1592632789003-4f5cc1bdc6f3?w=800&q=80');min-height:500px;"></div>
+  <div class="prog-content" style="background:var(--gray);">
+    <span class="prog-tag">Program 04</span>
+    <h2 class="prog-h2">リカバリー<br>プログラム</h2>
+    <p>筋肉は「壊して・休んで・回復する」サイクルで成長します。適切なリカバリーなくして、トレーニングの成果は最大化されません。IRON FORCEのリカバリープログラムは、疲労回復と可動域改善を科学的にアプローチします。</p>
+    <p>スポーツマッサージ・ストレッチ・モビリティワーク・フォームローラーを組み合わせた60分セッション。柔軟性の向上・筋膜リリース・関節可動域の拡大を目的とします。</p>
+    <p>週1回の定期的なリカバリーセッションにより、慢性的な筋肉の張りや関節の違和感が解消され、次のトレーニングにより高いパフォーマンスで臨めます。疲れにくい体づくりの基盤となるプログラムです。</p>
+    <ul class="prog-benefits">
+      <li>スポーツマッサージ資格保有者が担当</li>
+      <li>筋膜リリース＆ストレッチ60分</li>
+      <li>モビリティ評価・改善プログラム設計</li>
+      <li>インボディ測定との連携分析</li>
+      <li>トレーニング後の即日対応も可</li>
+    </ul>
+    <table class="prog-price-table">
+      <tr><td>60分 × 1回</td><td>¥4,400（税込）</td></tr>
+      <tr><td>60分 × 4回パック</td><td>¥15,400（税込）¥3,850/回</td></tr>
+      <tr><td>90分 × 1回</td><td>¥6,600（税込）</td></tr>
+      <tr><td>PREMIUM会員</td><td>月4回まで無料</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 追加プログラム -->
+<section class="sec">
+  <p class="sec-label">Additional Programs</p>
+  <h2 class="sec-title">その他のプログラム</h2>
+  <div class="add-grid">
+    <div class="pi">
+      <div class="pi-icon">⚡</div>
+      <h3 class="pi-name">ダイエットコース</h3>
+      <p class="pi-text">食事管理＋有酸素運動＋筋トレを組み合わせた3ヶ月プログラム。平均マイナス7〜12kgを達成。管理栄養士による食事プラン付き。</p>
+      <p class="pi-price">¥3,300 / 月（追加）</p>
+    </div>
+    <div class="pi">
+      <div class="pi-icon">💪</div>
+      <h3 class="pi-name">筋肥大コース</h3>
+      <p class="pi-text">バルクアップを目標にしたプログラム。カロリー設計・高強度トレーニング・サプリメント指導まで一貫してサポート。半年で+5kgの筋肉増加を目指す。</p>
+      <p class="pi-price">¥3,300 / 月（追加）</p>
+    </div>
+    <div class="pi">
+      <div class="pi-icon">🏆</div>
+      <h3 class="pi-name">スポーツパフォーマンス</h3>
+      <p class="pi-text">サッカー・野球・ラグビー・格闘技など競技スポーツに特化したS&Cプログラム。爆発力・スピード・持久力を科学的に向上させます。</p>
+      <p class="pi-price">¥4,400 / session</p>
+    </div>
+    <div class="pi">
+      <div class="pi-icon">👶</div>
+      <h3 class="pi-name">産後ケアコース</h3>
+      <p class="pi-text">出産後の体型回復・骨盤ケア・体力回復を専門トレーナーがサポート。産後6ヶ月から参加可能。子育て中の女性が多く通う人気コース。</p>
+      <p class="pi-price">¥4,400 / 60min</p>
+    </div>
+  </div>
+</section>
+
+<!-- 時間割 -->
+<section class="sec" style="background:var(--mid);">
+  <p class="sec-label">Class Timetable</p>
+  <h2 class="sec-title">週間クラス時間割</h2>
+  <table class="timetable">
+    <thead>
+      <tr>
+        <th>時間</th>
+        <th>月曜</th>
+        <th>火曜</th>
+        <th>水曜</th>
+        <th>木曜</th>
+        <th>金曜</th>
+        <th>土曜</th>
+        <th>日曜</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>7:00</td>
+        <td class="class">HIIT</td>
+        <td>—</td>
+        <td class="class">HIIT</td>
+        <td>—</td>
+        <td class="class">HIIT</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>9:00</td>
+        <td>—</td>
+        <td class="class">ヨガ</td>
+        <td>—</td>
+        <td class="class">ヨガ</td>
+        <td>—</td>
+        <td class="class">HIIT</td>
+        <td class="class">ヨガ</td>
+      </tr>
+      <tr>
+        <td>10:30</td>
+        <td class="class">産後ケア</td>
+        <td>—</td>
+        <td class="class">産後ケア</td>
+        <td>—</td>
+        <td class="class">ピラティス</td>
+        <td class="class">ピラティス</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>12:00</td>
+        <td class="class">HIIT</td>
+        <td class="class">HIIT</td>
+        <td class="class">HIIT</td>
+        <td class="class">HIIT</td>
+        <td class="class">HIIT</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>14:00</td>
+        <td>—</td>
+        <td class="class">パワーリフト</td>
+        <td>—</td>
+        <td class="class">パワーリフト</td>
+        <td>—</td>
+        <td class="class">パワーリフト</td>
+        <td class="class">HIIT</td>
+      </tr>
+      <tr>
+        <td>17:00</td>
+        <td class="class">ピラティス</td>
+        <td>—</td>
+        <td class="class">ピラティス</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td class="class">パワーリフト</td>
+      </tr>
+      <tr>
+        <td>19:00</td>
+        <td class="class">HIIT</td>
+        <td class="class">ヨガ</td>
+        <td class="class">HIIT</td>
+        <td class="class">ヨガ</td>
+        <td class="class">HIIT</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>20:30</td>
+        <td>—</td>
+        <td class="class">HIIT</td>
+        <td>—</td>
+        <td class="class">パワーリフト</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="color:var(--lgray);font-size:.75rem;margin-top:16px;">※ クラス時間割は変更になる場合があります。最新情報は店頭またはお電話でご確認ください。</p>
+</section>
+
+<!-- 体験の流れ -->
+<section class="flow-sec">
+  <p class="sec-label">How to Start</p>
+  <h2 class="sec-title">無料体験の流れ</h2>
+  <div class="flow-steps">
+    <div class="fs"><div class="fs-num">01</div><h3 class="fs-title">申し込み</h3><p class="fs-text">WEB・電話・LINEから体験を予約。希望プログラム・希望日時・目標を教えてください。</p></div>
+    <div class="fs"><div class="fs-num">02</div><h3 class="fs-title">カウンセリング</h3><p class="fs-text">担当トレーナーが目標・体力・生活スタイルをヒアリングします（約15〜20分）。</p></div>
+    <div class="fs"><div class="fs-num">03</div><h3 class="fs-title">体験トレーニング</h3><p class="fs-text">希望のプログラムを約60分体験。フォーム指導・安全管理はすべてトレーナーが担当します。</p></div>
+    <div class="fs"><div class="fs-num">04</div><h3 class="fs-title">プラン提案</h3><p class="fs-text">体験後に目標に合ったプランをご提案。その日に入会しなくてもOKです。</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <h2 class="cta-title">まず体験してみろ</h2>
+  <p class="cta-sub">無料体験60分 ／ 完全予約制 ／ しつこい勧誘なし</p>
+  <a href="contact.html" class="btn-black">無料体験を申し込む</a>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-logo">IRON FORCE GYM</div>
+    <p>大阪府大阪市北区梅田2-X-X IRONFORCE BLDG 3F / TEL: 06-XXXX-XXXX</p>
+  </div>
+  <p>© 2024 IRON FORCE GYM. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

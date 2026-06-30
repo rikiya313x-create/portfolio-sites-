@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>コンセプト・ストーリー | SHIZUKU COFFEE | 京都</title>
+  <meta name="description" content="SHIZUKU COFFEEのコンセプトとオーナーバリスタのストーリー。スペシャルティコーヒーへの情熱と、京都・四条でお店を開くまでの道のりをご紹介します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--brown:#4a2c1a;--brown-mid:#7a4f35;--caramel:#c8884a;--cream:#fdf6ed;--beige:#f0e4d0;--text:#2a1a0e;--text-muted:#8a7060;--white:#fff;}
+    *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+    body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--white);line-height:1.8;}
+    .portfolio-notice{background:#222;color:#aaa;text-align:center;font-size:0.72rem;padding:6px 16px;letter-spacing:0.05em;}
+    header{position:fixed;top:32px;left:0;right:0;z-index:1000;padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;}
+    header.scrolled{top:0;background:rgba(253,246,237,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 24px rgba(74,44,26,0.08);}
+    .logo{display:flex;flex-direction:column;text-decoration:none;}
+    .logo-main{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--brown);letter-spacing:0.1em;line-height:1;}
+    .logo-sub{font-family:'Lato',sans-serif;font-size:0.6rem;color:var(--caramel);letter-spacing:0.3em;font-weight:300;}
+    nav ul{display:flex;gap:36px;list-style:none;}
+    nav a{font-family:'Lato',sans-serif;font-size:0.82rem;letter-spacing:0.12em;color:var(--brown);text-decoration:none;font-weight:400;transition:color 0.2s;}
+    nav a:hover,nav a.active{color:var(--caramel);}
+    .header-btn{font-family:'Lato',sans-serif;font-size:0.78rem;letter-spacing:0.15em;border:1.5px solid var(--brown);color:var(--brown);padding:9px 22px;text-decoration:none;transition:all 0.2s;font-weight:700;}
+    .header-btn:hover{background:var(--brown);color:#fff;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+    .hamburger span{display:block;width:24px;height:1.5px;background:var(--brown);transition:all 0.3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:104px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--beige);padding:24px 32px;z-index:999;flex-direction:column;gap:4px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-size:0.95rem;color:var(--brown);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--beige);letter-spacing:0.05em;}
+
+    /* ヒーロー */
+    .hero{height:80vh;position:relative;overflow:hidden;margin-top:104px;}
+    .hero-bg{position:absolute;inset:0;}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(74,44,26,0.75) 40%,rgba(74,44,26,0.2) 100%);}
+    .hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 10% 0 8%;color:#fff;max-width:640px;}
+    .hero-eyebrow{font-family:'Lato',sans-serif;font-size:0.72rem;letter-spacing:0.35em;opacity:0.8;margin-bottom:20px;font-weight:300;}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;line-height:1.3;margin-bottom:20px;}
+    .hero h1 em{font-style:italic;color:#f0d0a0;}
+    .hero p{font-size:0.92rem;opacity:0.85;font-weight:300;line-height:2;}
+
+    section{padding:96px 20px;}
+    .container{max-width:1060px;margin:0 auto;}
+    .sec-eyebrow{font-family:'Lato',sans-serif;font-size:0.7rem;letter-spacing:0.35em;color:var(--caramel);text-align:center;margin-bottom:14px;text-transform:uppercase;}
+    .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;text-align:center;color:var(--brown);margin-bottom:16px;}
+    .sec-line{width:40px;height:1px;background:var(--caramel);margin:0 auto 16px;}
+    .sec-desc{text-align:center;color:var(--text-muted);font-size:0.9rem;max-width:520px;margin:0 auto 64px;font-weight:300;line-height:1.9;}
+
+    /* コンセプトセクション */
+    .concept-bg{background:var(--cream);}
+    .concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+    .concept-img{aspect-ratio:4/5;border-radius:2px;overflow:hidden;}
+    .concept-img img{width:100%;height:100%;object-fit:cover;}
+    .concept-eyebrow{font-family:'Lato',sans-serif;font-size:0.7rem;letter-spacing:0.3em;color:var(--caramel);margin-bottom:16px;}
+    .concept-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2rem);color:var(--brown);line-height:1.4;margin-bottom:28px;}
+    .concept-text{font-size:0.9rem;color:var(--text-muted);line-height:2;font-weight:300;margin-bottom:18px;}
+
+    /* 価値観 */
+    .values-strip{background:var(--brown);padding:80px 20px;}
+    .values-row{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.08);}
+    .value-box{background:var(--brown);padding:48px 36px;transition:background 0.3s;}
+    .value-box:hover{background:var(--brown-mid);}
+    .value-num{font-family:'Playfair Display',serif;font-size:2.5rem;color:rgba(200,136,74,0.4);font-style:italic;margin-bottom:12px;}
+    .value-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;margin-bottom:12px;}
+    .value-desc{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.8;font-weight:300;}
+
+    /* オーナーストーリー */
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    .story-img{aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--beige);display:flex;align-items:center;justify-content:center;font-size:5rem;}
+    .story-img img{width:100%;height:100%;object-fit:cover;}
+    .story-eyebrow{font-family:'Lato',sans-serif;font-size:0.7rem;letter-spacing:0.3em;color:var(--caramel);margin-bottom:16px;}
+    .story-quote{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-style:italic;color:var(--brown);line-height:1.7;margin-bottom:28px;padding-left:24px;border-left:2px solid var(--caramel);}
+    .story-text{font-size:0.88rem;color:var(--text-muted);line-height:2;font-weight:300;margin-bottom:16px;}
+    .story-name{margin-top:24px;font-size:0.9rem;color:var(--brown);font-weight:700;}
+    .story-role{font-size:0.75rem;color:var(--caramel);letter-spacing:0.1em;font-family:'Lato',sans-serif;}
+
+    /* タイムライン */
+    .timeline-bg{background:var(--cream);}
+    .timeline{max-width:640px;margin:0 auto;position:relative;padding-left:32px;}
+    .timeline::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:1px;background:var(--beige);}
+    .timeline-item{position:relative;margin-bottom:40px;}
+    .timeline-item::before{content:'';position:absolute;left:-32px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--caramel);border:2px solid var(--cream);box-shadow:0 0 0 2px var(--caramel);}
+    .timeline-year{font-family:'Lato',sans-serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--caramel);font-weight:700;margin-bottom:6px;}
+    .timeline-title{font-weight:700;font-size:0.95rem;margin-bottom:8px;color:var(--brown);}
+    .timeline-desc{font-size:0.84rem;color:var(--text-muted);line-height:1.8;font-weight:300;}
+
+    /* フィロソフィー */
+    .philosophy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+    .philosophy-card{padding:36px 32px;background:var(--cream);border-radius:2px;}
+    .philosophy-icon{font-size:2rem;margin-bottom:16px;}
+    .philosophy-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--brown);margin-bottom:12px;}
+    .philosophy-text{font-size:0.84rem;color:var(--text-muted);line-height:1.9;font-weight:300;}
+
+    /* CTA */
+    .cta-section{background:var(--brown);color:#fff;padding:100px 20px;text-align:center;}
+    .cta-title{font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff;margin-bottom:12px;}
+    .cta-sub{font-size:0.88rem;color:rgba(255,255,255,0.6);font-weight:300;margin-bottom:32px;line-height:1.8;}
+    .cta-btn{display:inline-block;background:var(--caramel);color:#fff;padding:14px 40px;font-family:'Lato',sans-serif;font-size:0.82rem;letter-spacing:0.15em;font-weight:700;text-decoration:none;transition:background 0.2s;margin:0 8px;}
+    .cta-btn:hover{background:#a5703c;}
+    .cta-btn-ghost{display:inline-block;border:1.5px solid rgba(255,255,255,0.4);color:#fff;padding:14px 36px;font-family:'Lato',sans-serif;font-size:0.82rem;letter-spacing:0.15em;text-decoration:none;transition:all 0.2s;margin:0 8px;}
+    .cta-btn-ghost:hover{background:rgba(255,255,255,0.08);}
+
+    footer{background:var(--text);color:rgba(255,255,255,0.5);padding:64px 20px 28px;}
+    .footer-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+    .footer-logo-main{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;letter-spacing:0.1em;margin-bottom:4px;}
+    .footer-logo-sub{font-family:'Lato',sans-serif;font-size:0.6rem;letter-spacing:0.3em;color:rgba(255,255,255,0.35);margin-bottom:16px;}
+    .footer-desc{font-size:0.8rem;line-height:1.8;font-weight:300;}
+    .footer-h{font-family:'Lato',sans-serif;font-size:0.72rem;letter-spacing:0.2em;color:#fff;margin-bottom:16px;}
+    .footer-links{display:flex;flex-direction:column;gap:10px;}
+    .footer-links a{font-size:0.8rem;color:rgba(255,255,255,0.5);text-decoration:none;font-weight:300;transition:color 0.2s;}
+    .footer-links a:hover{color:#fff;}
+    .footer-bottom{max-width:1060px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;flex-wrap:wrap;gap:8px;}
+    .footer-portfolio{color:rgba(255,255,255,0.3);font-size:0.7rem;}
+
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    .back-top{position:fixed;bottom:32px;right:32px;width:48px;height:48px;background:var(--brown);color:#fff;border:none;font-size:1rem;cursor:pointer;opacity:0;transform:translateY(12px);transition:all 0.3s;z-index:900;}
+    .back-top.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:768px){
+      header{padding:0 24px;}
+      nav,.header-btn{display:none;}
+      .hamburger{display:flex;}
+      .hero{height:60vh;}
+      .concept-grid,.story-grid{grid-template-columns:1fr;gap:40px;}
+      .values-row{grid-template-columns:1fr;}
+      .philosophy-grid{grid-template-columns:1fr;}
+      .footer-inner{grid-template-columns:1fr;gap:36px;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="portfolio-notice">⚠ これはポートフォリオ提出用に作成した架空のサイトです。実在する店舗ではありません。</div>
+
+<header id="header">
+  <a href="index.html" class="logo">
+    <span class="logo-main">SHIZUKU COFFEE</span>
+    <span class="logo-sub">SPECIALTY COFFEE · KYOTO</span>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="concept.html" class="active">CONCEPT</a></li>
+      <li><a href="menu.html">MENU</a></li>
+      <li><a href="news.html">NEWS</a></li>
+      <li><a href="access.html">ACCESS</a></li>
+    </ul>
+  </nav>
+  <a href="contact.html" class="header-btn">CONTACT</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="concept.html" onclick="closeMobile()">CONCEPT</a>
+  <a href="menu.html" onclick="closeMobile()">MENU</a>
+  <a href="news.html" onclick="closeMobile()">NEWS</a>
+  <a href="access.html" onclick="closeMobile()">ACCESS</a>
+  <a href="contact.html" onclick="closeMobile()">CONTACT</a>
+</div>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=80" alt="SHIZUKU COFFEE">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">CONCEPT & STORY</div>
+    <h1>急がない。<br>急かさない。<br>ただ、<em>いい時間</em>を。</h1>
+    <p>一滴一滴、丁寧に落ちるドリップコーヒーのように。<br>ゆっくりと、豊かな時間を大切にしたい。</p>
+  </div>
+</div>
+
+<!-- コンセプト -->
+<section class="concept-bg">
+  <div class="container">
+    <div class="concept-grid">
+      <div class="concept-img fade-in">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=80" alt="コーヒーを淹れる">
+      </div>
+      <div class="fade-in">
+        <div class="concept-eyebrow">OUR CONCEPT</div>
+        <h2 class="concept-title">
+          SHIZUKUとは、<br>水の「雫（しずく）」のこと。
+        </h2>
+        <p class="concept-text">
+          一滴一滴、丁寧に落ちるドリップコーヒーのように。急がずゆっくりと時間をかけることの豊かさを大切にしたい。そんな想いからこの名前をつけました。
+        </p>
+        <p class="concept-text">
+          私たちが目指すのは、「難しいことを考えなくてもおいしい」と感じていただけるコーヒーです。スペシャルティコーヒーの専門用語を知らなくても、ただ「おいしい」「落ち着く」と思っていただければ十分。
+        </p>
+        <p class="concept-text">
+          コーヒーの産地・精製方法・焙煎日など全てをオープンに。知りたい方には丁寧に説明しますが、知りたくない方はただゆっくりと一杯を楽しんでいただければ。それがSHIZUKUのスタンスです。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 価値観 -->
+<div class="values-strip">
+  <div class="values-row">
+    <div class="value-box fade-in">
+      <div class="value-num">01</div>
+      <div class="value-title">Transparency</div>
+      <div class="value-desc">豆の産地・農園・精製方法・焙煎日をすべて開示します。隠すものは何もありません。お客様が「何を飲んでいるか」を知ることができる透明性を大切にしています。</div>
+    </div>
+    <div class="value-box fade-in">
+      <div class="value-num">02</div>
+      <div class="value-title">Slowness</div>
+      <div class="value-desc">急いで大量に作ることはしません。一杯一杯、バリスタが手で淹れます。効率より質、量より丁寧さを選ぶ。それがSHIZUKUの変わらないスタンスです。</div>
+    </div>
+    <div class="value-box fade-in">
+      <div class="value-num">03</div>
+      <div class="value-title">Sustainability</div>
+      <div class="value-desc">生産者への適正価格の支払い（フェアトレード）を徹底します。おいしいコーヒーが飲み続けられる未来のために、サステナブルな調達を続けることがSHIZUKUの責任です。</div>
+    </div>
+  </div>
+</div>
+
+<!-- オーナーストーリー -->
+<section id="story">
+  <div class="container">
+    <div class="sec-eyebrow fade-in">OUR STORY</div>
+    <h2 class="sec-title fade-in">一杯のコーヒーが、<br>人生を変えた。</h2>
+    <div class="sec-line fade-in"></div>
+    <div class="story-grid fade-in">
+      <div>
+        <div class="story-eyebrow">OWNER BARISTA</div>
+        <blockquote class="story-quote">
+          「おいしいコーヒーは、人の気持ちを少し軽くする」
+        </blockquote>
+        <p class="story-text">
+          オーナーバリスタの田村が初めてスペシャルティコーヒーと出会ったのは、大学卒業後のバックパック旅行中のエチオピアでした。現地の農園で飲んだその一杯の、鮮やかな酸味と甘みは、それまでのコーヒーの概念を完全に覆すものでした。「コーヒーってこんなに豊かな味がするのか」と、農園の真ん中で立ちすくんだことを今でも鮮明に覚えています。
+        </p>
+        <p class="story-text">
+          帰国後、東京のスペシャルティカフェで修行を開始。コーヒーの抽出技術だけでなく、産地・農園との関係構築、焙煎の哲学まで学びました。その後、自分が最も好きな街・京都に移り、2019年に四条烏丸に「SHIZUKU COFFEE」を開店。
+        </p>
+        <p class="story-text">
+          「難しいことを考えなくてもおいしい」というシンプルな体験を届けることが、田村の変わらない目標です。
+        </p>
+        <div class="story-name">田村 渉（たむら わたる）</div>
+        <div class="story-role">OWNER BARISTA</div>
+      </div>
+      <div class="story-img">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="田村渉">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- タイムライン -->
+<section class="timeline-bg">
+  <div class="container">
+    <div class="sec-eyebrow fade-in">HISTORY</div>
+    <h2 class="sec-title fade-in">SHIZUKUの歩み</h2>
+    <div class="sec-line fade-in"></div>
+    <div class="timeline fade-in">
+      <div class="timeline-item">
+        <div class="timeline-year">2012</div>
+        <div class="timeline-title">エチオピアでコーヒーと出会う</div>
+        <div class="timeline-desc">バックパック旅行中のエチオピアで、農園の一杯のコーヒーに衝撃を受ける。スペシャルティコーヒーの世界へ足を踏み入れるきっかけに。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2013〜2017</div>
+        <div class="timeline-title">東京のスペシャルティカフェで修行</div>
+        <div class="timeline-desc">抽出技術・焙煎・産地との関係構築を徹底的に学ぶ。ジャパンバリスタチャンピオンシップにも参加し、国内トップレベルの技術を磨く。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-title">産地訪問（エチオピア・グアテマラ・コロンビア）</div>
+        <div class="timeline-desc">農園オーナーと直接関係を構築するため、主要産地を訪問。生産者の顔が見えるコーヒーを届けることを決意する。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-title">SHIZUKU COFFEE 開店</div>
+        <div class="timeline-desc">京都・四条烏丸に「SHIZUKU COFFEE」オープン。"急がない、急かさない、ただいい時間を"をコンセプトに、地域の方々に愛されるお店を目指す。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2021</div>
+        <div class="timeline-title">豆の小売販売・オンラインショップ開始</div>
+        <div class="timeline-desc">多くの要望に応え、店舗販売に加えてオンラインでの豆の販売を開始。全国のコーヒーファンに届けられるようになる。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-title">京都市コーヒー文化賞 受賞</div>
+        <div class="timeline-desc">地域のコーヒー文化への貢献が評価され、受賞。引き続き京都の文化として丁寧なコーヒーを広めていく。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2026</div>
+        <div class="timeline-title">7年目を迎える</div>
+        <div class="timeline-desc">おかげさまで開店7年目。初心を忘れず、これからも一杯一杯丁寧に淹れ続けます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フィロソフィー -->
+<section>
+  <div class="container">
+    <div class="sec-eyebrow fade-in">PHILOSOPHY</div>
+    <h2 class="sec-title fade-in">SHIZUKUの哲学</h2>
+    <div class="sec-line fade-in"></div>
+    <div class="philosophy-grid fade-in">
+      <div class="philosophy-card">
+        <div class="philosophy-icon">🌍</div>
+        <div class="philosophy-title">産地との直接取引</div>
+        <div class="philosophy-text">仲買人を通さず、農園オーナーと直接取引することで、適正な価格を生産者に届けます。顔の見えるコーヒーを提供することがSHIZUKUの基本姿勢です。</div>
+      </div>
+      <div class="philosophy-card">
+        <div class="philosophy-icon">🔥</div>
+        <div class="philosophy-title">焙煎日の明示</div>
+        <div class="philosophy-text">全ての商品に焙煎日を明記。コーヒーは鮮度が命。焙煎から2週間以内の豆を使用し、常に最高の状態でご提供します。古い豆は販売しません。</div>
+      </div>
+      <div class="philosophy-card">
+        <div class="philosophy-icon">💧</div>
+        <div class="philosophy-title">一杯ずつの手淹れ</div>
+        <div class="philosophy-text">量産のためのマシン抽出はしません。バリスタが一杯ずつ、その豆の特性に合わせた温度・時間・量で丁寧に淹れます。待ち時間は、コーヒーができる工程をお楽しみください。</div>
+      </div>
+      <div class="philosophy-card">
+        <div class="philosophy-icon">🌿</div>
+        <div class="philosophy-title">環境への配慮</div>
+        <div class="philosophy-text">使い捨て容器の削減・コーヒーかすの堆肥化・再生可能エネルギーの使用など、できることから環境負荷を減らす取り組みを続けています。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2 class="cta-title">一度、足を運んでみてください。</h2>
+  <p class="cta-sub">言葉より、実際の一杯が、すべてを語ります。</p>
+  <a href="menu.html" class="cta-btn">MENU を見る</a>
+  <a href="access.html" class="cta-btn-ghost">ACCESS →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-main">SHIZUKU COFFEE</div>
+      <div class="footer-logo-sub">SPECIALTY COFFEE · KYOTO</div>
+      <div class="footer-desc">京都・四条のスペシャルティコーヒー専門店。一杯ずつ丁寧に淹れるハンドドリップコーヒーをどうぞ。</div>
+    </div>
+    <div>
+      <div class="footer-h">NAVIGATION</div>
+      <div class="footer-links">
+        <a href="concept.html">CONCEPT</a>
+        <a href="menu.html">MENU</a>
+        <a href="news.html">NEWS</a>
+        <a href="access.html">ACCESS</a>
+        <a href="contact.html">CONTACT</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">HOURS</div>
+      <div class="footer-desc">平日 8:00〜20:00<br>土日祝 9:00〜19:00<br>定休日：火曜日<br><br>📍 京都市下京区四条烏丸1-1<br>📞 075-XXX-XXXX</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-portfolio">⚠ ポートフォリオ提出用の架空サンプルサイトです</div>
+    <div>© 2026 SHIZUKU COFFEE All rights reserved.</div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 80);
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+  });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  function closeMobile() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

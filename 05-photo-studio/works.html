@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Works | HIKARI STUDIO</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0c0c0c;--white:#fafafa;--accent:#e8e0d5;--text:#2a2a2a;--muted:#888;--warm:#c4a882;}
+  body{font-family:'DM Sans','Noto Sans JP',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#f5f0ea;border-left:3px solid var(--warm);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--muted);}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(250,250,250,.96);border-bottom:1px solid rgba(0,0,0,.06);}
+  .logo{font-family:'DM Serif Display',serif;font-size:1.1rem;letter-spacing:.05em;color:var(--black);}
+  .logo span{font-style:italic;color:var(--warm);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--muted);font-size:.75rem;letter-spacing:.08em;transition:.2s;}
+  nav ul a:hover{color:var(--black);}
+  .nav-cta{color:var(--black)!important;border-bottom:1px solid var(--black);}
+
+  /* ページヒーロー */
+  .page-hero{padding-top:72px;height:420px;background:url('https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=1400&q=80') center/cover;position:relative;display:flex;align-items:flex-end;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(12,12,12,.5);}
+  .page-hero-inner{position:relative;z-index:1;padding:0 80px 56px;}
+  .page-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:10px;text-transform:uppercase;}
+  .page-title{font-family:'DM Serif Display',serif;font-size:3.4rem;color:#fff;line-height:1.1;}
+  .page-title em{font-style:italic;color:var(--warm);}
+
+  /* パンくず */
+  .breadcrumb{padding:20px 80px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;gap:8px;align-items:center;}
+  .breadcrumb a{color:var(--muted);font-size:.72rem;}
+  .breadcrumb span{color:var(--muted);font-size:.72rem;}
+  .breadcrumb .current{color:var(--text);font-size:.72rem;}
+
+  /* フィルタータブ */
+  .filter-bar{padding:40px 80px 0;display:flex;gap:4px;flex-wrap:wrap;}
+  .filter-btn{background:none;border:1px solid rgba(0,0,0,.12);color:var(--muted);padding:8px 22px;font-size:.72rem;letter-spacing:.1em;cursor:pointer;transition:.2s;font-family:'DM Sans',sans-serif;}
+  .filter-btn:hover,.filter-btn.active{background:var(--black);color:var(--white);border-color:var(--black);}
+
+  /* ギャラリー */
+  .gallery-sec{padding:40px 80px 100px;}
+  .gallery-intro{color:var(--muted);font-size:.82rem;line-height:2;max-width:560px;margin-bottom:48px;}
+
+  /* カテゴリー別ギャラリー */
+  .cat-section{margin-bottom:80px;}
+  .cat-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(0,0,0,.06);}
+  .cat-title{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--black);}
+  .cat-count{color:var(--muted);font-size:.72rem;}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:2px;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:360px;gap:2px;}
+  .grid-mix{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:260px;gap:2px;}
+
+  .gc{overflow:hidden;position:relative;cursor:pointer;}
+  .gc.tall{grid-row:span 2;}
+  .gc.wide{grid-column:span 2;}
+  .gc img{width:100%;height:100%;object-fit:cover;transition:.6s;}
+  .gc:hover img{transform:scale(1.06);}
+  .gc-overlay{position:absolute;inset:0;background:rgba(12,12,12,0);transition:.3s;display:flex;align-items:flex-end;padding:20px;}
+  .gc:hover .gc-overlay{background:rgba(12,12,12,.4);}
+  .gc-info{opacity:0;transition:.3s;transform:translateY(8px);}
+  .gc:hover .gc-info{opacity:1;transform:translateY(0);}
+  .gc-label{color:#fff;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;}
+  .gc-sub{color:rgba(255,255,255,.6);font-size:.65rem;margin-top:3px;}
+
+  /* ウェディング詳細 */
+  .wedding-detail{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:80px;}
+  .wd-img{background:url('https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=800&q=80') center/cover;min-height:480px;}
+  .wd-content{background:var(--accent);padding:60px;}
+  .wd-label{font-size:.62rem;letter-spacing:.3em;color:var(--warm);margin-bottom:10px;text-transform:uppercase;}
+  .wd-title{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--black);margin-bottom:18px;line-height:1.3;}
+  .wd-text{color:var(--muted);font-size:.8rem;line-height:2.1;margin-bottom:20px;}
+  .wd-meta{display:flex;flex-direction:column;gap:8px;}
+  .wd-meta-item{display:flex;gap:12px;font-size:.74rem;color:var(--muted);}
+  .wd-meta-label{color:var(--warm);font-weight:500;min-width:60px;}
+
+  /* 共通 */
+  .sec{padding:80px 80px;}
+  .sec-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-family:'DM Serif Display',serif;font-size:2.4rem;color:var(--black);margin-bottom:36px;line-height:1.15;}
+  .sec-title em{font-style:italic;color:var(--warm);}
+
+  /* 受賞作品 */
+  .award-gallery{background:var(--black);padding:80px;}
+  .award-gallery .sec-label{color:var(--warm);}
+  .award-gallery .sec-title{color:#fff;}
+  .award-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-top:0;}
+  .ag{overflow:hidden;height:320px;}
+  .ag.tall{grid-row:span 2;height:auto;}
+  .ag img{width:100%;height:100%;object-fit:cover;transition:.5s;filter:grayscale(20%);}
+  .ag:hover img{transform:scale(1.04);filter:grayscale(0);}
+
+  /* プロセス */
+  .process-sec{background:var(--accent);padding:80px;}
+  .process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:48px;}
+  .ps{padding:28px 20px;position:relative;}
+  .ps:not(:last-child)::after{content:'→';position:absolute;right:-8px;top:28px;color:var(--warm);font-size:1rem;}
+  .ps-num{font-family:'DM Serif Display',serif;font-size:2.5rem;color:rgba(196,168,130,.2);margin-bottom:10px;line-height:1;}
+  .ps-title{font-size:.82rem;font-weight:500;color:var(--black);margin-bottom:6px;}
+  .ps-text{color:var(--muted);font-size:.72rem;line-height:1.9;}
+
+  /* 価格CTA */
+  .cta-sec{display:grid;grid-template-columns:1fr 1fr;}
+  .cta-img{background:url('https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=800&q=80') center/cover;min-height:380px;}
+  .cta-content{background:var(--black);padding:80px;display:flex;flex-direction:column;justify-content:center;}
+  .cta-title{font-family:'DM Serif Display',serif;font-size:2.4rem;color:var(--white);line-height:1.1;margin-bottom:16px;}
+  .cta-title em{font-style:italic;color:var(--warm);}
+  .cta-text{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.9;margin-bottom:28px;}
+  .btn-warm{display:inline-block;background:var(--warm);color:#fff;padding:14px 36px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-warm:hover{background:#b09070;}
+
+  footer{background:var(--black);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);}
+  .footer-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:rgba(255,255,255,.4);letter-spacing:.05em;}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}
+    nav ul{gap:14px;}
+    nav ul a{font-size:.65rem;}
+    .page-hero{height:260px;}
+    .page-hero-inner{padding:0 20px 32px;}
+    .page-title{font-size:2rem;}
+    .breadcrumb{padding:14px 20px;}
+    .filter-bar{padding:24px 20px 0;}
+    .gallery-sec{padding:24px 20px 60px;}
+    .grid-3{grid-template-columns:1fr 1fr;grid-auto-rows:180px;}
+    .grid-2{grid-template-columns:1fr;grid-auto-rows:240px;}
+    .grid-mix{grid-template-columns:1fr 1fr;grid-auto-rows:200px;}
+    .gc.wide{grid-column:span 1;}
+    .wedding-detail{grid-template-columns:1fr;}
+    .wd-content{padding:32px 20px;}
+    .award-gallery{padding:40px 20px;}
+    .award-grid{grid-template-columns:1fr 1fr;}
+    .ag{height:200px;}
+    .ag.tall{height:auto;}
+    .process-sec{padding:40px 20px;}
+    .process-steps{grid-template-columns:1fr;}
+    .ps::after{display:none;}
+    .cta-sec{grid-template-columns:1fr;}
+    .cta-content{padding:40px 20px;}
+    footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフォトスタジオサイトです。実在する写真家・スタジオとは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html"><div class="logo">HIKARI <span>STUDIO</span></div></a>
+  <ul>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="service.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">Works</p>
+    <h1 class="page-title">作品集<em>。</em></h1>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>/</span>
+  <span class="current">Works</span>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active">All</button>
+  <button class="filter-btn">Wedding</button>
+  <button class="filter-btn">Portrait</button>
+  <button class="filter-btn">Family</button>
+  <button class="filter-btn">Commercial</button>
+  <button class="filter-btn">Fashion</button>
+  <button class="filter-btn">Event</button>
+</div>
+
+<div class="gallery-sec">
+  <p class="gallery-intro">これまで撮影した作品の一部をご覧ください。ウェディング・ポートレート・家族写真・商業撮影・イベントなど、幅広いジャンルの作品を掲載しています。</p>
+
+  <!-- Wedding -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <h2 class="cat-title">Wedding</h2>
+      <span class="cat-count">ウェディング撮影 / 48作品より</span>
+    </div>
+    <div class="grid-3">
+      <div class="gc tall"><img src="https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=600&q=80" alt="Wedding"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Wedding</p><p class="gc-sub">K&Y Wedding / 2024 Spring</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&q=80" alt="Wedding"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Wedding</p><p class="gc-sub">T&M Wedding / 2023 Autumn</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" alt="Wedding"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Wedding</p><p class="gc-sub">S&A Ceremony / 2024 Winter</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80" alt="Wedding Detail"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Wedding Detail</p><p class="gc-sub">Ring Photo</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80" alt="Ceremony"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Ceremony</p><p class="gc-sub">Chapel Ceremony</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- Portrait -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <h2 class="cat-title">Portrait</h2>
+      <span class="cat-count">ポートレート撮影 / 64作品より</span>
+    </div>
+    <div class="grid-3">
+      <div class="gc"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80" alt="Portrait"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Portrait</p><p class="gc-sub">Natural Light / Studio</p></div></div></div>
+      <div class="gc tall"><img src="https://images.unsplash.com/photo-1541140134513-85a161dc4a00?w=600&q=80" alt="Portrait"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Portrait</p><p class="gc-sub">Window Light Series</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80" alt="Portrait"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Portrait</p><p class="gc-sub">Profile / SNS Use</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80" alt="Portrait"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Portrait</p><p class="gc-sub">Outdoor Natural</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80" alt="Portrait"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Portrait</p><p class="gc-sub">Author Profile</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- Family -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <h2 class="cat-title">Family</h2>
+      <span class="cat-count">家族写真撮影 / 38作品より</span>
+    </div>
+    <div class="grid-mix">
+      <div class="gc wide"><img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=800&q=80" alt="Family"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Family</p><p class="gc-sub">Park Location / Spring</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1591438099450-d0f18e42f52e?w=400&q=80" alt="Family"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Family</p><p class="gc-sub">Newborn</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1609220136736-443140cfeaa5?w=400&q=80" alt="Family"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Family</p><p class="gc-sub">Shichi-Go-San</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&q=80" alt="Family"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Family</p><p class="gc-sub">100 Days</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1545151414-99a873c07d38?w=400&q=80" alt="Family"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Family</p><p class="gc-sub">Birthday</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- Commercial -->
+  <div class="cat-section">
+    <div class="cat-header">
+      <h2 class="cat-title">Commercial</h2>
+      <span class="cat-count">商業撮影 / 52作品より</span>
+    </div>
+    <div class="grid-3">
+      <div class="gc"><img src="https://images.unsplash.com/photo-1504439904031-93ded9f93e4e?w=600&q=80" alt="Commercial"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Commercial</p><p class="gc-sub">Product / EC</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Food"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Food</p><p class="gc-sub">Restaurant Menu</p></div></div></div>
+      <div class="gc tall"><img src="https://images.unsplash.com/photo-1556742521-9713bf272865?w=600&q=80" alt="Commercial"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Commercial</p><p class="gc-sub">Interior / Lifestyle</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80" alt="Fashion"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Fashion</p><p class="gc-sub">Brand Visual</p></div></div></div>
+      <div class="gc"><img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80" alt="Office"><div class="gc-overlay"><div class="gc-info"><p class="gc-label">Commercial</p><p class="gc-sub">Office / Corporate</p></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 受賞作品 -->
+<div class="award-gallery">
+  <p class="sec-label">Award Works</p>
+  <h2 class="sec-title" style="color:#fff;margin-bottom:36px;">受賞・入選<em>作品</em></h2>
+  <div class="award-grid">
+    <div class="ag tall"><img src="https://images.unsplash.com/photo-1541727816860-d9a2f1e77ea2?w=600&q=80" alt="Award Work"></div>
+    <div class="ag"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80" alt="Award Work"></div>
+    <div class="ag"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&q=80" alt="Award Work"></div>
+    <div class="ag"><img src="https://images.unsplash.com/photo-1493932484895-752d1471eab5?w=600&q=80" alt="Award Work"></div>
+    <div class="ag"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&q=80" alt="Award Work"></div>
+  </div>
+</div>
+
+<!-- 撮影の流れ（簡易） -->
+<div class="process-sec">
+  <p class="sec-label">Process</p>
+  <h2 class="sec-title">撮影の<em>流れ</em></h2>
+  <div class="process-steps">
+    <div class="ps">
+      <div class="ps-num">01</div>
+      <h3 class="ps-title">お問い合わせ</h3>
+      <p class="ps-text">フォームまたはメールにてご連絡ください</p>
+    </div>
+    <div class="ps">
+      <div class="ps-num">02</div>
+      <h3 class="ps-title">ヒアリング</h3>
+      <p class="ps-text">希望イメージ・用途・雰囲気を確認します</p>
+    </div>
+    <div class="ps">
+      <div class="ps-num">03</div>
+      <h3 class="ps-title">お見積もり</h3>
+      <p class="ps-text">内容に合わせたお見積もりをご提示します</p>
+    </div>
+    <div class="ps">
+      <div class="ps-num">04</div>
+      <h3 class="ps-title">撮影当日</h3>
+      <p class="ps-text">リラックスした雰囲気で撮影を進めます</p>
+    </div>
+    <div class="ps">
+      <div class="ps-num">05</div>
+      <h3 class="ps-title">データ納品</h3>
+      <p class="ps-text">1〜2週間でクラウドにてお届けします</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-img"></div>
+  <div class="cta-content">
+    <h2 class="cta-title">あなたの物語を、<em>残しましょう。</em></h2>
+    <p class="cta-text">ウェディング・ポートレート・家族写真・商業撮影——まずはお気軽にご相談ください。お見積もりは無料です。</p>
+    <a href="contact.html" class="btn-warm">撮影を依頼する</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">HIKARI STUDIO</div>
+  <p>© 2024 HIKARI STUDIO. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ツアー・プラン | VOYAGE JAPAN</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Raleway:wght@300;400;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--deep:#0a2540;--teal:#0d7377;--gold:#f0a500;--cream:#faf7f2;--text:#2d3748;--gray:#718096;--border:#e2e8f0;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 64px;display:flex;align-items:center;justify-content:space-between;height:76px;background:rgba(10,37,64,.97);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;letter-spacing:.05em;}
+  .logo span{color:var(--gold);font-style:italic;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.7);font-size:.74rem;letter-spacing:.1em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--deep)!important;padding:9px 20px;font-size:.73rem!important;font-weight:700!important;}
+  .page-hero{height:420px;background:url('https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;padding-top:76px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(10,37,64,.9) 40%,rgba(10,37,64,.4));}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;}
+  .page-hero-content p{color:var(--gold);font-size:.68rem;letter-spacing:.3em;margin-bottom:12px;text-transform:uppercase;}
+  .page-hero-content h1{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;line-height:1.2;}
+  .sec{padding:80px;}
+  .sec-tag{color:var(--teal);font-size:.62rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--deep);margin-bottom:12px;}
+  .teal-line{width:32px;height:2px;background:var(--teal);margin:12px 0 36px;}
+  .filter-bar{display:flex;gap:10px;margin-bottom:40px;flex-wrap:wrap;}
+  .filter-btn{padding:8px 20px;border:1px solid var(--border);background:#fff;color:var(--gray);font-size:.72rem;cursor:pointer;transition:.2s;font-family:'Noto Sans JP',sans-serif;}
+  .filter-btn.active,.filter-btn:hover{background:var(--deep);color:#fff;border-color:var(--deep);}
+  .tours-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .tc{background:#fff;overflow:hidden;}
+  .tc-img{height:240px;background-size:cover;background-position:center;position:relative;}
+  .tc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(10,37,64,.6));}
+  .tc-badge{position:absolute;top:14px;left:14px;background:var(--gold);color:var(--deep);font-size:.6rem;padding:4px 10px;font-weight:700;z-index:1;}
+  .tc-body{padding:22px 22px 28px;}
+  .tc-dest{color:var(--teal);font-size:.62rem;letter-spacing:.12em;margin-bottom:4px;text-transform:uppercase;}
+  .tc-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--deep);margin-bottom:8px;line-height:1.3;}
+  .tc-info{display:flex;gap:14px;color:var(--gray);font-size:.7rem;margin-bottom:12px;}
+  .tc-price{font-size:.9rem;font-weight:700;color:var(--deep);}
+  .tc-price span{font-size:.66rem;font-weight:400;color:var(--gray);}
+  .tc-btn{display:inline-block;margin-top:14px;background:var(--deep);color:#fff;padding:9px 22px;font-size:.7rem;letter-spacing:.08em;transition:.3s;}
+  .tc-btn:hover{background:var(--teal);}
+  footer{background:var(--deep);padding:48px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.4);font-size:.72rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;} .page-hero-content h1{font-size:2rem;}
+    .sec{padding:48px 24px;} .tours-grid{grid-template-columns:1fr;}
+    footer{padding:32px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">VOYAGE <span>JAPAN</span></a>
+  <ul>
+    <li><a href="tours.html">ツアー検索</a></li>
+    <li><a href="destinations.html">エリア別</a></li>
+    <li><a href="tours.html">プラン</a></li>
+    <li><a href="about.html">担当者</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>TOUR PLANS</p>
+    <h1>人気ツアー・<br>プラン一覧</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-tag">ALL TOURS</p>
+  <h2 class="sec-title">全国の旅プラン</h2>
+  <div class="teal-line"></div>
+  <div class="filter-bar">
+    <button class="filter-btn active">すべて</button>
+    <button class="filter-btn">北海道</button>
+    <button class="filter-btn">東北</button>
+    <button class="filter-btn">関東</button>
+    <button class="filter-btn">関西</button>
+    <button class="filter-btn">九州</button>
+    <button class="filter-btn">沖縄</button>
+  </div>
+  <div class="tours-grid">
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1580502304784-8985b7eb7260?w=600&q=80');">
+        <span class="tc-badge">人気No.1</span>
+      </div>
+      <div class="tc-body">
+        <p class="tc-dest">Hokkaido</p>
+        <h3 class="tc-name">北海道 全道周遊 5日間</h3>
+        <div class="tc-info"><span>📅 5日4泊</span><span>👥 1〜20名</span></div>
+        <div class="tc-price">¥89,000<span>〜 / おひとり様</span></div>
+        <a href="contact.html" class="tc-btn">このプランで相談する</a>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80');">
+        <span class="tc-badge">季節限定</span>
+      </div>
+      <div class="tc-body">
+        <p class="tc-dest">Kyoto / Nara</p>
+        <h3 class="tc-name">京都・奈良 古都紅葉めぐり</h3>
+        <div class="tc-info"><span>📅 3日2泊</span><span>👥 1〜10名</span></div>
+        <div class="tc-price">¥54,000<span>〜 / おひとり様</span></div>
+        <a href="contact.html" class="tc-btn">このプランで相談する</a>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1499810631641-541e76d678a2?w=600&q=80');">
+        <span class="tc-badge">おすすめ</span>
+      </div>
+      <div class="tc-body">
+        <p class="tc-dest">Okinawa</p>
+        <h3 class="tc-name">沖縄 離島リゾート完全満喫</h3>
+        <div class="tc-info"><span>📅 4日3泊</span><span>👥 2名〜</span></div>
+        <div class="tc-price">¥72,000<span>〜 / おひとり様</span></div>
+        <a href="contact.html" class="tc-btn">このプランで相談する</a>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=600&q=80');">
+      </div>
+      <div class="tc-body">
+        <p class="tc-dest">Tohoku</p>
+        <h3 class="tc-name">東北 温泉とグルメの旅</h3>
+        <div class="tc-info"><span>📅 3日2泊</span><span>👥 1〜8名</span></div>
+        <div class="tc-price">¥48,000<span>〜 / おひとり様</span></div>
+        <a href="contact.html" class="tc-btn">このプランで相談する</a>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1570521462033-3015e76e7432?w=600&q=80');">
+      </div>
+      <div class="tc-body">
+        <p class="tc-dest">Kyushu</p>
+        <h3 class="tc-name">九州 阿蘇・別府・長崎 完全周遊</h3>
+        <div class="tc-info"><span>📅 5日4泊</span><span>👥 1〜15名</span></div>
+        <div class="tc-price">¥78,000<span>〜 / おひとり様</span></div>
+        <a href="contact.html" class="tc-btn">このプランで相談する</a>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=600&q=80');">
+        <span class="tc-badge">NEW</span>
+      </div>
+      <div class="tc-body">
+        <p class="tc-dest">Tokyo / Nikko / Kamakura</p>
+        <h3 class="tc-name">関東 東京〜日光〜鎌倉 文化の旅</h3>
+        <div class="tc-info"><span>📅 4日3泊</span><span>👥 1名〜</span></div>
+        <div class="tc-price">¥62,000<span>〜 / おひとり様</span></div>
+        <a href="contact.html" class="tc-btn">このプランで相談する</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 VOYAGE JAPAN. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

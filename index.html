@@ -80,13 +80,31 @@
   @media(max-width:900px){
     header{padding:48px 24px 40px;}
     .header-name{font-size:2rem;}
+    .header-bg-text{font-size:4rem;}
+    .header-meta{flex-wrap:wrap;gap:16px;}
     .skills{padding:20px 24px;}
     .main{padding:40px 24px;}
-    .sites-grid{grid-template-columns:1fr;}
+    .section-title{font-size:1.4rem;}
+    .sites-grid{grid-template-columns:1fr;gap:1px;}
     .site-card{grid-template-columns:1fr;min-height:auto;}
-    .site-preview{height:200px;}
+    .site-preview{height:220px;}
+    .site-info{padding:24px 20px;}
+    .site-name{font-size:1rem;}
     .contact{padding:48px 24px;}
+    .contact .section-title{font-size:1.5rem;}
     footer{padding:20px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+  @media(max-width:480px){
+    header{padding:32px 16px 28px;}
+    .header-name{font-size:1.6rem;}
+    .header-tag{font-size:.6rem;}
+    .header-sub{font-size:.82rem;}
+    .skills{padding:16px;}
+    .skill{font-size:.68rem;padding:5px 12px;}
+    .main{padding:28px 16px;}
+    .site-info{padding:20px 16px;}
+    .contact{padding:36px 16px;}
+    footer{padding:16px;font-size:.68rem;}
   }
 </style>
 </head>

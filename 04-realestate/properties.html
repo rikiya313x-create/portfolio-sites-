@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物件情報 | PREMIER HOME | 高級不動産・東京港区</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--dark:#111215;--gold:#b8975a;--cream:#f8f4ee;--gray:#6d6d6d;--border:rgba(184,151,90,.25);--light:#fafaf8;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#1a1612;border-left:3px solid var(--gold);padding:10px 24px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.4);}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 64px;display:flex;align-items:center;justify-content:space-between;height:80px;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-mark{width:36px;height:36px;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Playfair Display',serif;font-size:.9rem;}
+  .logo-text{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.18em;color:var(--dark);text-transform:uppercase;}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--gray);font-size:.73rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--dark);color:#fff!important;padding:11px 24px;font-size:.72rem!important;letter-spacing:.12em;}
+
+  .page-hero{height:55vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+  .page-hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1400&q=80') center/cover;}
+  .page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(17,18,21,.9) 50%,rgba(17,18,21,.5));}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;margin-top:40px;}
+  .page-hero-tag{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:6px 18px;font-size:.62rem;letter-spacing:.3em;margin-bottom:18px;text-transform:uppercase;}
+  .page-hero h1{font-family:'Playfair Display',serif;font-size:3.8rem;color:#fff;line-height:1.15;margin-bottom:14px;}
+  .page-hero h1 em{color:var(--gold);font-style:italic;}
+  .page-hero-lead{color:rgba(255,255,255,.6);font-size:.84rem;line-height:2;max-width:480px;}
+
+  .btn-gold{display:inline-block;background:var(--gold);color:#fff;padding:15px 44px;font-size:.8rem;letter-spacing:.15em;transition:.3s;}
+  .btn-gold:hover{background:#a5844a;}
+  .btn-dark-ghost{display:inline-block;border:1px solid rgba(255,255,255,.3);color:#fff;padding:15px 36px;font-size:.8rem;letter-spacing:.15em;margin-left:14px;transition:.3s;}
+  .btn-dark-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+  .sec{padding:100px 80px;}
+  .sec-tag{color:var(--gold);font-size:.62rem;letter-spacing:.35em;margin-bottom:10px;text-transform:uppercase;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--dark);margin-bottom:12px;line-height:1.2;}
+  .gold-line{width:32px;height:1px;background:var(--gold);margin:14px 0 36px;}
+
+  .properties-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .prop{background:#fff;overflow:hidden;}
+  .prop-img{height:240px;background-size:cover;background-position:center;position:relative;}
+  .prop-badge{position:absolute;top:16px;left:16px;background:var(--gold);color:#fff;font-size:.62rem;letter-spacing:.1em;padding:4px 10px;}
+  .prop-body{padding:22px 22px 26px;}
+  .prop-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--dark);margin-bottom:4px;}
+  .prop-loc{color:var(--gray);font-size:.72rem;letter-spacing:.08em;margin-bottom:14px;}
+  .prop-price{font-size:1.3rem;color:var(--dark);font-weight:700;margin-bottom:12px;}
+  .prop-price span{font-size:.72rem;font-weight:400;color:var(--gray);margin-left:4px;}
+  .prop-specs{display:flex;gap:14px;flex-wrap:wrap;}
+  .prop-spec{color:var(--gray);font-size:.7rem;display:flex;gap:4px;align-items:center;}
+  .prop-spec::before{content:'';width:4px;height:4px;background:var(--gold);border-radius:50%;}
+  .prop-desc{color:var(--gray);font-size:.76rem;line-height:1.9;margin-top:12px;border-top:1px solid var(--border);padding-top:12px;}
+
+  /* filter section */
+  .filter-sec{background:var(--dark);padding:40px 80px;}
+  .filter-title{color:rgba(255,255,255,.5);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:24px;}
+  .filter-grid{display:grid;grid-template-columns:2fr 2fr 2fr 2fr auto;gap:20px;align-items:end;}
+  .filter-group label{display:block;color:rgba(255,255,255,.4);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;}
+  .filter-group select{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(184,151,90,.3);color:#fff;padding:12px 14px;font-size:.8rem;font-family:'Noto Sans JP',sans-serif;appearance:none;cursor:pointer;}
+  .filter-group select option{background:#111215;color:#fff;}
+  .radio-group{display:flex;gap:12px;flex-wrap:wrap;}
+  .radio-group label{color:rgba(255,255,255,.6);font-size:.72rem;cursor:pointer;display:flex;align-items:center;gap:5px;}
+  .radio-group input[type=radio]{accent-color:var(--gold);}
+  .check-group{display:flex;gap:10px;flex-wrap:wrap;}
+  .check-group label{color:rgba(255,255,255,.6);font-size:.72rem;cursor:pointer;display:flex;align-items:center;gap:5px;}
+  .check-group input[type=checkbox]{accent-color:var(--gold);}
+  .price-range{color:rgba(255,255,255,.6);font-size:.78rem;padding:12px 0;}
+  .btn-filter{background:var(--gold);color:#fff;padding:13px 28px;font-size:.75rem;letter-spacing:.15em;border:none;cursor:pointer;white-space:nowrap;transition:.3s;}
+  .btn-filter:hover{background:#a5844a;}
+
+  .hidden-sec{background:var(--dark);padding:70px 80px;text-align:center;}
+  .hidden-sec .sec-tag{color:var(--gold);}
+  .hidden-title{font-family:'Playfair Display',serif;font-size:2rem;color:#fff;margin-bottom:12px;line-height:1.2;}
+  .hidden-text{color:rgba(255,255,255,.4);font-size:.82rem;line-height:2;margin-bottom:28px;max-width:580px;margin-left:auto;margin-right:auto;}
+
+  .invest-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-top:36px;}
+  .invest-card{background:#fff;padding:36px 30px;}
+  .invest-num{font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--gold);opacity:.4;margin-bottom:10px;line-height:1;}
+  .invest-title{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+  .invest-text{color:var(--gray);font-size:.78rem;line-height:1.9;}
+
+  .cta-sec{background:var(--dark);padding:100px 80px;text-align:center;}
+  .cta-title{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;margin-bottom:12px;line-height:1.2;}
+  .cta-sub{color:rgba(255,255,255,.4);font-size:.84rem;margin-bottom:32px;}
+
+  footer{background:#0a0b0e;padding:36px 80px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-family:'Playfair Display',serif;font-size:.95rem;color:rgba(255,255,255,.5);letter-spacing:.2em;}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;}
+    .page-hero h1{font-size:2.4rem;}
+    .sec{padding:60px 24px;}
+    .filter-sec{padding:30px 24px;}
+    .filter-grid{grid-template-columns:1fr;gap:16px;}
+    .properties-grid{grid-template-columns:1fr;}
+    .invest-grid{grid-template-columns:1fr;}
+    .hidden-sec{padding:50px 24px;}
+    footer{flex-direction:column;gap:10px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空の不動産会社サイトです。実在する会社・物件とは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">P</div>
+    <div class="logo-text">Premier Home</div>
+  </a>
+  <ul>
+    <li><a href="properties.html">物件情報</a></li>
+    <li><a href="service.html">サービス</a></li>
+    <li><a href="agents.html">エージェント</a></li>
+    <li><a href="about.html">会社概要</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html" class="nav-cta">無料査定</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-tag">PROPERTIES</div>
+    <h1>東京の<em>一流</em>物件、<br>ここに集まる。</h1>
+    <p class="page-hero-lead">港区・渋谷区・千代田区を中心とした高級住宅・投資用物件。非公開物件を含む豊富なラインナップからご紹介します。</p>
+  </div>
+</section>
+
+<!-- 検索フィルタ -->
+<div class="filter-sec">
+  <p class="filter-title">物件を絞り込む</p>
+  <div class="filter-grid">
+    <div class="filter-group">
+      <label>エリア</label>
+      <select>
+        <option>すべてのエリア</option>
+        <option>港区</option>
+        <option>渋谷区</option>
+        <option>千代田区</option>
+        <option>新宿区</option>
+        <option>品川区</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>物件タイプ</label>
+      <div class="radio-group" style="margin-top:4px;">
+        <label><input type="radio" name="type" checked> すべて</label>
+        <label><input type="radio" name="type"> マンション</label>
+        <label><input type="radio" name="type"> 一戸建て</label>
+        <label><input type="radio" name="type"> 投資用</label>
+      </div>
+    </div>
+    <div class="filter-group">
+      <label>価格帯</label>
+      <div class="price-range">5,000万 〜 10億以上</div>
+    </div>
+    <div class="filter-group">
+      <label>間取り</label>
+      <div class="check-group">
+        <label><input type="checkbox"> 1LDK</label>
+        <label><input type="checkbox"> 2LDK</label>
+        <label><input type="checkbox"> 3LDK</label>
+        <label><input type="checkbox"> 4LDK+</label>
+      </div>
+    </div>
+    <div>
+      <button class="btn-filter">検索する</button>
+    </div>
+  </div>
+</div>
+
+<!-- 注目物件 -->
+<section class="sec">
+  <p class="sec-tag">Featured Properties</p>
+  <h2 class="sec-title">注目の物件</h2>
+  <div class="gold-line"></div>
+  <div class="properties-grid">
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80');"><span class="prop-badge">NEW</span></div>
+      <div class="prop-body">
+        <h3 class="prop-name">The Roppongi Residence</h3>
+        <p class="prop-loc">東京都港区六本木 / 37F 角部屋</p>
+        <p class="prop-price">¥3.8億<span>（3LDK / 128㎡）</span></p>
+        <div class="prop-specs"><span class="prop-spec">3LDK</span><span class="prop-spec">128㎡</span><span class="prop-spec">37F</span><span class="prop-spec">2022年築</span></div>
+        <p class="prop-desc">六本木の中枢に位置する超高層タワーマンションの最上位住戸。東京タワー・東京湾を一望できる360度のパノラマビュー。コンシェルジュサービス完備、24時間セキュリティ。外資系金融・医師に人気の希少物件。</p>
+      </div>
+    </div>
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80');"><span class="prop-badge">SALE</span></div>
+      <div class="prop-body">
+        <h3 class="prop-name">Minato Premium Tower</h3>
+        <p class="prop-loc">東京都港区芝浦 / 高層タワー</p>
+        <p class="prop-price">¥1.95億<span>（2LDK / 78㎡）</span></p>
+        <div class="prop-specs"><span class="prop-spec">2LDK</span><span class="prop-spec">78㎡</span><span class="prop-spec">28F</span><span class="prop-spec">2020年築</span></div>
+        <p class="prop-desc">芝浦ウォーターフロントの人気タワーマンション。レインボーブリッジ・東京湾のウォーターフロントビュー。浜松町・田町駅徒歩圏内で都心アクセス良好。共用施設充実、品格ある住環境。</p>
+      </div>
+    </div>
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&q=80');"><span class="prop-badge">EXCLUSIVE</span></div>
+      <div class="prop-body">
+        <h3 class="prop-name">Aoyama Court</h3>
+        <p class="prop-loc">東京都港区南青山 / 全室角部屋</p>
+        <p class="prop-price">¥6.4億<span>（4LDK / 190㎡）</span></p>
+        <div class="prop-specs"><span class="prop-spec">4LDK</span><span class="prop-spec">190㎡</span><span class="prop-spec">5F</span><span class="prop-spec">2018年築</span></div>
+        <p class="prop-desc">南青山の閑静な住宅地に佇む低層プレミアムレジデンス。全室角部屋・天井高3.2mの開放感と圧倒的な高級感。プライベートガーデン付きペントハウス仕様。外苑前駅徒歩6分の希少邸宅。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 物件一覧 -->
+<section class="sec" style="background:var(--cream);">
+  <p class="sec-tag">All Properties</p>
+  <h2 class="sec-title">物件一覧</h2>
+  <div class="gold-line"></div>
+  <div class="properties-grid">
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80');"><span class="prop-badge">SALE</span></div>
+      <div class="prop-body">
+        <h3 class="prop-name">Shibuya Hills Residence</h3>
+        <p class="prop-loc">東京都渋谷区神南 / 22F</p>
+        <p class="prop-price">¥2.3億<span>（2LDK / 85㎡）</span></p>
+        <div class="prop-specs"><span class="prop-spec">2LDK</span><span class="prop-spec">85㎡</span><span class="prop-spec">22F</span><span class="prop-spec">2021年築</span></div>
+        <p class="prop-desc">渋谷駅徒歩8分の高台に位置する高層レジデンス。渋谷・新宿・六本木への利便性と、高台ならではの眺望を両立。外資系ビジネスパーソンに人気の物件。</p>
+      </div>
+    </div>
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=600&q=80');"><span class="prop-badge">SALE</span></div>
+      <div class="prop-body">
+        <h3 class="prop-name">Akasaka Tower Suite</h3>
+        <p class="prop-loc">東京都港区赤坂 / 45F</p>
+        <p class="prop-price">¥4.1億<span>（3LDK / 140㎡）</span></p>
+        <div class="prop-specs"><span class="prop-spec">3LDK</span><span class="prop-spec">140㎡</span><span class="prop-spec">45F</span><span class="prop-spec">2019年築</span></div>
+        <p class="prop-desc">赤坂の超高層タワー最上層に近い高層階。都心の夜景を360度楽しめるプレミアムスイート仕様。専用コンシェルジュ、ラウンジ、スパ完備。赤坂見附駅直結の利便性。</p>
+      </div>
+    </div>
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80');"><span class="prop-badge">SALE</span></div>
+      <div class="prop-body">
+        <h3 class="prop-name">Shinjuku Garden View</h3>
+        <p class="prop-loc">東京都新宿区西新宿 / 18F</p>
+        <p class="prop-price">¥1.2億<span>（1LDK / 55㎡）</span></p>
+        <div class="prop-specs"><span class="prop-spec">1LDK</span><span class="prop-spec">55㎡</span><span class="prop-spec">18F</span><span class="prop-spec">2023年築</span></div>
+        <p class="prop-desc">新宿駅徒歩10分の新築高層マンション。新宿御苑を望む緑豊かなビュー。単身・DINKS向けにコンパクトながら高仕様のインテリア。投資用としても安定した需要が見込める立地。</p>
+      </div>
+    </div>
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80');"><span class="prop-badge">EXCLUSIVE</span></div>
+      <div class="prop-body">
+        <h3 class="prop-name">Hamarikyu Luxury</h3>
+        <p class="prop-loc">東京都中央区浜離宮 / 30F</p>
+        <p class="prop-price">¥5.8億<span>（4LDK / 185㎡）</span></p>
+        <div class="prop-specs"><span class="prop-spec">4LDK</span><span class="prop-spec">185㎡</span><span class="prop-spec">30F</span><span class="prop-spec">2020年築</span></div>
+        <p class="prop-desc">浜離宮庭園を眼下に望む非公開物件。東京湾・レインボーブリッジの絶景ビューと歴史ある日本庭園を独占。都内最高水準のセキュリティと品格あるロビー空間。完全非公開で紹介のみ対応。</p>
+      </div>
+    </div>
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80');"><span class="prop-badge">NEW</span></div>
+      <div class="prop-body">
+        <h3 class="prop-name">Hiroo Terrace House</h3>
+        <p class="prop-loc">東京都渋谷区広尾 / 独立邸宅</p>
+        <p class="prop-price">¥3.2億<span>（3LDK / 120㎡）</span></p>
+        <div class="prop-specs"><span class="prop-spec">3LDK</span><span class="prop-spec">120㎡</span><span class="prop-spec">独立</span><span class="prop-spec">2017年築</span></div>
+        <p class="prop-desc">広尾の閑静な住宅街に佇む独立テラスハウス。大使館エリアの静寂と緑豊かな環境、広いプライベートガーデン付き。外国人在住者に人気のエリアで賃貸需要も旺盛。広尾駅徒歩7分。</p>
+      </div>
+    </div>
+    <div class="prop">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80');"><span class="prop-badge">SALE</span></div>
+      <div class="prop-body">
+        <h3 class="prop-name">Daikanyama Premium</h3>
+        <p class="prop-loc">東京都渋谷区代官山 / 12F</p>
+        <p class="prop-price">¥2.8億<span>（3LDK / 105㎡）</span></p>
+        <div class="prop-specs"><span class="prop-spec">3LDK</span><span class="prop-spec">105㎡</span><span class="prop-spec">12F</span><span class="prop-spec">2016年築</span></div>
+        <p class="prop-desc">代官山アドレスが人気を誇る洗練されたプレミアムマンション。おしゃれなカフェや緑道に囲まれた文化的な住環境。デザイナーズインテリア仕様でそのまま入居可能。代官山・恵比寿駅へ徒歩圏。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 非公開物件のご案内 -->
+<div class="hidden-sec">
+  <p class="sec-tag" style="color:var(--gold);">Private Listings</p>
+  <h2 class="hidden-title">非公開物件のご案内</h2>
+  <p class="hidden-text">PREMIER HOMEが保有する物件の約40%は、市場に公開されない非公開物件です。ご希望条件・予算をお伺いした上で、最適な非公開物件を専任エージェントがご紹介します。まずは無料相談からお気軽にどうぞ。</p>
+  <a href="contact.html" class="btn-gold">非公開物件を問い合わせる</a>
+</div>
+
+<!-- 投資物件 -->
+<section class="sec">
+  <p class="sec-tag">Investment Properties</p>
+  <h2 class="sec-title">投資物件のご相談</h2>
+  <div class="gold-line"></div>
+  <p style="color:var(--gray);font-size:.86rem;line-height:2;max-width:640px;margin-bottom:36px;">都心の投資用マンション・一棟ビルの購入をお考えの方へ。利回り分析・ローン計画・節税戦略を含めたトータルコンサルティングを提供します。投資専門エージェントが担当します。</p>
+  <div class="invest-grid">
+    <div class="invest-card">
+      <div class="invest-num">01</div>
+      <div class="invest-title">区分マンション投資</div>
+      <p class="invest-text">港区・渋谷区・千代田区の高需要エリアにおける区分マンション。平均想定利回り3.5〜5.0%。外国人・法人需要が旺盛で空室リスクが低い優良エリアをご紹介します。物件選定からローン、管理会社の選定まで一貫サポート。</p>
+    </div>
+    <div class="invest-card">
+      <div class="invest-num">02</div>
+      <div class="invest-title">一棟マンション・ビル投資</div>
+      <p class="invest-text">資産規模を拡大したい方向けに、一棟マンション・商業ビルの取得をサポート。5億〜30億円規模の物件を中心に、法人スキームを活用した節税・融資戦略も含めてご提案。銀行フェースも含めた包括的サポートが強みです。</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-sec">
+  <h2 class="cta-title">まず、話してみてください。</h2>
+  <p class="cta-sub">無料相談 ／ 無料査定 ／ 秘密厳守</p>
+  <a href="contact.html" class="btn-gold">無料相談・査定を申し込む</a>
+</div>
+
+<footer>
+  <div class="footer-logo">PREMIER HOME</div>
+  <p>© 2024 PREMIER HOME Real Estate. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

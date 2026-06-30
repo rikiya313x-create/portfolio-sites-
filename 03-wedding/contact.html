@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料相談予約 | blanc wedding</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--blush:#f2e8e0;--rose:#c9927a;--gold:#c4a882;--ivory:#faf8f5;--brown:#5c3d2e;--gray:#9a8a80;--border:#e8ddd4;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--ivory);color:var(--brown);overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(250,248,245,.97);backdrop-filter:blur(8px);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;border-bottom:1px solid var(--border);}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:.12em;color:var(--brown);font-style:italic;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:var(--gray);font-size:.72rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a:hover{color:var(--rose);}
+  .nav-cta{background:var(--rose);color:#fff!important;padding:9px 22px;font-size:.72rem!important;}
+  .page-hero{height:360px;background:url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;justify-content:center;padding-top:72px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(92,61,46,.5);}
+  .page-hero-content{position:relative;z-index:1;text-align:center;}
+  .page-hero-content p{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:.75rem;letter-spacing:.4em;margin-bottom:12px;text-transform:uppercase;}
+  .page-hero-content h1{font-family:'Cormorant Garamond',serif;font-size:3rem;color:#fff;font-style:italic;}
+  .sec{padding:80px;}
+  .sec-label{color:var(--rose);font-family:'Cormorant Garamond',serif;font-size:.78rem;letter-spacing:.35em;margin-bottom:10px;text-transform:uppercase;}
+  .rose-line{width:24px;height:1px;background:var(--rose);margin:12px 0 36px;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .info-note{background:var(--blush);border-left:2px solid var(--rose);padding:18px 22px;margin-bottom:24px;font-size:.82rem;color:var(--brown);line-height:2;}
+  .feature-item{display:flex;gap:14px;margin-bottom:20px;align-items:flex-start;}
+  .feature-icon{font-size:1.3rem;flex-shrink:0;}
+  .feature-text h4{font-size:.84rem;font-weight:600;color:var(--brown);margin-bottom:3px;}
+  .feature-text p{font-size:.76rem;color:var(--gray);line-height:1.8;}
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;font-size:.72rem;color:var(--gray);margin-bottom:6px;letter-spacing:.08em;}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--border);background:var(--ivory);font-family:'Noto Sans JP',sans-serif;font-size:.82rem;outline:none;transition:.2s;color:var(--brown);}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--rose);}
+  .form-group textarea{height:140px;resize:vertical;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .btn-submit{background:var(--rose);color:#fff;border:none;padding:15px 48px;font-size:.84rem;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:.3s;width:100%;margin-top:8px;letter-spacing:.1em;}
+  .btn-submit:hover{background:#b8806a;}
+  footer{background:var(--brown);padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.4);font-size:.7rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content h1{font-size:2rem;}
+    .sec{padding:48px 24px;} .contact-grid{grid-template-columns:1fr;gap:40px;}
+    .form-row{grid-template-columns:1fr;} footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">blanc wedding</a>
+  <ul>
+    <li><a href="plan.html">プラン</a></li>
+    <li><a href="gallery.html">実績</a></li>
+    <li><a href="about.html">こだわり</a></li>
+    <li><a href="about.html">スタッフ</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>FREE CONSULTATION</p>
+    <h1>Contact</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-label">CONTACT</p>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--brown);">無料ブライダル相談</h2>
+  <div class="rose-line"></div>
+  <div class="contact-grid">
+    <div>
+      <div class="info-note">お二人の大切な結婚式について、まずはお気軽にご相談ください。ご希望のスタイル・会場・日程など、どんなことでもお聞きします。相談は完全無料・完全個室対応です。</div>
+      <div class="feature-item">
+        <span class="feature-icon">💍</span>
+        <div class="feature-text"><h4>完全個室・プライベート相談</h4><p>他のカップルと鉢合わせない完全個室サロンでのご相談</p></div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">👰</span>
+        <div class="feature-text"><h4>専属プランナー担当制</h4><p>初回相談から当日まで同じプランナーがご担当します</p></div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">📅</span>
+        <div class="feature-text"><h4>希望日程に合わせた提案</h4><p>大安・友引・仏滅など日程のご希望にも柔軟対応</p></div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">💰</span>
+        <div class="feature-text"><h4>予算に合わせたプラン提案</h4><p>お二人の予算内で最大限素敵な式を実現します</p></div>
+      </div>
+    </div>
+    <div>
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label>お名前（代表者）</label>
+            <input type="text" placeholder="山田 花子">
+          </div>
+          <div class="form-group">
+            <label>電話番号</label>
+            <input type="tel" placeholder="090-XXXX-XXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>メールアドレス</label>
+          <input type="email" placeholder="example@email.com">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>ご希望の挙式スタイル</label>
+            <select>
+              <option>教会式（チャペル）</option>
+              <option>人前式</option>
+              <option>神前式</option>
+              <option>未定・相談したい</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ゲスト人数（概算）</label>
+            <select>
+              <option>〜20名（少人数）</option>
+              <option>21〜50名</option>
+              <option>51〜100名</option>
+              <option>101名以上</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>ご希望の挙式時期</label>
+          <select>
+            <option>3ヶ月以内</option>
+            <option>3〜6ヶ月以内</option>
+            <option>6ヶ月〜1年以内</option>
+            <option>1年以上先</option>
+            <option>まだ未定</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>相談希望日時（第1希望）</label>
+          <input type="datetime-local">
+        </div>
+        <div class="form-group">
+          <label>ご要望・ご質問</label>
+          <textarea placeholder="理想の結婚式のイメージや気になることをご自由にご記入ください。"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">無料相談を予約する</button>
+      </form>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 blanc wedding. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

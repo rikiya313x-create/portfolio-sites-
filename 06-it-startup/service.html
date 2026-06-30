@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サービス | NEXUS AI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--bg:#04060f;--purple:#7c3aed;--cyan:#06b6d4;--pink:#ec4899;--text:#e2e8f0;--muted:#64748b;--card:#0d1225;--border:rgba(124,58,237,.2);}
+  body{font-family:'Space Grotesk','Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  body::before{content:'';position:fixed;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.15),transparent 70%);top:-200px;left:-200px;pointer-events:none;z-index:0;}
+  body::after{content:'';position:fixed;width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,.1),transparent 70%);bottom:-200px;right:-200px;pointer-events:none;z-index:0;}
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(4,6,15,.9);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);}
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--purple),var(--cyan));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;}
+  .logo-text{font-size:.9rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:var(--muted);font-size:.75rem;letter-spacing:.08em;transition:.2s;}
+  nav ul a:hover{color:var(--text);}
+  .nav-cta{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff!important;padding:9px 22px;border-radius:6px;font-size:.75rem!important;}
+  .page-hero{min-height:360px;display:flex;align-items:center;padding:130px 80px 80px;position:relative;overflow:hidden;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.05) 1px,transparent 1px);background-size:60px 60px;}
+  .page-hero-content{position:relative;z-index:1;}
+  .page-badge{display:inline-block;background:rgba(124,58,237,.1);border:1px solid var(--border);color:var(--purple);font-size:.62rem;letter-spacing:.2em;padding:4px 12px;border-radius:100px;margin-bottom:16px;text-transform:uppercase;}
+  .page-hero h1{font-size:3rem;font-weight:700;line-height:1.1;}
+  .page-hero h1 span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sec{padding:80px;position:relative;z-index:1;}
+  .sec-badge{display:inline-block;background:rgba(124,58,237,.1);border:1px solid var(--border);color:var(--purple);font-size:.62rem;letter-spacing:.2em;padding:4px 12px;border-radius:100px;margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-size:2.2rem;font-weight:700;margin-bottom:12px;}
+  .sec-title span{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);margin-top:48px;}
+  .sc{background:var(--card);padding:44px 36px;transition:.3s;}
+  .sc:hover{background:#101828;}
+  .sc-icon{font-size:2rem;margin-bottom:16px;}
+  .sc-name{font-size:1.1rem;font-weight:600;margin-bottom:10px;}
+  .sc-text{color:var(--muted);font-size:.8rem;line-height:2;margin-bottom:16px;}
+  .sc-tag{display:inline-block;margin-right:6px;margin-top:4px;background:rgba(6,182,212,.1);color:var(--cyan);font-size:.62rem;padding:3px 10px;border-radius:4px;}
+  .sc-list{list-style:none;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
+  .sc-list li{font-size:.78rem;color:var(--muted);padding:6px 0;padding-left:16px;position:relative;}
+  .sc-list li::before{content:'▸';color:var(--cyan);position:absolute;left:0;}
+  footer{background:#020409;border-top:1px solid var(--border);padding:40px 80px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
+  footer p{color:var(--muted);font-size:.72rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero{padding:110px 24px 60px;} .page-hero h1{font-size:2rem;}
+    .sec{padding:48px 24px;} .service-grid{grid-template-columns:1fr;}
+    footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">N</div>
+    <span class="logo-text">NEXUS AI</span>
+  </a>
+  <ul>
+    <li><a href="service.html">サービス</a></li>
+    <li><a href="product.html">導入事例</a></li>
+    <li><a href="price.html">料金</a></li>
+    <li><a href="team.html">チーム</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html" class="nav-cta">無料トライアル</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="page-badge">SERVICE</div>
+    <h1>AIが変える、<span>ビジネスの未来</span></h1>
+  </div>
+</div>
+<div class="sec">
+  <div class="sec-badge">OUR SERVICES</div>
+  <div class="sec-title">全4つの<span>AIソリューション</span></div>
+  <p style="color:var(--muted);font-size:.85rem;line-height:2;max-width:600px;">業務プロセスをAIで自動化し、人間はより創造的な仕事に集中できる環境を実現します。</p>
+  <div class="service-grid">
+    <div class="sc">
+      <div class="sc-icon">🤖</div>
+      <div class="sc-name">AIチャットボット</div>
+      <p class="sc-text">24時間365日自動応答。顧客対応コストを最大70%削減しながら顧客満足度を向上させます。独自データで学習したカスタムAIを提供します。</p>
+      <span class="sc-tag">カスタマーサポート</span>
+      <span class="sc-tag">多言語対応</span>
+      <ul class="sc-list">
+        <li>自社データでの独自学習</li>
+        <li>有人チャットへのシームレスな引き継ぎ</li>
+        <li>多言語対応（12言語）</li>
+        <li>既存CRMとのAPI連携</li>
+      </ul>
+    </div>
+    <div class="sc">
+      <div class="sc-icon">📊</div>
+      <div class="sc-name">AIデータ分析</div>
+      <p class="sc-text">膨大なデータをリアルタイムで分析。売上予測・在庫最適化・顧客行動予測まで、意思決定をデータで支援します。</p>
+      <span class="sc-tag">予測分析</span>
+      <span class="sc-tag">BI連携</span>
+      <ul class="sc-list">
+        <li>売上・需要予測モデル</li>
+        <li>顧客チャーン予測</li>
+        <li>異常検知・リスクアラート</li>
+        <li>PowerBI / Tableau連携</li>
+      </ul>
+    </div>
+    <div class="sc">
+      <div class="sc-icon">⚡</div>
+      <div class="sc-name">業務自動化（RPA+AI）</div>
+      <p class="sc-text">単純繰り返し業務をAIロボットが代替。請求書処理・データ入力・レポート作成などを完全自動化します。</p>
+      <span class="sc-tag">ノーコード</span>
+      <span class="sc-tag">既存システム連携</span>
+      <ul class="sc-list">
+        <li>ノーコードで業務フロー設計</li>
+        <li>Excel / Google Sheets自動更新</li>
+        <li>メール・Slack自動送信</li>
+        <li>エラー検知・自動リトライ</li>
+      </ul>
+    </div>
+    <div class="sc">
+      <div class="sc-icon">✍️</div>
+      <div class="sc-name">AIコンテンツ生成</div>
+      <p class="sc-text">マーケティング記事・商品説明・SNS投稿を自動生成。ブランドトーンを学習した高品質コンテンツを大量生産します。</p>
+      <span class="sc-tag">SEO最適化</span>
+      <span class="sc-tag">多言語展開</span>
+      <ul class="sc-list">
+        <li>ブランドガイドライン学習</li>
+        <li>SEOキーワード自動最適化</li>
+        <li>画像生成・バナー自動制作</li>
+        <li>AB テスト自動実行</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 NEXUS AI Inc. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

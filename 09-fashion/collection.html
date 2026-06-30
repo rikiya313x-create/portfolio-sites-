@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COLLECTION | MONOCHROME</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0a0a0a;--white:#fafafa;--gray:#666;--lgray:#999;--border:#e8e8e8;--accent:#d4a847;--cream:#faf8f5;}
+  body{font-family:'Montserrat','Noto Sans JP',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+  a{text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .portfolio-note{background:#f5f0ea;border-left:3px solid var(--accent);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--lgray);}
+  .topbar{background:var(--black);color:rgba(255,255,255,.5);text-align:center;padding:8px;font-size:.68rem;letter-spacing:.2em;}
+  .topbar span{color:var(--accent);}
+  nav{position:fixed;top:34px;width:100%;z-index:100;background:var(--white);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid var(--border);}
+  .logo{font-size:1rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;}
+  nav ul{list-style:none;display:flex;gap:28px;}
+  nav ul a{color:var(--gray);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;transition:.2s;}
+  nav ul a:hover,nav ul a.active{color:var(--black);}
+  .nav-icons{display:flex;gap:16px;align-items:center;}
+  .nav-icon{color:var(--gray);font-size:.82rem;cursor:pointer;transition:.2s;}
+
+  /* ページヘッダー */
+  .page-hero{padding-top:98px;height:360px;background:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1400&q=80') center 30%/cover;position:relative;display:flex;align-items:center;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(10,10,10,.5);}
+  .page-hero-inner{position:relative;z-index:1;padding:0 80px;}
+  .page-label{font-size:.62rem;letter-spacing:.4em;color:var(--accent);margin-bottom:10px;text-transform:uppercase;}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--white);line-height:1.1;}
+
+  .breadcrumb{padding:20px 80px;background:var(--cream);border-bottom:1px solid var(--border);}
+  .breadcrumb a,.breadcrumb span{font-size:.65rem;letter-spacing:.1em;color:var(--lgray);text-transform:uppercase;}
+  .breadcrumb a:hover{color:var(--black);}
+  .breadcrumb span{color:var(--gray);}
+
+  /* フィルターバー */
+  .filter-bar{padding:24px 60px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+  .filter-tabs{display:flex;gap:0;}
+  .filter-tab{padding:10px 20px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--border);cursor:pointer;transition:.2s;background:transparent;font-family:'Montserrat',sans-serif;color:var(--gray);}
+  .filter-tab:not(:first-child){border-left:none;}
+  .filter-tab.active,.filter-tab:hover{background:var(--black);color:var(--white);border-color:var(--black);}
+  .filter-sort{display:flex;align-items:center;gap:12px;font-size:.65rem;color:var(--lgray);letter-spacing:.1em;}
+  .filter-sort select{border:1px solid var(--border);padding:8px 14px;font-size:.68rem;letter-spacing:.08em;background:transparent;font-family:'Montserrat',sans-serif;color:var(--gray);cursor:pointer;}
+
+  /* コレクション バナー */
+  .col-banner{display:grid;grid-template-columns:1fr 1fr;height:480px;margin-bottom:2px;}
+  .col-banner-item{position:relative;overflow:hidden;}
+  .col-banner-item img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+  .col-banner-item:hover img{transform:scale(1.04);}
+  .col-banner-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(10,10,10,.7));}
+  .col-banner-label{position:absolute;bottom:32px;left:32px;}
+  .col-banner-season{font-size:.6rem;letter-spacing:.3em;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:6px;}
+  .col-banner-name{font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fff;}
+  .col-banner-link{display:inline-block;margin-top:10px;font-size:.65rem;letter-spacing:.2em;color:#fff;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px;}
+
+  /* 商品グリッド */
+  .sec-header{padding:48px 60px 24px;display:flex;justify-content:space-between;align-items:flex-end;}
+  .sec-header-left p{font-size:.62rem;letter-spacing:.3em;color:var(--lgray);text-transform:uppercase;margin-bottom:6px;}
+  .sec-header-left h2{font-size:1.3rem;font-weight:700;letter-spacing:.05em;}
+  .view-all{font-size:.68rem;letter-spacing:.15em;color:var(--gray);text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;}
+
+  .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .pc{background:var(--white);cursor:pointer;}
+  .pc-img{height:340px;overflow:hidden;position:relative;}
+  .pc-img img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+  .pc:hover .pc-img img{transform:scale(1.04);}
+  .pc-tag{position:absolute;top:12px;left:12px;background:var(--black);color:var(--white);font-size:.6rem;letter-spacing:.1em;padding:3px 8px;text-transform:uppercase;}
+  .pc-tag.sale{background:var(--accent);}
+  .pc-tag.new{background:var(--black);}
+  .pc-tag.limited{background:#8a2be2;}
+  .pc-body{padding:16px 12px;}
+  .pc-brand{font-size:.62rem;letter-spacing:.15em;color:var(--lgray);margin-bottom:3px;text-transform:uppercase;}
+  .pc-name{font-size:.8rem;font-weight:600;margin-bottom:6px;letter-spacing:.05em;}
+  .pc-price{font-size:.82rem;color:var(--black);}
+  .pc-price s{color:var(--lgray);font-size:.72rem;margin-right:6px;}
+  .pc-colors{display:flex;gap:5px;margin-top:8px;}
+  .pc-color{width:12px;height:12px;border-radius:50%;}
+
+  /* ルックブック */
+  .lookbook{background:var(--black);padding:80px;}
+  .lookbook-inner{max-width:1200px;margin:0 auto;}
+  .lookbook-label{font-size:.62rem;letter-spacing:.35em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;}
+  .lookbook h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--white);margin-bottom:8px;}
+  .lookbook-sub{color:rgba(255,255,255,.4);font-size:.8rem;margin-bottom:40px;}
+  .lookbook-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2px;}
+  .lb{overflow:hidden;}
+  .lb img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+  .lb:hover img{transform:scale(1.04);}
+  .lb-main{height:480px;}
+  .lb-sub{height:238px;}
+
+  /* スタイリングガイド */
+  .styling-sec{padding:80px 60px;background:var(--cream);}
+  .styling-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+  .sg{position:relative;overflow:hidden;height:440px;}
+  .sg img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+  .sg:hover img{transform:scale(1.04);}
+  .sg-body{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(10,10,10,.75));}
+  .sg-theme{color:rgba(255,255,255,.6);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px;}
+  .sg-title{color:#fff;font-size:.82rem;font-weight:600;}
+
+  /* ニューアライバル - SALE */
+  .sale-banner{background:var(--accent);padding:20px 60px;display:flex;justify-content:space-between;align-items:center;}
+  .sale-banner h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--white);}
+  .sale-banner p{color:rgba(255,255,255,.8);font-size:.78rem;}
+  .btn-white-sm{display:inline-block;background:var(--white);color:var(--accent);padding:10px 24px;font-size:.68rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;}
+
+  /* サイズガイド */
+  .size-sec{padding:60px 80px;}
+  .size-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-top:32px;}
+  .size-table{border-collapse:collapse;width:100%;}
+  .size-table th{background:var(--black);color:var(--white);font-size:.65rem;letter-spacing:.15em;padding:10px 14px;text-transform:uppercase;text-align:left;}
+  .size-table td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:.75rem;color:var(--gray);}
+  .size-table td:first-child{font-weight:700;color:var(--black);}
+
+  /* ページネーション */
+  .pagination{padding:48px 0;display:flex;justify-content:center;gap:4px;}
+  .pg-btn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);font-size:.72rem;cursor:pointer;transition:.2s;}
+  .pg-btn.active{background:var(--black);color:var(--white);border-color:var(--black);}
+  .pg-btn:hover:not(.active){border-color:var(--black);}
+
+  footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:48px 80px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;}
+  .f-logo{font-size:.9rem;font-weight:700;letter-spacing:.25em;color:rgba(255,255,255,.3);margin-bottom:12px;}
+  .f-text{color:rgba(255,255,255,.2);font-size:.72rem;line-height:1.9;}
+  .f-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .f-links a{color:rgba(255,255,255,.3);font-size:.72rem;letter-spacing:.1em;transition:.2s;}
+  .f-links a:hover{color:var(--accent);}
+  .f-copy{border-top:1px solid rgba(255,255,255,.05);margin-top:32px;padding-top:20px;color:rgba(255,255,255,.2);font-size:.65rem;text-align:center;grid-column:1/4;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}nav ul{gap:14px;}
+    .page-hero-inner{padding:0 24px;}.page-title{font-size:2.5rem;}
+    .breadcrumb,.filter-bar{padding:16px 20px;}
+    .filter-tabs{flex-wrap:wrap;}
+    .col-banner{grid-template-columns:1fr;height:auto;}
+    .col-banner-item{height:260px;}
+    .products-grid{grid-template-columns:repeat(2,1fr);}
+    .sec-header{padding:32px 20px 16px;flex-direction:column;align-items:flex-start;gap:8px;}
+    .lookbook{padding:40px 20px;}
+    .lookbook-grid{grid-template-columns:1fr;}
+    .lb-main,.lb-sub{height:240px;}
+    .styling-sec{padding:40px 20px;}
+    .styling-grid{grid-template-columns:1fr;}
+    .sg{height:280px;}
+    .sale-banner{flex-direction:column;gap:12px;padding:24px;}
+    .size-sec{padding:40px 20px;}
+    .size-grid{grid-template-columns:1fr;}
+    footer{grid-template-columns:1fr;gap:28px;}
+    .f-copy{grid-column:1;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のセレクトショップサイトです。実在するブランド・店舗とは一切関係ありません。</div>
+<div class="topbar">NEW ARRIVAL — 2024 AUTUMN/WINTER COLLECTION <span>NOW IN STORE</span></div>
+<nav>
+  <div class="logo"><a href="index.html" style="color:var(--black);text-decoration:none;">MONOCHROME</a></div>
+  <ul>
+    <li><a href="collection.html" class="active">COLLECTION</a></li>
+    <li><a href="brands.html">BRANDS</a></li>
+    <li><a href="news.html">NEWS</a></li>
+    <li><a href="stores.html">STORES</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+  <div class="nav-icons">
+    <span class="nav-icon">🔍</span>
+    <span class="nav-icon">♡</span>
+    <span class="nav-icon">🛒</span>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">2024 A/W</p>
+    <h1 class="page-title">Collection</h1>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">HOME</a>
+  <span> &nbsp;/&nbsp; </span>
+  <span>COLLECTION</span>
+</div>
+
+<!-- フィルターバー -->
+<div class="filter-bar">
+  <div class="filter-tabs">
+    <button class="filter-tab active">ALL</button>
+    <button class="filter-tab">WOMEN</button>
+    <button class="filter-tab">MEN</button>
+    <button class="filter-tab">ACCESSORIES</button>
+    <button class="filter-tab">SHOES</button>
+    <button class="filter-tab">SALE</button>
+  </div>
+  <div class="filter-sort">
+    <span>SORT</span>
+    <select>
+      <option>NEW ARRIVAL</option>
+      <option>PRICE: LOW TO HIGH</option>
+      <option>PRICE: HIGH TO LOW</option>
+      <option>BRAND</option>
+    </select>
+    <span>482 ITEMS</span>
+  </div>
+</div>
+
+<!-- コレクションバナー -->
+<div class="col-banner">
+  <div class="col-banner-item">
+    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=80" alt="WOMEN A/W 2024">
+    <div class="col-banner-overlay"></div>
+    <div class="col-banner-label">
+      <p class="col-banner-season">2024 Autumn / Winter</p>
+      <h2 class="col-banner-name">WOMEN'S<br>COLLECTION</h2>
+      <span class="col-banner-link">SHOP NOW →</span>
+    </div>
+  </div>
+  <div class="col-banner-item">
+    <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=800&q=80" alt="MEN A/W 2024">
+    <div class="col-banner-overlay"></div>
+    <div class="col-banner-label">
+      <p class="col-banner-season">2024 Autumn / Winter</p>
+      <h2 class="col-banner-name">MEN'S<br>COLLECTION</h2>
+      <span class="col-banner-link">SHOP NOW →</span>
+    </div>
+  </div>
+</div>
+
+<!-- SALE バナー -->
+<div class="sale-banner">
+  <div>
+    <h3>AUTUMN SALE — UP TO 40% OFF</h3>
+    <p>選りすぐりのアイテムを特別価格でご提供。期間限定・数量限定。</p>
+  </div>
+  <a href="#sale-section" class="btn-white-sm">SALE を見る</a>
+</div>
+
+<!-- 新着アイテム -->
+<div class="sec-header">
+  <div class="sec-header-left">
+    <p>New Arrival</p>
+    <h2>新着アイテム</h2>
+  </div>
+  <a href="#" class="view-all">View All (48)</a>
+</div>
+<div class="products-grid">
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&q=80" alt="コート">
+      <span class="pc-tag new">NEW</span>
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Aesther Ekme</p>
+      <p class="pc-name">ウールカシミアロングコート</p>
+      <p class="pc-price">¥68,000</p>
+      <div class="pc-colors">
+        <div class="pc-color" style="background:#0a0a0a;border:1px solid #ccc;"></div>
+        <div class="pc-color" style="background:#c8b88a;"></div>
+        <div class="pc-color" style="background:#5a6a5a;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4f5b?w=500&q=80" alt="ニット">
+      <span class="pc-tag new">NEW</span>
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Studio Nicholson</p>
+      <p class="pc-name">リブニットプルオーバー</p>
+      <p class="pc-price">¥32,000</p>
+      <div class="pc-colors">
+        <div class="pc-color" style="background:#fafafa;border:1px solid #ccc;"></div>
+        <div class="pc-color" style="background:#0a0a0a;border:1px solid #ccc;"></div>
+        <div class="pc-color" style="background:#8a7a6a;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1622219809260-8f03e5a8dae8?w=500&q=80" alt="バッグ">
+      <span class="pc-tag new">NEW</span>
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Toteme</p>
+      <p class="pc-name">スモールトートバッグ</p>
+      <p class="pc-price">¥54,000</p>
+      <div class="pc-colors">
+        <div class="pc-color" style="background:#c8a87a;"></div>
+        <div class="pc-color" style="background:#0a0a0a;border:1px solid #ccc;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&q=80" alt="バッグ2">
+      <span class="pc-tag new">NEW</span>
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">The Row</p>
+      <p class="pc-name">ミニバッグレザー</p>
+      <p class="pc-price">¥88,000</p>
+      <div class="pc-colors">
+        <div class="pc-color" style="background:#d4b89a;"></div>
+        <div class="pc-color" style="background:#0a0a0a;border:1px solid #ccc;"></div>
+        <div class="pc-color" style="background:#8a6a4a;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ルックブック -->
+<div class="lookbook">
+  <div class="lookbook-inner">
+    <p class="lookbook-label">Lookbook</p>
+    <h2>2024 A/W Lookbook</h2>
+    <p class="lookbook-sub">モノクロームが提案する今季のスタイリング。</p>
+    <div class="lookbook-grid">
+      <div class="lb lb-main">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=80" alt="Look 1">
+      </div>
+      <div>
+        <div class="lb lb-sub" style="margin-bottom:2px;">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80" alt="Look 2">
+        </div>
+        <div class="lb lb-sub">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&q=80" alt="Look 3">
+        </div>
+      </div>
+      <div>
+        <div class="lb lb-sub" style="margin-bottom:2px;">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Look 4">
+        </div>
+        <div class="lb lb-sub">
+          <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=500&q=80" alt="Look 5">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ウィメンズ -->
+<div class="sec-header" id="women-section">
+  <div class="sec-header-left">
+    <p>Women's</p>
+    <h2>ウィメンズ</h2>
+  </div>
+  <a href="#" class="view-all">View All (187)</a>
+</div>
+<div class="products-grid">
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1542295669297-4d352b042bca?w=500&q=80" alt="パンツ">
+      <span class="pc-tag sale">SALE</span>
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Lemaire</p>
+      <p class="pc-name">ツイードテーパードパンツ</p>
+      <p class="pc-price"><s>¥48,000</s> ¥32,000</p>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=500&q=80" alt="ブラウス">
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Arket</p>
+      <p class="pc-name">シルクサテンブラウス</p>
+      <p class="pc-price">¥28,000</p>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1576185850227-1f72b7f8d483?w=500&q=80" alt="ドレス">
+      <span class="pc-tag limited">LIMITED</span>
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Toteme</p>
+      <p class="pc-name">ウールジャージードレス</p>
+      <p class="pc-price">¥52,000</p>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1559622214-f8a9850965bb?w=500&q=80" alt="スカート">
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Aesther Ekme</p>
+      <p class="pc-name">ミディスカート クレープ</p>
+      <p class="pc-price">¥36,000</p>
+    </div>
+  </div>
+</div>
+
+<!-- メンズ -->
+<div class="sec-header" id="men-section">
+  <div class="sec-header-left">
+    <p>Men's</p>
+    <h2>メンズ</h2>
+  </div>
+  <a href="#" class="view-all">View All (142)</a>
+</div>
+<div class="products-grid">
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=500&q=80" alt="ジャケット">
+      <span class="pc-tag new">NEW</span>
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Studio Nicholson</p>
+      <p class="pc-name">ダブルウールジャケット</p>
+      <p class="pc-price">¥78,000</p>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1584865288642-42078afe6942?w=500&q=80" alt="シャツ">
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Lemaire</p>
+      <p class="pc-name">ストライプオックスフォードシャツ</p>
+      <p class="pc-price">¥28,000</p>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=500&q=80" alt="パンツ">
+      <span class="pc-tag sale">SALE</span>
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Arket</p>
+      <p class="pc-name">テーパードチノパンツ</p>
+      <p class="pc-price"><s>¥24,000</s> ¥16,000</p>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1560343776-97e7d202ff0e?w=500&q=80" alt="コート">
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">The Row</p>
+      <p class="pc-name">カシミアチェスターコート</p>
+      <p class="pc-price">¥148,000</p>
+    </div>
+  </div>
+</div>
+
+<!-- アクセサリー -->
+<div class="sec-header" id="accessories-section">
+  <div class="sec-header-left">
+    <p>Accessories</p>
+    <h2>アクセサリー</h2>
+  </div>
+  <a href="#" class="view-all">View All (89)</a>
+</div>
+<div class="products-grid">
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&q=80" alt="バッグ">
+      <span class="pc-tag new">NEW</span>
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Toteme</p>
+      <p class="pc-name">レザーバケットバッグ</p>
+      <p class="pc-price">¥62,000</p>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&q=80" alt="サングラス">
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Celine</p>
+      <p class="pc-name">オーバーサイズサングラス</p>
+      <p class="pc-price">¥44,000</p>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80" alt="スカーフ">
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Lemaire</p>
+      <p class="pc-name">カシミアストール</p>
+      <p class="pc-price">¥32,000</p>
+    </div>
+  </div>
+  <div class="pc">
+    <div class="pc-img">
+      <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=500&q=80" alt="ベルト">
+      <span class="pc-tag sale">SALE</span>
+    </div>
+    <div class="pc-body">
+      <p class="pc-brand">Aesther Ekme</p>
+      <p class="pc-name">レザーベルト スリム</p>
+      <p class="pc-price"><s>¥18,000</s> ¥12,000</p>
+    </div>
+  </div>
+</div>
+
+<!-- スタイリングガイド -->
+<div class="styling-sec">
+  <p style="font-size:.62rem;letter-spacing:.35em;color:var(--lgray);text-transform:uppercase;margin-bottom:6px;">Styling Guide</p>
+  <h2 style="font-size:1.3rem;font-weight:700;">今季おすすめコーディネート</h2>
+  <div class="styling-grid">
+    <div class="sg">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Style1">
+      <div class="sg-body">
+        <p class="sg-theme">All Day Casual</p>
+        <p class="sg-title">ニュートラルトーンのデイリーコーデ</p>
+      </div>
+    </div>
+    <div class="sg">
+      <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80" alt="Style2">
+      <div class="sg-body">
+        <p class="sg-theme">Office Minimal</p>
+        <p class="sg-title">シャープなラインで魅せるオフィスルック</p>
+      </div>
+    </div>
+    <div class="sg">
+      <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Style3">
+      <div class="sg-body">
+        <p class="sg-theme">Weekend Chic</p>
+        <p class="sg-title">リラックスしながらも洗練されたスタイル</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- サイズガイド -->
+<div class="size-sec">
+  <p style="font-size:.62rem;letter-spacing:.35em;color:var(--lgray);text-transform:uppercase;margin-bottom:6px;">Size Guide</p>
+  <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:8px;">サイズガイド</h2>
+  <p style="font-size:.78rem;color:var(--gray);margin-bottom:24px;">ブランドによってサイズ感が異なります。ご不明な点はスタッフにお気軽にご相談ください。</p>
+  <div class="size-grid">
+    <table class="size-table">
+      <thead><tr><th>日本サイズ</th><th>XS</th><th>S</th><th>M</th><th>L</th></tr></thead>
+      <tbody>
+        <tr><td>胸囲</td><td>78-82</td><td>82-86</td><td>86-90</td><td>90-96</td></tr>
+        <tr><td>ウエスト</td><td>60-64</td><td>64-68</td><td>68-72</td><td>72-78</td></tr>
+        <tr><td>ヒップ</td><td>84-88</td><td>88-92</td><td>92-96</td><td>96-102</td></tr>
+      </tbody>
+    </table>
+    <table class="size-table">
+      <thead><tr><th>欧州サイズ</th><th>34</th><th>36</th><th>38</th><th>40</th></tr></thead>
+      <tbody>
+        <tr><td>日本換算</td><td>XS/5号</td><td>S/7号</td><td>M/9号</td><td>L/11号</td></tr>
+        <tr><td>胸囲目安</td><td>78-82</td><td>82-86</td><td>86-90</td><td>90-96</td></tr>
+        <tr><td>ウエスト</td><td>60-64</td><td>64-68</td><td>68-72</td><td>72-78</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ページネーション -->
+<div class="pagination">
+  <div class="pg-btn active">1</div>
+  <div class="pg-btn">2</div>
+  <div class="pg-btn">3</div>
+  <div class="pg-btn">4</div>
+  <div class="pg-btn">5</div>
+  <div class="pg-btn">→</div>
+</div>
+
+<footer>
+  <div>
+    <div class="f-logo">MONOCHROME</div>
+    <p class="f-text">東京都渋谷区代官山町XX-X<br>Tel: 03-XXXX-XXXX<br>Open: 11:00〜20:00（火曜定休）</p>
+  </div>
+  <div>
+    <p style="font-size:.62rem;letter-spacing:.2em;color:rgba(255,255,255,.2);margin-bottom:10px;text-transform:uppercase;">Links</p>
+    <ul class="f-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="stores.html">Stores</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="brands.html">Brands</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <p style="font-size:.62rem;letter-spacing:.2em;color:rgba(255,255,255,.2);margin-bottom:10px;text-transform:uppercase;">Follow</p>
+    <ul class="f-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Pinterest</a></li>
+      <li><a href="#">Twitter</a></li>
+    </ul>
+  </div>
+  <div class="f-copy">© 2024 MONOCHROME. All Rights Reserved.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ウェディングプラン | blanc wedding 神戸</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--blush:#f2e8e0;--rose:#c9927a;--gold:#c4a882;--ivory:#faf8f5;--brown:#5c3d2e;--gray:#9a8a80;--border:#e8ddd4;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--ivory);color:var(--brown);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#fdf5f0;border-left:3px solid var(--gold);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--gray);}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:76px;background:rgba(250,248,245,.96);border-bottom:1px solid rgba(196,168,130,.3);backdrop-filter:blur(8px);}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:.12em;color:var(--brown);font-style:italic;}
+  .logo span{color:var(--gold);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--gray);font-size:.75rem;letter-spacing:.15em;transition:.2s;}
+  nav ul a:hover{color:var(--rose);}
+  .nav-cta{background:var(--rose);color:#fff!important;padding:10px 22px;font-size:.72rem!important;letter-spacing:.1em;}
+
+  /* HERO */
+  .page-hero{position:relative;height:460px;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:76px;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1464699908537-0954e50791ee?w=1200&q=80') center/cover;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(92,61,46,.6);}
+  .page-hero-inner{position:relative;z-index:1;}
+  .page-hero-tag{color:var(--gold);font-size:.62rem;letter-spacing:.5em;margin-bottom:14px;display:block;}
+  .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:3.4rem;color:#fff;font-weight:600;line-height:1.2;margin-bottom:10px;}
+  .page-hero-sub{color:rgba(255,255,255,.7);font-size:.84rem;letter-spacing:.1em;}
+
+  /* 共通 */
+  .sec{padding:90px 80px;}
+  .sec-tag{color:var(--gold);font-size:.62rem;letter-spacing:.35em;text-align:center;margin-bottom:8px;}
+  .sec-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;text-align:center;color:var(--brown);margin-bottom:8px;line-height:1.3;}
+  .sec-sub{text-align:center;color:var(--gray);font-size:.82rem;line-height:2;margin-bottom:48px;}
+  .divider{width:32px;height:1px;background:var(--gold);margin:12px auto 18px;}
+  .btn-rose{display:inline-block;background:var(--rose);color:#fff;padding:15px 40px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-rose:hover{background:#b8806a;transform:translateY(-2px);}
+  .btn-outline{display:inline-block;border:1px solid var(--gold);color:var(--brown);padding:15px 36px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-outline:hover{background:var(--gold);color:#fff;}
+
+  /* プラン */
+  .plan-detail{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:4px;background:var(--border);}
+  .plan-detail.reverse .pd-img{order:2;}
+  .plan-detail.reverse .pd-info{order:1;}
+  .pd-img{overflow:hidden;}
+  .pd-img img{width:100%;height:100%;object-fit:cover;min-height:500px;transition:.5s;}
+  .pd-img:hover img{transform:scale(1.04);}
+  .pd-info{background:var(--ivory);padding:64px 52px;display:flex;flex-direction:column;justify-content:center;}
+  .pd-tag{color:var(--gold);font-size:.62rem;letter-spacing:.35em;margin-bottom:10px;display:block;}
+  .pd-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--brown);margin-bottom:6px;}
+  .pd-price{color:var(--rose);font-size:1.4rem;font-weight:700;margin-bottom:6px;}
+  .pd-price-note{color:var(--gray);font-size:.72rem;margin-bottom:20px;}
+  .pd-desc{color:var(--gray);font-size:.82rem;line-height:2.1;margin-bottom:24px;}
+  .pd-badge{display:inline-block;background:var(--rose);color:#fff;font-size:.65rem;letter-spacing:.1em;padding:4px 12px;margin-bottom:20px;}
+  .pd-meta{display:flex;gap:24px;margin-bottom:24px;}
+  .pd-meta-item{}
+  .pd-meta-label{color:var(--gold);font-size:.62rem;letter-spacing:.15em;display:block;margin-bottom:3px;}
+  .pd-meta-value{color:var(--brown);font-size:.78rem;font-weight:700;}
+  .pd-items{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:28px;}
+  .pci{display:flex;gap:8px;font-size:.75rem;color:var(--gray);align-items:flex-start;}
+  .pci::before{content:'✓';color:var(--rose);flex-shrink:0;font-weight:700;}
+  .pd-recommend{background:var(--blush);padding:14px 18px;font-size:.76rem;color:var(--gray);line-height:1.8;margin-bottom:24px;}
+  .pd-recommend strong{color:var(--brown);display:block;margin-bottom:4px;font-size:.7rem;letter-spacing:.1em;}
+
+  /* オプション */
+  .option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto;}
+  .oc{background:#fff;padding:28px 24px;border:1px solid var(--border);text-align:center;}
+  .oc-icon{font-size:1.8rem;margin-bottom:10px;}
+  .oc-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--brown);font-weight:600;margin-bottom:6px;}
+  .oc-price{color:var(--rose);font-size:.94rem;font-weight:700;margin-bottom:8px;}
+  .oc-desc{color:var(--gray);font-size:.74rem;line-height:1.85;}
+
+  /* ステップ */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;max-width:1000px;margin:0 auto;}
+  .steps::before{content:'';position:absolute;top:32px;left:10%;width:80%;height:1px;background:var(--border);}
+  .step{text-align:center;padding:0 12px;position:relative;}
+  .step-num{width:64px;height:64px;border-radius:50%;background:var(--rose);color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative;z-index:1;}
+  .step-title{font-size:.8rem;font-weight:700;color:var(--brown);margin-bottom:8px;}
+  .step-desc{color:var(--gray);font-size:.72rem;line-height:1.85;}
+
+  /* FAQ */
+  .faq-list{max-width:780px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);padding:22px 0;}
+  .faq-q{display:flex;gap:14px;font-size:.86rem;font-weight:700;color:var(--brown);margin-bottom:10px;cursor:pointer;}
+  .fq-i{color:var(--rose);font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;flex-shrink:0;}
+  .faq-a{color:var(--gray);font-size:.8rem;line-height:1.95;padding-left:26px;}
+
+  /* CTA */
+  .cta-sec{background:url('https://images.unsplash.com/photo-1464699908537-0954e50791ee?w=1200&q=80') center/cover;position:relative;padding:100px 80px;text-align:center;}
+  .cta-sec::before{content:'';position:absolute;inset:0;background:rgba(92,61,46,.55);}
+  .cta-inner{position:relative;z-index:1;}
+  .cta-title{font-family:'Cormorant Garamond',serif;font-size:3rem;color:#fff;font-weight:600;margin-bottom:12px;line-height:1.3;}
+  .cta-sub{color:rgba(255,255,255,.7);font-size:.84rem;margin-bottom:28px;}
+  .btn-white{display:inline-block;background:#fff;color:var(--brown);padding:16px 48px;font-size:.82rem;letter-spacing:.15em;font-weight:700;transition:.3s;}
+  .btn-white:hover{background:var(--blush);}
+
+  footer{background:var(--brown);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:rgba(255,255,255,.7);font-style:italic;letter-spacing:.1em;}
+  .footer-logo span{color:var(--gold);}
+  footer p{color:rgba(255,255,255,.3);font-size:.7rem;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .sec{padding:60px 24px;}
+    .page-hero h1{font-size:2.2rem;}
+    .plan-detail{grid-template-columns:1fr;}
+    .plan-detail.reverse .pd-img{order:0;}
+    .plan-detail.reverse .pd-info{order:0;}
+    .pd-img img{min-height:250px;}
+    .pd-info{padding:36px 24px;}
+    .pd-items{grid-template-columns:1fr;}
+    .option-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;gap:24px;}
+    .steps::before{display:none;}
+    footer{flex-direction:column;gap:10px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のウェディングプランナーサイトです。実在する会社・人物とは一切関係ありません。</div>
+
+<nav>
+  <div class="logo"><a href="index.html" style="color:inherit;"><span>blanc</span> wedding</a></div>
+  <ul>
+    <li><a href="plan.html">プラン</a></li>
+    <li><a href="gallery.html">実績</a></li>
+    <li><a href="about.html">こだわり</a></li>
+    <li><a href="voice.html">スタッフ</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-tag">WEDDING PLANS</span>
+    <h1>ウェディングプラン</h1>
+    <p class="page-hero-sub">おふたりのご希望に合わせて、すべてカスタマイズできます</p>
+  </div>
+</div>
+
+<!-- プラン一覧 -->
+<section class="sec">
+  <p class="sec-tag">PLAN</p>
+  <h2 class="sec-title">3つのプランから選べます</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">すべてのプランは専属プランナーがおふたりのご希望に合わせてカスタマイズします<br>記載の金額はベースプライス。オプションで自由に追加できます</p>
+</section>
+
+<!-- PLAN 1 シンプル -->
+<div class="plan-detail">
+  <div class="pd-img">
+    <img src="https://images.unsplash.com/photo-1550005809-91ad75fb315f?w=800&q=80" alt="シンプルプラン">
+  </div>
+  <div class="pd-info">
+    <span class="pd-tag">PLAN 01</span>
+    <h2 class="pd-name">シンプルプラン</h2>
+    <p class="pd-price">¥300,000〜</p>
+    <p class="pd-price-note">※税別 / 20名の場合のモデル価格</p>
+    <p class="pd-desc">少人数・ファミリー婚・フォトウェディングに最適なプランです。大切な家族や親しい友人と、アットホームな雰囲気でゲスト全員と丁寧な時間を過ごせます。コンパクトながら、blanc weddingのこだわりをすべて詰め込みました。</p>
+    <div class="pd-meta">
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">GUEST</span>
+        <span class="pd-meta-value">〜20名</span>
+      </div>
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">DURATION</span>
+        <span class="pd-meta-value">3時間〜</span>
+      </div>
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">PLANNER</span>
+        <span class="pd-meta-value">専属1名</span>
+      </div>
+    </div>
+    <div class="pd-recommend">
+      <strong>こんな方におすすめ</strong>
+      少人数・ファミリー婚 / フォトウェディング / ご自身のペースで準備したい方 / 費用をコンパクトに抑えたい方
+    </div>
+    <div class="pd-items">
+      <div class="pci">初回〜当日まで専属プランナー</div>
+      <div class="pci">会場コーディネート</div>
+      <div class="pci">ブライダルブーケ</div>
+      <div class="pci">テーブル装花（季節の生花）</div>
+      <div class="pci">ヘアメイク1回</div>
+      <div class="pci">写真データ100枚</div>
+      <div class="pci">招待状デザイン提案</div>
+      <div class="pci">料理・ドリンクコース</div>
+      <div class="pci">席次表・席札デザイン</div>
+      <div class="pci">BGMプランニング</div>
+      <div class="pci">当日タイムライン管理</div>
+      <div class="pci">打ち合わせ無制限</div>
+    </div>
+    <a href="contact.html" class="btn-rose">このプランで相談する</a>
+  </div>
+</div>
+
+<!-- PLAN 2 スタンダード -->
+<div class="plan-detail reverse">
+  <div class="pd-info">
+    <span class="pd-tag">PLAN 02</span>
+    <div class="pd-badge">最人気プラン</div>
+    <h2 class="pd-name">スタンダードプラン</h2>
+    <p class="pd-price">¥650,000〜</p>
+    <p class="pd-price-note">※税別 / 40名の場合のモデル価格</p>
+    <p class="pd-desc">blanc weddingで最も選ばれているプランです。演出・フード・装花すべてをトータルコーディネート。専属プランナーが披露宴の時間を一本のドラマのように設計し、ゲスト全員が感動できる演出を作り上げます。ウェディングのイメージが固まっていなくても、打ち合わせの中で一緒に作り上げていきます。</p>
+    <div class="pd-meta">
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">GUEST</span>
+        <span class="pd-meta-value">20〜60名</span>
+      </div>
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">DURATION</span>
+        <span class="pd-meta-value">5時間〜</span>
+      </div>
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">PLANNER</span>
+        <span class="pd-meta-value">専属1名</span>
+      </div>
+    </div>
+    <div class="pd-recommend">
+      <strong>こんな方におすすめ</strong>
+      披露宴をしっかり演出したい方 / ゲストへのおもてなしを大切にしたい方 / 初めてのウェディングで何から始めればよいかわからない方
+    </div>
+    <div class="pd-items">
+      <div class="pci">初回〜当日まで専属プランナー</div>
+      <div class="pci">会場フルコーディネート</div>
+      <div class="pci">ブライダルブーケ＆装花一式</div>
+      <div class="pci">フルコース料理</div>
+      <div class="pci">フリードリンク</div>
+      <div class="pci">ヘアメイク2回転換</div>
+      <div class="pci">写真データ300枚</div>
+      <div class="pci">オープニングムービー制作</div>
+      <div class="pci">エンドロールムービー制作</div>
+      <div class="pci">プロフィールムービー制作</div>
+      <div class="pci">招待状・席次表一式デザイン</div>
+      <div class="pci">ウェルカムボードデザイン</div>
+      <div class="pci">BGM・照明プランニング</div>
+      <div class="pci">司会者手配</div>
+      <div class="pci">当日全スタッフ同行</div>
+      <div class="pci">打ち合わせ無制限</div>
+    </div>
+    <a href="contact.html" class="btn-rose">このプランで相談する</a>
+  </div>
+  <div class="pd-img">
+    <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&q=80" alt="スタンダードプラン">
+  </div>
+</div>
+
+<!-- PLAN 3 プレミアム -->
+<div class="plan-detail">
+  <div class="pd-img">
+    <img src="https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=800&q=80" alt="プレミアムプラン">
+  </div>
+  <div class="pd-info">
+    <span class="pd-tag">PLAN 03</span>
+    <h2 class="pd-name">プレミアムプラン</h2>
+    <p class="pd-price">¥1,200,000〜</p>
+    <p class="pd-price-note">※税別 / 完全ビスポーク / ゲスト人数による</p>
+    <p class="pd-desc">すべてが完全オーダーメイドの最高峰プランです。ドレス・タキシード手配から会場の選定・演出・料理のメニューまで、一切の妥協なくデザインします。専属プランナーが何度でも打ち合わせを重ね、「このためだけに存在する結婚式」を作り上げます。神戸の最上のロケーションとおふたりの想いが融合した、唯一無二の一日のために。</p>
+    <div class="pd-meta">
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">GUEST</span>
+        <span class="pd-meta-value">人数不問</span>
+      </div>
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">DURATION</span>
+        <span class="pd-meta-value">完全設計</span>
+      </div>
+      <div class="pd-meta-item">
+        <span class="pd-meta-label">PLANNER</span>
+        <span class="pd-meta-value">チーフ専属</span>
+      </div>
+    </div>
+    <div class="pd-recommend">
+      <strong>こんな方におすすめ</strong>
+      とにかく最高の一日にしたい方 / ドレスからフードまですべてにこだわりたい方 / 特別なロケーションで挙式したい方 / ゲストを完全に驚かせたい方
+    </div>
+    <div class="pd-items">
+      <div class="pci">チーフプランナー山本が専属担当</div>
+      <div class="pci">会場選定から完全プロデュース</div>
+      <div class="pci">ドレス・タキシード手配</div>
+      <div class="pci">完全オーダーブーケ＆装花</div>
+      <div class="pci">プロカメラマン終日同行</div>
+      <div class="pci">シネマティック映像制作</div>
+      <div class="pci">料理完全フルカスタム</div>
+      <div class="pci">ヘアメイク無制限転換</div>
+      <div class="pci">引き出物手配・ラッピング</div>
+      <div class="pci">プレゼンテーション映像制作</div>
+      <div class="pci">生演奏コーディネート</div>
+      <div class="pci">ゲスト宿泊手配サポート</div>
+      <div class="pci">前撮り・ロケーション撮影</div>
+      <div class="pci">ウェディングケーキ完全オーダー</div>
+      <div class="pci">サンキューカードデザイン一式</div>
+      <div class="pci">挙式後アフターフォロー1年</div>
+      <div class="pci">打ち合わせ無制限</div>
+      <div class="pci">当日全スタッフ総動員</div>
+      <div class="pci">記念日フォローサービス</div>
+      <div class="pci">VIPラウンジ控室手配</div>
+    </div>
+    <a href="contact.html" class="btn-rose">このプランで相談する</a>
+  </div>
+</div>
+
+<!-- オプション -->
+<section class="sec" style="background:var(--blush);">
+  <p class="sec-tag">OPTIONS</p>
+  <h2 class="sec-title">オプション一覧</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">各プランに自由に追加できるオプションをご用意しています<br>ご要望に応じてカスタマイズが可能です</p>
+
+  <div class="option-grid">
+    <div class="oc">
+      <div class="oc-icon">🎥</div>
+      <h3 class="oc-name">ビデオ撮影</h3>
+      <p class="oc-price">¥80,000〜</p>
+      <p class="oc-desc">プロのビデオグラファーが挙式・披露宴全体を撮影。シネマティックな仕上がりで一生の宝物になる映像をお届けします。</p>
+    </div>
+    <div class="oc">
+      <div class="oc-icon">📸</div>
+      <h3 class="oc-name">プロカメラマン</h3>
+      <p class="oc-price">¥60,000〜</p>
+      <p class="oc-desc">経験豊富なウェディングフォトグラファーが終日同行。自然光を活かした美しい写真を300枚以上お届けします。</p>
+    </div>
+    <div class="oc">
+      <div class="oc-icon">🎁</div>
+      <h3 class="oc-name">引き出物手配</h3>
+      <p class="oc-price">¥3,000/人〜</p>
+      <p class="oc-desc">神戸の銘品・こだわりの逸品を厳選した引き出物をご提案。包装・のし対応まで全て承ります。</p>
+    </div>
+    <div class="oc">
+      <div class="oc-icon">🎈</div>
+      <h3 class="oc-name">バルーンリリース</h3>
+      <p class="oc-price">¥20,000〜</p>
+      <p class="oc-desc">挙式後にゲスト全員でバルーンを空に放つ感動的な演出。神戸の青空に舞い上がるバルーンが一生の記念になります。</p>
+    </div>
+    <div class="oc">
+      <div class="oc-icon">🎻</div>
+      <h3 class="oc-name">生演奏</h3>
+      <p class="oc-price">¥50,000〜</p>
+      <p class="oc-desc">ヴァイオリン・ピアノ・アコーディオンなど、ご希望の楽器で生演奏をご提供。入場曲・食事中のBGMなどシーンに合わせてアレンジします。</p>
+    </div>
+    <div class="oc">
+      <div class="oc-icon">💐</div>
+      <h3 class="oc-name">追加ブーケ</h3>
+      <p class="oc-price">¥15,000〜</p>
+      <p class="oc-desc">ブーケトスや前撮り用の追加ブーケをご用意します。メインブーケと同素材で制作し、統一感のある仕上がりにします。</p>
+    </div>
+    <div class="oc">
+      <div class="oc-icon">🎂</div>
+      <h3 class="oc-name">オーダーケーキ</h3>
+      <p class="oc-price">¥35,000〜</p>
+      <p class="oc-desc">パティシエによる完全オーダーメイドのウェディングケーキ。味・デザイン・サイズすべてをご要望通りに制作します。</p>
+    </div>
+    <div class="oc">
+      <div class="oc-icon">🌙</div>
+      <h3 class="oc-name">ナイトウェディング演出</h3>
+      <p class="oc-price">¥40,000〜</p>
+      <p class="oc-desc">キャンドルライトやLED演出で神戸の夜を彩る特別な演出プラン。ゲストの心に残る幻想的な夜のウェディングを実現します。</p>
+    </div>
+    <div class="oc">
+      <div class="oc-icon">🚗</div>
+      <h3 class="oc-name">送迎車手配</h3>
+      <p class="oc-price">¥25,000〜</p>
+      <p class="oc-desc">新郎新婦・ゲストの送迎車をご手配。高級セダン・リムジン・クラシックカーなどシーンに合わせてお選びいただけます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 相談の流れ -->
+<section class="sec">
+  <p class="sec-tag">FLOW</p>
+  <h2 class="sec-title">相談から挙式までの流れ</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">初回相談から挙式当日まで、専属プランナーが全力でサポートします</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3 class="step-title">無料相談</h3>
+      <p class="step-desc">まずはお気軽にご相談ください。挙式のイメージ・ご要望・ご予算をヒアリングします。完全無料・予約制です。</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3 class="step-title">プランご提案</h3>
+      <p class="step-desc">ヒアリング内容をもとに、おふたりに最適なプランと見積もりをご提案。ご要望に合わせて調整します。</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3 class="step-title">打ち合わせ</h3>
+      <p class="step-desc">専属プランナーと何度でも打ち合わせ。会場・料理・演出・装花など細部まで一緒に決めていきます。</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3 class="step-title">最終確認</h3>
+      <p class="step-desc">挙式1ヶ月前に最終打ち合わせ。タイムライン・スタッフ配置・ゲスト対応をすべて確認・仕上げます。</p>
+    </div>
+    <div class="step">
+      <div class="step-num">05</div>
+      <h3 class="step-title">挙式当日</h3>
+      <p class="step-desc">専属プランナーが終日同行。おふたりは何も心配せず、大切な人との時間だけを楽しんでください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" style="background:var(--blush);">
+  <p class="sec-tag">FAQ</p>
+  <h2 class="sec-title">プランに関するよくあるご質問</h2>
+  <div class="divider"></div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-i">Q</span>プランの変更・カスタマイズはできますか？</div>
+      <div class="faq-a">はい、すべてのプランはベースプランとしてご提案しており、おふたりのご要望に合わせて自由にカスタマイズできます。「このサービスは不要」「こちらを追加したい」といったご意見も遠慮なくお申し付けください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-i">Q</span>見積もりに含まれないものはありますか？</div>
+      <div class="faq-a">明朗会計を徹底しており、初回お見積もりに必要なものをすべて含めてご提示します。追加オプションを選ばれる場合は事前に費用をご説明し、ご同意いただいてから進めます。突然の追加費用は一切発生しません。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-i">Q</span>会場はどこでもお願いできますか？</div>
+      <div class="faq-a">はい、おふたりがご希望する会場でのプランニングに対応しています。blanc weddingが提携する会場以外の場所でも対応可能です。特に希望の会場がない場合は、ご要望をもとにおすすめの会場をご提案します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-i">Q</span>打ち合わせは何回できますか？</div>
+      <div class="faq-a">すべてのプランで打ち合わせ回数に制限を設けていません。納得がいくまで何度でもご相談ください。神戸三宮のオフィスにお越しいただくほか、オンラインでの打ち合わせにも対応しています。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq_q"><span class="fq-i">Q</span>急なスケジュール変更・キャンセルはできますか？</div>
+      <div class="faq-a">挙式日程の変更については、代替日のご提案を含め柔軟に対応いたします。キャンセルについては、ご契約時にキャンセルポリシーをご説明します。まずはお気軽にご相談ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-i">Q</span>支払い方法・タイミングはどうなりますか？</div>
+      <div class="faq-a">お支払いはご契約時・挙式3ヶ月前・挙式後の3回に分けてのお支払いが基本です。銀行振込・クレジットカード払いに対応しています。分割・ローンについてもご相談ください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-inner">
+    <h2 class="cta-title">まずは、お話しください。</h2>
+    <p class="cta-sub">初回相談無料 ／ 完全予約制 ／ 神戸三宮より徒歩5分</p>
+    <a href="contact.html" class="btn-white">無料相談を予約する</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><span>blanc</span> wedding</div>
+  <p>© 2024 blanc wedding. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

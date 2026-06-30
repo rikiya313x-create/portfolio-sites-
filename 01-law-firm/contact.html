@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料相談予約 | 山田・中村法律事務所</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--navy:#0d1b2a;--gold:#c9a84c;--light:#f5f3ee;--gray:#6b7280;--border:#e5e0d8;}
+  body{font-family:'Noto Sans JP',sans-serif;color:var(--navy);background:#fff;overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:var(--navy);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .logo{font-family:'Noto Serif JP',serif;color:#fff;font-size:1.1rem;letter-spacing:.15em;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.65);font-size:.73rem;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:#fff!important;padding:9px 22px;font-size:.73rem!important;}
+  .page-hero{height:340px;background:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;padding-top:68px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(13,27,42,.82);}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;}
+  .page-hero-content p{color:var(--gold);font-size:.65rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .page-hero-content h1{font-family:'Noto Serif JP',serif;font-size:2.4rem;color:#fff;line-height:1.4;}
+  .sec{padding:80px;}
+  .sec-label{color:var(--gold);font-size:.62rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .gold-line{width:28px;height:2px;background:var(--gold);margin:12px 0 36px;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .info-note{background:var(--light);border-left:3px solid var(--gold);padding:20px 24px;margin-bottom:24px;font-size:.82rem;color:var(--navy);line-height:1.9;}
+  .consult-type{margin-bottom:12px;}
+  .consult-type h4{font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .consult-type p{font-size:.76rem;color:var(--gray);line-height:1.7;}
+  .consult-list{list-style:none;margin-top:16px;}
+  .consult-list li{font-size:.8rem;color:var(--navy);padding:8px 0;border-bottom:1px solid var(--border);padding-left:14px;position:relative;}
+  .consult-list li::before{content:'▶';color:var(--gold);font-size:.6rem;position:absolute;left:0;top:10px;}
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;font-size:.73rem;font-weight:600;color:var(--navy);margin-bottom:6px;letter-spacing:.05em;}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--border);font-family:'Noto Sans JP',sans-serif;font-size:.82rem;outline:none;transition:.2s;color:var(--navy);}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);}
+  .form-group textarea{height:140px;resize:vertical;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .btn-submit{background:var(--gold);color:#fff;border:none;padding:15px 48px;font-size:.84rem;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:.3s;width:100%;margin-top:8px;}
+  .btn-submit:hover{background:#b8932a;}
+  footer{background:var(--navy);padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.4);font-size:.7rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;} .page-hero-content h1{font-size:1.7rem;}
+    .sec{padding:48px 24px;} .contact-grid{grid-template-columns:1fr;gap:40px;}
+    .form-row{grid-template-columns:1fr;} footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <span class="logo">山田・中村法律事務所</span>
+  <ul>
+    <li><a href="about.html">事務所概要</a></li>
+    <li><a href="service.html">専門分野</a></li>
+    <li><a href="lawyers.html">弁護士紹介</a></li>
+    <li><a href="cases.html">解決事例</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談予約</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>FREE CONSULTATION</p>
+    <h1>無料相談予約</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-label">CONTACT</p>
+  <h2 style="font-family:'Noto Serif JP',serif;font-size:1.8rem;color:var(--navy);">まずはお気軽にご相談ください</h2>
+  <div class="gold-line"></div>
+  <div class="contact-grid">
+    <div>
+      <div class="info-note">初回相談は30分間無料です。弁護士費用や手続きの流れ、見通しなどをわかりやすくご説明します。相談内容の秘密は厳守いたします。</div>
+      <h3 style="font-family:'Noto Serif JP',serif;font-size:1rem;margin-bottom:16px;">相談対応分野</h3>
+      <ul class="consult-list">
+        <li>離婚・男女問題（親権・慰謝料・財産分与）</li>
+        <li>相続・遺言（遺産分割・遺留分）</li>
+        <li>債務整理・個人再生・自己破産</li>
+        <li>交通事故（慰謝料請求・保険交渉）</li>
+        <li>不動産トラブル（契約・境界・立退）</li>
+        <li>労働問題（解雇・残業代未払い）</li>
+        <li>刑事事件（逮捕・起訴・示談）</li>
+        <li>企業法務・契約書チェック</li>
+      </ul>
+    </div>
+    <div>
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label>お名前 *</label>
+            <input type="text" placeholder="山田 太郎">
+          </div>
+          <div class="form-group">
+            <label>電話番号 *</label>
+            <input type="tel" placeholder="090-XXXX-XXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>メールアドレス</label>
+          <input type="email" placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label>相談内容カテゴリー</label>
+          <select>
+            <option>離婚・男女問題</option>
+            <option>相続・遺言</option>
+            <option>債務整理</option>
+            <option>交通事故</option>
+            <option>不動産トラブル</option>
+            <option>労働問題</option>
+            <option>刑事事件</option>
+            <option>企業法務</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>ご希望日時（第1希望）</label>
+          <input type="datetime-local">
+        </div>
+        <div class="form-group">
+          <label>ご希望日時（第2希望）</label>
+          <input type="datetime-local">
+        </div>
+        <div class="form-group">
+          <label>ご相談内容の概要</label>
+          <textarea placeholder="ご状況をざっくりお書きください。詳細は面談時に確認させていただきます。"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">無料相談を予約する</button>
+      </form>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 山田・中村法律事務所. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ご予約・お問い合わせ | 癒し処 和 | 大阪市北区</title>
+  <meta name="description" content="癒し処 和へのご予約・お問い合わせはこちら。フォームまたはお電話にてお気軽にご連絡ください。24時間以内にご返信いたします。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--green:#4a7c59;--green-light:#6a9e78;--green-pale:#e8f0ea;--beige:#f5f0e8;--brown:#8b6f47;--text:#333;--text-muted:#777;--white:#fff;}
+    *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+    body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--white);line-height:1.8;}
+    .portfolio-notice{background:#333;color:#fff;text-align:center;font-size:0.75rem;padding:6px 16px;letter-spacing:0.05em;}
+    header{position:fixed;top:32px;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,0.08);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:top 0.3s;}
+    header.scrolled{top:0;box-shadow:0 2px 16px rgba(0,0,0,0.08);}
+    .logo{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:700;color:var(--green);text-decoration:none;letter-spacing:0.1em;}
+    .logo span{font-size:0.7rem;color:var(--text-muted);display:block;letter-spacing:0.05em;font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+    nav ul{display:flex;gap:28px;list-style:none;}
+    nav a{font-size:0.85rem;color:var(--text);text-decoration:none;letter-spacing:0.05em;transition:color 0.2s;position:relative;}
+    nav a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--green);transform:scaleX(0);transition:transform 0.2s;}
+    nav a:hover,nav a.active{color:var(--green);}
+    nav a:hover::after,nav a.active::after{transform:scaleX(1);}
+    .header-btn{background:var(--green);color:#fff;padding:10px 22px;border-radius:4px;font-size:0.85rem;font-weight:700;text-decoration:none;transition:background 0.2s;}
+    .header-btn:hover{background:var(--green-light);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text);transition:all 0.3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:96px;left:0;right:0;background:#fff;border-bottom:1px solid #eee;padding:24px 32px;z-index:999;flex-direction:column;gap:20px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-size:1rem;color:var(--text);text-decoration:none;padding:8px 0;border-bottom:1px solid #f0f0f0;}
+
+    .page-hero{margin-top:96px;background:linear-gradient(135deg,var(--green) 0%,var(--green-light) 100%);padding:80px 20px 60px;text-align:center;color:#fff;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.06);}
+    .page-hero-breadcrumb{font-size:0.78rem;opacity:0.75;margin-bottom:16px;}
+    .page-hero-breadcrumb a{color:rgba(255,255,255,0.75);text-decoration:none;}
+    .page-hero-breadcrumb span{margin:0 8px;}
+    .page-hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:16px;position:relative;z-index:1;}
+    .page-hero p{font-size:0.95rem;opacity:0.9;max-width:560px;margin:0 auto;line-height:1.8;position:relative;z-index:1;}
+
+    section{padding:72px 20px;}
+    .container{max-width:1000px;margin:0 auto;}
+    .sec-label{font-size:0.72rem;letter-spacing:0.25em;color:var(--green);text-align:center;margin-bottom:10px;text-transform:uppercase;}
+    .sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;text-align:center;margin-bottom:12px;}
+    .sec-divider{width:36px;height:2px;background:var(--green);margin:0 auto 16px;}
+    .sec-desc{text-align:center;color:var(--text-muted);font-size:0.92rem;max-width:560px;margin:0 auto 48px;line-height:1.8;}
+
+    /* 連絡先カード */
+    .contact-top-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:56px;}
+    .contact-top-card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:28px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.04);transition:transform 0.3s,box-shadow 0.3s;}
+    .contact-top-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.1);}
+    .contact-top-icon{font-size:2.4rem;margin-bottom:12px;}
+    .contact-top-name{font-weight:700;font-size:0.95rem;margin-bottom:8px;color:var(--green);}
+    .contact-top-val{font-size:0.9rem;color:var(--text);margin-bottom:4px;}
+    .contact-top-note{font-size:0.75rem;color:var(--text-muted);}
+
+    /* フォーム */
+    .contact-main{display:grid;grid-template-columns:1fr 1.6fr;gap:48px;align-items:start;}
+    .contact-info-col h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:700;color:var(--green);margin-bottom:16px;}
+    .contact-info-col p{font-size:0.88rem;color:var(--text-muted);line-height:1.9;margin-bottom:24px;}
+    .contact-info-rows{display:flex;flex-direction:column;gap:16px;}
+    .contact-info-row{display:flex;gap:14px;align-items:flex-start;}
+    .ci-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .ci-label{font-size:0.72rem;color:var(--green);font-weight:700;letter-spacing:0.05em;margin-bottom:2px;}
+    .ci-val{font-size:0.88rem;color:var(--text-muted);line-height:1.6;}
+
+    /* 初回特典ミニバナー */
+    .first-mini-banner{background:var(--green-pale);border:1px solid var(--green);border-radius:8px;padding:16px 20px;margin-top:24px;}
+    .first-mini-banner-title{font-weight:700;font-size:0.88rem;color:var(--green);margin-bottom:6px;}
+    .first-mini-banner p{font-size:0.8rem;color:var(--text-muted);line-height:1.6;}
+    .first-mini-price{font-size:1.4rem;font-weight:900;color:var(--green);}
+
+    /* フォームスタイル */
+    .form-wrap{background:#fff;border-radius:12px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.07);}
+    .form-group{margin-bottom:20px;}
+    .form-label{display:block;font-size:0.85rem;font-weight:700;margin-bottom:8px;color:var(--text);}
+    .form-label .required{background:var(--green);color:#fff;font-size:0.65rem;padding:2px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;}
+    .form-label .optional{background:#e0e0e0;color:#777;font-size:0.65rem;padding:2px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;}
+    .form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid #ddd;border-radius:6px;font-size:0.92rem;font-family:inherit;transition:border-color 0.2s;background:#fff;}
+    .form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(74,124,89,0.1);}
+    .form-textarea{height:140px;resize:vertical;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .form-submit{width:100%;background:var(--green);color:#fff;border:none;padding:16px;border-radius:6px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s;letter-spacing:0.05em;}
+    .form-submit:hover{background:var(--green-light);}
+    .form-error{font-size:0.78rem;color:#e53e3e;margin-top:4px;display:none;}
+    .form-error.show{display:block;}
+    .form-success{background:var(--green-pale);border:1px solid var(--green);border-radius:8px;padding:28px;text-align:center;display:none;}
+    .form-success-icon{font-size:3rem;margin-bottom:12px;}
+    .form-success h3{font-family:'Noto Serif JP',serif;color:var(--green);font-size:1.2rem;margin-bottom:8px;}
+    .form-success p{font-size:0.88rem;color:var(--text-muted);}
+    .form-note{font-size:0.75rem;color:var(--text-muted);margin-top:12px;text-align:center;line-height:1.6;}
+
+    /* FAQ */
+    .faq-bg{background:var(--beige);}
+    .faq-list{max-width:720px;margin:0 auto;}
+    .faq-item{background:#fff;border-radius:8px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,0.05);}
+    .faq-q{padding:20px 24px;display:flex;align-items:center;gap:16px;cursor:pointer;font-weight:700;font-size:0.95rem;}
+    .faq-q-icon{min-width:28px;height:28px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:0.85rem;}
+    .faq-arrow{margin-left:auto;transition:transform 0.3s;font-size:0.75rem;color:var(--text-muted);}
+    .faq-item.open .faq-arrow{transform:rotate(180deg);}
+    .faq-a{display:none;padding:0 24px 20px 68px;font-size:0.88rem;color:var(--text-muted);line-height:1.8;border-top:1px solid #f0f0f0;}
+    .faq-a.open{display:block;}
+
+    footer{background:#2a2a2a;color:rgba(255,255,255,0.7);padding:48px 20px 24px;}
+    .footer-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+    .footer-logo{font-family:'Noto Serif JP',serif;font-size:1.3rem;color:#fff;margin-bottom:12px;}
+    .footer-desc{font-size:0.82rem;line-height:1.7;}
+    .footer-h{font-weight:700;color:#fff;font-size:0.85rem;margin-bottom:12px;}
+    .footer-links{display:flex;flex-direction:column;gap:8px;}
+    .footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;}
+    .footer-links a:hover{color:#fff;}
+    .footer-bottom{max-width:1000px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;text-align:center;font-size:0.78rem;}
+
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    .back-top{position:fixed;bottom:28px;right:28px;width:48px;height:48px;background:var(--green);color:#fff;border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;opacity:0;transform:translateY(12px);transition:all 0.3s;box-shadow:0 4px 16px rgba(74,124,89,0.35);z-index:900;}
+    .back-top.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:768px){
+      nav,.header-btn{display:none;}
+      .hamburger{display:flex;}
+      .contact-top-grid{grid-template-columns:1fr;}
+      .contact-main{grid-template-columns:1fr;}
+      .form-row{grid-template-columns:1fr;}
+      .form-wrap{padding:28px 20px;}
+      .footer-inner{grid-template-columns:1fr;gap:24px;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="portfolio-notice">
+  ⚠ これはポートフォリオ提出用に作成した架空のサイトです。実在する店舗ではありません。
+</div>
+
+<header id="header">
+  <a href="index.html" class="logo">癒し処 和<span>IYASHIDOKORO NAGOMI</span></a>
+  <nav>
+    <ul>
+      <li><a href="index.html#appeal">当院の特徴</a></li>
+      <li><a href="menu.html">メニュー</a></li>
+      <li><a href="price.html">料金</a></li>
+      <li><a href="staff.html">スタッフ</a></li>
+      <li><a href="access.html">アクセス</a></li>
+    </ul>
+  </nav>
+  <a href="contact.html" class="header-btn active">ご予約・お問い合わせ</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#appeal" onclick="closeMobile()">当院の特徴</a>
+  <a href="menu.html" onclick="closeMobile()">メニュー</a>
+  <a href="price.html" onclick="closeMobile()">料金</a>
+  <a href="staff.html" onclick="closeMobile()">スタッフ</a>
+  <a href="access.html" onclick="closeMobile()">アクセス</a>
+  <a href="contact.html" onclick="closeMobile()">ご予約・お問い合わせ</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-breadcrumb"><a href="index.html">HOME</a><span>/</span>ご予約・お問い合わせ</div>
+  <h1>ご予約・お問い合わせ</h1>
+  <p>フォームまたはお電話にてお気軽にご連絡ください。<br>通常24時間以内にご返信いたします。</p>
+</div>
+
+<!-- 連絡方法 -->
+<section>
+  <div class="container">
+    <div class="contact-top-grid fade-in">
+      <div class="contact-top-card">
+        <div class="contact-top-icon">📞</div>
+        <div class="contact-top-name">お電話でのご予約</div>
+        <div class="contact-top-val">06-XXXX-XXXX</div>
+        <div class="contact-top-note">平日 10:00〜21:00<br>土日祝 9:00〜19:00（木定休）</div>
+      </div>
+      <div class="contact-top-card">
+        <div class="contact-top-icon">✉</div>
+        <div class="contact-top-name">フォームからのご予約</div>
+        <div class="contact-top-val">下記フォームよりご送信ください</div>
+        <div class="contact-top-note">24時間受付<br>通常24時間以内にご返信</div>
+      </div>
+      <div class="contact-top-card">
+        <div class="contact-top-icon">📱</div>
+        <div class="contact-top-name">LINE公式アカウント</div>
+        <div class="contact-top-val">@iyashi-nagomi（架空）</div>
+        <div class="contact-top-note">気軽にメッセージをどうぞ<br>スタンプでの予約確認も可</div>
+      </div>
+    </div>
+
+    <!-- メインコンタクト -->
+    <div class="contact-main fade-in">
+      <div class="contact-info-col">
+        <h3>お気軽にどうぞ</h3>
+        <p>初めてご連絡いただく方も、再来院のご予約も、どんなことでもお気軽にお問い合わせください。お体のお悩みに関するご質問も喜んでお答えします。</p>
+        <div class="contact-info-rows">
+          <div class="contact-info-row">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">住所</div>
+              <div class="ci-val">大阪府大阪市北区梅田1-1-1<br>サンプルビル3F</div>
+            </div>
+          </div>
+          <div class="contact-info-row">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">電話番号</div>
+              <div class="ci-val">06-XXXX-XXXX<br><span style="font-size:0.75rem;">営業時間内のみ対応</span></div>
+            </div>
+          </div>
+          <div class="contact-info-row">
+            <div class="ci-icon">🕐</div>
+            <div>
+              <div class="ci-label">営業時間</div>
+              <div class="ci-val">平日 10:00〜21:00<br>土日祝 9:00〜19:00<br>定休日：木曜日</div>
+            </div>
+          </div>
+          <div class="contact-info-row">
+            <div class="ci-icon">🚃</div>
+            <div>
+              <div class="ci-label">アクセス</div>
+              <div class="ci-val">JR大阪駅 徒歩5分<br>阪急梅田駅 徒歩3分</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="first-mini-banner">
+          <div class="first-mini-banner-title">🎁 初めての方へ</div>
+          <p>初回カウンセリング＋全身整体コース（60分）</p>
+          <p><span class="first-mini-price">¥2,980</span>（税込）で体験できます。</p>
+        </div>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✅</div>
+          <h3>お問い合わせを受け付けました</h3>
+          <p>24時間以内にご連絡いたします。しばらくお待ちください。<br>お急ぎの場合はお電話でご連絡ください。</p>
+        </div>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">お名前<span class="required">必須</span></label>
+              <input type="text" class="form-input" id="name" placeholder="山田 花子">
+              <div class="form-error" id="nameError">お名前を入力してください</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ふりがな<span class="optional">任意</span></label>
+              <input type="text" class="form-input" placeholder="やまだ はなこ">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">メールアドレス<span class="required">必須</span></label>
+            <input type="email" class="form-input" id="email" placeholder="example@email.com">
+            <div class="form-error" id="emailError">正しいメールアドレスを入力してください</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">電話番号<span class="optional">任意</span></label>
+            <input type="tel" class="form-input" placeholder="090-0000-0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">ご希望のメニュー<span class="required">必須</span></label>
+            <select class="form-select" id="menu_select">
+              <option value="">選択してください</option>
+              <option>初回限定プラン（60分 2,980円）- 初めての方のみ</option>
+              <option>全身整体コース（60分 6,600円）</option>
+              <option>骨盤矯正コース（45分 5,500円）</option>
+              <option>肩こり・首こり集中ケア（30分 3,300円）</option>
+              <option>腰痛・坐骨神経痛ケア（45分 5,500円）</option>
+              <option>スポーツリカバリーコース（75分 7,700円）</option>
+              <option>産後リカバリーケア（45分 5,500円）</option>
+              <option>シニア向けやさしいケア（40分 4,400円）</option>
+              <option>その他・ご相談</option>
+            </select>
+            <div class="form-error" id="menuError">メニューを選択してください</div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">ご希望日時（第1希望）<span class="optional">任意</span></label>
+              <input type="text" class="form-input" placeholder="例：7/15（月）13:00〜">
+            </div>
+            <div class="form-group">
+              <label class="form-label">ご希望日時（第2希望）<span class="optional">任意</span></label>
+              <input type="text" class="form-input" placeholder="例：7/16（火）15:00〜">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">お体のお悩み・ご質問<span class="optional">任意</span></label>
+            <textarea class="form-textarea" id="message" placeholder="肩こりが慢性化しています。産後6ヶ月です。など、お気軽にお書きください。"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">当院をお知りになったきっかけ<span class="optional">任意</span></label>
+            <select class="form-select">
+              <option value="">選択してください</option>
+              <option>Google検索</option>
+              <option>SNS（Instagram・X等）</option>
+              <option>ご紹介（知人・家族）</option>
+              <option>チラシ・ポスター</option>
+              <option>駅・看板</option>
+              <option>その他</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit">送信する →</button>
+          <p class="form-note">
+            ※ 送信いただいた個人情報は予約・お問い合わせの対応のみに使用します。<br>
+            ※ 通常24時間以内にご返信いたします。返信がない場合はお電話でご確認ください。
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-bg">
+  <div class="container">
+    <div class="sec-label fade-in">FAQ</div>
+    <h2 class="sec-title fade-in">予約に関する<strong style="color:var(--green)">よくある質問</strong></h2>
+    <div class="sec-divider fade-in"></div>
+    <div class="faq-list fade-in">
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-icon">Q</div>当日予約は可能ですか？<div class="faq-arrow">▼</div></div>
+        <div class="faq-a">当日のご予約もお電話にて承っています。お電話でのご連絡が一番早く対応できますので、当日は06-XXXX-XXXXまでお電話ください。空き状況によりご案内できない場合もございます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-icon">Q</div>キャンセルする場合はどうすればいいですか？<div class="faq-arrow">▼</div></div>
+        <div class="faq-a">前日20時までにお電話またはフォームでご連絡ください。前日20時以降のキャンセルは施術料金の50%をキャンセル料としていただきます。ご了承ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-icon">Q</div>初めてでも大丈夫ですか？<div class="faq-arrow">▼</div></div>
+        <div class="faq-a">もちろんです。初回は30分のカウンセリングから始め、お体の状態をしっかりヒアリングします。「整体に行くのが初めて」という方も多くいらっしゃいますのでご安心ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-icon">Q</div>子供を連れて来てもいいですか？<div class="faq-arrow">▼</div></div>
+        <div class="faq-a">はい、お子様連れ歓迎です。キッズスペースをご用意しています。ただし、安全管理の都合上、施術室内へのお子様の同伴はお断りしていますのでご理解ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-icon">Q</div>フォーム送信後、どれくらいで返信がきますか？<div class="faq-arrow">▼</div></div>
+        <div class="faq-a">通常24時間以内にメールまたはお電話でご返信しています。土日・定休日（木曜）も確認していますが、翌営業日になる場合があります。お急ぎの場合はお電話でご連絡ください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">癒し処 和</div>
+      <div class="footer-desc">大阪市北区の整体院。肩こり・腰痛・骨盤矯正のお悩みを根本から改善します。</div>
+    </div>
+    <div>
+      <div class="footer-h">メニュー</div>
+      <div class="footer-links">
+        <a href="index.html#appeal">当院の特徴</a>
+        <a href="menu.html">施術メニュー</a>
+        <a href="price.html">料金</a>
+        <a href="staff.html">スタッフ紹介</a>
+        <a href="access.html">アクセス</a>
+        <a href="contact.html">ご予約・お問い合わせ</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">営業時間</div>
+      <div class="footer-desc">平日 10:00〜21:00<br>土日祝 9:00〜19:00<br>定休日：木曜日<br><br>📍 大阪市北区梅田1-1-1<br>📞 06-XXXX-XXXX</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p style="margin-bottom:8px;color:rgba(255,255,255,0.4);font-size:0.72rem;">⚠ このサイトはポートフォリオ提出用に作成した架空のサンプルサイトです。</p>
+    <p>© 2026 癒し処 和 All rights reserved.</p>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+  });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  function closeMobile() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      item.classList.toggle('open');
+      item.querySelector('.faq-a').classList.toggle('open');
+    });
+  });
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let valid = true;
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const menuSel = document.getElementById('menu_select');
+    document.getElementById('nameError').classList.remove('show');
+    document.getElementById('emailError').classList.remove('show');
+    document.getElementById('menuError').classList.remove('show');
+    if (!name.value.trim()) { document.getElementById('nameError').classList.add('show'); valid = false; }
+    if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) { document.getElementById('emailError').classList.add('show'); valid = false; }
+    if (!menuSel.value) { document.getElementById('menuError').classList.add('show'); valid = false; }
+    if (valid) { this.style.display = 'none'; document.getElementById('formSuccess').style.display = 'block'; }
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

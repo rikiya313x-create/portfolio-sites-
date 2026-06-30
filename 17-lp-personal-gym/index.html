@@ -37,6 +37,11 @@
   .nb-num{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:2.8rem;line-height:1;}
   .nb-lbl{color:rgba(255,255,255,.65);font-size:.68rem;margin-top:3px;}
 
+  /* メディア掲載バー */
+  .media-bar{background:#fff;border-bottom:1px solid #eee;padding:14px 60px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .media-lbl{font-size:.6rem;font-weight:700;letter-spacing:.2em;color:#aaa;margin-right:12px;flex-shrink:0;}
+  .media-item{font-size:.7rem;color:#888;padding:4px 14px;border:1px solid #e5e7eb;background:#fafafa;}
+
   /* 共通 */
   .sec{padding:80px 60px;}
   .sec-tag{color:var(--red);font-size:.66rem;font-weight:700;letter-spacing:.25em;text-align:center;margin-bottom:6px;}
@@ -44,21 +49,58 @@
   .sec-sub{text-align:center;color:var(--gray);font-size:.85rem;line-height:1.9;margin-bottom:44px;}
 
   /* 問題 */
-  .prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:720px;margin:0 auto 36px;}
-  .pb{background:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px;border-left:4px solid var(--red);}
-  .pb-icon{font-size:1.3rem;flex-shrink:0;}
-  .pb-text{font-size:.82rem;line-height:1.6;color:#444;}
+  .prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:760px;margin:0 auto 36px;}
+  .pb{background:#fff;padding:18px 22px;display:flex;align-items:flex-start;gap:14px;border-left:4px solid var(--red);box-shadow:0 2px 8px rgba(0,0,0,.04);}
+  .pb-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px;}
+  .pb-text{font-size:.82rem;line-height:1.7;color:#444;font-weight:500;}
   .prob-bottom{text-align:center;}
-  .prob-bottom p{color:var(--red);font-weight:700;font-size:.9rem;margin-bottom:16px;}
+  .prob-bottom p{color:var(--red);font-weight:700;font-size:.92rem;margin-bottom:18px;}
 
-  /* 特徴 */
+  /* 特徴グリッド */
   .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:960px;margin:0 auto;border:1px solid #e5e7eb;}
-  .fc{padding:40px 32px;border-right:1px solid #e5e7eb;text-align:center;}
+  .fc{padding:42px 34px;border-right:1px solid #e5e7eb;text-align:center;}
   .fc:last-child{border-right:none;}
-  .fc-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--red);line-height:1;margin-bottom:6px;}
-  .fc-title{font-size:.92rem;font-weight:700;margin-bottom:12px;line-height:1.4;}
-  .fc-text{color:var(--gray);font-size:.76rem;line-height:1.85;}
-  .fc-badge{display:inline-block;background:#fff0f0;color:var(--red);font-size:.68rem;font-weight:700;padding:5px 12px;margin-top:12px;border-radius:4px;}
+  .fc-num{font-family:'Bebas Neue',sans-serif;font-size:4.2rem;color:var(--red);line-height:1;margin-bottom:8px;}
+  .fc-title{font-size:.94rem;font-weight:700;margin-bottom:14px;line-height:1.5;}
+  .fc-text{color:var(--gray);font-size:.77rem;line-height:1.95;}
+  .fc-badge{display:inline-block;background:#fff0f0;color:var(--red);font-size:.68rem;font-weight:700;padding:5px 12px;margin-top:14px;border-radius:4px;}
+  .feat-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:960px;margin:0 auto;border:1px solid #e5e7eb;border-top:none;}
+  .fc2{padding:38px 34px;border-right:1px solid #e5e7eb;display:flex;gap:22px;align-items:flex-start;}
+  .fc2:last-child{border-right:none;}
+  .fc2-num{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;color:var(--red);line-height:1;flex-shrink:0;padding-top:4px;}
+  .fc2-title{font-size:.92rem;font-weight:700;margin-bottom:10px;line-height:1.5;}
+  .fc2-text{color:var(--gray);font-size:.77rem;line-height:1.9;}
+
+  /* 実績 */
+  .achieve-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:960px;margin:0 auto;background:#e5e7eb;}
+  .ag{background:#fff;padding:30px 20px;text-align:center;}
+  .ag-icon{font-size:2rem;margin-bottom:10px;}
+  .ag-num{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;color:var(--red);line-height:1;margin-bottom:5px;}
+  .ag-lbl{color:var(--gray);font-size:.72rem;line-height:1.7;}
+
+  /* 他社比較 */
+  .vs-wrap{max-width:900px;margin:0 auto;}
+  .vs-table{width:100%;border-collapse:collapse;}
+  .vs-table th,.vs-table td{padding:13px 18px;font-size:.78rem;border-bottom:1px solid #eee;text-align:center;}
+  .vs-table th{background:var(--dark);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.05em;}
+  .vs-table th.red-col{background:var(--red);}
+  .vs-table th:first-child{text-align:left;}
+  .vs-table td:first-child{text-align:left;font-weight:500;color:#333;}
+  .vs-table tr:nth-child(even){background:#fafafa;}
+  .vs-check{color:var(--red);font-weight:700;}
+  .vs-cross{color:#ccc;}
+  .vs-hl{background:#fff8f8;}
+
+  /* トレーニング内容 */
+  .training-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:960px;margin:0 auto;}
+  .tg{display:flex;overflow:hidden;border:1px solid #e5e7eb;}
+  .tg-img{width:200px;flex-shrink:0;background-size:cover;background-position:center;}
+  .tg-body{padding:26px 22px;}
+  .tg-cat{color:var(--red);font-size:.6rem;font-weight:700;letter-spacing:.22em;margin-bottom:7px;}
+  .tg-name{font-size:.94rem;font-weight:700;margin-bottom:10px;line-height:1.4;}
+  .tg-desc{color:var(--gray);font-size:.76rem;line-height:1.9;margin-bottom:12px;}
+  .tg-tags{display:flex;flex-wrap:wrap;gap:5px;}
+  .tg-tag{background:#fff0f0;color:var(--red);font-size:.62rem;font-weight:700;padding:3px 9px;}
 
   /* 流れ */
   .flow-steps{display:flex;gap:0;max-width:960px;margin:0 auto;position:relative;}
@@ -70,14 +112,15 @@
   .fstep-text{color:var(--gray);font-size:.72rem;line-height:1.8;}
 
   /* トレーナー */
-  .trainer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto;}
-  .tr-card{text-align:center;}
-  .tr-img{width:120px;height:120px;border-radius:50%;background:var(--light);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:3rem;border:3px solid var(--red);}
-  .tr-name{font-size:1rem;font-weight:700;margin-bottom:3px;}
-  .tr-title{color:var(--red);font-size:.68rem;font-weight:700;margin-bottom:10px;}
-  .tr-career{color:var(--gray);font-size:.75rem;line-height:1.85;}
-  .tr-cert{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:10px;}
-  .cert{background:var(--light);font-size:.62rem;padding:3px 8px;border-radius:4px;color:#555;}
+  .trainer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:960px;margin:0 auto;}
+  .tr-card{text-align:center;padding:32px 24px;border:1px solid #e5e7eb;}
+  .tr-img{width:130px;height:130px;border-radius:50%;background:var(--light);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:3.2rem;border:3px solid var(--red);overflow:hidden;}
+  .tr-img img{width:100%;height:100%;object-fit:cover;}
+  .tr-name{font-size:1.05rem;font-weight:700;margin-bottom:4px;}
+  .tr-title{color:var(--red);font-size:.68rem;font-weight:700;margin-bottom:12px;letter-spacing:.05em;}
+  .tr-career{color:var(--gray);font-size:.75rem;line-height:1.9;text-align:left;}
+  .tr-cert{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:12px;}
+  .cert{background:var(--light);font-size:.62rem;padding:3px 9px;border-radius:4px;color:#555;}
 
   /* ビフォーアフター */
   .ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:0 auto;}
@@ -85,70 +128,132 @@
   .bac-head{background:var(--dark);padding:18px 22px;}
   .bac-name{color:#fff;font-size:.86rem;font-weight:700;margin-bottom:2px;}
   .bac-meta{color:rgba(255,255,255,.45);font-size:.68rem;}
-  .bac-body{padding:18px 22px;}
-  .bac-data{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding:12px;background:#fff;}
+  .bac-body{padding:20px 22px;}
+  .bac-data{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding:14px;background:#fff;}
   .bd{flex:1;text-align:center;}
-  .bd-lbl{font-size:.6rem;color:var(--gray);margin-bottom:3px;}
-  .bd-val{font-size:1.1rem;font-weight:700;color:var(--gray);}
+  .bd-lbl{font-size:.6rem;color:var(--gray);margin-bottom:4px;}
+  .bd-val{font-size:1.15rem;font-weight:700;color:var(--gray);}
   .bd.after .bd-val{color:var(--red);}
   .bd-arrow{color:#ccc;font-size:1.1rem;}
-  .bac-period{display:inline-block;background:var(--red);color:#fff;font-size:.62rem;font-weight:700;padding:3px 10px;margin-bottom:8px;}
-  .bac-comment{color:var(--gray);font-size:.75rem;line-height:1.8;}
+  .bac-period{display:inline-block;background:var(--red);color:#fff;font-size:.62rem;font-weight:700;padding:3px 10px;margin-bottom:10px;}
+  .bac-comment{color:var(--gray);font-size:.75rem;line-height:1.85;}
 
   /* 口コミ */
-  .vc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:960px;margin:40px auto 0;}
+  .vc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:960px;margin:40px auto 0;}
   .vc{background:#fff;padding:22px;border:1px solid #eee;}
   .vc-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
   .vc-av{width:44px;height:44px;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
   .vc-name{font-size:.82rem;font-weight:700;}
   .vc-meta{color:var(--gray);font-size:.67rem;}
   .vc-stars{color:#f5c842;font-size:.8rem;margin-bottom:7px;}
-  .vc-text{font-size:.77rem;line-height:1.9;color:#444;}
-  .vc-badge{display:inline-block;background:#fff0f0;color:var(--red);font-size:.62rem;font-weight:700;padding:3px 9px;margin-top:8px;}
+  .vc-text{font-size:.76rem;line-height:1.95;color:#444;}
+  .vc-badge{display:inline-block;background:#fff0f0;color:var(--red);font-size:.62rem;font-weight:700;padding:3px 9px;margin-top:10px;}
 
   /* 中間CTA */
-  .mid-cta{background:var(--red);padding:44px 60px;text-align:center;}
-  .mid-cta h3{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:.05em;margin-bottom:8px;}
-  .mid-cta p{color:rgba(255,255,255,.8);font-size:.82rem;margin-bottom:22px;}
-  .btn-white{display:inline-block;background:#fff;color:var(--red);padding:16px 44px;font-size:.98rem;font-weight:900;transition:.3s;}
+  .mid-cta{background:var(--red);padding:52px 60px;text-align:center;}
+  .mid-cta h3{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:.05em;margin-bottom:10px;}
+  .mid-cta p{color:rgba(255,255,255,.8);font-size:.84rem;margin-bottom:24px;line-height:1.8;}
+  .btn-white{display:inline-block;background:#fff;color:var(--red);padding:18px 48px;font-size:1rem;font-weight:900;transition:.3s;}
   .btn-white:hover{background:#f5f5f5;transform:translateY(-2px);}
 
   /* 料金 */
-  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto;}
-  .plan{background:var(--light);padding:32px 24px;text-align:center;border:2px solid transparent;}
+  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:0 auto;}
+  .plan{background:var(--light);padding:34px 26px;text-align:center;border:2px solid transparent;}
   .plan.rec{background:var(--dark);border-color:var(--red);}
-  .plan-badge{background:var(--red);color:#fff;font-size:.62rem;font-weight:700;padding:4px 14px;letter-spacing:.1em;margin-bottom:14px;display:inline-block;}
-  .plan-name{font-size:.7rem;font-weight:700;letter-spacing:.15em;color:var(--gray);margin-bottom:8px;}
+  .plan-badge{background:var(--red);color:#fff;font-size:.62rem;font-weight:700;padding:4px 16px;letter-spacing:.1em;margin-bottom:16px;display:inline-block;}
+  .plan-name{font-size:.7rem;font-weight:700;letter-spacing:.15em;color:var(--gray);margin-bottom:10px;}
   .plan.rec .plan-name{color:rgba(255,255,255,.4);}
   .plan-price{font-family:'Oswald',sans-serif;font-size:2.4rem;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1;}
   .plan.rec .plan-price{color:#fff;}
-  .plan-period{color:var(--gray);font-size:.7rem;margin-bottom:20px;}
+  .plan-period{color:var(--gray);font-size:.7rem;margin-bottom:22px;}
   .plan.rec .plan-period{color:rgba(255,255,255,.4);}
-  .plan-items{text-align:left;margin-bottom:22px;}
-  .pi{display:flex;gap:8px;font-size:.77rem;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.06);color:var(--gray);}
-  .plan.rec .pi{border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.6);}
-  .pi span{color:var(--red);font-size:.7rem;flex-shrink:0;margin-top:2px;}
-  .plan-btn{display:block;background:var(--red);color:#fff;padding:14px;font-size:.82rem;font-weight:700;text-align:center;transition:.2s;}
+  .plan-items{text-align:left;margin-bottom:24px;}
+  .pi{display:flex;gap:8px;font-size:.77rem;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.06);color:var(--gray);}
+  .plan.rec .pi{border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.65);}
+  .pi span{color:var(--red);font-size:.7rem;flex-shrink:0;margin-top:3px;}
+  .plan-btn{display:block;background:var(--red);color:#fff;padding:15px;font-size:.84rem;font-weight:700;text-align:center;transition:.2s;}
   .plan-btn:hover{opacity:.85;}
 
+  /* 比較表 */
+  .compare-wrap{max-width:960px;margin:40px auto 0;}
+  .compare-title{text-align:center;font-size:.84rem;color:var(--gray);margin-bottom:16px;letter-spacing:.05em;}
+  .ctable{width:100%;border-collapse:collapse;}
+  .ctable th,.ctable td{padding:12px 16px;font-size:.77rem;border-bottom:1px solid #e5e7eb;text-align:center;}
+  .ctable th{background:var(--dark);color:#fff;font-weight:600;font-size:.72rem;}
+  .ctable th:first-child{text-align:left;}
+  .ctable td:first-child{text-align:left;color:#333;font-weight:500;}
+  .ctable tr:nth-child(even){background:#fafafa;}
+  .ctable .hl{background:#fff0f0;}
+  .ctable .ck{color:var(--red);font-size:.9rem;}
+  .ctable .cx{color:#ccc;font-size:.85rem;}
+  .plan-note{text-align:center;color:var(--gray);font-size:.73rem;margin-top:14px;line-height:1.8;}
+
   /* FAQ */
-  .faq-list{max-width:740px;margin:0 auto;}
-  .faq-item{border-bottom:1px solid #eee;padding:20px 0;}
-  .faq-q{display:flex;gap:12px;font-size:.86rem;font-weight:700;margin-bottom:8px;}
-  .fq-icon{color:var(--red);flex-shrink:0;}
-  .faq-a{color:var(--gray);font-size:.8rem;line-height:1.9;padding-left:26px;}
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid #eee;padding:22px 0;}
+  .faq-q{display:flex;gap:12px;font-size:.87rem;font-weight:700;margin-bottom:10px;align-items:flex-start;}
+  .fq-icon{color:var(--red);flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;}
+  .faq-a{color:var(--gray);font-size:.8rem;line-height:1.95;padding-left:28px;}
+
+  /* 緊急バナー */
+  .urgent{background:linear-gradient(135deg,#1c0000,#3a0000);border:1px solid rgba(230,57,70,.5);padding:36px 48px;max-width:860px;margin:0 auto 48px;text-align:center;}
+  .urg-tag{color:var(--red);font-size:.64rem;font-weight:700;letter-spacing:.25em;margin-bottom:10px;}
+  .urg-title{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.04em;margin-bottom:12px;line-height:1.15;}
+  .urg-body{color:rgba(255,255,255,.55);font-size:.8rem;line-height:1.9;margin-bottom:20px;}
+  .urg-items{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:18px;}
+  .urg-item{background:rgba(230,57,70,.12);border:1px solid rgba(230,57,70,.3);padding:10px 18px;color:#fff;font-size:.74rem;line-height:1.5;}
+  .urg-note{color:rgba(255,255,255,.25);font-size:.65rem;}
 
   /* 最終CTA */
   .final{background:var(--dark);padding:80px 60px;text-align:center;}
-  .final h2{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:.05em;margin-bottom:8px;}
+  .final h2{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:.05em;margin-bottom:10px;}
   .final h2 em{color:var(--red);font-style:normal;}
-  .final p{color:rgba(255,255,255,.55);font-size:.86rem;line-height:1.9;margin-bottom:28px;}
-  .final .btn-red{font-size:1rem;padding:20px 56px;}
-  .trust-row{display:flex;justify-content:center;gap:20px;margin-top:20px;flex-wrap:wrap;}
-  .tr{color:rgba(255,255,255,.3);font-size:.7rem;}
+  .final p{color:rgba(255,255,255,.55);font-size:.86rem;line-height:1.95;margin-bottom:32px;}
+  .final .btn-red{font-size:1.02rem;padding:22px 60px;}
+  .trust-row{display:flex;justify-content:center;gap:24px;margin-top:22px;flex-wrap:wrap;}
+  .trow{color:rgba(255,255,255,.3);font-size:.7rem;}
 
-  footer{background:#000;padding:28px;text-align:center;}
-  footer p{color:rgba(255,255,255,.22);font-size:.68rem;line-height:1.9;}
+  /* ジム環境 */
+  .env-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:960px;margin:0 auto;background:#e5e7eb;}
+  .env-card{overflow:hidden;position:relative;}
+  .env-img{height:240px;background-size:cover;background-position:center;transition:.4s;}
+  .env-card:hover .env-img{transform:scale(1.04);}
+  .env-body{padding:18px 20px;background:#fff;}
+  .env-title{font-size:.86rem;font-weight:700;margin-bottom:6px;}
+  .env-text{font-size:.74rem;color:var(--gray);line-height:1.85;}
+
+  /* 卒業後サポート */
+  .after-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:0 auto;}
+  .after-card{background:#fff;border:1px solid #e5e7eb;padding:28px 24px;text-align:center;}
+  .after-icon{font-size:2.2rem;margin-bottom:12px;}
+  .after-title{font-size:.88rem;font-weight:700;margin-bottom:10px;color:var(--dark);}
+  .after-text{font-size:.75rem;color:var(--gray);line-height:1.9;}
+
+  /* アクセス */
+  .access-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:flex-start;}
+  .access-map{background:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80') center/cover;height:320px;}
+  .access-info{}
+  .ai-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #eee;font-size:.8rem;align-items:flex-start;}
+  .ai-row:last-child{border-bottom:none;}
+  .ai-label{color:var(--red);font-weight:700;font-size:.72rem;flex-shrink:0;width:80px;}
+  .ai-val{color:#444;line-height:1.8;}
+
+  footer{background:#000;padding:32px;text-align:center;}
+  footer p{color:rgba(255,255,255,.22);font-size:.68rem;line-height:2;}
+  @media(max-width:768px){
+    .fv-content{padding:40px 24px 60px;} .fv h1{font-size:4rem;}
+    .fv-btns{flex-direction:column;gap:10px;}
+    .sec{padding:52px 24px;} .final{padding:52px 24px;}
+    .prob-grid{grid-template-columns:1fr;}
+    .feat-grid,.feat-grid-2{grid-template-columns:1fr;}
+    .achieve-grid{grid-template-columns:1fr 1fr;}
+    .training-grid,.ba-grid,.after-grid,.env-grid{grid-template-columns:1fr;}
+    .trainer-grid{grid-template-columns:1fr 1fr;}
+    .vc-grid{grid-template-columns:1fr 1fr;}
+    .plan-grid{grid-template-columns:1fr;}
+    .access-inner{grid-template-columns:1fr;}
+    footer{padding:28px 24px;}
+  }
 </style>
 </head>
 <body>
@@ -180,118 +285,278 @@
   <div class="nb"><div class="nb-num">1,200+</div><div class="nb-lbl">累計会員数</div></div>
   <div class="nb"><div class="nb-num">97%</div><div class="nb-lbl">2ヶ月体型変化率</div></div>
   <div class="nb"><div class="nb-num">4.9</div><div class="nb-lbl">Google口コミ評価</div></div>
-  <div class="nb"><div class="nb-num">5年</div><div class="nb-lbl">トレーナー平均経験</div></div>
+  <div class="nb"><div class="nb-num">5年+</div><div class="nb-lbl">トレーナー平均経験</div></div>
+  <div class="nb"><div class="nb-num">-8.4kg</div><div class="nb-lbl">平均減量実績</div></div>
+</div>
+
+<!-- メディア掲載 -->
+<div class="media-bar">
+  <span class="media-lbl">MEDIA & AWARDS</span>
+  <span class="media-item">日経ヘルス 2023年おすすめジム</span>
+  <span class="media-item">SPORTS AUTHORITY 推薦</span>
+  <span class="media-item">Tarzan 特集掲載</span>
+  <span class="media-item">東京パーソナルジムランキング 1位</span>
+  <span class="media-item">Google口コミ ★4.9（240件）</span>
 </div>
 
 <!-- 問題提起 -->
 <section class="sec" style="background:var(--light);">
   <p class="sec-tag">PROBLEM</p>
   <h2 class="sec-title">こんな悩み、ありませんか？</h2>
-  <p class="sec-sub">一人で悩んでいても、体は変わりません。必要なのは正しい方法と伴走者です。</p>
+  <p class="sec-sub">一人で悩んでいても、体は変わりません。必要なのは正しい方法と伴走するプロです。</p>
   <div class="prob-grid">
     <div class="pb"><span class="pb-icon">😩</span><p class="pb-text">ジムに通っているのに体型が全然変わらない</p></div>
-    <div class="pb"><span class="pb-icon">🍽</span><p class="pb-text">食事制限をしても体重が戻ってしまう</p></div>
+    <div class="pb"><span class="pb-icon">🍽</span><p class="pb-text">食事制限をしても体重が戻ってしまうリバウンド地獄</p></div>
     <div class="pb"><span class="pb-icon">💪</span><p class="pb-text">正しいフォームで鍛えられているか自信がない</p></div>
-    <div class="pb"><span class="pb-icon">😰</span><p class="pb-text">仕事が忙しくてモチベーションが続かない</p></div>
-    <div class="pb"><span class="pb-icon">📉</span><p class="pb-text">体重は減っても筋肉が落ちて体型が変わらない</p></div>
-    <div class="pb"><span class="pb-icon">🤷</span><p class="pb-text">何をどれだけ食べればいいのかわからない</p></div>
+    <div class="pb"><span class="pb-icon">😰</span><p class="pb-text">仕事が忙しくてモチベーションが3日と続かない</p></div>
+    <div class="pb"><span class="pb-icon">📉</span><p class="pb-text">体重は減っても筋肉が落ちてボディラインが崩れる</p></div>
+    <div class="pb"><span class="pb-icon">🤷</span><p class="pb-text">何をどれだけ食べればいいのか全くわからない</p></div>
+    <div class="pb"><span class="pb-icon">🏥</span><p class="pb-text">健康診断の数値が年々悪化して危機感を感じている</p></div>
+    <div class="pb"><span class="pb-icon">👗</span><p class="pb-text">着たい服が似合わず、外出するのが億劫になってきた</p></div>
   </div>
   <div class="prob-bottom">
     <p>→ BODY CRAFTなら、2ヶ月で必ず結果を出します</p>
-    <a href="#" class="btn-red">無料体験を予約する</a>
+    <a href="#" class="btn-red">無料体験を予約する（60分）</a>
   </div>
 </section>
 
 <!-- 選ばれる理由 -->
 <section class="sec" style="background:#fff;">
   <p class="sec-tag">WHY BODY CRAFT</p>
-  <h2 class="sec-title">選ばれる3つの理由</h2>
-  <p class="sec-sub">他のパーソナルジムとは、ここが根本的に違います</p>
+  <h2 class="sec-title">選ばれる5つの理由</h2>
+  <p class="sec-sub">他のパーソナルジムとは、ここが根本的に違います。97%の変化率がその証明です。</p>
   <div class="feat-grid">
     <div class="fc">
       <div class="fc-num">01</div>
       <h3 class="fc-title">完全個別設計<br>プログラム</h3>
-      <p class="fc-text">体組成・生活習慣・目標・食習慣をすべてヒアリングし、あなただけのトレーニング＋食事プランを設計。テンプレートは一切使いません。</p>
+      <p class="fc-text">体組成・生活習慣・目標・食習慣・睡眠・ストレスレベルをすべてヒアリングし、あなただけのトレーニング＋食事プランを設計します。テンプレートは一切使用しません。毎回のセッションで調整を行い、常に最適な負荷でトレーニングできます。</p>
       <div class="fc-badge">管理栄養士監修</div>
     </div>
     <div class="fc">
       <div class="fc-num">02</div>
       <h3 class="fc-title">食事管理まで<br>LINEで完全サポート</h3>
-      <p class="fc-text">毎日の食事写真をLINEで送るだけでフィードバック。「何を食べればいいか」の迷いをゼロにします。外食時の注文方法まで指導します。</p>
+      <p class="fc-text">毎日の食事写真をLINEで送るだけで、担当トレーナーが即座にフィードバック。「何を食べればいいか」の迷いをゼロにします。コンビニ・外食・飲み会でのメニュー選び、スーパーでの食材選択まで、日常生活のあらゆる食の場面を徹底サポートします。</p>
       <div class="fc-badge">24時間対応</div>
     </div>
     <div class="fc">
       <div class="fc-num">03</div>
       <h3 class="fc-title">結果が出なければ<br>延長無料保証</h3>
-      <p class="fc-text">プログラム終了時に体型変化を実感できない場合、追加1ヶ月を無料で延長します。それが私たちのサービスへの自信です。</p>
+      <p class="fc-text">プログラム終了時に体組成の変化を実感できない場合、追加1ヶ月（週1回×4回）のトレーニングを完全無料で延長します。それほど私たちは自分たちのプログラムに自信を持っています。開業以来、保証を発動したお客様はわずか3%未満です。</p>
       <div class="fc-badge">全額保証あり</div>
+    </div>
+  </div>
+  <div class="feat-grid-2">
+    <div class="fc2">
+      <div class="fc2-num">04</div>
+      <div>
+        <h3 class="fc2-title">科学的根拠に基づく<br>トレーニング設計</h3>
+        <p class="fc2-text">スポーツ科学・運動生理学の最新知見をもとにプログラムを設計。「なんとなくやる」のではなく、なぜその運動をするのかを理解しながら取り組めます。体組成測定データを毎回分析し、筋肉量・体脂肪率・基礎代謝の変化をグラフで可視化して提示します。</p>
+      </div>
+    </div>
+    <div class="fc2">
+      <div class="fc2-num">05</div>
+      <div>
+        <h3 class="fc2-title">卒業後も困らない<br>セルフケア完全伝授</h3>
+        <p class="fc2-text">プログラム終了後に「元に戻った」では意味がありません。BODY CRAFTでは卒業時に、自宅でできるセルフトレーニング・食事管理の継続方法・モチベーション維持の仕組みを完全伝授します。一生使える健康的な生活習慣をプレゼントします。</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- トレーニングの流れ -->
+<!-- 他社比較 -->
 <section class="sec" style="background:var(--light);">
+  <p class="sec-tag">COMPARISON</p>
+  <h2 class="sec-title">他社パーソナルジムとの比較</h2>
+  <p class="sec-sub">BODY CRAFTが選ばれる理由を、数字と実績で比較してみました</p>
+  <div class="vs-wrap">
+    <table class="vs-table">
+      <thead>
+        <tr>
+          <th>比較項目</th>
+          <th class="red-col">BODY CRAFT</th>
+          <th>大手Aジム</th>
+          <th>格安Bジム</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>食事管理サポート</td><td class="vs-check vs-hl">毎日LINE対応</td><td>月2回</td><td>なし</td></tr>
+        <tr><td>プログラム設計</td><td class="vs-check vs-hl">完全個別</td><td>個別</td><td>テンプレート</td></tr>
+        <tr><td>結果保証制度</td><td class="vs-check vs-hl">延長無料保証</td><td>なし</td><td>なし</td></tr>
+        <tr><td>施設形態</td><td class="vs-hl">完全個室</td><td>半個室</td><td>オープン</td></tr>
+        <tr><td>体組成再測定</td><td class="vs-check vs-hl">毎回測定</td><td>初回のみ</td><td>初回のみ</td></tr>
+        <tr><td>管理栄養士監修</td><td class="vs-check vs-hl">あり</td><td class="vs-cross">なし</td><td class="vs-cross">なし</td></tr>
+        <tr><td>トレーナー平均経験</td><td class="vs-hl">5年以上</td><td>3年以上</td><td>1年以上</td></tr>
+        <tr><td>卒業後サポート</td><td class="vs-check vs-hl">セルフケア指導付き</td><td class="vs-cross">なし</td><td class="vs-cross">なし</td></tr>
+        <tr><td>無料体験</td><td class="vs-check vs-hl">60分（完全無料）</td><td>30分</td><td>なし</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 実績 -->
+<section class="sec" style="background:var(--dark);">
+  <p class="sec-tag" style="color:var(--red);">NUMBERS</p>
+  <h2 class="sec-title" style="color:#fff;">数字で見るBODY CRAFT</h2>
+  <p class="sec-sub">すべて実際の会員データをもとにした数字です</p>
+  <div class="achieve-grid">
+    <div class="ag">
+      <div class="ag-icon">👥</div>
+      <div class="ag-num">1,200+</div>
+      <div class="ag-lbl">開業以来の<br>累計会員数</div>
+    </div>
+    <div class="ag">
+      <div class="ag-icon">🏆</div>
+      <div class="ag-num">97%</div>
+      <div class="ag-lbl">2ヶ月以内の<br>体型変化達成率</div>
+    </div>
+    <div class="ag">
+      <div class="ag-icon">🔄</div>
+      <div class="ag-num">82%</div>
+      <div class="ag-lbl">プログラム終了後<br>継続・再入会率</div>
+    </div>
+    <div class="ag">
+      <div class="ag-icon">⚖</div>
+      <div class="ag-num">-8.4kg</div>
+      <div class="ag-lbl">2ヶ月プログラム<br>平均減量実績</div>
+    </div>
+  </div>
+</section>
+
+<!-- トレーニング内容 -->
+<section class="sec" style="background:var(--light);">
+  <p class="sec-tag">TRAINING MENU</p>
+  <h2 class="sec-title">トレーニング内容</h2>
+  <p class="sec-sub">目標に合わせて4つのアプローチから最適なプログラムを組み合わせます。すべて完全個室で行います。</p>
+  <div class="training-grid">
+    <div class="tg">
+      <div class="tg-img" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80');min-height:180px;"></div>
+      <div class="tg-body">
+        <p class="tg-cat">STRENGTH TRAINING</p>
+        <h3 class="tg-name">筋力・ボディメイクトレーニング</h3>
+        <p class="tg-desc">ビッグ3（スクワット・デッドリフト・ベンチプレス）をベースに、体幹・上半身・下半身を総合的に強化。正確なフォームを徹底指導し、筋肥大・筋力向上を最短距離で実現します。</p>
+        <div class="tg-tags"><span class="tg-tag">代謝向上</span><span class="tg-tag">筋肉増量</span><span class="tg-tag">基礎体力向上</span></div>
+      </div>
+    </div>
+    <div class="tg">
+      <div class="tg-img" style="background-image:url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&q=80');min-height:180px;"></div>
+      <div class="tg-body">
+        <p class="tg-cat">FAT BURN HIIT</p>
+        <h3 class="tg-name">体脂肪燃焼・ダイエットプログラム</h3>
+        <p class="tg-desc">HIITとサーキットトレーニングを組み合わせた脂肪燃焼特化プログラム。筋肉量を維持しながら効率的に体脂肪を落とします。アフターバーン効果で運動後も代謝が高い状態が続きます。</p>
+        <div class="tg-tags"><span class="tg-tag">脂肪燃焼</span><span class="tg-tag">心肺機能改善</span><span class="tg-tag">代謝アップ</span></div>
+      </div>
+    </div>
+    <div class="tg">
+      <div class="tg-img" style="background-image:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80');min-height:180px;"></div>
+      <div class="tg-body">
+        <p class="tg-cat">POSTURE &amp; CORE</p>
+        <h3 class="tg-name">姿勢改善・体幹強化プログラム</h3>
+        <p class="tg-desc">デスクワークや運動不足で歪んだ姿勢を根本から矯正。体幹を鍛えることで腰痛・肩こりの予防・改善にも効果的です。見た目のスタイルアップにも直結します。</p>
+        <div class="tg-tags"><span class="tg-tag">姿勢矯正</span><span class="tg-tag">腰痛予防</span><span class="tg-tag">スタイルアップ</span></div>
+      </div>
+    </div>
+    <div class="tg">
+      <div class="tg-img" style="background-image:url('https://images.unsplash.com/photo-1571388208497-71bedc66e932?w=400&q=80');min-height:180px;"></div>
+      <div class="tg-body">
+        <p class="tg-cat">HEALTH MANAGEMENT</p>
+        <h3 class="tg-name">健康維持・生活習慣改善プログラム</h3>
+        <p class="tg-desc">血糖値・血圧・コレステロールなどの数値改善を目指す、医師監修の健康プログラム。50代以上のお客様にも安全に取り組めるよう設計。健康診断の結果改善を目指す方に特に人気です。</p>
+        <div class="tg-tags"><span class="tg-tag">生活習慣病予防</span><span class="tg-tag">体力向上</span><span class="tg-tag">QOL改善</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 流れ -->
+<section class="sec" style="background:#fff;">
   <p class="sec-tag">FLOW</p>
   <h2 class="sec-title">入会から2ヶ月後まで</h2>
-  <p class="sec-sub">最初の無料体験から、結果が出るまでのすべてをサポートします</p>
+  <p class="sec-sub">最初の無料体験から、結果が出るまでのすべてをトレーナーがサポートします</p>
   <div class="flow-steps">
-    <div class="fstep"><div class="fstep-c">📋</div><p class="fstep-lbl">STEP 01</p><h3 class="fstep-title">無料体験（60分）</h3><p class="fstep-text">カウンセリング＋体組成測定＋体験トレーニングを60分で実施。しつこい勧誘なし。</p></div>
-    <div class="fstep"><div class="fstep-c">🎯</div><p class="fstep-lbl">STEP 02</p><h3 class="fstep-title">目標設定・プログラム設計</h3><p class="fstep-text">目標・ライフスタイル・食習慣をもとに、あなただけのプログラムを設計します。</p></div>
-    <div class="fstep"><div class="fstep-c">💪</div><p class="fstep-lbl">STEP 03</p><h3 class="fstep-title">トレーニング開始</h3><p class="fstep-text">週1〜3回のセッション＋LINEでの毎日食事管理サポートが始まります。</p></div>
-    <div class="fstep"><div class="fstep-c">✨</div><p class="fstep-lbl">STEP 04</p><h3 class="fstep-title">2ヶ月後に体型変化</h3><p class="fstep-text">体組成の再測定で変化を確認。卒業後のセルフケア方法もお伝えします。</p></div>
+    <div class="fstep">
+      <div class="fstep-c">📋</div>
+      <p class="fstep-lbl">STEP 01</p>
+      <h3 class="fstep-title">無料体験（60分）</h3>
+      <p class="fstep-text">カウンセリング＋体組成測定＋体験トレーニングを60分で実施。しつこい勧誘なし。気軽にお越しください。</p>
+    </div>
+    <div class="fstep">
+      <div class="fstep-c">🎯</div>
+      <p class="fstep-lbl">STEP 02</p>
+      <h3 class="fstep-title">目標設定・プログラム設計</h3>
+      <p class="fstep-text">目標・ライフスタイル・食習慣・仕事の状況をもとに、あなただけの完全個別プログラムを設計します。</p>
+    </div>
+    <div class="fstep">
+      <div class="fstep-c">💪</div>
+      <p class="fstep-lbl">STEP 03</p>
+      <h3 class="fstep-title">トレーニング＋食事管理開始</h3>
+      <p class="fstep-text">週1〜3回のセッション＋LINEでの毎日食事管理サポートがスタート。毎回の変化を数字で確認します。</p>
+    </div>
+    <div class="fstep">
+      <div class="fstep-c">✨</div>
+      <p class="fstep-lbl">STEP 04</p>
+      <h3 class="fstep-title">2ヶ月後に体型変化</h3>
+      <p class="fstep-text">体組成の再測定で変化を確認。卒業後の自立したセルフケア方法まで完全伝授してお送りします。</p>
+    </div>
   </div>
 </section>
 
 <!-- トレーナー -->
-<section class="sec" style="background:#fff;">
+<section class="sec" style="background:var(--light);">
   <p class="sec-tag">TRAINER</p>
   <h2 class="sec-title">担当トレーナー</h2>
-  <p class="sec-sub">全員が実績のある現役トレーナー。お客様に合ったトレーナーを無料でマッチングします</p>
+  <p class="sec-sub">全員が実績のある現役トレーナー。お客様の目標・性別・年齢に合ったトレーナーを無料でマッチングします。</p>
   <div class="trainer-grid">
     <div class="tr-card">
       <div class="tr-img">👨‍🦱</div>
       <h3 class="tr-name">田中 翔太</h3>
-      <p class="tr-title">チーフトレーナー</p>
-      <p class="tr-career">パーソナルトレーナー歴10年。元・実業団アスリート。ダイエット・筋肉増量・アスリートボディまで幅広く対応。担当会員300名以上。</p>
-      <div class="tr-cert"><span class="cert">NSCA-CPT</span><span class="cert">FMS</span><span class="cert">栄養士</span></div>
+      <p class="tr-title">チーフトレーナー / 共同創業者</p>
+      <p class="tr-career">パーソナルトレーナー歴10年。元・実業団アスリート（陸上800m）。ダイエット・筋肉増量・アスリートボディまで幅広く対応。担当会員累計300名以上。大手フィットネスクラブでのトレーナー長経験を経て独立。</p>
+      <div class="tr-cert"><span class="cert">NSCA-CPT</span><span class="cert">FMS</span><span class="cert">管理栄養士</span></div>
     </div>
     <div class="tr-card">
       <div class="tr-img">👩</div>
       <h3 class="tr-name">木村 真奈美</h3>
-      <p class="tr-title">女性専門トレーナー</p>
-      <p class="tr-career">産後ダイエット・ホルモンバランスを考慮した女性特化トレーニングを得意とする。女性会員からの満足度No.1。</p>
-      <div class="tr-cert"><span class="cert">JATI-ATI</span><span class="cert">産後ケア</span><span class="cert">骨盤矯正</span></div>
+      <p class="tr-title">女性専門シニアトレーナー</p>
+      <p class="tr-career">産後ダイエット・ホルモンバランスを考慮した女性特化トレーニングを得意とする。女性会員からの満足度No.1。自身も2児の母として産後体型改善を経験し、同じ悩みを持つ女性への共感的なサポートが好評。</p>
+      <div class="tr-cert"><span class="cert">JATI-ATI</span><span class="cert">産後ケア資格</span><span class="cert">骨盤矯正</span></div>
     </div>
     <div class="tr-card">
       <div class="tr-img">👨</div>
       <h3 class="tr-name">松本 健一</h3>
       <p class="tr-title">ボディメイクスペシャリスト</p>
-      <p class="tr-career">元・ボディビルダー（全日本選手権出場）。体脂肪コントロール・筋肥大の専門家。短期間でのボディメイクを得意とする。</p>
-      <div class="tr-cert"><span class="cert">NSCA-CSCS</span><span class="cert">サプリ指導士</span></div>
+      <p class="tr-career">元・ボディビルダー（全日本選手権出場）。体脂肪コントロール・筋肥大の専門家。短期間での劇的なボディメイクを得意とする。スポーツ栄養学の知見を活かした食事指導にも定評がある。</p>
+      <div class="tr-cert"><span class="cert">NSCA-CSCS</span><span class="cert">スポーツ栄養士</span><span class="cert">サプリ指導士</span></div>
     </div>
   </div>
 </section>
 
+<!-- CTA（中間） -->
+<div class="mid-cta">
+  <h3>まずは体験してください</h3>
+  <p>無料体験トレーニング（60分）では、カウンセリング・体組成測定・体験トレーニングをすべて無料で実施します。<br>しつこい勧誘・押し売りは一切ありません。見学だけでも歓迎です。</p>
+  <a href="#" class="btn-white">無料体験を予約する（60分・完全無料）</a>
+</div>
+
 <!-- ビフォーアフター -->
 <section class="sec" style="background:var(--dark);">
   <p class="sec-tag" style="color:var(--red);">BEFORE / AFTER</p>
-  <h2 class="sec-title" style="color:#fff;">会員さんの変化</h2>
-  <p class="sec-sub">個人差はありますが、多くの方が短期間で変化を実感されています</p>
+  <h2 class="sec-title" style="color:#fff;">会員さんのリアルな変化</h2>
+  <p class="sec-sub">個人差はありますが、多くの方が短期間で目に見える変化を実感されています</p>
   <div class="ba-grid">
     <div class="bac">
       <div class="bac-head"><div class="bac-name">M.Kさん（34歳・会社員）</div><div class="bac-meta">産後ダイエット目的</div></div>
       <div class="bac-body">
         <div class="bac-data"><div class="bd"><div class="bd-lbl">START</div><div class="bd-val">62kg</div></div><div class="bd-arrow">→</div><div class="bd after"><div class="bd-lbl">2ヶ月後</div><div class="bd-val">54kg</div></div></div>
         <span class="bac-period">2ヶ月プログラム</span>
-        <p class="bac-comment">「産後3年間悩んでいた体型が2ヶ月で戻りました。食事の楽しみを失わずに痩せられたのが一番嬉しい。」</p>
+        <p class="bac-comment">「産後3年間悩んでいた体型が2ヶ月で戻りました。食事の楽しみを失わずに痩せられたのが一番嬉しいです。子どもを見ながら通えるよう時間の融通もきかせてもらいました。」</p>
       </div>
     </div>
     <div class="bac">
-      <div class="bac-head"><div class="bac-name">T.Yさん（28歳・エンジニア）</div><div class="bac-meta">体脂肪減・筋肉増量</div></div>
+      <div class="bac-head"><div class="bac-name">T.Yさん（28歳・エンジニア）</div><div class="bac-meta">体脂肪減・筋肉増量目的</div></div>
       <div class="bac-body">
         <div class="bac-data"><div class="bd"><div class="bd-lbl">体脂肪率</div><div class="bd-val">24%</div></div><div class="bd-arrow">→</div><div class="bd after"><div class="bd-lbl">3ヶ月後</div><div class="bd-val">14%</div></div></div>
         <span class="bac-period">3ヶ月プログラム</span>
-        <p class="bac-comment">「テレワークで体がなまっていましたが、週2回のトレーニングと食事管理で劇的に変わりました。」</p>
+        <p class="bac-comment">「テレワークで体がなまっていましたが、週2回のトレーニングと食事管理で劇的に変わりました。体脂肪率が10%も落ちて、腹筋が初めて見えました。」</p>
       </div>
     </div>
     <div class="bac">
@@ -299,31 +564,97 @@
       <div class="bac-body">
         <div class="bac-data"><div class="bd"><div class="bd-lbl">START</div><div class="bd-val">71kg</div></div><div class="bd-arrow">→</div><div class="bd after"><div class="bd-lbl">6ヶ月後</div><div class="bd-val">58kg</div></div></div>
         <span class="bac-period">6ヶ月プログラム</span>
-        <p class="bac-comment">「健康診断で要注意だった数値が半年で全て正常値に。トレーナーさんが親身に寄り添ってくれました。」</p>
+        <p class="bac-comment">「健康診断で要注意だった血糖値・中性脂肪が半年で全て正常値になりました。トレーナーさんが年齢に寄り添って無理のないプログラムを組んでくれました。」</p>
+      </div>
+    </div>
+    <div class="bac">
+      <div class="bac-head"><div class="bac-name">S.Kさん（41歳・管理職）</div><div class="bac-meta">内臓脂肪減少・ボディメイク</div></div>
+      <div class="bac-body">
+        <div class="bac-data"><div class="bd"><div class="bd-lbl">ウエスト</div><div class="bd-val">92cm</div></div><div class="bd-arrow">→</div><div class="bd after"><div class="bd-lbl">2ヶ月後</div><div class="bd-val">79cm</div></div></div>
+        <span class="bac-period">2ヶ月プログラム</span>
+        <p class="bac-comment">「40代の内臓脂肪がここまで落ちるとは思っていませんでした。毎週の変化が数字に出るのでモチベーションが途切れず、2ヶ月間続けることができました。」</p>
+      </div>
+    </div>
+    <div class="bac">
+      <div class="bac-head"><div class="bac-name">A.Fさん（22歳・大学生）</div><div class="bac-meta">痩せ型から筋肉増量</div></div>
+      <div class="bac-body">
+        <div class="bac-data"><div class="bd"><div class="bd-lbl">体重</div><div class="bd-val">52kg</div></div><div class="bd-arrow">→</div><div class="bd after"><div class="bd-lbl">3ヶ月後</div><div class="bd-val">60kg</div></div></div>
+        <span class="bac-period">3ヶ月プログラム</span>
+        <p class="bac-comment">「筋肉がつかない体質だと思っていましたが、食事の量と質を変えただけで想像以上に体型が変わりました。体重増えたのに服のサイズが全然違う！」</p>
+      </div>
+    </div>
+    <div class="bac">
+      <div class="bac-head"><div class="bac-name">N.Mさん（38歳・看護師）</div><div class="bac-meta">姿勢改善・腰痛解消</div></div>
+      <div class="bac-body">
+        <div class="bac-data"><div class="bd"><div class="bd-lbl">腰痛頻度</div><div class="bd-val">毎日</div></div><div class="bd-arrow">→</div><div class="bd after"><div class="bd-lbl">2ヶ月後</div><div class="bd-val">ほぼゼロ</div></div></div>
+        <span class="bac-period">2ヶ月プログラム</span>
+        <p class="bac-comment">「立ち仕事で腰が辛かったのが、体幹トレーニングで劇的に改善されました。おまけに体重も4kg落ちて一石二鳥！職場の同僚にも勧めています。」</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 口コミ -->
+<!-- お客様の声 -->
 <section class="sec" style="background:#fff;">
   <p class="sec-tag">VOICE</p>
   <h2 class="sec-title">お客様の声</h2>
-  <p class="sec-sub">Google口コミ ★4.9（240件以上）</p>
+  <p class="sec-sub">Google口コミ ★4.9（240件以上）／ 日本語・実名に近い形でのレビューをご紹介します</p>
   <div class="vc-grid">
-    <div class="vc"><div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">S.Tさん（29歳）</div><div class="vc-meta">2ヶ月プログラム</div></div></div><div class="vc-stars">★★★★★</div><p class="vc-text">食事制限だけで痩せようとして失敗続きでしたが、ここで筋トレと食事の両立を学んで初めて体型が変わりました。LINEのサポートがとても助かりました。</p><span class="vc-badge">-8kg達成</span></div>
-    <div class="vc"><div class="vc-top"><div class="vc-av">👨</div><div><div class="vc-name">K.Mさん（38歳）</div><div class="vc-meta">3ヶ月プログラム</div></div></div><div class="vc-stars">★★★★★</div><p class="vc-text">完全個室なので人目を気にせず全力でトレーニングできます。フォームを丁寧に直してもらってから、全然違う筋肉の使い方になりました。</p><span class="vc-badge">体脂肪-9%</span></div>
-    <div class="vc"><div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">A.Nさん（44歳）</div><div class="vc-meta">6ヶ月プログラム</div></div></div><div class="vc-stars">★★★★★</div><p class="vc-text">40代でのダイエットは代謝が落ちて難しいと思っていましたが、トレーナーが年齢に合ったアプローチで結果を出してくれました。</p><span class="vc-badge">友人に驚かれた</span></div>
-    <div class="vc"><div class="vc-top"><div class="vc-av">👨</div><div><div class="vc-name">H.Kさん（32歳）</div><div class="vc-meta">2ヶ月プログラム</div></div></div><div class="vc-stars">★★★★★</div><p class="vc-text">自己流のトレーニングを4年続けて成果が出なかったのに、ここに来てから2ヶ月で明らかに体型が変わりました。プロの指導の大切さを痛感。</p><span class="vc-badge">自己流から卒業</span></div>
-    <div class="vc"><div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">Y.Sさん（25歳）</div><div class="vc-meta">3ヶ月プログラム</div></div></div><div class="vc-stars">★★★★★</div><p class="vc-text">結婚式前に体型を整えたくて入会。体重は-5kgで、写真映りが全然違いました。式後もそのまま継続しています。ありがとうございました！</p><span class="vc-badge">結婚式前に達成</span></div>
-    <div class="vc"><div class="vc-top"><div class="vc-av">👨</div><div><div class="vc-name">R.Oさん（55歳）</div><div class="vc-meta">6ヶ月プログラム</div></div></div><div class="vc-stars">★★★★☆</div><p class="vc-text">健康のために始めましたが、体が軽くなっただけでなく仕事のパフォーマンスが上がりました。週2回のトレーニングが楽しみになっています。</p><span class="vc-badge">仕事も改善</span></div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">S.Tさん（29歳）</div><div class="vc-meta">2ヶ月プログラム</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">食事制限だけで痩せようとして失敗続きでしたが、ここで筋トレと食事の両立を学んで初めて体型が変わりました。LINEのサポートで毎食フィードバックをもらえるのが本当に助かりました。</p>
+      <span class="vc-badge">-8kg達成</span>
+    </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👨</div><div><div class="vc-name">K.Mさん（38歳）</div><div class="vc-meta">3ヶ月プログラム</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">完全個室なので人目を気にせず全力でトレーニングできます。フォームを丁寧に直してもらってから、全然違う筋肉の使い方になりました。4年間の自己流を悔やんでいます。</p>
+      <span class="vc-badge">体脂肪-9%</span>
+    </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">A.Nさん（44歳）</div><div class="vc-meta">6ヶ月プログラム</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">40代でのダイエットは代謝が落ちて難しいと思っていましたが、年齢に合ったアプローチで確実に結果を出してくれました。体重より体型が変わったことに一番感動しています。</p>
+      <span class="vc-badge">友人に驚かれた</span>
+    </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👨</div><div><div class="vc-name">H.Kさん（32歳）</div><div class="vc-meta">2ヶ月プログラム</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">自己流のトレーニングを4年続けて成果が出なかったのに、ここに来てから2ヶ月で明らかに体型が変わりました。プロの指導と食事管理がこれほど重要だとは思っていませんでした。</p>
+      <span class="vc-badge">自己流から卒業</span>
+    </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">Y.Sさん（25歳）</div><div class="vc-meta">3ヶ月プログラム</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">結婚式前に体型を整えたくて入会。体重は-5kgで、式の写真映りが全然違いました。式後も継続して通っています。一生の習慣になりました。ありがとうございました！</p>
+      <span class="vc-badge">結婚式前に達成</span>
+    </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👨</div><div><div class="vc-name">R.Oさん（55歳）</div><div class="vc-meta">6ヶ月プログラム</div></div></div>
+      <div class="vc-stars">★★★★☆</div>
+      <p class="vc-text">健康のために始めましたが、体が軽くなっただけでなく仕事のパフォーマンスが明らかに上がりました。週2回のトレーニングが今では一番の楽しみになっています。</p>
+      <span class="vc-badge">仕事力も改善</span>
+    </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👩</div><div><div class="vc-name">C.Iさん（31歳）</div><div class="vc-meta">2ヶ月プログラム</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">産後太りが悩みでしたが、授乳中でも安心できる食事指導で無理なくマイナス7kgを達成。子育て中の体や心の変化も踏まえてサポートしてもらえて、心強かったです。</p>
+      <span class="vc-badge">産後-7kg</span>
+    </div>
+    <div class="vc">
+      <div class="vc-top"><div class="vc-av">👨</div><div><div class="vc-name">D.Sさん（47歳）</div><div class="vc-meta">3ヶ月プログラム</div></div></div>
+      <div class="vc-stars">★★★★★</div>
+      <p class="vc-text">他社パーソナルジムを2社試しましたが、食事指導がここまで詳しいのはBODY CRAFTだけでした。外食チェーンごとの注文方法、コンビニ活用術まで教えてもらえます。</p>
+      <span class="vc-badge">他社から乗り換え</span>
+    </div>
   </div>
 </section>
 
 <!-- 中間CTA -->
 <div class="mid-cta">
   <h3>FIRST SESSION FREE</h3>
-  <p>まずは無料体験トレーニング（60分）でBODY CRAFTを体感してください。しつこい勧誘・セールスは一切行いません。</p>
+  <p>まずは無料体験トレーニング（60分）でBODY CRAFTを体感してください。<br>しつこい勧誘・セールスは一切行いません。</p>
   <a href="#" class="btn-white">無料体験を予約する（60分）</a>
 </div>
 
@@ -331,17 +662,19 @@
 <section class="sec" style="background:var(--light);">
   <p class="sec-tag">PRICING</p>
   <h2 class="sec-title">料金プラン</h2>
-  <p class="sec-sub">すべてのプランに食事管理LINEサポートが含まれます</p>
+  <p class="sec-sub">すべてのプランに食事管理LINEサポートと卒業後セルフケア指導が含まれます。分割払い対応可。</p>
   <div class="plan-grid">
     <div class="plan">
       <p class="plan-name">SHORT COURSE</p>
       <div class="plan-price">¥88,000</div>
       <p class="plan-period">2ヶ月 ／ 週1回（8回）</p>
       <div class="plan-items">
-        <div class="pi"><span>✓</span>カウンセリング・体組成測定</div>
-        <div class="pi"><span>✓</span>個別プログラム設計</div>
+        <div class="pi"><span>✓</span>無料カウンセリング・体組成測定</div>
+        <div class="pi"><span>✓</span>完全個別プログラム設計</div>
         <div class="pi"><span>✓</span>トレーニング指導（8回）</div>
         <div class="pi"><span>✓</span>LINEサポート（週3回まで）</div>
+        <div class="pi"><span>✓</span>卒業後セルフケア指導</div>
+        <div class="pi"><span>✓</span>結果保証（延長オプション）</div>
       </div>
       <a href="#" class="plan-btn">このプランを選ぶ</a>
     </div>
@@ -351,10 +684,13 @@
       <div class="plan-price">¥148,000</div>
       <p class="plan-period">2ヶ月 ／ 週2回（16回）</p>
       <div class="plan-items">
-        <div class="pi"><span>✓</span>カウンセリング・体組成測定</div>
-        <div class="pi"><span>✓</span>個別プログラム設計</div>
+        <div class="pi"><span>✓</span>無料カウンセリング・体組成測定</div>
+        <div class="pi"><span>✓</span>完全個別プログラム設計</div>
         <div class="pi"><span>✓</span>トレーニング指導（16回）</div>
         <div class="pi"><span>✓</span>LINE食事管理（毎日対応）</div>
+        <div class="pi"><span>✓</span>月1回体組成再測定</div>
+        <div class="pi"><span>✓</span>卒業後セルフケア指導</div>
+        <div class="pi"><span>✓</span>結果保証（延長オプション）</div>
       </div>
       <a href="#" class="plan-btn">このプランを選ぶ</a>
     </div>
@@ -363,13 +699,40 @@
       <div class="plan-price">¥228,000</div>
       <p class="plan-period">3ヶ月 ／ 週3回（36回）</p>
       <div class="plan-items">
-        <div class="pi"><span>✓</span>カウンセリング・体組成測定</div>
-        <div class="pi"><span>✓</span>個別プログラム設計</div>
+        <div class="pi"><span>✓</span>無料カウンセリング・体組成測定</div>
+        <div class="pi"><span>✓</span>完全個別プログラム設計</div>
         <div class="pi"><span>✓</span>トレーニング指導（36回）</div>
         <div class="pi"><span>✓</span>LINE食事管理（毎日・無制限）</div>
+        <div class="pi"><span>✓</span>体組成測定（隔週）</div>
+        <div class="pi"><span>✓</span>管理栄養士による食事設計</div>
+        <div class="pi"><span>✓</span>卒業後セルフケア指導</div>
+        <div class="pi"><span>✓</span>結果保証（延長オプション）</div>
       </div>
       <a href="#" class="plan-btn">このプランを選ぶ</a>
     </div>
+  </div>
+  <div class="compare-wrap">
+    <p class="compare-title">— プラン機能比較表 —</p>
+    <table class="ctable">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>SHORT</th>
+          <th class="hl">STANDARD</th>
+          <th>INTENSIVE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>トレーニング回数</td><td>8回</td><td class="hl">16回</td><td>36回</td></tr>
+        <tr><td>LINEサポート</td><td>週3回</td><td class="hl">毎日</td><td>毎日・無制限</td></tr>
+        <tr><td>体組成再測定</td><td class="cx">—</td><td class="hl">月1回</td><td>隔週</td></tr>
+        <tr><td>管理栄養士食事設計</td><td class="cx">—</td><td class="cx hl">—</td><td class="ck">✓</td></tr>
+        <tr><td>卒業後セルフケア指導</td><td class="ck">✓</td><td class="ck hl">✓</td><td class="ck">✓</td></tr>
+        <tr><td>結果保証</td><td class="ck">✓</td><td class="ck hl">✓</td><td class="ck">✓</td></tr>
+        <tr><td>分割払い（無利子）</td><td class="ck">最大12回</td><td class="ck hl">最大24回</td><td class="ck">最大24回</td></tr>
+      </tbody>
+    </table>
+    <p class="plan-note">※ 料金はすべて税込 ／ 別途入会金 ¥22,000（今月末まで無料） ／ 分割払いは要審査</p>
   </div>
 </section>
 
@@ -377,29 +740,71 @@
 <section class="sec" style="background:#fff;">
   <p class="sec-tag">FAQ</p>
   <h2 class="sec-title">よくある質問</h2>
+  <p class="sec-sub">ご不明な点はLINEまたはお電話でもお気軽にご相談ください</p>
   <div class="faq-list">
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>運動が全くできない初心者でも大丈夫ですか？</div><div class="faq-a">はい、問題ありません。会員の約40%が運動習慣がない状態からスタートしています。体力レベルに合わせてゼロから組み立てます。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>仕事が忙しくて週1回しか来られないのですが効果はありますか？</div><div class="faq-a">週1回でも食事管理とセルフトレーニングの指導があるため、十分な効果が出ます。週1回コースでも97%の方に体型変化を実感いただいています。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>食事制限はきついですか？</div><div class="faq-a">「食べない」指導は一切しません。何をどのくらい食べればいいかを具体的に伝えます。外食も飲み会もOK。楽しみながら痩せる方法を一緒に考えます。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>2ヶ月で変化がなかった場合の保証について教えてください。</div><div class="faq-a">プログラム終了時に体組成の変化が確認できない場合、追加1ヶ月（週1回×4回）のトレーニングを無料で提供します。詳細は入会時にご確認ください。</div></div>
-    <div class="faq-item"><div class="faq-q"><span class="fq-icon">Q</span>女性一人でも通いやすいですか？</div><div class="faq-a">全個室のプライベート空間です。女性専門トレーナーへのご指名も可能。女性会員が全体の約55%を占めており、多くの女性が通われています。</div></div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>運動が全くできない初心者でも大丈夫ですか？</div>
+      <div class="faq-a">はい、問題ありません。会員の約40%が運動習慣が全くない状態からスタートしています。体力レベルに合わせてゼロから組み立てますので、ご安心ください。初回体験でまず現在の体の状態を把握し、最適な負荷から始めます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>仕事が忙しくて週1回しか来られないのですが効果はありますか？</div>
+      <div class="faq-a">週1回でも十分な効果が出ます。週1回コースの会員でも食事管理とセルフトレーニングの指導があるため、97%の方が体型変化を実感されています。むしろ「週1回でも確実に変われる方法」を設計するのが私たちの強みです。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>食事制限はきついですか？お酒や外食も楽しみたいのですが。</div>
+      <div class="faq-a">「食べない」指導は一切しません。何をどのくらい食べればいいかを具体的にお伝えします。外食・飲み会はOKで、むしろ「外食でどう選ぶか」を指導します。楽しみながら結果を出せる方法をご提案します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>2ヶ月で変化がなかった場合の保証について教えてください。</div>
+      <div class="faq-a">プログラム終了時に体組成の変化が確認できない場合、追加1ヶ月（週1回×4回）のトレーニングを無料で提供します。保証の適用条件（セッション出席率80%以上・食事報告継続）は入会時に詳しくご説明します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>女性一人でも通いやすいですか？</div>
+      <div class="faq-a">全個室のプライベート空間です。女性専門トレーナーへのご指名も可能で、女性会員が全体の約55%を占めています。更衣室も男女別に完全分離されており、安心してご来店いただけます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>持病や怪我があっても通えますか？</div>
+      <div class="faq-a">腰痛・膝痛・高血圧・糖尿病などをお持ちの方も多数ご在籍いただいています。入会前に担当トレーナーが詳しくヒアリングし、安全に配慮したプログラムを設計します。主治医の許可が必要な場合はその旨お伝えしますので、まずはご相談ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>料金の支払い方法はどうなっていますか？</div>
+      <div class="faq-a">現金・クレジットカード・銀行振込・各種QRコード決済に対応しています。分割払いは無利子で最大24回まで対応可能です（要審査）。月々の支払いにするプランについてはご相談ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>セッションのキャンセルや振替はできますか？</div>
+      <div class="faq-a">セッションの振替は前日20時までのご連絡で無制限に対応します。当日キャンセルは1回まで無料、2回目以降はキャンセル料（セッション料の50%）が発生します。体調不良の際は無制限で振替対応しています。</div>
+    </div>
   </div>
 </section>
 
 <!-- 最終CTA -->
 <section class="final">
+  <div class="urgent">
+    <div class="urg-tag">LIMITED OFFER — 今月末まで先着20名様限定</div>
+    <div class="urg-title">無料体験で入会すると<br>豪華3大特典プレゼント</div>
+    <div class="urg-body">今月中に無料体験に参加してご入会いただいたお客様全員に、通常有料の特典を無料でプレゼントします。定員に達し次第終了となりますので、今すぐご予約ください。</div>
+    <div class="urg-items">
+      <div class="urg-item">特典1：体組成測定レポート<br>（通常 ¥5,000）→ 無料</div>
+      <div class="urg-item">特典2：管理栄養士の食事プラン作成<br>（通常 ¥8,000）→ 無料</div>
+      <div class="urg-item">特典3：入会金<br>（通常 ¥22,000）→ 全額免除</div>
+    </div>
+    <div class="urg-note">※ 先着20名様限定。定員に達し次第終了。入会確定後に適用されます。</div>
+  </div>
   <h2>FIRST SESSION <em>FREE</em></h2>
   <p>まずは無料体験トレーニング（60分）でBODY CRAFTを体感してください。<br>しつこい勧誘・セールスは一切行いません。見学だけでも歓迎です。</p>
   <a href="#" class="btn-red">無料体験を予約する（60分・完全無料）</a>
   <div class="trust-row">
-    <span class="tr">🔒 完全個室・プライベート空間</span>
-    <span class="tr">📱 LINEで予約・相談OK</span>
-    <span class="tr">❌ しつこい勧誘なし</span>
+    <span class="trow">完全個室・プライベート空間</span>
+    <span class="trow">LINEで予約・相談OK</span>
+    <span class="trow">しつこい勧誘なし</span>
+    <span class="trow">結果保証あり</span>
+    <span class="trow">分割払い対応</span>
   </div>
 </section>
 
 <footer>
-  <p>BODY CRAFT PERSONAL GYM / 株式会社ボディクラフト（架空）<br>© 2024 BODY CRAFT. All Rights Reserved.</p>
+  <p>BODY CRAFT PERSONAL GYM / 株式会社ボディクラフト（架空）<br>〒000-0000 東京都○○区○○町○-○-○（架空） ／ TEL: 03-XXXX-XXXX<br>© 2024 BODY CRAFT. All Rights Reserved. ／ このサイトはポートフォリオ用の架空サイトです。</p>
 </footer>
 </body>
 </html>
+

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>blanc weddingについて | 神戸のウェディングプランナー</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--blush:#f2e8e0;--rose:#c9927a;--gold:#c4a882;--ivory:#faf8f5;--brown:#5c3d2e;--gray:#9a8a80;--border:#e8ddd4;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--ivory);color:var(--brown);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#fdf5f0;border-left:3px solid var(--gold);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--gray);}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:76px;background:rgba(250,248,245,.96);border-bottom:1px solid rgba(196,168,130,.3);backdrop-filter:blur(8px);}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:.12em;color:var(--brown);font-style:italic;}
+  .logo span{color:var(--gold);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--gray);font-size:.75rem;letter-spacing:.15em;transition:.2s;}
+  nav ul a:hover{color:var(--rose);}
+  .nav-cta{background:var(--rose);color:#fff!important;padding:10px 22px;font-size:.72rem!important;letter-spacing:.1em;}
+
+  /* HERO */
+  .hero{height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;padding-top:76px;}
+  .hero-img{background:url('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=900&q=80') center/cover;}
+  .hero-content{display:flex;flex-direction:column;justify-content:center;padding:80px 64px;background:var(--ivory);}
+  .hero-label{font-size:.62rem;letter-spacing:.4em;color:var(--gold);margin-bottom:20px;}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-size:3.6rem;line-height:1.25;color:var(--brown);margin-bottom:8px;font-weight:600;}
+  .hero-italic{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--rose);margin-bottom:22px;letter-spacing:.06em;}
+  .hero-lead{font-size:.84rem;line-height:2.1;color:var(--gray);margin-bottom:30px;max-width:400px;}
+  .btn-rose{display:inline-block;background:var(--rose);color:#fff;padding:15px 40px;font-size:.78rem;letter-spacing:.15em;transition:.3s;}
+  .btn-rose:hover{background:#b8806a;transform:translateY(-2px);}
+
+  /* 共通 */
+  .sec{padding:90px 80px;}
+  .sec-tag{color:var(--gold);font-size:.62rem;letter-spacing:.35em;text-align:center;margin-bottom:8px;}
+  .sec-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;text-align:center;color:var(--brown);margin-bottom:8px;line-height:1.3;}
+  .sec-sub{text-align:center;color:var(--gray);font-size:.82rem;line-height:2;margin-bottom:48px;}
+  .divider{width:32px;height:1px;background:var(--gold);margin:12px auto 18px;}
+
+  /* 数字バー */
+  .nums{background:var(--rose);display:grid;grid-template-columns:repeat(4,1fr);}
+  .ni{padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.2);}
+  .ni:last-child{border:none;}
+  .ni-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:#fff;font-weight:600;line-height:1;}
+  .ni-label{color:rgba(255,255,255,.7);font-size:.68rem;margin-top:5px;letter-spacing:.1em;}
+
+  /* ストーリー */
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .story-img{height:500px;overflow:hidden;}
+  .story-img img{width:100%;height:100%;object-fit:cover;}
+  .story-content{}
+  .story-tag{color:var(--gold);font-size:.62rem;letter-spacing:.35em;margin-bottom:12px;display:block;}
+  .story-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--brown);margin-bottom:16px;line-height:1.3;}
+  .story-divider{width:32px;height:1px;background:var(--gold);margin-bottom:20px;}
+  .story-text{color:var(--gray);font-size:.82rem;line-height:2.2;margin-bottom:18px;}
+
+  /* こだわり */
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .fc{text-align:center;padding:40px 28px;background:#fff;}
+  .fc-icon{font-size:2.2rem;margin-bottom:16px;}
+  .fc-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--brown);margin-bottom:12px;font-weight:600;}
+  .fc-text{color:var(--gray);font-size:.78rem;line-height:1.95;}
+
+  /* スタッフ */
+  .staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1000px;margin:0 auto;}
+  .sc{text-align:center;}
+  .sc-img{width:160px;height:160px;border-radius:50%;background:var(--blush);margin:0 auto 20px;overflow:hidden;border:2px solid var(--border);}
+  .sc-img img{width:100%;height:100%;object-fit:cover;}
+  .sc-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--brown);font-weight:600;margin-bottom:4px;}
+  .sc-title-tag{color:var(--gold);font-size:.65rem;letter-spacing:.15em;margin-bottom:12px;display:block;}
+  .sc-career{color:var(--gray);font-size:.76rem;line-height:2;margin-bottom:10px;}
+  .sc-message{color:var(--brown);font-size:.78rem;line-height:2;font-style:italic;border-top:1px solid var(--border);padding-top:12px;margin-top:10px;}
+
+  /* メッセージセクション */
+  .message-sec{max-width:800px;margin:0 auto;}
+  .message-grid{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start;}
+  .message-photo{width:200px;height:260px;overflow:hidden;}
+  .message-photo img{width:100%;height:100%;object-fit:cover;}
+  .message-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--brown);font-weight:600;margin-bottom:4px;}
+  .message-role{color:var(--gold);font-size:.65rem;letter-spacing:.15em;margin-bottom:20px;display:block;}
+  .message-text{color:var(--gray);font-size:.82rem;line-height:2.3;margin-bottom:14px;}
+  .message-sig{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--brown);font-style:italic;margin-top:20px;}
+
+  /* CTA */
+  .cta-sec{background:url('https://images.unsplash.com/photo-1464699908537-0954e50791ee?w=1200&q=80') center/cover;position:relative;padding:100px 80px;text-align:center;}
+  .cta-sec::before{content:'';position:absolute;inset:0;background:rgba(92,61,46,.55);}
+  .cta-inner{position:relative;z-index:1;}
+  .cta-title{font-family:'Cormorant Garamond',serif;font-size:3rem;color:#fff;font-weight:600;margin-bottom:12px;line-height:1.3;}
+  .cta-sub{color:rgba(255,255,255,.7);font-size:.84rem;margin-bottom:28px;}
+  .btn-white{display:inline-block;background:#fff;color:var(--brown);padding:16px 48px;font-size:.82rem;letter-spacing:.15em;font-weight:700;transition:.3s;}
+  .btn-white:hover{background:var(--blush);}
+
+  footer{background:var(--brown);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:rgba(255,255,255,.7);font-style:italic;letter-spacing:.1em;}
+  .footer-logo span{color:var(--gold);}
+  footer p{color:rgba(255,255,255,.3);font-size:.7rem;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .sec{padding:60px 24px;}
+    .hero{grid-template-columns:1fr;}
+    .hero-img{height:300px;}
+    .hero-content{padding:40px 24px;}
+    .nums{grid-template-columns:1fr 1fr;}
+    .story-grid{grid-template-columns:1fr;}
+    .features-grid{grid-template-columns:1fr;}
+    .staff-grid{grid-template-columns:1fr;}
+    .message-grid{grid-template-columns:1fr;}
+    .message-photo{width:100%;height:240px;}
+    footer{flex-direction:column;gap:10px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のウェディングプランナーサイトです。実在する会社・人物とは一切関係ありません。</div>
+
+<nav>
+  <div class="logo"><a href="index.html" style="color:inherit;"><span>blanc</span> wedding</a></div>
+  <ul>
+    <li><a href="plan.html">プラン</a></li>
+    <li><a href="gallery.html">実績</a></li>
+    <li><a href="about.html">こだわり</a></li>
+    <li><a href="voice.html">スタッフ</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <p class="hero-label">ABOUT BLANC WEDDING</p>
+    <h1>あなたの物語を<br>一緒に描く</h1>
+    <p class="hero-italic">— We craft your unique love story —</p>
+    <p class="hero-lead">blanc weddingは、神戸で12年にわたりおふたりの「唯一無二の一日」をつくり続けてきたウェディングプランナーチームです。テンプレートを使わず、ふたりの出会いと未来を丁寧に聴き取り、世界にひとつの結婚式を一から設計します。</p>
+    <a href="contact.html" class="btn-rose">無料相談を予約する</a>
+  </div>
+</section>
+
+<!-- 数字バー -->
+<div class="nums">
+  <div class="ni"><div class="ni-num">320<small style="font-size:1rem">+</small></div><div class="ni-label">組の挙式をサポート</div></div>
+  <div class="ni"><div class="ni-num">98<small style="font-size:1rem">%</small></div><div class="ni-label">満足度</div></div>
+  <div class="ni"><div class="ni-num">12</div><div class="ni-label">年の実績</div></div>
+  <div class="ni"><div class="ni-num">4.9</div><div class="ni-label">Googleクチコミ</div></div>
+</div>
+
+<!-- 私たちのストーリー -->
+<section class="sec">
+  <p class="sec-tag">OUR STORY</p>
+  <h2 class="sec-title">私たちのストーリー</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">blanc weddingが大切にしていることと、歩んできた12年間について</p>
+
+  <div class="story-grid">
+    <div class="story-img">
+      <img src="https://images.unsplash.com/photo-1519741347686-c1e331fcb34e?w=800&q=80" alt="blanc weddingのストーリー">
+    </div>
+    <div class="story-content">
+      <span class="story-tag">FOUNDING</span>
+      <h3 class="story-title">神戸の地から、<br>ふたりの物語を</h3>
+      <div class="story-divider"></div>
+      <p class="story-text">blanc weddingは2012年、神戸三宮にて創業しました。チーフプランナーの山本由香が「もっと自由に、もっと自分らしい結婚式を作れる場所を」という想いのもと立ち上げたウェディングプランニング事務所です。</p>
+      <p class="story-text">創業当初から「完全専属制」「完全オーダーメイド」「明朗会計」の3つを柱に据え、おふたりとの対話を何よりも大切にしてきました。打ち合わせ回数に制限を設けず、ご要望が変わっても最後まで寄り添う姿勢が、口コミによるご紹介を増やし続けてきた理由です。</p>
+      <p class="story-text">現在は神戸を中心に、関西全域でのウェディングプランニングに対応しています。六甲山頂から神戸港を一望するロケーション、洋館の建ち並ぶ北野異人館エリア、開放感あふれる西宮の海辺など、神戸ならではの多彩な舞台でおふたりの一日を演出してきました。</p>
+      <p class="story-text">12年間で320組以上のカップルに寄り添い、その積み重ねが私たちの財産です。どんな小さなこだわりも見逃さない目と、長年培ってきた会場・業者との信頼関係で、理想のウェディングを実現します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3つのこだわり -->
+<section class="sec" style="background:var(--blush);">
+  <p class="sec-tag">OUR COMMITMENT</p>
+  <h2 class="sec-title">6つのこだわり</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">blanc weddingが大切にしている、6つの約束</p>
+
+  <div class="features-grid">
+    <div class="fc">
+      <div class="fc-icon">🤝</div>
+      <h3 class="fc-title">専属プランナー制</h3>
+      <p class="fc-text">ご相談から挙式当日まで、担当プランナーが一貫してサポートします。途中でスタッフが変わることはありません。おふたりのことを深く理解したプランナーが、すべての工程をプロデュースします。引き継ぎによるすれ違いや情報の欠落が起きないよう、専属制にこだわっています。</p>
+    </div>
+    <div class="fc">
+      <div class="fc-icon">🌸</div>
+      <h3 class="fc-title">完全オーダーメイド</h3>
+      <p class="fc-text">テンプレートプランは使いません。おふたりの出会い・好み・ゲストの顔を思い浮かべながら、世界にひとつの式を一から設計します。料理のメニュー・装花の花材・演出のタイムライン、すべての要素をゼロから組み立てるため、「誰かの結婚式と似ている」と感じることはありません。</p>
+    </div>
+    <div class="fc">
+      <div class="fc-icon">💰</div>
+      <h3 class="fc-title">明瞭な費用提示</h3>
+      <p class="fc-text">後から追加費用が発生しない明朗会計が私たちのポリシーです。初回見積もりには、必要なものをすべて含めてご提示します。「後から○○が追加になります」という事態が起きないよう、打ち合わせ初期に費用の全体像を丁寧にご説明します。</p>
+    </div>
+    <div class="fc">
+      <div class="fc-icon">🌺</div>
+      <h3 class="fc-title">季節の生花</h3>
+      <p class="fc-text">会場装花には必ず季節の生花を使用します。春の桜・夏のひまわり・秋のコスモス・冬のクリスマスローズ。旬の花は美しいだけでなく、その日の記憶を長年にわたって呼び起こしてくれます。田中フラワーコーディネーターが季節ごとに最適な花材を厳選してご提案します。</p>
+    </div>
+    <div class="fc">
+      <div class="fc-icon">⛵</div>
+      <h3 class="fc-title">神戸ならではのロケーション</h3>
+      <p class="fc-text">神戸は日本でも有数のウェディングロケーションが揃うまちです。港を望む絶景ガーデン、歴史ある洋館チャペル、六甲山頂の贅沢なテラス。blanc weddingは12年のネットワークを活かし、神戸の最高の舞台でおふたりの式を演出します。</p>
+    </div>
+    <div class="fc">
+      <div class="fc-icon">💌</div>
+      <h3 class="fc-title">アフターフォロー</h3>
+      <p class="fc-text">挙式が終わってからも、blanc weddingとのご縁は続きます。記念日のお花のご手配、家族の集まりやパーティのプランニングなど、挙式後もおふたりの「記念日パートナー」として寄り添い続けます。挙式後1年目・3年目の記念日に、担当プランナーからお便りをお送りする文化も大切にしています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- プランナー紹介 -->
+<section class="sec">
+  <p class="sec-tag">STAFF</p>
+  <h2 class="sec-title">プランナー紹介</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">おふたりの一生の記念日をつくるスタッフをご紹介します</p>
+
+  <div class="staff-grid">
+    <div class="sc">
+      <div class="sc-img">
+        <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=300&q=80" alt="山本由香">
+      </div>
+      <h3 class="sc-name">山本 由香</h3>
+      <span class="sc-title-tag">CHIEF PLANNER</span>
+      <p class="sc-career">ウェディングプランナー歴14年。担当した挙式は200組以上。ゲストひとりひとりが笑顔になれる演出づくりを得意とする。前職は高級ホテルのブライダル担当として勤務後、blanc weddingを設立。神戸女学院大学卒。</p>
+      <p class="sc-message">「どんな些細なこだわりも、必ず式の中に生かします。おふたりの"好き"を聴かせてください。」</p>
+    </div>
+    <div class="sc">
+      <div class="sc-img">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&q=80" alt="田中彩">
+      </div>
+      <h3 class="sc-name">田中 彩</h3>
+      <span class="sc-title-tag">FLOWER COORDINATOR</span>
+      <p class="sc-career">パリのフラワースクール「École de Fleuriste de Paris」卒業後、帰国してウェディングフラワーの世界へ。季節の生花を使った会場装花が評判で、花材の仕入れから当日の設営まで一人で手がける。大阪市出身。</p>
+      <p class="sc-message">「花は、ゲストが会場に入った瞬間の第一印象を決めます。その一瞬のために全力を尽くします。」</p>
+    </div>
+    <div class="sc">
+      <div class="sc-img">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&q=80" alt="木村真奈美">
+      </div>
+      <h3 class="sc-name">木村 真奈美</h3>
+      <span class="sc-title-tag">HAIR & MAKE-UP ARTIST</span>
+      <p class="sc-career">ブライダルヘアメイク専門15年。新婦の「なりたいイメージ」を引き出す丁寧なカウンセリングと確かな技術に定評がある。東京・大阪のブライダルサロンを経て神戸に移住し、blanc weddingに参加。美容専門学校非常勤講師も務める。</p>
+      <p class="sc-message">「当日の朝、鏡を見た新婦さんが笑顔になってくれる瞬間が、この仕事の一番の喜びです。」</p>
+    </div>
+  </div>
+</section>
+
+<!-- メッセージ -->
+<section class="sec" style="background:var(--blush);">
+  <p class="sec-tag">MESSAGE</p>
+  <h2 class="sec-title">チーフプランナーより</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">山本 由香 / チーフプランナー</p>
+
+  <div class="message-sec">
+    <div class="message-grid">
+      <div>
+        <div class="message-photo">
+          <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=500&q=80" alt="山本由香チーフプランナー">
+        </div>
+      </div>
+      <div>
+        <h3 class="message-name">山本 由香</h3>
+        <span class="message-role">CHIEF PLANNER / FOUNDER</span>
+        <p class="message-text">blanc weddingを訪れてくださったこと、心より嬉しく思います。</p>
+        <p class="message-text">結婚式の準備を始めると、たくさんの選択肢と情報に迷ってしまう方がとても多いです。会場はどこがいい？料理の種類は？ドレスは？引き出物は？次から次へと決めることが出てきて、「いつの間にか楽しくなくなってしまった」という声も珍しくありません。</p>
+        <p class="message-text">blanc weddingで私が一番大切にしているのは、「おふたりが準備の過程を楽しめること」です。決める作業を押しつけるのではなく、ふたりで話し合う時間を一緒に楽しんでほしい。だから、打ち合わせでは必ずまず「最近どんなことが嬉しかったですか」から話を始めます。日常の会話の中に、式のヒントが必ず隠れているからです。</p>
+        <p class="message-text">神戸でウェディングプランナーを始めて12年が経ちました。この街の光と海と歴史が、何百組ものカップルの記念日を彩ってきました。その景色のひとつひとつが、私の財産です。</p>
+        <p class="message-text">あなたたちの結婚式も、きっと誰かに語りたくなる物語になります。その物語を一緒に描かせてください。まずは気軽にお話しに来てください。相談だけでも、まったく構いません。</p>
+        <div class="message-sig">Yuka Yamamoto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-inner">
+    <h2 class="cta-title">まずは、お話しください。</h2>
+    <p class="cta-sub">初回相談無料 ／ 完全予約制 ／ 神戸三宮より徒歩5分</p>
+    <a href="contact.html" class="btn-white">無料相談を予約する</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><span>blanc</span> wedding</div>
+  <p>© 2024 blanc wedding. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

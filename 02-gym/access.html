@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アクセス | IRON FORCE GYM</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700;900&family=Oswald:wght@400;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0a0a0a;--yellow:#f5c400;--gray:#1a1a1a;--mid:#111;--lgray:#888;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:#fff;overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:70px;background:rgba(10,10,10,.97);border-bottom:1px solid rgba(245,196,0,.2);}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;color:#fff;}
+  .logo span{color:var(--yellow);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:rgba(255,255,255,.65);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;transition:.2s;}
+  nav ul a:hover{color:var(--yellow);}
+  .nav-cta{background:var(--yellow);color:var(--black)!important;padding:9px 22px;font-size:.72rem!important;font-weight:700!important;}
+  .page-hero{height:320px;background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;padding-top:70px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.75);}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;}
+  .page-hero-content p{color:var(--yellow);font-family:'Bebas Neue',sans-serif;font-size:.8rem;letter-spacing:.35em;margin-bottom:10px;}
+  .page-hero-content h1{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:.1em;}
+  .sec{padding:80px;}
+  .sec-label{color:var(--yellow);font-family:'Bebas Neue',sans-serif;letter-spacing:.3em;font-size:.8rem;margin-bottom:12px;}
+  .sec-title{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:.05em;margin-bottom:36px;}
+  .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .map-placeholder{width:100%;height:420px;background:#1a1a1a;border:1px solid #333;display:flex;align-items:center;justify-content:center;color:var(--lgray);font-size:.85rem;letter-spacing:.1em;}
+  .info-block{margin-bottom:32px;}
+  .info-block h3{font-family:'Oswald',sans-serif;font-size:1.1rem;color:var(--yellow);letter-spacing:.1em;margin-bottom:14px;text-transform:uppercase;border-bottom:1px solid rgba(245,196,0,.25);padding-bottom:8px;}
+  .info-row{display:flex;gap:16px;margin-bottom:10px;font-size:.84rem;}
+  .info-label{color:var(--lgray);width:80px;flex-shrink:0;}
+  .info-val{color:#fff;line-height:1.7;}
+  .route-item{background:#1a1a1a;border-left:3px solid var(--yellow);padding:16px 20px;margin-bottom:12px;}
+  .route-item h4{font-family:'Oswald',sans-serif;font-size:.9rem;color:var(--yellow);margin-bottom:6px;letter-spacing:.08em;}
+  .route-item p{color:rgba(255,255,255,.65);font-size:.78rem;line-height:1.8;}
+  footer{background:#050505;padding:40px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #222;}
+  footer p{color:var(--lgray);font-size:.7rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;} .page-hero-content h1{font-size:2.2rem;}
+    .sec{padding:48px 24px;} .access-grid{grid-template-columns:1fr;}
+    footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">IRON FORCE <span>GYM</span></a>
+  <ul>
+    <li><a href="program.html">プログラム</a></li>
+    <li><a href="about.html">施設</a></li>
+    <li><a href="trainers.html">トレーナー</a></li>
+    <li><a href="price.html">料金</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料体験</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>ACCESS</p>
+    <h1>アクセス</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-label">ACCESS</p>
+  <h2 class="sec-title">ジムへのアクセス</h2>
+  <div class="access-grid">
+    <div class="map-placeholder">[ MAP ]<br>大阪市北区梅田X-X-X</div>
+    <div>
+      <div class="info-block">
+        <h3>基本情報</h3>
+        <div class="info-row"><span class="info-label">住所</span><span class="info-val">大阪府大阪市北区梅田1-X-X<br>IRONFORCEビル 3F</span></div>
+        <div class="info-row"><span class="info-label">営業時間</span><span class="info-val">平日 6:00〜23:00<br>土日祝 7:00〜21:00</span></div>
+        <div class="info-row"><span class="info-label">定休日</span><span class="info-val">年中無休（年末年始を除く）</span></div>
+        <div class="info-row"><span class="info-label">電話</span><span class="info-val">06-XXXX-XXXX</span></div>
+      </div>
+      <div class="info-block">
+        <h3>アクセス方法</h3>
+        <div class="route-item">
+          <h4>🚃 電車でお越しの方</h4>
+          <p>JR大阪駅・梅田駅より徒歩3分<br>御堂筋線 梅田駅 北口より徒歩2分</p>
+        </div>
+        <div class="route-item">
+          <h4>🚗 お車でお越しの方</h4>
+          <p>提携駐車場あり（1時間無料）<br>○○パーキング（建物向かい）</p>
+        </div>
+        <div class="route-item">
+          <h4>🚲 自転車でお越しの方</h4>
+          <p>建物地下に駐輪場あり（無料）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 IRON FORCE GYM. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

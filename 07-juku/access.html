@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アクセス・料金 | 明星学習塾</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Nunito:wght@700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--orange:#ff7043;--yellow:#ffd54f;--blue:#1565c0;--lightblue:#e3f2fd;--green:#4caf50;--text:#333;--gray:#666;--bg:#fffdf9;--border:#f0e8e0;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#fff8f5;border-left:3px solid var(--orange);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--gray);}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:#fff;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:68px;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-star{width:36px;height:36px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+  .logo-text{font-size:.95rem;font-weight:900;color:var(--text);}
+  .logo-sub{font-size:.62rem;color:var(--gray);display:block;font-weight:400;}
+  nav ul{list-style:none;display:flex;gap:28px;}
+  nav ul a{color:var(--gray);font-size:.78rem;font-weight:500;transition:.2s;}
+  nav ul a:hover,nav ul a.active{color:var(--orange);}
+  .nav-cta{background:var(--orange);color:#fff!important;padding:10px 22px;border-radius:24px;font-size:.78rem!important;font-weight:700!important;}
+  .page-hero{padding-top:68px;background:linear-gradient(135deg,#fff8f5 0%,#fff3e0 50%,#e3f2fd 100%);padding-bottom:64px;}
+  .page-hero-inner{padding:64px 80px 0;}
+  .breadcrumb{font-size:.72rem;color:var(--gray);margin-bottom:14px;}
+  .breadcrumb a{color:var(--orange);}
+  .page-hero h1{font-size:2.4rem;font-weight:900;color:var(--text);margin-bottom:14px;line-height:1.35;}
+  .page-hero h1 span{color:var(--orange);}
+  .page-hero-lead{color:var(--gray);font-size:.9rem;line-height:2;max-width:720px;}
+  .sec{padding:80px 80px;}
+  .sec-label{display:inline-block;background:rgba(255,112,67,.1);color:var(--orange);padding:4px 14px;border-radius:100px;font-size:.68rem;font-weight:700;margin-bottom:10px;}
+  .sec-title{font-size:2rem;font-weight:900;color:var(--text);margin-bottom:36px;line-height:1.3;}
+  .sec-title span{color:var(--orange);}
+  /* 料金カード */
+  .fee-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .fc2{background:#fff;border-radius:16px;padding:32px 24px;box-shadow:0 2px 16px rgba(0,0,0,.06);text-align:center;transition:.3s;}
+  .fc2:hover{transform:translateY(-4px);}
+  .fc2-grade{color:var(--blue);font-size:.68rem;font-weight:700;letter-spacing:.12em;margin-bottom:6px;}
+  .fc2-name{font-size:.95rem;font-weight:700;margin-bottom:12px;color:var(--text);}
+  .fc2-price{font-size:1.8rem;font-weight:900;color:var(--orange);margin-bottom:4px;}
+  .fc2-period{color:var(--gray);font-size:.72rem;margin-bottom:16px;}
+  .fc2-items{text-align:left;display:flex;flex-direction:column;gap:7px;}
+  .fci{display:flex;gap:7px;font-size:.75rem;color:var(--gray);}
+  .fci::before{content:'✓';color:var(--green);flex-shrink:0;}
+  /* 詳細料金表 */
+  .fee-table{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06);}
+  .fee-table th{background:var(--orange);color:#fff;padding:14px 20px;font-size:.8rem;font-weight:700;text-align:center;}
+  .fee-table th:first-child{text-align:left;}
+  .fee-table td{padding:14px 20px;font-size:.82rem;color:var(--gray);text-align:center;border-bottom:1px solid var(--border);}
+  .fee-table td:first-child{color:var(--text);font-weight:500;text-align:left;}
+  .fee-table tr:last-child td{border-bottom:none;}
+  .fee-table tr:nth-child(even) td{background:var(--bg);}
+  .fee-highlight{color:var(--orange);font-weight:700;}
+  /* 月謝以外の費用 */
+  .optional-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .og{background:#fff;border-radius:12px;padding:22px 20px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .og-name{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:6px;}
+  .og-price{font-size:1.1rem;font-weight:700;color:var(--orange);margin-bottom:8px;}
+  .og-note{font-size:.72rem;color:var(--gray);line-height:1.7;}
+  /* アクセス */
+  .access-block{display:grid;grid-template-columns:1fr 1fr;}
+  .access-info{background:var(--lightblue);padding:80px;}
+  .access-img{background:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80') center/cover;min-height:400px;}
+  .info-table{margin-top:28px;width:100%;border-collapse:collapse;}
+  .info-table td{padding:12px 0;border-bottom:1px solid rgba(21,101,192,.1);color:var(--gray);font-size:.82rem;vertical-align:top;}
+  .info-table td:first-child{color:var(--blue);width:90px;font-size:.72rem;font-weight:700;}
+  /* 時間割 */
+  .schedule-table{width:100%;border-collapse:collapse;margin-top:24px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+  .schedule-table th{background:var(--blue);color:#fff;padding:10px 14px;font-size:.74rem;text-align:center;}
+  .schedule-table td{padding:10px 14px;font-size:.74rem;color:var(--gray);text-align:center;border-bottom:1px solid var(--border);}
+  .schedule-table td:first-child{color:var(--text);font-weight:500;text-align:left;}
+  .ok{color:var(--orange);font-weight:700;}
+  .ng{color:#ccc;}
+  /* FAQ */
+  .faq-list{max-width:780px;margin:0 auto;}
+  .faq-item{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:12px;box-shadow:0 1px 8px rgba(0,0,0,.05);}
+  .faq-q{display:flex;gap:12px;font-size:.86rem;font-weight:700;color:var(--text);margin-bottom:10px;}
+  .fq-i{color:var(--orange);flex-shrink:0;}
+  .faq-a{color:var(--gray);font-size:.8rem;line-height:1.95;padding-left:22px;}
+  /* CTA */
+  .trial{background:linear-gradient(135deg,var(--orange),#ff5722);padding:80px;text-align:center;}
+  .trial h2{font-size:2.4rem;font-weight:900;color:#fff;margin-bottom:10px;}
+  .trial p{color:rgba(255,255,255,.8);font-size:.88rem;margin-bottom:28px;}
+  .btn-white{display:inline-block;background:#fff;color:var(--orange);padding:16px 48px;border-radius:32px;font-size:.88rem;font-weight:900;transition:.3s;box-shadow:0 4px 20px rgba(0,0,0,.15);}
+  .btn-white:hover{transform:translateY(-2px);}
+  footer{background:var(--text);padding:32px 80px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-size:.92rem;font-weight:900;color:rgba(255,255,255,.5);}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空の学習塾サイトです。実在する塾・人物とは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html" class="logo"><div class="logo-star">⭐</div><div><div class="logo-text">明星学習塾</div><span class="logo-sub">子どもの「好き」が未来をひらく</span></div></a>
+  <ul>
+    <li><a href="course.html">コース</a></li>
+    <li><a href="index.html">特徴</a></li>
+    <li><a href="teachers.html">先生紹介</a></li>
+    <li><a href="results.html">実績</a></li>
+    <li><a href="access.html" class="active">料金</a></li>
+    <li><a href="contact.html" class="nav-cta">無料体験授業</a></li>
+  </ul>
+</nav>
+
+<!-- ページヘッダー -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">ホーム</a> &gt; アクセス・料金</p>
+    <h1>明確な<span>料金体系</span></h1>
+    <p class="page-hero-lead">入塾金・テキスト代込みの明快な月謝体系です。隠れた追加費用はありません。ご不明な点はいつでもお気軽にお問い合わせください。</p>
+  </div>
+</div>
+
+<!-- 月謝カード -->
+<section class="sec">
+  <div class="sec-label">月謝・料金</div>
+  <h2 class="sec-title">コース別<span>月謝一覧</span></h2>
+  <div class="fee-grid">
+    <div class="fc2">
+      <div class="fc2-grade">小学1〜3年生</div>
+      <div class="fc2-name">🎨 ちびっこコース</div>
+      <div class="fc2-price">¥8,800<small style="font-size:.75rem;color:var(--gray);font-weight:400;">/月〜</small></div>
+      <div class="fc2-period">（週2回 / 各45分）</div>
+      <div class="fc2-items">
+        <div class="fci">国語・算数対応</div>
+        <div class="fci">テキスト代込み</div>
+        <div class="fci">少人数（最大6名）</div>
+        <div class="fci">月次報告あり</div>
+      </div>
+    </div>
+    <div class="fc2">
+      <div class="fc2-grade">小学4〜6年生</div>
+      <div class="fc2-name">✏️ 基礎力コース</div>
+      <div class="fc2-price">¥12,800<small style="font-size:.75rem;color:var(--gray);font-weight:400;">/月〜</small></div>
+      <div class="fc2-period">（週2回 / 各60分）</div>
+      <div class="fc2-items">
+        <div class="fci">4教科対応</div>
+        <div class="fci">テキスト代込み</div>
+        <div class="fci">宿題サポートあり</div>
+        <div class="fci">月次面談あり</div>
+      </div>
+    </div>
+    <div class="fc2">
+      <div class="fc2-grade">中学1〜3年生</div>
+      <div class="fc2-name">📘 高校受験コース</div>
+      <div class="fc2-price">¥18,800<small style="font-size:.75rem;color:var(--gray);font-weight:400;">/月〜</small></div>
+      <div class="fc2-period">（週2回 / 各90分）</div>
+      <div class="fc2-items">
+        <div class="fci">5教科対応</div>
+        <div class="fci">定期テスト対策</div>
+        <div class="fci">模試受験込み</div>
+        <div class="fci">進路相談無料</div>
+      </div>
+    </div>
+    <div class="fc2">
+      <div class="fc2-grade">高校1〜3年生</div>
+      <div class="fc2-name">🎯 大学受験コース</div>
+      <div class="fc2-price">¥26,800<small style="font-size:.75rem;color:var(--gray);font-weight:400;">/月〜</small></div>
+      <div class="fc2-period">（週2回 / 各120分）</div>
+      <div class="fc2-items">
+        <div class="fci">志望校別対策</div>
+        <div class="fci">共通テスト対策</div>
+        <div class="fci">小論文指導</div>
+        <div class="fci">大学別過去問演習</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 詳細料金表 -->
+<section class="sec" style="background:var(--lightblue);">
+  <div class="sec-label">詳細料金</div>
+  <h2 class="sec-title">受講回数別<span>月謝詳細</span></h2>
+  <table class="fee-table">
+    <thead>
+      <tr>
+        <th>コース名</th>
+        <th>週1回（月4回）</th>
+        <th>週2回（月8回）</th>
+        <th>週3回（月12回）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🎨 ちびっこコース（小1〜3）</td>
+        <td>¥5,800/月</td>
+        <td class="fee-highlight">¥8,800/月</td>
+        <td>¥11,800/月</td>
+      </tr>
+      <tr>
+        <td>✏️ 基礎力コース（小4〜6）</td>
+        <td>¥7,800/月</td>
+        <td class="fee-highlight">¥12,800/月</td>
+        <td>¥16,800/月</td>
+      </tr>
+      <tr>
+        <td>📘 高校受験コース（中1〜3）</td>
+        <td>¥11,800/月</td>
+        <td class="fee-highlight">¥18,800/月</td>
+        <td>¥24,800/月</td>
+      </tr>
+      <tr>
+        <td>🎯 大学受験コース（高1〜3）</td>
+        <td>¥16,800/月</td>
+        <td class="fee-highlight">¥26,800/月</td>
+        <td>¥34,800/月</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="text-align:center;color:var(--gray);font-size:.72rem;margin-top:16px;">※ 全て税込み価格です。テキスト代・入塾金は月謝に含まれます。</p>
+</section>
+
+<!-- その他費用 -->
+<section class="sec">
+  <div class="sec-label">その他の費用</div>
+  <h2 class="sec-title">月謝以外の<span>費用について</span></h2>
+  <div class="optional-grid">
+    <div class="og">
+      <div class="og-name">入塾金</div>
+      <div class="og-price">¥0（無料）</div>
+      <div class="og-note">入塾金は一切頂いておりません。月謝のみでお通いいただけます。</div>
+    </div>
+    <div class="og">
+      <div class="og-name">テキスト代</div>
+      <div class="og-price">¥0（月謝に含む）</div>
+      <div class="og-note">授業で使用するテキストはすべて月謝に含まれています。別途費用はかかりません。</div>
+    </div>
+    <div class="og">
+      <div class="og-name">模試受験料</div>
+      <div class="og-price">¥0（高校・大学受験コース）</div>
+      <div class="og-note">高校受験・大学受験コースの模試は月謝に含まれます。</div>
+    </div>
+    <div class="og">
+      <div class="og-name">夏期・冬期・春期講習</div>
+      <div class="og-price">¥5,500〜/講習</div>
+      <div class="og-note">在塾生は優待価格。講習のみ受講も可能です（別途お問い合わせください）。</div>
+    </div>
+    <div class="og">
+      <div class="og-name">振替授業</div>
+      <div class="og-price">¥0（無料）</div>
+      <div class="og-note">欠席した場合の振替授業は無料で実施しています。同月内での振替が原則です。</div>
+    </div>
+    <div class="og">
+      <div class="og-name">兄弟割引</div>
+      <div class="og-price">月謝より10%OFF</div>
+      <div class="og-note">ご兄弟・ご姉妹で通塾の場合、2人目以降の月謝を10%割引いたします。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 授業時間帯 -->
+<section class="sec" style="background:#fff5f2;">
+  <div class="sec-label">授業時間</div>
+  <h2 class="sec-title">授業時間帯<span>スケジュール</span></h2>
+  <table class="schedule-table">
+    <thead>
+      <tr><th>時間帯</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日・祝</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>14:00〜15:30（小学生午後コマ）</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ng">休</td></tr>
+      <tr><td>16:00〜17:30（小学生夕方コマ）</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ng">休</td></tr>
+      <tr><td>18:00〜19:30（中学生コマ）</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ng">休</td></tr>
+      <tr><td>19:30〜21:00（高校生コマ）</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ng">—</td><td class="ng">休</td></tr>
+      <tr><td>9:00〜12:00（土曜集中コマ）</td><td class="ng">—</td><td class="ng">—</td><td class="ng">—</td><td class="ng">—</td><td class="ng">—</td><td class="ok">○</td><td class="ng">休</td></tr>
+    </tbody>
+  </table>
+  <p style="text-align:center;color:var(--gray);font-size:.72rem;margin-top:16px;">※ テスト前は臨時授業コマを設ける場合があります。詳しくはお問い合わせください。</p>
+</section>
+
+<!-- アクセス -->
+<div class="access-block">
+  <div class="access-info">
+    <div class="sec-label">アクセス</div>
+    <h2 class="sec-title" style="font-size:1.6rem;margin-bottom:0;">教室案内・アクセス</h2>
+    <table class="info-table">
+      <tr><td>所在地</td><td>岡山県岡山市北区X-X-X<br>明星ビル2F</td></tr>
+      <tr><td>電話</td><td>086-XXXX-XXXX</td></tr>
+      <tr><td>メール</td><td>info@meisei-juku.example.jp</td></tr>
+      <tr><td>アクセス</td><td>JR岡山駅より徒歩12分<br>バス停「XX」より徒歩2分</td></tr>
+      <tr><td>駐輪場</td><td>建物前に10台分あり（無料）</td></tr>
+      <tr><td>授業時間</td><td>月〜土 14:00〜21:00<br>（日曜・祝日休塾）</td></tr>
+      <tr><td>電話受付</td><td>月〜土 13:00〜21:00</td></tr>
+    </table>
+  </div>
+  <div class="access-img"></div>
+</div>
+
+<!-- FAQ -->
+<section class="sec">
+  <div style="text-align:center;margin-bottom:36px;">
+    <div class="sec-label">よくある質問</div>
+    <h2 class="sec-title" style="margin-bottom:0;">料金・アクセスに関する<span>よくある質問</span></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>月の途中から入塾した場合、月謝はどうなりますか？</div><div class="faq-a">入塾月は日割り計算で月謝をいただきます。翌月からは通常の月謝となります。入塾日によって初月の費用が変わりますので、詳しくはお問い合わせください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>月謝の支払い方法は何がありますか？</div><div class="faq-a">毎月月初に銀行口座からの自動引き落としが基本です。初月のみ現金またはクレジットカードでのお支払いも可能です。詳しくは入塾時にご案内します。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>退塾した場合の月謝はどうなりますか？</div><div class="faq-a">退塾は月末日を基準とし、退塾月は翌月の月謝は発生しません。退塾ご希望の場合は、退塾月の25日までにご連絡ください。日割り返金等はご対応していません。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>自転車通塾できますか？</div><div class="faq-a">はい、建物前に駐輪スペース（10台分）を無料でご用意しています。自転車通塾の方が多く、安心してお使いください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>駐車場はありますか？</div><div class="faq-a">専用駐車場はありません。お車でお越しの場合は、近隣のコインパーキングをご利用ください（体験授業時は1時間分の駐車代を補助します）。</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="trial">
+  <h2>まずは無料体験授業へ。</h2>
+  <p>費用についての不安は、ご相談ください。無理なく続けられる受講プランをご提案します。</p>
+  <a href="contact.html" class="btn-white">無料体験授業に申し込む</a>
+</div>
+
+<footer>
+  <div class="footer-logo">⭐ 明星学習塾</div>
+  <p>© 2024 明星学習塾. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

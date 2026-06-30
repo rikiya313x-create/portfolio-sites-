@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEB予約・お問い合わせ | さくら皮膚科クリニック</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--pink:#e91e8c;--light-pink:#fce4ec;--soft:#fff8fb;--blue:#1976d2;--teal:#00897b;--text:#333;--gray:#666;--border:#f0dde8;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:var(--light-pink);border-left:3px solid var(--pink);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--gray);}
+  .info-bar{background:var(--pink);color:#fff;text-align:center;padding:8px;font-size:.75rem;letter-spacing:.05em;}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:#fff;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:72px;border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(0,0,0,.04);}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-icon{width:40px;height:40px;background:var(--pink);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;}
+  .logo-text{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:600;color:var(--text);}
+  .logo-sub{font-size:.62rem;color:var(--gray);display:block;font-weight:400;}
+  nav ul{list-style:none;display:flex;gap:26px;}
+  nav ul a{color:var(--gray);font-size:.76rem;font-weight:500;transition:.2s;}
+  nav ul a:hover,nav ul a.active{color:var(--pink);}
+  .nav-cta{background:var(--pink);color:#fff!important;padding:9px 20px;border-radius:6px;font-size:.74rem!important;font-weight:700!important;}
+  .page-hero{padding-top:72px;background:var(--pink);}
+  .page-hero-inner{padding:56px 80px;}
+  .breadcrumb{font-size:.72rem;color:rgba(255,255,255,.5);margin-bottom:12px;}
+  .breadcrumb a{color:rgba(255,255,255,.8);}
+  .page-hero h1{font-family:'Noto Serif JP',serif;font-size:2.2rem;color:#fff;margin-bottom:12px;line-height:1.4;}
+  .page-hero h1 span{color:rgba(255,255,255,.7);}
+  .page-hero-lead{color:rgba(255,255,255,.75);font-size:.88rem;line-height:2.1;max-width:720px;}
+  .sec{padding:80px 80px;}
+  .sec-label{color:var(--pink);font-size:.65rem;letter-spacing:.2em;font-weight:700;margin-bottom:8px;text-transform:uppercase;}
+  .sec-title{font-family:'Noto Serif JP',serif;font-size:1.8rem;color:var(--text);margin-bottom:32px;line-height:1.4;}
+  /* 予約方法 */
+  .method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:800px;margin:0 auto 60px;}
+  .mg{background:var(--soft);border-radius:12px;padding:32px 28px;border:1px solid var(--border);text-align:center;}
+  .mg-icon{font-size:2.5rem;margin-bottom:14px;}
+  .mg-title{font-family:'Noto Serif JP',serif;font-size:1.1rem;color:var(--text);margin-bottom:8px;}
+  .mg-text{color:var(--gray);font-size:.78rem;line-height:1.85;margin-bottom:16px;}
+  .mg-cta{display:inline-block;background:var(--pink);color:#fff;padding:10px 28px;border-radius:6px;font-size:.8rem;font-weight:700;}
+  .mg.phone .mg-cta{background:var(--teal);}
+  .mg-num{font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+  .mg-hours{color:var(--gray);font-size:.72rem;}
+  /* フォーム */
+  .form-sec{background:var(--soft);padding:80px;}
+  .form-inner{max-width:800px;margin:0 auto;}
+  .form-card{background:#fff;border-radius:16px;padding:40px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+  .form-group{margin-bottom:20px;}
+  .form-label{display:block;font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:6px;}
+  .form-label .required{display:inline-block;background:var(--pink);color:#fff;font-size:.6rem;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:middle;}
+  .form-input,.form-select,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:6px;font-size:.82rem;font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--text);transition:.2s;outline:none;}
+  .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(233,30,140,.1);}
+  .form-textarea{height:120px;resize:vertical;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-radio-group{display:flex;gap:16px;flex-wrap:wrap;margin-top:4px;}
+  .form-radio{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text);cursor:pointer;}
+  .form-radio input{accent-color:var(--pink);}
+  .form-submit{width:100%;background:var(--pink);color:#fff;border:none;padding:16px;border-radius:8px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:.3s;margin-top:8px;}
+  .form-submit:hover{background:#c2175d;}
+  .form-note{font-size:.72rem;color:var(--gray);text-align:center;margin-top:12px;line-height:1.7;}
+  /* 初めての方へ */
+  .first-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .fc{background:#fff;border-radius:12px;padding:22px 18px;text-align:center;border:1px solid var(--border);}
+  .fc-num{width:36px;height:36px;border-radius:50%;background:var(--pink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.84rem;font-weight:700;margin:0 auto 12px;}
+  .fc-title{font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:6px;}
+  .fc-text{color:var(--gray);font-size:.72rem;line-height:1.8;}
+  /* 持ち物リスト */
+  .item-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .ig{background:var(--soft);border-radius:10px;padding:16px 18px;border:1px solid var(--border);display:flex;gap:12px;align-items:flex-start;}
+  .ig-icon{font-size:1.4rem;flex-shrink:0;}
+  .ig-info{}
+  .ig-name{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+  .ig-note{font-size:.7rem;color:var(--gray);}
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);padding:20px 0;}
+  .faq-q{display:flex;gap:12px;font-size:.84rem;font-weight:700;color:var(--text);margin-bottom:8px;}
+  .fq-i{color:var(--pink);font-weight:900;flex-shrink:0;}
+  .faq-a{color:var(--gray);font-size:.78rem;line-height:1.95;padding-left:20px;}
+  footer{background:var(--text);padding:32px 80px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-family:'Noto Serif JP',serif;font-size:.9rem;color:rgba(255,255,255,.5);}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のクリニックサイトです。実在する医院・人物とは一切関係ありません。</div>
+<div class="info-bar">📢 WEB予約は24時間受付中。電話は診療時間内（086-XXXX-XXXX）にどうぞ。</div>
+
+<nav>
+  <a href="index.html" class="logo"><div class="logo-icon">🌸</div><div><div class="logo-text">さくら皮膚科クリニック</div><span class="logo-sub">岡山市北区 / 皮膚科・美容皮膚科</span></div></a>
+  <ul>
+    <li><a href="treatment.html">診療科目</a></li>
+    <li><a href="doctors.html">医師紹介</a></li>
+    <li><a href="index.html">特徴</a></li>
+    <li><a href="hours.html">診療時間</a></li>
+    <li><a href="hours.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta active">WEB予約</a></li>
+  </ul>
+</nav>
+
+<!-- ページヘッダー -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">ホーム</a> &gt; WEB予約・お問い合わせ</p>
+    <h1>WEB予約・<span>お問い合わせ</span></h1>
+    <p class="page-hero-lead">WEB予約は24時間いつでも受け付けています。予約の方は待ち時間が短縮されます。お急ぎの場合はお電話でもご対応しています。</p>
+  </div>
+</div>
+
+<!-- 予約方法 -->
+<section class="sec">
+  <p class="sec-label">Reservation</p>
+  <h2 class="sec-title">予約方法のご案内</h2>
+  <div class="method-grid">
+    <div class="mg">
+      <div class="mg-icon">💻</div>
+      <h3 class="mg-title">WEB予約（推奨）</h3>
+      <p class="mg-text">24時間いつでも予約可能。スマートフォンからも簡単に操作できます。予約完了後に確認メールをお送りします。</p>
+      <p style="color:var(--teal);font-size:.74rem;font-weight:700;margin-bottom:12px;">✓ 待ち時間が短縮されます</p>
+      <a href="#web-form" class="mg-cta">WEB予約をする</a>
+    </div>
+    <div class="mg phone">
+      <div class="mg-icon">📞</div>
+      <h3 class="mg-title">電話予約</h3>
+      <p class="mg-text">診察時間内にお電話ください。スタッフが丁寧にご対応します。</p>
+      <div class="mg-num">086-XXXX-XXXX</div>
+      <div class="mg-hours">受付時間：診察時間と同じ<br>（月〜土 9:00〜12:30 / 月水木金 14:30〜18:00）</div>
+    </div>
+  </div>
+</section>
+
+<!-- WEB予約フォーム -->
+<div class="form-sec" id="web-form">
+  <div class="form-inner">
+    <div style="text-align:center;margin-bottom:32px;">
+      <p class="sec-label">WEB Reservation</p>
+      <h2 class="sec-title" style="margin-bottom:0;">WEB予約フォーム</h2>
+    </div>
+    <div class="form-card">
+      <form>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">お名前（漢字）<span class="required">必須</span></label>
+            <input class="form-input" type="text" placeholder="例：山田 花子">
+          </div>
+          <div class="form-group">
+            <label class="form-label">お名前（ふりがな）<span class="required">必須</span></label>
+            <input class="form-input" type="text" placeholder="例：やまだ はなこ">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">生年月日<span class="required">必須</span></label>
+            <input class="form-input" type="text" placeholder="例：1985年3月15日">
+          </div>
+          <div class="form-group">
+            <label class="form-label">性別<span class="required">必須</span></label>
+            <div class="form-radio-group">
+              <label class="form-radio"><input type="radio" name="gender">男性</label>
+              <label class="form-radio"><input type="radio" name="gender">女性</label>
+              <label class="form-radio"><input type="radio" name="gender">その他・回答しない</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">電話番号<span class="required">必須</span></label>
+            <input class="form-input" type="tel" placeholder="例：090-XXXX-XXXX">
+          </div>
+          <div class="form-group">
+            <label class="form-label">メールアドレス<span class="required">必須</span></label>
+            <input class="form-input" type="email" placeholder="例：example@mail.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">診察の種類<span class="required">必須</span></label>
+          <div class="form-radio-group">
+            <label class="form-radio"><input type="radio" name="visit">初診</label>
+            <label class="form-radio"><input type="radio" name="visit">再診</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">受診希望の診療科目<span class="required">必須</span></label>
+          <select class="form-select">
+            <option value="">選択してください</option>
+            <option>一般皮膚科（湿疹・アトピー・蕁麻疹など）</option>
+            <option>美容皮膚科（シミ・シワ・毛穴など）</option>
+            <option>レーザー治療（無料カウンセリングを希望）</option>
+            <option>ニキビ治療</option>
+            <option>小児皮膚科</option>
+            <option>アレルギー科</option>
+            <option>皮膚外科（粉瘤・イボなど）</option>
+            <option>AGA治療（薄毛）</option>
+            <option>その他・分からない</option>
+          </select>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">希望診察日時（第1希望）<span class="required">必須</span></label>
+            <input class="form-input" type="text" placeholder="例：6月10日（月）午前中">
+          </div>
+          <div class="form-group">
+            <label class="form-label">希望診察日時（第2希望）</label>
+            <input class="form-input" type="text" placeholder="例：6月12日（水）午後">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">症状・ご相談内容</label>
+          <textarea class="form-textarea" placeholder="現在の症状や、どの部位が気になるか、いつ頃から症状があるかなど、分かる範囲でお書きください。できるだけ詳しく書いていただくと、スムーズに診察が進みます。"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">現在服用中のお薬・アレルギー</label>
+          <input class="form-input" type="text" placeholder="例：〇〇錠を服用中 / 特になし">
+        </div>
+        <button class="form-submit">予約を送信する</button>
+        <p class="form-note">送信後、2営業日以内にメールにてご確認をお送りします。急患・緊急の場合はお電話（086-XXXX-XXXX）へ。</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- 初めての方へ -->
+<section class="sec" style="background:var(--soft);">
+  <p class="sec-label">First Visit</p>
+  <h2 class="sec-title">初めてご来院の方へ</h2>
+  <div class="first-grid">
+    <div class="fc"><div class="fc-num">01</div><h3 class="fc-title">WEB予約</h3><p class="fc-text">こちらのフォームまたはお電話で診察の予約をお取りください。</p></div>
+    <div class="fc"><div class="fc-num">02</div><h3 class="fc-title">来院・受付</h3><p class="fc-text">受付で保険証をご提示。電子問診票にご記入いただきます。</p></div>
+    <div class="fc"><div class="fc-num">03</div><h3 class="fc-title">診察</h3><p class="fc-text">医師が症状を確認し、治療方針を丁寧にご説明します。</p></div>
+    <div class="fc"><div class="fc-num">04</div><h3 class="fc-title">会計・お薬</h3><p class="fc-text">処方箋を発行。近隣の提携薬局でお薬を受け取りください。</p></div>
+  </div>
+</section>
+
+<!-- 持ち物リスト -->
+<section class="sec">
+  <p class="sec-label">Checklist</p>
+  <h2 class="sec-title">ご来院時のお持ち物</h2>
+  <div class="item-grid">
+    <div class="ig"><div class="ig-icon">💳</div><div class="ig-info"><div class="ig-name">健康保険証<span style="color:var(--pink);font-size:.68rem;font-weight:700;"> 必須</span></div><div class="ig-note">保険診療をご希望の方は必ずお持ちください。自由診療のみの場合は不要ですが、身分証明書をご持参ください。</div></div></div>
+    <div class="ig"><div class="ig-icon">💊</div><div class="ig-info"><div class="ig-name">お薬手帳（お持ちの方）</div><div class="ig-note">現在飲んでいるお薬がある場合は必ずお持ちください。薬の飲み合わせの確認に使用します。</div></div></div>
+    <div class="ig"><div class="ig-icon">📋</div><div class="ig-info"><div class="ig-name">紹介状（お持ちの方）</div><div class="ig-note">他院からの紹介がある場合はご持参ください。より詳しい情報を基に診察できます。</div></div></div>
+    <div class="ig"><div class="ig-icon">🪮</div><div class="ig-info"><div class="ig-name">お肌の写真（任意）</div><div class="ig-note">症状が出た時の写真があればスマートフォンでお持ちください。症状の変化を把握するのに役立ちます。</div></div></div>
+    <div class="ig"><div class="ig-icon">👦</div><div class="ig-info"><div class="ig-name">お子さま連れの方</div><div class="ig-note">お子さまの健康保険証をご持参ください。母子手帳があれば診察がよりスムーズです。</div></div></div>
+    <div class="ig"><div class="ig-icon">🎭</div><div class="ig-info"><div class="ig-name">美容皮膚科ご希望の方</div><div class="ig-note">保険証不要。身分証明書をご持参ください。スッピン（ノーメイク）でのご来院を推奨しています。</div></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" style="background:var(--soft);">
+  <p class="sec-label">FAQ</p>
+  <h2 class="sec-title">よくあるご質問</h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>当日キャンセルはできますか？</div><div class="faq-a">はい、可能です。当日キャンセルの場合はできるだけ早めにお電話（086-XXXX-XXXX）またはメールにてご連絡ください。他の患者さまへのご案内が可能になります。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>予約当日に変更（時間変更など）はできますか？</div><div class="faq-a">空き状況によっては当日の時間変更も可能です。お電話にてご連絡いただければ対応します。ご希望の時間帯に空きがない場合は別日をご提案させていただきます。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>子ども連れでも来院できますか？</div><div class="faq-a">はい、お子さま連れでも歓迎です。待合室にはキッズコーナーを設けています。授乳スペースもご用意していますので、お気軽にお申し付けください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>美容皮膚科のカウンセリングだけ来院できますか？</div><div class="faq-a">はい、カウンセリングのみのご来院も大歓迎です。カウンセリングは無料で、施術を受けるかどうかはカウンセリング後にゆっくりお決めいただけます。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>オンライン診療は対応していますか？</div><div class="faq-a">現時点では対面診療のみ対応しています。皮膚科の診察は実際の肌の状態を見ることが重要なため、オンライン診療は行っておりません。ご了承ください。</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">🌸 さくら皮膚科クリニック</div>
+  <p>© 2024 さくら皮膚科クリニック. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

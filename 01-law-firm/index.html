@@ -139,6 +139,15 @@
   footer{background:#080f16;padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
   footer p{color:rgba(255,255,255,.3);font-size:.75rem;}
   .footer-logo{font-family:'Noto Serif JP',serif;color:rgba(255,255,255,.5);font-size:.95rem;letter-spacing:.12em;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .hero{height:auto;min-height:65vh;} .hero-content{padding:0 24px;} .hero h1{font-size:2rem;} .hero-btns{flex-direction:column;gap:10px;} .hero-scroll{left:24px;}
+    .stats{grid-template-columns:1fr 1fr;padding:16px 24px;}
+    .sec{padding:52px 24px;} .about-inner,.access{grid-template-columns:1fr!important;}
+    .practice-grid,.lawyer-grid,.cases-grid,.voice-grid{grid-template-columns:1fr;} .flow-steps{grid-template-columns:1fr 1fr;}
+    .cta-sec{flex-direction:column;gap:20px;padding:40px 24px;display:block;}
+    footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
 </style>
 </head>
 <body>
@@ -147,12 +156,12 @@
 <nav>
   <div class="logo"><span>山田・中村</span>法律事務所</div>
   <ul>
-    <li><a href="#">事務所概要</a></li>
-    <li><a href="#">専門分野</a></li>
-    <li><a href="#">弁護士紹介</a></li>
-    <li><a href="#">解決事例</a></li>
-    <li><a href="#">アクセス</a></li>
-    <li><a href="#" class="nav-cta">無料相談予約</a></li>
+    <li><a href="about.html">事務所概要</a></li>
+    <li><a href="service.html">専門分野</a></li>
+    <li><a href="lawyers.html">弁護士紹介</a></li>
+    <li><a href="cases.html">解決事例</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談予約</a></li>
   </ul>
 </nav>
 
@@ -166,8 +175,8 @@
     <h1>あなたの権利を、<br>誠実に守る。</h1>
     <p class="hero-lead">企業法務から個人の相続・離婚問題まで、複雑な法律問題に正面から向き合います。<br>創業32年の実績と専門知識で、最善の解決策をご提案します。</p>
     <div class="hero-btns">
-      <a href="#" class="btn-gold">無料相談を予約する</a>
-      <a href="#" class="btn-outline">解決事例を見る</a>
+      <a href="contact.html" class="btn-gold">無料相談を予約する</a>
+      <a href="cases.html" class="btn-outline">解決事例を見る</a>
     </div>
   </div>
   <div class="hero-scroll">SCROLL</div>
@@ -317,7 +326,7 @@
     <p class="cta-sub">初回30分無料・完全予約制・秘密厳守</p>
   </div>
   <div class="cta-btns">
-    <a href="#" class="btn-gold" style="text-align:center;min-width:220px;">無料相談を予約する</a>
+    <a href="contact.html" class="btn-gold" style="text-align:center;min-width:220px;">無料相談を予約する</a>
     <div class="cta-tel">03-XXXX-XXXX</div>
     <p class="cta-tel-note">平日 9:00〜18:00 ／ 土曜 10:00〜15:00</p>
   </div>
@@ -345,3 +354,4 @@
 </footer>
 </body>
 </html>
+

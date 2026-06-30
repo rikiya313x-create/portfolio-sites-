@@ -123,6 +123,17 @@
   footer{background:var(--text);padding:32px 80px;display:flex;justify-content:space-between;align-items:center;}
   .footer-logo{font-family:'Noto Serif JP',serif;font-size:.9rem;color:rgba(255,255,255,.5);}
   footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .hero{grid-template-columns:1fr!important;} .hero-img{height:280px;}
+    .hero-content{padding:40px 24px;} .hero h1{font-size:1.8rem;}
+    .hero-action{flex-direction:column;gap:10px;} .hero-info{grid-template-columns:1fr 1fr;}
+    .sec{padding:52px 24px;} .doctors{padding:52px 24px;} .access{grid-template-columns:1fr!important;}
+    .dept-grid{grid-template-columns:1fr 1fr;} .doctor-grid{grid-template-columns:1fr;}
+    .features-grid{grid-template-columns:1fr;} .voice-grid{grid-template-columns:1fr;}
+    .flow-steps{grid-template-columns:1fr 1fr;}
+    footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
 </style>
 </head>
 <body>
@@ -132,12 +143,12 @@
 <nav>
   <div class="logo"><div class="logo-icon">🌸</div><div><div class="logo-text">さくら皮膚科クリニック</div><span class="logo-sub">岡山市北区 / 皮膚科・美容皮膚科</span></div></div>
   <ul>
-    <li><a href="#">診療科目</a></li>
-    <li><a href="#">医師紹介</a></li>
-    <li><a href="#">特徴</a></li>
-    <li><a href="#">診療時間</a></li>
-    <li><a href="#">アクセス</a></li>
-    <li><a href="#" class="nav-cta">WEB予約</a></li>
+    <li><a href="treatment.html">診療科目</a></li>
+    <li><a href="doctors.html">医師紹介</a></li>
+    <li><a href="treatment.html">特徴</a></li>
+    <li><a href="hours.html">診療時間</a></li>
+    <li><a href="hours.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">WEB予約</a></li>
   </ul>
 </nav>
 
@@ -149,8 +160,8 @@
     <h1>お肌のことは、<br><span>専門家</span>に。<br>岡山で選ばれる皮膚科。</h1>
     <p class="hero-lead">一般皮膚科から美容皮膚科まで、皮膚のお悩みを総合的に診察します。ニキビ・アレルギー・乾燥肌・シミ・シワまで、あらゆる肌トラブルに対応しています。</p>
     <div class="hero-action">
-      <a href="#" class="btn-pink">WEB予約（24時間受付）</a>
-      <a href="#" class="btn-outline-pink">電話で予約</a>
+      <a href="contact.html" class="btn-pink">WEB予約（24時間受付）</a>
+      <a href="contact.html" class="btn-outline-pink">電話で予約</a>
     </div>
     <div class="hero-info">
       <div class="hi"><div class="hi-label">診療時間</div><div class="hi-text">9:00〜18:00（月〜土）</div></div>
@@ -277,8 +288,8 @@
 <div class="cta-sec">
   <h2 class="cta-title">お肌のお悩み、まずはご相談ください。</h2>
   <p class="cta-sub">WEB予約は24時間受付 ／ 初診の方も歓迎</p>
-  <a href="#" class="btn-white">WEB予約はこちら</a>
-  <a href="#" class="btn-white">電話で予約：086-XXXX-XXXX</a>
+  <a href="contact.html" class="btn-white">WEB予約はこちら</a>
+  <a href="contact.html" class="btn-white">電話で予約：086-XXXX-XXXX</a>
 </div>
 
 <!-- アクセス・診療時間 -->
@@ -307,3 +318,4 @@
 </footer>
 </body>
 </html>
+

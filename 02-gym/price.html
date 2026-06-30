@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>料金プラン | IRON FORCE GYM 大阪・梅田</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700;900&family=Oswald:wght@400;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0a0a0a;--yellow:#f5c400;--gray:#1a1a1a;--mid:#111;--lgray:#888;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:#fff;overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#1a1500;border-left:3px solid var(--yellow);padding:12px 20px;text-align:center;font-size:.73rem;color:rgba(255,255,255,.5);}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(10,10,10,.97);border-bottom:2px solid var(--yellow);}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;}
+  .logo span{color:var(--yellow);}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.7);font-size:.78rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;transition:.2s;}
+  nav ul a:hover{color:var(--yellow);}
+  .nav-cta{background:var(--yellow);color:var(--black)!important;padding:10px 24px;font-weight:900!important;}
+
+  /* TICKER */
+  .ticker{background:var(--yellow);padding:12px 0;overflow:hidden;white-space:nowrap;}
+  .ticker-inner{display:inline-block;animation:tick 20s linear infinite;}
+  .ticker-inner span{color:var(--black);font-size:.75rem;font-weight:900;letter-spacing:.2em;padding:0 40px;text-transform:uppercase;}
+  @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  /* HERO */
+  .hero{height:60vh;position:relative;display:flex;align-items:center;overflow:hidden;margin-top:33px;}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=1400&q=80') center/cover;filter:brightness(.25);}
+  .hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.95) 50%,transparent 100%);}
+  .hero-stripe{position:absolute;left:0;top:0;width:8px;height:100%;background:var(--yellow);}
+  .hero-content{position:relative;z-index:1;padding:0 80px;}
+  .hero-tag{display:inline-block;background:var(--yellow);color:var(--black);padding:6px 16px;font-size:.7rem;letter-spacing:.25em;font-weight:900;margin-bottom:24px;text-transform:uppercase;}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:7rem;line-height:.9;margin-bottom:20px;letter-spacing:.02em;}
+  .hero-lead{color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.9;max-width:520px;}
+
+  /* 共通 */
+  .sec{padding:100px 80px;}
+  .sec-label{color:var(--yellow);font-size:.7rem;letter-spacing:.35em;font-weight:900;text-transform:uppercase;margin-bottom:12px;}
+  .sec-title{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:.05em;margin-bottom:48px;line-height:1;}
+  .btn-yellow{display:inline-block;background:var(--yellow);color:var(--black);padding:16px 48px;font-size:.85rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
+  .btn-yellow:hover{background:#ffd700;transform:translateY(-2px);}
+  .btn-black{display:inline-block;background:var(--black);color:var(--yellow);padding:18px 56px;font-size:.9rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
+  .btn-black:hover{background:#111;}
+
+  /* 料金カード */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+  .pc{background:var(--gray);padding:48px 36px;position:relative;}
+  .pc.featured{background:var(--yellow);}
+  .pc.featured *{color:var(--black)!important;}
+  .pc-badge{position:absolute;top:20px;right:20px;background:var(--black);color:var(--yellow);font-size:.65rem;padding:4px 10px;font-weight:900;letter-spacing:.1em;}
+  .pc-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.1em;margin-bottom:8px;}
+  .pc-amount{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;margin-bottom:4px;}
+  .pc-period{color:var(--lgray);font-size:.75rem;margin-bottom:28px;}
+  .pc-features{list-style:none;}
+  .pc-features li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.82rem;color:rgba(255,255,255,.7);}
+  .pc-features li::before{content:'→ ';color:var(--yellow);}
+  .pc.featured .pc-features li{border-color:rgba(0,0,0,.12);}
+  .pc.featured .pc-features li::before{color:var(--black);}
+  .pc-btn{display:block;text-align:center;margin-top:28px;padding:13px;background:var(--yellow);color:var(--black);font-size:.82rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;transition:.2s;}
+  .pc.featured .pc-btn{background:var(--black);color:var(--yellow);}
+  .pc-btn:hover{opacity:.85;}
+
+  /* 単発料金 */
+  .single-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .sg{background:var(--gray);padding:36px 28px;text-align:center;border-bottom:3px solid transparent;transition:.3s;}
+  .sg:hover{border-color:var(--yellow);}
+  .sg-icon{font-size:2rem;margin-bottom:16px;}
+  .sg-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.05em;margin-bottom:8px;}
+  .sg-price{color:var(--yellow);font-size:1.8rem;font-family:'Bebas Neue',sans-serif;line-height:1;margin-bottom:4px;}
+  .sg-unit{color:var(--lgray);font-size:.72rem;}
+
+  /* テーブル共通 */
+  .info-table{width:100%;border-collapse:collapse;margin-top:32px;}
+  .info-table th{background:rgba(245,196,0,.1);color:var(--yellow);padding:12px 16px;font-size:.75rem;letter-spacing:.1em;text-align:left;font-weight:700;}
+  .info-table td{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.7);font-size:.82rem;vertical-align:middle;}
+  .info-table td:first-child{color:#fff;font-weight:700;font-size:.78rem;}
+  .info-table tr:last-child td{border-bottom:none;}
+
+  /* 比較表 */
+  .compare-table{width:100%;border-collapse:collapse;margin-top:40px;}
+  .compare-table th{background:var(--gray);padding:16px 12px;font-size:.78rem;font-weight:700;text-align:center;border-bottom:2px solid var(--yellow);}
+  .compare-table th:first-child{text-align:left;}
+  .compare-table th.featured-col{background:var(--yellow);color:var(--black);}
+  .compare-table td{padding:12px;border-bottom:1px solid rgba(255,255,255,.06);font-size:.78rem;color:rgba(255,255,255,.65);text-align:center;}
+  .compare-table td:first-child{text-align:left;color:rgba(255,255,255,.8);}
+  .compare-table td.featured-col{background:rgba(245,196,0,.06);color:var(--yellow);font-weight:700;}
+  .check{color:var(--yellow);font-weight:900;}
+  .cross{color:var(--lgray);}
+
+  /* 支払い */
+  .pay-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;}
+  .pay-item{background:var(--gray);padding:24px;text-align:center;}
+  .pay-icon{font-size:1.8rem;margin-bottom:12px;}
+  .pay-name{font-size:.8rem;font-weight:700;margin-bottom:6px;}
+  .pay-text{color:var(--lgray);font-size:.72rem;line-height:1.6;}
+
+  /* FAQ */
+  .faq-list{max-width:800px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid rgba(255,255,255,.08);padding:22px 0;}
+  .faq-q{display:flex;gap:14px;font-size:.88rem;font-weight:700;margin-bottom:10px;}
+  .fq-icon{color:var(--yellow);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;flex-shrink:0;}
+  .faq-a{color:var(--lgray);font-size:.8rem;line-height:1.9;padding-left:26px;}
+
+  /* CTA */
+  .cta-sec{background:var(--yellow);padding:80px;text-align:center;}
+  .cta-title{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--black);letter-spacing:.05em;line-height:1;margin-bottom:12px;}
+  .cta-sub{color:rgba(0,0,0,.6);font-size:.88rem;margin-bottom:28px;}
+
+  footer{background:#050505;padding:40px 80px;display:grid;grid-template-columns:1fr auto;align-items:center;border-top:2px solid var(--yellow);}
+  footer p{color:rgba(255,255,255,.3);font-size:.75rem;}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#fff;margin-bottom:6px;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}nav ul{display:none;}
+    .sec{padding:60px 24px;}
+    .hero-content{padding:0 24px;}
+    .price-grid,.single-grid,.pay-grid{grid-template-columns:1fr;}
+    footer{grid-template-columns:1fr;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフィットネスジムです。実在する施設・人物とは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html" class="logo">IRON<span>FORCE</span></a>
+  <ul>
+    <li><a href="program.html">プログラム</a></li>
+    <li><a href="about.html">施設</a></li>
+    <li><a href="trainers.html">トレーナー</a></li>
+    <li><a href="price.html">料金</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料体験</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Membership Plans</div>
+    <h1>MEMBERSHIP</h1>
+    <p class="hero-lead">あなたの目標とライフスタイルに合ったプランを選んでください。まずは無料体験から始めることをおすすめします。</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span><span>2,400+ MEMBERS</span><span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span><span>2,400+ MEMBERS</span>
+  </div>
+</div>
+
+<!-- メインプラン -->
+<section class="sec">
+  <p class="sec-label">Membership Plans</p>
+  <h2 class="sec-title">月額プラン</h2>
+  <div class="price-grid">
+    <div class="pc">
+      <div class="pc-name">BASIC</div>
+      <div class="pc-amount">¥8,800</div>
+      <div class="pc-period">/ 月（税込）</div>
+      <ul class="pc-features">
+        <li>フリーウェイトエリア利用（平日9:00〜22:00）</li>
+        <li>マシンエリア利用（平日9:00〜22:00）</li>
+        <li>グループクラス 2回/月</li>
+        <li>ロッカー使用（当日のみ）</li>
+        <li>体組成測定 入会時1回</li>
+      </ul>
+      <a href="contact.html" class="pc-btn">申し込む</a>
+    </div>
+    <div class="pc featured">
+      <div class="pc-badge">人気No.1</div>
+      <div class="pc-name">STANDARD</div>
+      <div class="pc-amount">¥14,800</div>
+      <div class="pc-period">/ 月（税込）</div>
+      <ul class="pc-features">
+        <li>全エリア利用（24時間・年中無休）</li>
+        <li>グループクラス 無制限参加</li>
+        <li>月1回パーソナル指導（60分）</li>
+        <li>栄養カウンセリング 月1回</li>
+        <li>プロテインドリンク 1杯/日</li>
+        <li>体組成測定 月1回</li>
+        <li>ロッカー月極使用</li>
+      </ul>
+      <a href="contact.html" class="pc-btn">申し込む</a>
+    </div>
+    <div class="pc">
+      <div class="pc-name">PREMIUM</div>
+      <div class="pc-amount">¥29,800</div>
+      <div class="pc-period">/ 月（税込）</div>
+      <ul class="pc-features">
+        <li>全エリア利用（24時間・年中無休）</li>
+        <li>週1回パーソナル指導（60分×4回）</li>
+        <li>専属トレーナー担当制</li>
+        <li>月次フィジカル測定＆レポート</li>
+        <li>個別栄養プログラム作成</li>
+        <li>リカバリーセッション 月4回</li>
+        <li>ロッカー月極 + タオル無料</li>
+        <li>グループクラス 無制限</li>
+      </ul>
+      <a href="contact.html" class="pc-btn">申し込む</a>
+    </div>
+  </div>
+  <p style="color:var(--lgray);font-size:.75rem;margin-top:20px;text-align:center;">※ 全プラン初月は日割り計算です。翌月から通常料金が適用されます。</p>
+</section>
+
+<!-- 単発料金 -->
+<section class="sec" style="background:var(--gray);">
+  <p class="sec-label">Single Sessions</p>
+  <h2 class="sec-title">単発・都度利用</h2>
+  <div class="single-grid">
+    <div class="sg">
+      <div class="sg-icon">💪</div>
+      <div class="sg-name">パーソナルトレーニング</div>
+      <div class="sg-price">¥8,800</div>
+      <div class="sg-unit">60分 / 1回（税込）</div>
+    </div>
+    <div class="sg">
+      <div class="sg-icon">🔥</div>
+      <div class="sg-name">HIIT クラス</div>
+      <div class="sg-price">¥2,200</div>
+      <div class="sg-unit">45分 / 1回（税込）</div>
+    </div>
+    <div class="sg">
+      <div class="sg-icon">🏋️</div>
+      <div class="sg-name">パワーリフティング</div>
+      <div class="sg-price">¥3,300</div>
+      <div class="sg-unit">90分 / 1回（税込）</div>
+    </div>
+    <div class="sg">
+      <div class="sg-icon">🧘</div>
+      <div class="sg-name">リカバリー</div>
+      <div class="sg-price">¥4,400</div>
+      <div class="sg-unit">60分 / 1回（税込）</div>
+    </div>
+  </div>
+</section>
+
+<!-- 入会金・その他費用 -->
+<section class="sec">
+  <p class="sec-label">Fees</p>
+  <h2 class="sec-title">入会金・その他費用</h2>
+  <table class="info-table">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>金額（税込）</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>入会金</td>
+        <td>¥11,000</td>
+        <td>初回のみ。無料体験後の入会は¥5,500に割引。</td>
+      </tr>
+      <tr>
+        <td>施設利用料（BASIC）</td>
+        <td>¥1,100 / 月</td>
+        <td>システム管理費・施設維持費として。</td>
+      </tr>
+      <tr>
+        <td>ロッカー月極（固定番号）</td>
+        <td>¥550 / 月</td>
+        <td>STANDARD以上は無料。個人の荷物保管に。</td>
+      </tr>
+      <tr>
+        <td>タオルレンタル</td>
+        <td>¥330 / 回</td>
+        <td>フェイスタオル1枚。PREMIUMは無料。</td>
+      </tr>
+      <tr>
+        <td>プロテインドリンク（都度）</td>
+        <td>¥440 / 杯</td>
+        <td>STANDARD以上は1杯/日無料。</td>
+      </tr>
+      <tr>
+        <td>体組成測定（追加）</td>
+        <td>¥550 / 回</td>
+        <td>プラン規定回数を超えた場合。</td>
+      </tr>
+      <tr>
+        <td>駐車場</td>
+        <td>—</td>
+        <td>専用駐車場なし。近隣コインパーキングをご利用ください。</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 比較表 -->
+<section class="sec" style="background:var(--mid);">
+  <p class="sec-label">Plan Comparison</p>
+  <h2 class="sec-title">料金プラン比較</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>サービス内容</th>
+        <th>BASIC<br>¥8,800/月</th>
+        <th class="featured-col">STANDARD<br>¥14,800/月</th>
+        <th>PREMIUM<br>¥29,800/月</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>フリーウェイトエリア</td>
+        <td><span class="check">✓</span> 平日のみ</td>
+        <td class="featured-col"><span class="check">✓</span> 24時間</td>
+        <td><span class="check">✓</span> 24時間</td>
+      </tr>
+      <tr>
+        <td>マシンエリア</td>
+        <td><span class="check">✓</span> 平日のみ</td>
+        <td class="featured-col"><span class="check">✓</span> 24時間</td>
+        <td><span class="check">✓</span> 24時間</td>
+      </tr>
+      <tr>
+        <td>パワーリフティングゾーン</td>
+        <td><span class="cross">✗</span></td>
+        <td class="featured-col"><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td>グループクラス</td>
+        <td>2回/月</td>
+        <td class="featured-col">無制限</td>
+        <td>無制限</td>
+      </tr>
+      <tr>
+        <td>パーソナルトレーニング</td>
+        <td><span class="cross">✗</span></td>
+        <td class="featured-col">月1回（60分）</td>
+        <td>週1回（60分×4）</td>
+      </tr>
+      <tr>
+        <td>専属トレーナー</td>
+        <td><span class="cross">✗</span></td>
+        <td class="featured-col"><span class="cross">✗</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td>栄養カウンセリング</td>
+        <td><span class="cross">✗</span></td>
+        <td class="featured-col">月1回</td>
+        <td>個別プログラム</td>
+      </tr>
+      <tr>
+        <td>体組成測定</td>
+        <td>入会時1回</td>
+        <td class="featured-col">月1回</td>
+        <td>月2回＋詳細レポート</td>
+      </tr>
+      <tr>
+        <td>リカバリーセッション</td>
+        <td><span class="cross">✗</span></td>
+        <td class="featured-col"><span class="cross">✗</span></td>
+        <td>月4回（60分）</td>
+      </tr>
+      <tr>
+        <td>プロテインドリンク</td>
+        <td><span class="cross">✗</span></td>
+        <td class="featured-col">1杯/日</td>
+        <td>1杯/日</td>
+      </tr>
+      <tr>
+        <td>ロッカー</td>
+        <td>当日のみ（有料）</td>
+        <td class="featured-col">月極（無料）</td>
+        <td>月極（無料）</td>
+      </tr>
+      <tr>
+        <td>タオルレンタル</td>
+        <td>¥330/回</td>
+        <td class="featured-col">¥330/回</td>
+        <td>無料</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 支払い方法 -->
+<section class="sec">
+  <p class="sec-label">Payment</p>
+  <h2 class="sec-title">支払い方法</h2>
+  <p style="color:rgba(255,255,255,.65);font-size:.88rem;line-height:2;max-width:600px;margin-bottom:40px;">月額プランは毎月25日に翌月分を自動引き落とし。単発利用は当日現金またはカード払いが可能です。</p>
+  <div class="pay-grid">
+    <div class="pay-item">
+      <div class="pay-icon">💳</div>
+      <div class="pay-name">クレジットカード</div>
+      <div class="pay-text">VISA / Mastercard / JCB / AMEX / Diners Club 対応。月額プランの自動引き落としに対応。</div>
+    </div>
+    <div class="pay-item">
+      <div class="pay-icon">🏦</div>
+      <div class="pay-name">口座振替（自動引き落とし）</div>
+      <div class="pay-text">主要銀行の口座から毎月25日に自動引き落とし。初回はお申し込みから2〜3週間かかります。</div>
+    </div>
+    <div class="pay-item">
+      <div class="pay-icon">💴</div>
+      <div class="pay-name">現金</div>
+      <div class="pay-text">単発利用・入会金・オプション料金は現金でのお支払いも可能です。お釣りのご用意をお願いします。</div>
+    </div>
+    <div class="pay-item">
+      <div class="pay-icon">📱</div>
+      <div class="pay-name">電子マネー・QR決済</div>
+      <div class="pay-text">PayPay / LINE Pay / 楽天Pay に対応（単発・都度払いのみ）。月額プランはカード/口座振替のみ。</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" style="background:var(--mid);">
+  <p class="sec-label">FAQ</p>
+  <h2 class="sec-title" style="text-align:center;">料金に関するよくある質問</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>無料体験後に入会した場合、入会金は割引になりますか？</div>
+      <div class="faq-a">はい、無料体験当日および体験後1週間以内のご入会は、入会金が通常¥11,000のところ¥5,500に割引となります。この機会をぜひご活用ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>月の途中で退会・プラン変更はできますか？</div>
+      <div class="faq-a">プラン変更は翌月適用となります。月末の25日までにスタッフにお申し出ください。退会の場合も同様に翌月末での退会となります。月の途中での日割り返金は対応しておりません。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>長期間通えない月（旅行・出張など）の料金はどうなりますか？</div>
+      <div class="faq-a">1ヶ月単位で休会制度を設けています（¥1,100/月）。休会中は施設の利用はできませんが、会員資格は維持されます。年2回まで利用可能です。事前申請が必要ですのでお早めにご相談ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>家族割引・学生割引はありますか？</div>
+      <div class="faq-a">ご家族（同居）の2名以上のご入会で、2人目以降の月額プランが10%オフになる「ファミリー割引」を設けています。学生割引は現在設定しておりませんが、学生の方はご相談ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="fq-icon">Q</span>パーソナルトレーニングのセッションは繰り越せますか？</div>
+      <div class="faq-a">STANDARDプランの月1回パーソナルは翌月への繰り越し不可となっています。PREMIUMプランの週1回（月4回）は同月内であれば調整可能です。やむを得ない事情の場合はご相談ください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <h2 class="cta-title">無料体験を申し込む</h2>
+  <p class="cta-sub">体験後に入会すると入会金が半額 ／ しつこい勧誘なし</p>
+  <a href="contact.html" class="btn-black">今すぐ申し込む</a>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-logo">IRON FORCE GYM</div>
+    <p>大阪府大阪市北区梅田2-X-X IRONFORCE BLDG 3F / TEL: 06-XXXX-XXXX</p>
+  </div>
+  <p>© 2024 IRON FORCE GYM. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

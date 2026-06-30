@@ -149,6 +149,15 @@
   footer{background:#050505;padding:40px 80px;display:grid;grid-template-columns:1fr auto;align-items:center;border-top:2px solid var(--yellow);}
   footer p{color:rgba(255,255,255,.3);font-size:.75rem;}
   .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#fff;margin-bottom:6px;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .hero{height:auto;min-height:65vh;} .hero-content{padding:0 24px;} .hero h1{font-size:2.4rem;}
+    .hero-btns{flex-direction:column;gap:10px;}
+    .sec{padding:52px 24px;} .about,.access{grid-template-columns:1fr!important;} .about-img{min-height:300px;}
+    .program-grid,.facility-grid,.trainer-grid,.price-grid,.voice-grid{grid-template-columns:1fr 1fr;}
+    .flow-steps{grid-template-columns:1fr 1fr;} .about-nums{grid-template-columns:1fr 1fr;}
+    footer{padding:28px 24px;display:flex;flex-direction:column;gap:8px;text-align:center;}
+  }
 </style>
 </head>
 <body>
@@ -157,12 +166,12 @@
 <nav>
   <div class="logo">IRON<span>FORCE</span></div>
   <ul>
-    <li><a href="#">プログラム</a></li>
-    <li><a href="#">施設</a></li>
-    <li><a href="#">トレーナー</a></li>
-    <li><a href="#">料金</a></li>
-    <li><a href="#">アクセス</a></li>
-    <li><a href="#" class="nav-cta">無料体験</a></li>
+    <li><a href="program.html">プログラム</a></li>
+    <li><a href="about.html">施設</a></li>
+    <li><a href="trainers.html">トレーナー</a></li>
+    <li><a href="price.html">料金</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料体験</a></li>
   </ul>
 </nav>
 
@@ -176,8 +185,8 @@
     <h1>BREAK<span>YOUR LIMIT.</span></h1>
     <p class="hero-lead">言い訳をやめた日から、変化は始まる。プロのトレーナーと最高の設備で、本気のフィジカルを手に入れろ。</p>
     <div class="hero-btns">
-      <a href="#" class="btn-yellow">無料体験に申し込む</a>
-      <a href="#" class="btn-ghost">施設を見る</a>
+      <a href="contact.html" class="btn-yellow">無料体験に申し込む</a>
+      <a href="about.html" class="btn-ghost">施設を見る</a>
     </div>
   </div>
 </section>
@@ -278,7 +287,7 @@
         <li>グループクラス2回/月</li>
         <li>ロッカー使用</li>
       </ul>
-      <a href="#" class="pc-btn">申し込む</a>
+      <a href="contact.html" class="pc-btn">申し込む</a>
     </div>
     <div class="pc featured">
       <div class="pc-badge">人気No.1</div>
@@ -292,7 +301,7 @@
         <li>栄養カウンセリング</li>
         <li>プロテインドリンク1杯/日</li>
       </ul>
-      <a href="#" class="pc-btn">申し込む</a>
+      <a href="contact.html" class="pc-btn">申し込む</a>
     </div>
     <div class="pc">
       <div class="pc-name">PREMIUM</div>
@@ -305,7 +314,7 @@
         <li>月次フィジカル測定</li>
         <li>栄養プログラム作成</li>
       </ul>
-      <a href="#" class="pc-btn">申し込む</a>
+      <a href="contact.html" class="pc-btn">申し込む</a>
     </div>
   </div>
 </section>
@@ -338,7 +347,7 @@
 <div class="cta-sec">
   <h2 class="cta-title">まず、体験してみろ。</h2>
   <p class="cta-sub">無料体験60分 ／ 完全予約制 ／ しつこい勧誘なし</p>
-  <a href="#" class="btn-black">無料体験を申し込む</a>
+  <a href="contact.html" class="btn-black">無料体験を申し込む</a>
 </div>
 
 <!-- アクセス -->
@@ -365,3 +374,4 @@
 </footer>
 </body>
 </html>
+

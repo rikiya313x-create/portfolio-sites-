@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>施術メニュー | 癒し処 和 | 整体・骨盤矯正 | 大阪市北区</title>
+  <meta name="description" content="癒し処 和の施術メニュー一覧。全身整体・骨盤矯正・肩こり・腰痛など、お体のお悩みに合わせたメニューをご用意しています。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #4a7c59;
+      --green-light: #6a9e78;
+      --green-pale: #e8f0ea;
+      --beige: #f5f0e8;
+      --brown: #8b6f47;
+      --text: #333;
+      --text-muted: #777;
+      --white: #fff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); line-height: 1.8; }
+
+    .portfolio-notice {
+      background: #333; color: #fff; text-align: center;
+      font-size: 0.75rem; padding: 6px 16px; letter-spacing: 0.05em;
+    }
+    .portfolio-notice a { color: #aaa; }
+
+    header {
+      position: fixed; top: 32px; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 0 32px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: top 0.3s;
+    }
+    header.scrolled { top: 0; box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
+
+    .logo { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 700; color: var(--green); text-decoration: none; letter-spacing: 0.1em; }
+    .logo span { font-size: 0.7rem; color: var(--text-muted); display: block; letter-spacing: 0.05em; font-family: 'Noto Sans JP', sans-serif; font-weight: 400; }
+
+    nav ul { display: flex; gap: 28px; list-style: none; }
+    nav a { font-size: 0.85rem; color: var(--text); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; position: relative; }
+    nav a::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 1px; background: var(--green); transform: scaleX(0); transition: transform 0.2s; }
+    nav a:hover { color: var(--green); }
+    nav a:hover::after, nav a.active::after { transform: scaleX(1); }
+    nav a.active { color: var(--green); }
+
+    .header-btn { background: var(--green); color: #fff; padding: 10px 22px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+    .header-btn:hover { background: var(--green-light); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu { display: none; position: fixed; top: 96px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eee; padding: 24px 32px; z-index: 999; flex-direction: column; gap: 20px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1rem; color: var(--text); text-decoration: none; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+
+    /* ページヒーロー */
+    .page-hero {
+      margin-top: 96px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+      padding: 80px 20px 60px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .page-hero-breadcrumb { font-size: 0.78rem; opacity: 0.75; margin-bottom: 16px; letter-spacing: 0.05em; }
+    .page-hero-breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .page-hero-breadcrumb span { margin: 0 8px; }
+    .page-hero h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 16px; position: relative; z-index: 1; }
+    .page-hero p { font-size: 0.95rem; opacity: 0.9; max-width: 560px; margin: 0 auto; line-height: 1.8; position: relative; z-index: 1; }
+
+    /* セクション共通 */
+    section { padding: 72px 20px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .sec-label { font-size: 0.72rem; letter-spacing: 0.25em; color: var(--green); text-align: center; margin-bottom: 10px; text-transform: uppercase; }
+    .sec-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; text-align: center; margin-bottom: 12px; color: var(--text); }
+    .sec-divider { width: 36px; height: 2px; background: var(--green); margin: 0 auto 16px; }
+    .sec-desc { text-align: center; color: var(--text-muted); font-size: 0.92rem; max-width: 560px; margin: 0 auto 48px; line-height: 1.8; }
+
+    /* メニューカテゴリタブ */
+    .menu-tabs {
+      display: flex; justify-content: center; gap: 0;
+      margin-bottom: 48px;
+      border-bottom: 2px solid #e8e8e8;
+    }
+    .tab-btn {
+      font-size: 0.88rem; font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text-muted); background: none; border: none;
+      padding: 14px 32px; cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px; transition: all 0.2s;
+      letter-spacing: 0.05em;
+    }
+    .tab-btn.active { color: var(--green); border-bottom-color: var(--green); font-weight: 700; }
+    .tab-btn:hover { color: var(--green); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* メニューカード - 大カード */
+    .menu-large-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .menu-large-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .menu-large-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-2px); }
+
+    .menu-large-img {
+      background: var(--green-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      min-height: 200px;
+      position: relative;
+    }
+    .menu-large-img img { width: 100%; height: 100%; object-fit: cover; }
+    .menu-large-img .recommend-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--green); color: #fff;
+      font-size: 0.68rem; padding: 4px 12px;
+      border-radius: 20px; letter-spacing: 0.05em; font-weight: 700;
+    }
+
+    .menu-large-body { padding: 32px 36px; display: flex; flex-direction: column; justify-content: center; }
+    .menu-large-tag { font-size: 0.7rem; color: var(--green); letter-spacing: 0.15em; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; }
+    .menu-large-title { font-family: 'Noto Serif JP', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; }
+    .menu-large-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
+    .menu-large-details { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+    .menu-detail-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; }
+    .menu-detail-label { color: var(--green); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.05em; }
+    .menu-detail-val { color: var(--text); }
+    .menu-large-price-row { display: flex; align-items: baseline; gap: 16px; }
+    .menu-large-price { font-size: 1.8rem; font-weight: 900; color: var(--green); font-family: 'Noto Serif JP', serif; }
+    .menu-large-price-unit { font-size: 0.82rem; color: var(--text-muted); }
+    .menu-large-price-orig { font-size: 0.82rem; color: var(--text-muted); text-decoration: line-through; }
+
+    .menu-effects {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;
+    }
+    .effect-tag {
+      background: var(--green-pale); color: var(--green);
+      font-size: 0.72rem; padding: 4px 12px;
+      border-radius: 20px; font-weight: 500;
+    }
+
+    /* メニューグリッド - 小カード */
+    .menu-small-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .menu-small-card {
+      background: #fff; border: 1px solid #e8e8e8;
+      border-radius: 8px; overflow: hidden;
+      display: flex;
+      transition: box-shadow 0.3s;
+    }
+    .menu-small-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .menu-small-img {
+      width: 100px; min-height: 100px;
+      background: var(--green-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; flex-shrink: 0;
+    }
+    .menu-small-body { padding: 18px; flex: 1; }
+    .menu-small-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+    .menu-small-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    .menu-small-price { font-size: 0.78rem; color: var(--text-muted); }
+    .menu-small-price strong { font-size: 1.1rem; color: var(--green); font-weight: 700; }
+
+    /* 初回特典 */
+    .first-visit-banner {
+      background: var(--green);
+      color: #fff;
+      border-radius: 12px;
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .first-visit-text h3 { font-family: 'Noto Serif JP', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+    .first-visit-text p { font-size: 0.88rem; opacity: 0.9; line-height: 1.7; }
+    .first-visit-price { text-align: center; flex-shrink: 0; }
+    .first-visit-price .old-price { font-size: 0.82rem; opacity: 0.7; text-decoration: line-through; margin-bottom: 4px; }
+    .first-visit-price .new-price { font-size: 2.8rem; font-weight: 900; line-height: 1; }
+    .first-visit-price .new-price-unit { font-size: 0.82rem; opacity: 0.85; }
+    .first-visit-btn {
+      display: inline-block; background: #fff; color: var(--green);
+      padding: 14px 32px; border-radius: 4px;
+      font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; transition: all 0.2s; flex-shrink: 0;
+    }
+    .first-visit-btn:hover { background: var(--green-pale); }
+
+    /* 施術の流れ */
+    .flow { background: var(--beige); }
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 40px;
+    }
+    .flow-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 10%; right: 10%;
+      height: 2px;
+      background: var(--green-pale);
+    }
+    .flow-step {
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+    }
+    .flow-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem; font-weight: 700;
+      margin: 0 auto 16px;
+      position: relative; z-index: 1;
+    }
+    .flow-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; }
+    .flow-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+    .flow-time { font-size: 0.72rem; color: var(--green); font-weight: 700; margin-top: 6px; }
+
+    /* 注意事項 */
+    .notice-box {
+      background: #fff7f0;
+      border: 1px solid #f0d8c0;
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-top: 48px;
+    }
+    .notice-box h3 { font-weight: 700; margin-bottom: 16px; color: var(--brown); font-size: 0.95rem; }
+    .notice-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+    .notice-item { font-size: 0.83rem; color: var(--text-muted); display: flex; gap: 8px; }
+    .notice-item::before { content: '※'; color: var(--brown); flex-shrink: 0; }
+
+    /* オプション */
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .option-card {
+      background: var(--beige); border-radius: 8px;
+      padding: 24px 20px; text-align: center;
+    }
+    .option-icon { font-size: 2rem; margin-bottom: 12px; }
+    .option-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; }
+    .option-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; }
+    .option-price { font-size: 0.8rem; color: var(--text-muted); }
+    .option-price strong { color: var(--green); font-size: 1.1rem; font-weight: 700; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--green);
+      color: #fff;
+      text-align: center;
+      padding: 64px 20px;
+    }
+    .cta-section h2 { font-family: 'Noto Serif JP', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; }
+    .cta-section p { font-size: 0.92rem; opacity: 0.9; margin-bottom: 32px; }
+    .cta-btn-white { display: inline-block; background: #fff; color: var(--green); padding: 16px 48px; border-radius: 4px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.2s; }
+    .cta-btn-white:hover { background: var(--green-pale); }
+
+    /* フッター */
+    footer { background: #2a2a2a; color: rgba(255,255,255,0.7); padding: 48px 20px 24px; }
+    .footer-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; color: #fff; margin-bottom: 12px; }
+    .footer-desc { font-size: 0.82rem; line-height: 1.7; }
+    .footer-h { font-weight: 700; color: #fff; font-size: 0.85rem; margin-bottom: 12px; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom { max-width: 1000px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.78rem; }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .back-top { position: fixed; bottom: 28px; right: 28px; width: 48px; height: 48px; background: var(--green); color: #fff; border: none; border-radius: 50%; font-size: 1.1rem; cursor: pointer; opacity: 0; transform: translateY(12px); transition: all 0.3s; box-shadow: 0 4px 16px rgba(74,124,89,0.35); z-index: 900; }
+    .back-top.visible { opacity: 1; transform: translateY(0); }
+    .back-top:hover { background: var(--green-light); }
+
+    @media (max-width: 768px) {
+      nav, .header-btn { display: none; }
+      .hamburger { display: flex; }
+      .menu-large-card { grid-template-columns: 1fr; }
+      .menu-large-img { min-height: 160px; }
+      .menu-small-grid { grid-template-columns: 1fr; }
+      .flow-grid { grid-template-columns: 1fr; gap: 20px; }
+      .flow-grid::before { display: none; }
+      .option-grid { grid-template-columns: 1fr; }
+      .first-visit-banner { flex-direction: column; text-align: center; padding: 32px 24px; }
+      .notice-list { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .menu-tabs { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="portfolio-notice" id="portfolioNotice">
+  ⚠ これはポートフォリオ提出用に作成した架空のサイトです。実在する店舗ではありません。
+</div>
+
+<header id="header">
+  <a href="index.html" class="logo">
+    癒し処 和
+    <span>IYASHIDOKORO NAGOMI</span>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="index.html#appeal">当院の特徴</a></li>
+      <li><a href="menu.html" class="active">メニュー</a></li>
+      <li><a href="price.html">料金</a></li>
+      <li><a href="staff.html">スタッフ</a></li>
+      <li><a href="access.html">アクセス</a></li>
+    </ul>
+  </nav>
+  <a href="contact.html" class="header-btn">ご予約・お問い合わせ</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#appeal" onclick="closeMobile()">当院の特徴</a>
+  <a href="menu.html" onclick="closeMobile()">メニュー</a>
+  <a href="price.html" onclick="closeMobile()">料金</a>
+  <a href="staff.html" onclick="closeMobile()">スタッフ</a>
+  <a href="access.html" onclick="closeMobile()">アクセス</a>
+  <a href="contact.html" onclick="closeMobile()">ご予約・お問い合わせ</a>
+</div>
+
+<!-- ページヒーロー -->
+<div class="page-hero">
+  <div class="page-hero-breadcrumb">
+    <a href="index.html">HOME</a><span>/</span>施術メニュー
+  </div>
+  <h1>施術メニュー</h1>
+  <p>お体のお悩みに合わせた、豊富なメニューをご用意しています。<br>初めての方もお気軽にご相談ください。</p>
+</div>
+
+<!-- メニュー一覧 -->
+<section>
+  <div class="container">
+    <div class="sec-label fade-in">Menu</div>
+    <h2 class="sec-title fade-in">施術<strong style="color:var(--green)">メニュー</strong>一覧</h2>
+    <div class="sec-divider fade-in"></div>
+    <p class="sec-desc fade-in">すべてのメニューはカウンセリング込みの料金です。初めての方は初回限定特別プランもございます。</p>
+
+    <div class="menu-tabs fade-in">
+      <button class="tab-btn active" onclick="switchTab('all', this)">すべて</button>
+      <button class="tab-btn" onclick="switchTab('seitai', this)">整体・矯正</button>
+      <button class="tab-btn" onclick="switchTab('parts', this)">部位別ケア</button>
+      <button class="tab-btn" onclick="switchTab('option', this)">オプション</button>
+    </div>
+
+    <!-- すべて -->
+    <div class="tab-panel active" id="panel-all">
+
+      <!-- 人気メニュー -->
+      <div class="menu-large-grid">
+
+        <div class="menu-large-card fade-in">
+          <div class="menu-large-img">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&q=80" alt="全身整体コース">
+            <div class="recommend-badge">人気No.1</div>
+          </div>
+          <div class="menu-large-body">
+            <div class="menu-large-tag">Full Body Course</div>
+            <div class="menu-large-title">全身整体コース</div>
+            <div class="menu-large-desc">全身の骨格・筋肉バランスを総合的に整える当院のスタンダードメニューです。肩・首・背中・腰・骨盤・股関節・膝まで、全身を流れるように施術します。慢性的な疲れ・倦怠感・原因不明の体の重さに特に効果的です。初回はカウンセリングを30分行い、あなたのお体に合った施術プランをご提案します。</div>
+            <div class="menu-large-details">
+              <div class="menu-detail-item">
+                <div class="menu-detail-label">施術時間</div>
+                <div class="menu-detail-val">60分（カウンセリング込み）</div>
+              </div>
+              <div class="menu-detail-item">
+                <div class="menu-detail-label">対象</div>
+                <div class="menu-detail-val">全年齢・初回の方歓迎</div>
+              </div>
+            </div>
+            <div class="menu-large-price-row">
+              <div class="menu-large-price">¥6,600</div>
+              <div class="menu-large-price-unit">（税込）</div>
+              <div class="menu-large-price-orig">初回2,980円</div>
+            </div>
+            <div class="menu-effects">
+              <span class="effect-tag">肩こり改善</span>
+              <span class="effect-tag">腰痛緩和</span>
+              <span class="effect-tag">姿勢改善</span>
+              <span class="effect-tag">倦怠感解消</span>
+              <span class="effect-tag">睡眠の質向上</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-large-card fade-in">
+          <div class="menu-large-img">
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80" alt="骨盤矯正コース">
+            <div class="recommend-badge">産後ケアに人気</div>
+          </div>
+          <div class="menu-large-body">
+            <div class="menu-large-tag">Pelvic Correction</div>
+            <div class="menu-large-title">骨盤矯正コース</div>
+            <div class="menu-large-desc">産後の骨盤ゆがみ・長時間の座り仕事による骨盤の開き・傾きを専門的に矯正します。骨盤は体の要（かなめ）で、ここがゆがむと腰痛・O脚・冷え・むくみ・ダイエット効果の低下など様々な不調につながります。正しい骨盤の位置に整えることで、体全体の機能が改善します。産後3ヶ月以降の方は特にお勧めです。</div>
+            <div class="menu-large-details">
+              <div class="menu-detail-item">
+                <div class="menu-detail-label">施術時間</div>
+                <div class="menu-detail-val">45分</div>
+              </div>
+              <div class="menu-detail-item">
+                <div class="menu-detail-label">推奨</div>
+                <div class="menu-detail-val">産後3ヶ月〜・座り仕事の方</div>
+              </div>
+            </div>
+            <div class="menu-large-price-row">
+              <div class="menu-large-price">¥5,500</div>
+              <div class="menu-large-price-unit">（税込）</div>
+            </div>
+            <div class="menu-effects">
+              <span class="effect-tag">骨盤ゆがみ改善</span>
+              <span class="effect-tag">O脚矯正</span>
+              <span class="effect-tag">冷え・むくみ改善</span>
+              <span class="effect-tag">産後ケア</span>
+              <span class="effect-tag">スタイル改善</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 部位別ケア -->
+      <h3 style="font-family:'Noto Serif JP',serif; font-size:1.2rem; margin: 40px 0 24px; color:var(--green);">部位別集中ケア</h3>
+      <div class="menu-small-grid">
+        <div class="menu-small-card fade-in">
+          <div class="menu-small-img">💆</div>
+          <div class="menu-small-body">
+            <div class="menu-small-title">肩こり・首こり集中ケア</div>
+            <div class="menu-small-desc">デスクワーク・育児・スマホ使用で固まった肩・首を集中的にほぐします。頭痛・眼精疲労の改善にも効果的です。</div>
+            <div class="menu-small-price">30分 <strong>¥3,300</strong>（税込）</div>
+          </div>
+        </div>
+        <div class="menu-small-card fade-in">
+          <div class="menu-small-img">🤸</div>
+          <div class="menu-small-body">
+            <div class="menu-small-title">腰痛・坐骨神経痛ケア</div>
+            <div class="menu-small-desc">腰の深部筋にアプローチし、慢性腰痛・坐骨神経痛の痛みを緩和します。椎間板ヘルニアの方にも対応可能です。</div>
+            <div class="menu-small-price">45分 <strong>¥5,500</strong>（税込）</div>
+          </div>
+        </div>
+        <div class="menu-small-card fade-in">
+          <div class="menu-small-img">🦵</div>
+          <div class="menu-small-body">
+            <div class="menu-small-title">脚・足のむくみケア</div>
+            <div class="menu-small-desc">立ち仕事・長時間の移動でむくんだ脚をリンパの流れに沿ってほぐします。冷え性の方にも喜ばれるメニューです。</div>
+            <div class="menu-small-price">30分 <strong>¥3,300</strong>（税込）</div>
+          </div>
+        </div>
+        <div class="menu-small-card fade-in">
+          <div class="menu-small-img">🧘</div>
+          <div class="menu-small-body">
+            <div class="menu-small-title">頭痛・頭重感ケア</div>
+            <div class="menu-small-desc">頭部・頸部・肩周りの筋肉の緊張をゆるめ、緊張型頭痛・偏頭痛の頻度・程度の改善をサポートします。</div>
+            <div class="menu-small-price">30分 <strong>¥3,300</strong>（税込）</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- オプション -->
+      <h3 style="font-family:'Noto Serif JP',serif; font-size:1.2rem; margin: 40px 0 24px; color:var(--green);">オプションメニュー</h3>
+      <div class="option-grid">
+        <div class="option-card fade-in">
+          <div class="option-icon">🌿</div>
+          <div class="option-name">ホットストーン</div>
+          <div class="option-desc">温めた玄武岩石で施術部位を温め、深部の筋肉をじっくりとほぐします。冷えが強い方に特にお勧めです。</div>
+          <div class="option-price"><strong>¥1,100</strong>（税込）追加</div>
+        </div>
+        <div class="option-card fade-in">
+          <div class="option-icon">🧴</div>
+          <div class="option-name">アロマトリートメント</div>
+          <div class="option-desc">お好みのアロマオイルを使用したトリートメント。リラクゼーション効果がアップします。</div>
+          <div class="option-price"><strong>¥1,100</strong>（税込）追加</div>
+        </div>
+        <div class="option-card fade-in">
+          <div class="option-icon">🩹</div>
+          <div class="option-name">テーピング</div>
+          <div class="option-desc">施術後の効果を持続させるためのスポーツテーピング。日常生活・スポーツ時のサポートに。</div>
+          <div class="option-price"><strong>¥550</strong>（税込）追加</div>
+        </div>
+      </div>
+
+      <!-- 初回特典バナー -->
+      <div class="first-visit-banner fade-in">
+        <div class="first-visit-text">
+          <h3>🎁 初めての方限定プラン</h3>
+          <p>初回カウンセリング（30分）＋全身整体コース（60分）がセットで特別価格に。<br>まずは気軽に体験してみてください。</p>
+        </div>
+        <div class="first-visit-price">
+          <div class="old-price">通常 ¥6,600</div>
+          <div class="new-price">¥2,980</div>
+          <div class="new-price-unit">税込</div>
+        </div>
+        <a href="contact.html" class="first-visit-btn">今すぐ予約する →</a>
+      </div>
+
+    </div>
+
+    <!-- 整体・矯正タブ -->
+    <div class="tab-panel" id="panel-seitai">
+      <div class="menu-large-grid">
+        <div class="menu-large-card fade-in">
+          <div class="menu-large-img" style="font-size:5rem;">🦴</div>
+          <div class="menu-large-body">
+            <div class="menu-large-tag">Full Body Course</div>
+            <div class="menu-large-title">全身整体コース</div>
+            <div class="menu-large-desc">全身の骨格・筋肉バランスを総合的に整えるスタンダードメニュー。60分の丁寧な施術で、慢性的な疲れや体の重さを改善します。</div>
+            <div class="menu-large-price-row"><div class="menu-large-price">¥6,600</div><div class="menu-large-price-unit">（税込）60分</div></div>
+          </div>
+        </div>
+        <div class="menu-large-card fade-in">
+          <div class="menu-large-img" style="font-size:5rem;">🩺</div>
+          <div class="menu-large-body">
+            <div class="menu-large-tag">Pelvic Correction</div>
+            <div class="menu-large-title">骨盤矯正コース</div>
+            <div class="menu-large-desc">産後・座り仕事による骨盤のゆがみを専門的に矯正。姿勢・スタイル改善にも効果的です。</div>
+            <div class="menu-large-price-row"><div class="menu-large-price">¥5,500</div><div class="menu-large-price-unit">（税込）45分</div></div>
+          </div>
+        </div>
+        <div class="menu-large-card fade-in">
+          <div class="menu-large-img" style="font-size:5rem;">🏃</div>
+          <div class="menu-large-body">
+            <div class="menu-large-tag">Sports Recovery</div>
+            <div class="menu-large-title">スポーツリカバリーコース</div>
+            <div class="menu-large-desc">スポーツ後の筋肉疲労・怪我の予防・パフォーマンス向上を目的とした施術。ランナー・テニス・ゴルフプレーヤーに人気のメニューです。筋膜リリースと関節モビリゼーションを組み合わせた本格的なアスリートケアです。</div>
+            <div class="menu-large-price-row"><div class="menu-large-price">¥7,700</div><div class="menu-large-price-unit">（税込）75分</div></div>
+            <div class="menu-effects">
+              <span class="effect-tag">疲労回復</span>
+              <span class="effect-tag">パフォーマンス向上</span>
+              <span class="effect-tag">怪我予防</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 部位別ケアタブ -->
+    <div class="tab-panel" id="panel-parts">
+      <div class="menu-small-grid">
+        <div class="menu-small-card fade-in">
+          <div class="menu-small-img">💆</div>
+          <div class="menu-small-body">
+            <div class="menu-small-title">肩こり・首こり集中ケア</div>
+            <div class="menu-small-desc">固まった肩・首を集中的にほぐします。頭痛・眼精疲労の改善にも効果的。</div>
+            <div class="menu-small-price">30分 <strong>¥3,300</strong>（税込）</div>
+          </div>
+        </div>
+        <div class="menu-small-card fade-in">
+          <div class="menu-small-img">🤸</div>
+          <div class="menu-small-body">
+            <div class="menu-small-title">腰痛・坐骨神経痛ケア</div>
+            <div class="menu-small-desc">腰の深部にアプローチし、慢性腰痛・坐骨神経痛を緩和します。</div>
+            <div class="menu-small-price">45分 <strong>¥5,500</strong>（税込）</div>
+          </div>
+        </div>
+        <div class="menu-small-card fade-in">
+          <div class="menu-small-img">🦵</div>
+          <div class="menu-small-body">
+            <div class="menu-small-title">脚・足のむくみケア</div>
+            <div class="menu-small-desc">リンパの流れを整え、脚のむくみ・重さを改善します。</div>
+            <div class="menu-small-price">30分 <strong>¥3,300</strong>（税込）</div>
+          </div>
+        </div>
+        <div class="menu-small-card fade-in">
+          <div class="menu-small-img">🧘</div>
+          <div class="menu-small-body">
+            <div class="menu-small-title">頭痛・頭重感ケア</div>
+            <div class="menu-small-desc">頸部・肩の緊張をゆるめ、緊張型頭痛を改善します。</div>
+            <div class="menu-small-price">30分 <strong>¥3,300</strong>（税込）</div>
+          </div>
+        </div>
+        <div class="menu-small-card fade-in">
+          <div class="menu-small-img">👶</div>
+          <div class="menu-small-body">
+            <div class="menu-small-title">産後リカバリーケア</div>
+            <div class="menu-small-desc">産後の体の変化・疲れに特化したやさしい施術です。</div>
+            <div class="menu-small-price">45分 <strong>¥5,500</strong>（税込）</div>
+          </div>
+        </div>
+        <div class="menu-small-card fade-in">
+          <div class="menu-small-img">👴</div>
+          <div class="menu-small-body">
+            <div class="menu-small-title">シニア向けやさしいケア</div>
+            <div class="menu-small-desc">60代以上の方に適した、身体への負担が少ないやさしい施術。</div>
+            <div class="menu-small-price">40分 <strong>¥4,400</strong>（税込）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- オプションタブ -->
+    <div class="tab-panel" id="panel-option">
+      <div class="option-grid" style="grid-template-columns:repeat(2,1fr); gap:24px;">
+        <div class="option-card fade-in" style="background:#fff; border:1px solid #e8e8e8; border-radius:12px; padding:32px 28px; text-align:left;">
+          <div class="option-icon">🌿</div>
+          <div class="option-name">ホットストーン</div>
+          <div class="option-desc">温めた玄武岩石で施術部位を温め、深部の筋肉をじっくりとほぐします。血行促進・冷えの改善に特に効果的です。通常の施術に追加するオプションです。</div>
+          <div class="option-price">追加 <strong>¥1,100</strong>（税込）</div>
+        </div>
+        <div class="option-card fade-in" style="background:#fff; border:1px solid #e8e8e8; border-radius:12px; padding:32px 28px; text-align:left;">
+          <div class="option-icon">🧴</div>
+          <div class="option-name">アロマトリートメント</div>
+          <div class="option-desc">ラベンダー・ユーカリ・ローズマリーなど、お好みのアロマオイルを使用したトリートメント。リラクゼーション効果が大幅にアップします。</div>
+          <div class="option-price">追加 <strong>¥1,100</strong>（税込）</div>
+        </div>
+        <div class="option-card fade-in" style="background:#fff; border:1px solid #e8e8e8; border-radius:12px; padding:32px 28px; text-align:left;">
+          <div class="option-icon">🩹</div>
+          <div class="option-name">テーピング</div>
+          <div class="option-desc">施術後の効果を持続させるためのキネシオテーピング。スポーツ・日常生活の関節サポートに。水に強いタイプをご用意しています。</div>
+          <div class="option-price">追加 <strong>¥550</strong>（税込）</div>
+        </div>
+        <div class="option-card fade-in" style="background:#fff; border:1px solid #e8e8e8; border-radius:12px; padding:32px 28px; text-align:left;">
+          <div class="option-icon">💊</div>
+          <div class="option-name">ストレッチ指導</div>
+          <div class="option-desc">施術効果を自宅でも持続させるためのセルフストレッチを個別指導。動画マニュアルもお渡しします。</div>
+          <div class="option-price">追加 <strong>¥1,650</strong>（税込）</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 施術の流れ -->
+<section class="flow">
+  <div class="container">
+    <div class="sec-label fade-in">Flow</div>
+    <h2 class="sec-title fade-in">施術の<strong style="color:var(--green)">流れ</strong></h2>
+    <div class="sec-divider fade-in"></div>
+    <p class="sec-desc fade-in">初めての方でも安心してご来院いただけるよう、丁寧にご案内します。</p>
+
+    <div class="flow-grid fade-in">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div class="flow-title">ご予約</div>
+        <div class="flow-desc">電話・フォームから<br>ご予約ください</div>
+        <div class="flow-time">オンライン24H対応</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div class="flow-title">カウンセリング</div>
+        <div class="flow-desc">お体の状態・<br>お悩みをヒアリング</div>
+        <div class="flow-time">初回約30分</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div class="flow-title">施術</div>
+        <div class="flow-desc">丁寧に施術を<br>行います</div>
+        <div class="flow-time">30〜75分</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div class="flow-title">アフターケア</div>
+        <div class="flow-desc">施術後の状態確認・<br>セルフケア指導</div>
+        <div class="flow-time">約10分</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">05</div>
+        <div class="flow-title">次回プラン</div>
+        <div class="flow-desc">継続プランの<br>ご提案（任意）</div>
+        <div class="flow-time">約5分</div>
+      </div>
+    </div>
+
+    <div class="notice-box fade-in">
+      <h3>ご来院前にご確認ください</h3>
+      <div class="notice-list">
+        <div class="notice-item">施術着に着替えていただきます（無料レンタルあり）</div>
+        <div class="notice-item">食後すぐの来院はお控えください</div>
+        <div class="notice-item">当日キャンセルは前日20時までにご連絡ください</div>
+        <div class="notice-item">妊娠中の方は事前にご相談ください</div>
+        <div class="notice-item">発熱・感染症の疑いがある場合はご来院をお控えください</div>
+        <div class="notice-item">アクセサリー・ネイルは施術に支障が出ることがあります</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>まずは初回特別プランをお試しください</h2>
+  <p>初回カウンセリング＋全身整体コース（60分）が<strong style="font-size:1.2em;">2,980円</strong>（税込）</p>
+  <a href="contact.html" class="cta-btn-white">ご予約・お問い合わせはこちら</a>
+</div>
+
+<!-- フッター -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">癒し処 和</div>
+      <div class="footer-desc">大阪市北区の整体院。肩こり・腰痛・骨盤矯正のお悩みを根本から改善します。</div>
+    </div>
+    <div>
+      <div class="footer-h">メニュー</div>
+      <div class="footer-links">
+        <a href="index.html#appeal">当院の特徴</a>
+        <a href="menu.html">施術メニュー</a>
+        <a href="price.html">料金</a>
+        <a href="staff.html">スタッフ紹介</a>
+        <a href="access.html">アクセス</a>
+        <a href="contact.html">ご予約・お問い合わせ</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">営業時間</div>
+      <div class="footer-desc">
+        平日 10:00〜21:00<br>
+        土日祝 9:00〜19:00<br>
+        定休日：木曜日<br><br>
+        📍 大阪市北区梅田1-1-1<br>
+        📞 06-XXXX-XXXX
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p style="margin-bottom:8px; color:rgba(255,255,255,0.4); font-size:0.72rem;">
+      ⚠ このサイトはポートフォリオ提出用に作成した架空のサンプルサイトです。
+    </p>
+    <p>© 2026 癒し処 和 All rights reserved.</p>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

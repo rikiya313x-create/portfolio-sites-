@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | HIKARI STUDIO</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0c0c0c;--white:#fafafa;--accent:#e8e0d5;--text:#2a2a2a;--muted:#888;--warm:#c4a882;}
+  body{font-family:'DM Sans','Noto Sans JP',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#f5f0ea;border-left:3px solid var(--warm);padding:10px 24px;text-align:center;font-size:.72rem;color:var(--muted);}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(250,250,250,.96);border-bottom:1px solid rgba(0,0,0,.06);}
+  .logo{font-family:'DM Serif Display',serif;font-size:1.1rem;letter-spacing:.05em;color:var(--black);}
+  .logo span{font-style:italic;color:var(--warm);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:var(--muted);font-size:.75rem;letter-spacing:.08em;transition:.2s;}
+  nav ul a:hover{color:var(--black);}
+  .nav-cta{color:var(--black)!important;border-bottom:1px solid var(--black);}
+
+  .page-hero{padding-top:72px;height:360px;background:url('https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=1400&q=80') center/cover;position:relative;display:flex;align-items:flex-end;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(12,12,12,.6);}
+  .page-hero-inner{position:relative;z-index:1;padding:0 80px 56px;}
+  .page-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:10px;text-transform:uppercase;}
+  .page-title{font-family:'DM Serif Display',serif;font-size:3.4rem;color:#fff;line-height:1.1;}
+  .page-title em{font-style:italic;color:var(--warm);}
+
+  .breadcrumb{padding:20px 80px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;gap:8px;align-items:center;}
+  .breadcrumb a{color:var(--muted);font-size:.72rem;}
+  .breadcrumb span{color:var(--muted);font-size:.72rem;}
+  .breadcrumb .current{color:var(--text);font-size:.72rem;}
+
+  .sec{padding:100px 80px;}
+  .sec-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:12px;text-transform:uppercase;}
+  .sec-title{font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--black);margin-bottom:36px;line-height:1.15;}
+  .sec-title em{font-style:italic;color:var(--warm);}
+
+  /* フォームセクション */
+  .contact-sec{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
+  .contact-info{background:var(--black);padding:80px 64px;display:flex;flex-direction:column;justify-content:space-between;}
+  .ci-label{font-size:.62rem;letter-spacing:.35em;color:var(--warm);margin-bottom:12px;text-transform:uppercase;}
+  .ci-title{font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;margin-bottom:20px;line-height:1.2;}
+  .ci-title em{font-style:italic;color:var(--warm);}
+  .ci-text{color:rgba(255,255,255,.45);font-size:.82rem;line-height:2.1;margin-bottom:36px;}
+  .ci-items{display:flex;flex-direction:column;gap:16px;}
+  .ci-item{display:flex;gap:14px;align-items:flex-start;}
+  .ci-key{color:var(--warm);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;min-width:60px;padding-top:2px;}
+  .ci-val{color:rgba(255,255,255,.5);font-size:.8rem;line-height:1.7;}
+  .contact-form-area{background:var(--accent);padding:80px 64px;}
+
+  /* フォーム */
+  .form-group{margin-bottom:22px;}
+  .form-label{display:block;font-size:.72rem;letter-spacing:.1em;color:var(--text);margin-bottom:8px;text-transform:uppercase;}
+  .form-label .req{color:var(--warm);margin-left:4px;}
+  .form-input,.form-select,.form-textarea{width:100%;border:1px solid rgba(0,0,0,.12);background:var(--white);padding:13px 16px;font-size:.82rem;font-family:'DM Sans','Noto Sans JP',sans-serif;color:var(--text);transition:.2s;outline:none;}
+  .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--warm);}
+  .form-textarea{resize:vertical;min-height:120px;}
+  .form-select{appearance:none;cursor:pointer;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-check{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;}
+  .form-check input{margin-top:3px;accent-color:var(--warm);}
+  .form-check label{font-size:.78rem;color:var(--muted);}
+  .btn-submit{display:block;width:100%;background:var(--black);color:var(--white);padding:16px;font-size:.78rem;letter-spacing:.15em;border:none;cursor:pointer;transition:.3s;margin-top:24px;font-family:'DM Sans',sans-serif;}
+  .btn-submit:hover{background:#222;}
+  .form-note{color:var(--muted);font-size:.72rem;line-height:1.8;margin-top:12px;}
+
+  /* SNS */
+  .sns-sec{background:var(--black);padding:80px;}
+  .sns-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:36px;}
+  .sns-item{background:rgba(255,255,255,.04);padding:28px;text-align:center;border:1px solid rgba(255,255,255,.04);transition:.2s;}
+  .sns-item:hover{background:rgba(255,255,255,.08);}
+  .sns-icon{font-size:1.6rem;margin-bottom:10px;}
+  .sns-name{color:rgba(255,255,255,.4);font-size:.72rem;letter-spacing:.1em;}
+
+  /* よくある問い合わせ */
+  .faq-sec{background:var(--accent);padding:80px;}
+  .faq-list{max-width:680px;}
+  .faq-item{border-bottom:1px solid rgba(0,0,0,.08);padding:20px 0;}
+  .faq-q{display:flex;gap:12px;font-size:.84rem;font-weight:500;color:var(--black);margin-bottom:8px;}
+  .fq-i{color:var(--warm);font-family:'DM Serif Display',serif;flex-shrink:0;}
+  .faq-a{color:var(--muted);font-size:.78rem;line-height:1.9;padding-left:20px;}
+
+  footer{background:var(--black);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);}
+  .footer-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:rgba(255,255,255,.4);letter-spacing:.05em;}
+  footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}
+    nav ul{gap:14px;}
+    .page-hero{height:240px;}
+    .page-hero-inner{padding:0 20px 32px;}
+    .page-title{font-size:2rem;}
+    .breadcrumb{padding:14px 20px;}
+    .contact-sec{grid-template-columns:1fr;}
+    .contact-info{padding:40px 24px;}
+    .contact-form-area{padding:40px 24px;}
+    .form-row{grid-template-columns:1fr;}
+    .sns-sec{padding:60px 20px;}
+    .sns-grid{grid-template-columns:repeat(2,1fr);}
+    .faq-sec{padding:60px 20px;}
+    footer{padding:24px 20px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフォトスタジオサイトです。実在する写真家・スタジオとは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html"><div class="logo">HIKARI <span>STUDIO</span></div></a>
+  <ul>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="service.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">Contact</p>
+    <h1 class="page-title">撮影依頼・<em>お問い合わせ。</em></h1>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>/</span>
+  <span class="current">Contact</span>
+</div>
+
+<!-- コンタクトメイン -->
+<div class="contact-sec">
+  <div class="contact-info">
+    <div>
+      <p class="ci-label">Contact</p>
+      <h2 class="ci-title">まずは気軽に、<em>ご相談ください。</em></h2>
+      <p class="ci-text">「まだ日程が決まっていない」「どのプランが合うか分からない」「予算が限られている」——そんな段階でのお問い合わせも大歓迎です。お気軽にご相談ください。</p>
+      <div class="ci-items">
+        <div class="ci-item">
+          <span class="ci-key">Email</span>
+          <span class="ci-val">hello@hikaristudio.jp</span>
+        </div>
+        <div class="ci-item">
+          <span class="ci-key">Tel</span>
+          <span class="ci-val">03-XXXX-XXXX<br>（平日 10:00〜18:00）</span>
+        </div>
+        <div class="ci-item">
+          <span class="ci-key">Studio</span>
+          <span class="ci-val">東京都目黒区中目黒X-X-X<br>HIKARIビル 2F</span>
+        </div>
+        <div class="ci-item">
+          <span class="ci-key">Reply</span>
+          <span class="ci-val">通常24時間以内にお返事します<br>土日は翌営業日となる場合があります</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;">
+      <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=500&q=80" alt="HIKARI STUDIO" style="width:100%;height:200px;object-fit:cover;">
+    </div>
+  </div>
+  <div class="contact-form-area">
+    <p class="sec-label" style="margin-bottom:8px;">Message Form</p>
+    <h2 style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--black);margin-bottom:24px;">撮影依頼フォーム</h2>
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">お名前<span class="req">*</span></label>
+          <input type="text" class="form-input" placeholder="山田 花子">
+        </div>
+        <div class="form-group">
+          <label class="form-label">フリガナ</label>
+          <input type="text" class="form-input" placeholder="ヤマダ ハナコ">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">メールアドレス<span class="req">*</span></label>
+        <input type="email" class="form-input" placeholder="email@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">電話番号</label>
+        <input type="tel" class="form-input" placeholder="090-XXXX-XXXX">
+      </div>
+      <div class="form-group">
+        <label class="form-label">ご希望の撮影内容<span class="req">*</span></label>
+        <select class="form-select">
+          <option value="" disabled selected>選択してください</option>
+          <option>ウェディング（挙式・前撮り）</option>
+          <option>ポートレート（プロフィール等）</option>
+          <option>家族写真（七五三・誕生日等）</option>
+          <option>商業撮影（EC・広告等）</option>
+          <option>イベント撮影</option>
+          <option>出張撮影</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">ご希望の撮影日（第1希望）</label>
+          <input type="date" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">ご希望の撮影日（第2希望）</label>
+          <input type="date" class="form-input">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">撮影場所（ご希望があれば）</label>
+        <input type="text" class="form-input" placeholder="東京都渋谷区 / 代々木公園付近 / スタジオ希望 等">
+      </div>
+      <div class="form-group">
+        <label class="form-label">ご予算（目安）</label>
+        <select class="form-select">
+          <option value="" disabled selected>選択してください（任意）</option>
+          <option>〜¥30,000</option>
+          <option>¥30,000〜¥60,000</option>
+          <option>¥60,000〜¥100,000</option>
+          <option>¥100,000〜¥200,000</option>
+          <option>¥200,000以上</option>
+          <option>未定（相談したい）</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">メッセージ・ご要望<span class="req">*</span></label>
+        <textarea class="form-textarea" rows="5" placeholder="撮影のご依頼内容・ご希望イメージ・ご質問など、お気軽にご記入ください。"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ポートフォリオ・SNS掲載の承諾</label>
+        <div class="form-check">
+          <input type="checkbox" id="sns_ok">
+          <label for="sns_ok">撮影した写真をHIKARI STUDIOのポートフォリオ・SNSに使用することに同意する（同意いただける場合、撮影代を5%割引します）</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input type="checkbox" id="privacy">
+          <label for="privacy">プライバシーポリシーに同意する<span class="req">*</span></label>
+        </div>
+      </div>
+      <button type="submit" class="btn-submit">送信する</button>
+      <p class="form-note">※ このフォームはポートフォリオ用のデモです。実際には送信されません。</p>
+    </form>
+  </div>
+</div>
+
+<!-- SNS -->
+<div class="sns-sec">
+  <p class="sec-label" style="color:var(--warm);">Follow Us</p>
+  <h2 style="font-family:'DM Serif Display',serif;font-size:1.8rem;color:#fff;margin-bottom:0;">SNSでも作品を発信しています</h2>
+  <div class="sns-grid">
+    <div class="sns-item">
+      <div class="sns-icon">📸</div>
+      <p class="sns-name">Instagram</p>
+      <p style="color:rgba(255,255,255,.25);font-size:.68rem;margin-top:4px;">@hikaristudio</p>
+    </div>
+    <div class="sns-item">
+      <div class="sns-icon">🐦</div>
+      <p class="sns-name">X (Twitter)</p>
+      <p style="color:rgba(255,255,255,.25);font-size:.68rem;margin-top:4px;">@hikaristudio_jp</p>
+    </div>
+    <div class="sns-item">
+      <div class="sns-icon">📘</div>
+      <p class="sns-name">Facebook</p>
+      <p style="color:rgba(255,255,255,.25);font-size:.68rem;margin-top:4px;">HIKARI STUDIO</p>
+    </div>
+    <div class="sns-item">
+      <div class="sns-icon">🎬</div>
+      <p class="sns-name">YouTube</p>
+      <p style="color:rgba(255,255,255,.25);font-size:.68rem;margin-top:4px;">HIKARI STUDIO Ch.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-sec">
+  <p class="sec-label">FAQ</p>
+  <h2 class="sec-title">お問い合わせ前に<em>ご確認ください</em></h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>どのくらい前に予約すればいいですか？</div><div class="faq-a">ウェディングは挙式6〜12カ月前、七五三・イベントは2〜3カ月前のご予約をお勧めします。直前でも空きがある場合は対応しますので、まずはご相談ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>見積もりだけでも依頼できますか？</div><div class="faq-a">もちろんです。撮影内容・日程・場所をお知らせいただければ、無料でお見積もりをご提示します。見積もり後にキャンセルしていただいても費用はかかりません。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>メールへの返信にどのくらいかかりますか？</div><div class="faq-a">通常24時間以内にお返事いたします。土日は翌営業日となる場合があります。急ぎのご用件は電話（03-XXXX-XXXX）にてご連絡ください。</div></div>
+    <div class="faq-item"><div class="faq-q"><span class="fq-i">Q</span>日程・場所が決まっていなくても相談できますか？</div><div class="faq-a">はい、もちろん大丈夫です。「いつかやりたいと思っている」「場所の相談がしたい」という段階でのご連絡も歓迎しています。一緒に考えましょう。</div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">HIKARI STUDIO</div>
+  <p>© 2024 HIKARI STUDIO. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

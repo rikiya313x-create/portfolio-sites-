@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エージェント | PREMIER HOME</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--dark:#111215;--gold:#b8975a;--cream:#f8f4ee;--gray:#6d6d6d;--border:rgba(184,151,90,.25);--light:#fafaf8;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(17,18,21,.97);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo-mark{width:36px;height:36px;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Playfair Display',serif;font-size:.9rem;}
+  .logo-text{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.18em;color:#fff;text-transform:uppercase;margin-left:12px;}
+  .logo{display:flex;align-items:center;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.55);font-size:.7rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:#fff!important;padding:9px 22px;font-size:.7rem!important;}
+  .page-hero{height:380px;background:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;padding-top:72px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(17,18,21,.72);}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;}
+  .page-hero-content p{color:var(--gold);font-size:.62rem;letter-spacing:.35em;margin-bottom:10px;text-transform:uppercase;}
+  .page-hero-content h1{font-family:'Playfair Display',serif;font-size:2.8rem;color:#fff;line-height:1.3;}
+  .sec{padding:80px;}
+  .sec-label{color:var(--gold);font-size:.62rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .gold-line{width:28px;height:1px;background:var(--gold);margin:12px 0 40px;}
+  .agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:40px;}
+  .agent-card{background:#fff;padding:0;}
+  .agent-photo{height:280px;background-size:cover;background-position:center top;position:relative;}
+  .agent-body{padding:28px 28px 32px;}
+  .agent-role{color:var(--gold);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px;}
+  .agent-name{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark);margin-bottom:4px;}
+  .agent-name-en{color:var(--gray);font-size:.72rem;letter-spacing:.12em;margin-bottom:14px;}
+  .agent-text{color:var(--gray);font-size:.78rem;line-height:1.9;margin-bottom:16px;}
+  .agent-spec{display:flex;flex-wrap:wrap;gap:6px;}
+  .spec-tag{background:var(--cream);color:var(--dark);font-size:.62rem;padding:4px 10px;border:1px solid var(--border);}
+  footer{background:var(--dark);padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.3);font-size:.7rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;} .page-hero-content h1{font-size:1.9rem;}
+    .sec{padding:48px 24px;} .agents-grid{grid-template-columns:1fr;}
+    footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">P</div>
+    <span class="logo-text">PREMIER HOME</span>
+  </a>
+  <ul>
+    <li><a href="properties.html">物件情報</a></li>
+    <li><a href="service.html">サービス</a></li>
+    <li><a href="agents.html">エージェント</a></li>
+    <li><a href="about.html">会社概要</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html" class="nav-cta">無料査定</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>AGENTS</p>
+    <h1>エージェント紹介</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-label">OUR AGENTS</p>
+  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--dark);">経験豊富な専門家チーム</h2>
+  <div class="gold-line"></div>
+  <p style="color:var(--gray);font-size:.84rem;line-height:2;max-width:680px;">PREMIER HOMEのエージェントは、東京・港区エリアの高級不動産に特化したスペシャリストです。豊富な実績と人脈で、最高の取引を実現します。</p>
+  <div class="agents-grid">
+    <div class="agent-card">
+      <div class="agent-photo" style="background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80');"></div>
+      <div class="agent-body">
+        <p class="agent-role">Senior Agent / Director</p>
+        <h3 class="agent-name">山田 健太郎</h3>
+        <p class="agent-name-en">KENTARO YAMADA</p>
+        <p class="agent-text">港区・渋谷区の高級マンション売買専門。累計成約額150億円以上の実績。顧客満足度99%を誇るトップエージェント。</p>
+        <div class="agent-spec">
+          <span class="spec-tag">高級マンション</span>
+          <span class="spec-tag">タワーマンション</span>
+          <span class="spec-tag">外国人対応</span>
+        </div>
+      </div>
+    </div>
+    <div class="agent-card">
+      <div class="agent-photo" style="background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80');"></div>
+      <div class="agent-body">
+        <p class="agent-role">Senior Agent</p>
+        <h3 class="agent-name">鈴木 美咲</h3>
+        <p class="agent-name-en">MISAKI SUZUKI</p>
+        <p class="agent-text">一戸建て・邸宅売買のスペシャリスト。建築士資格を保有しリノベーション提案まで一貫してサポート。</p>
+        <div class="agent-spec">
+          <span class="spec-tag">一戸建て</span>
+          <span class="spec-tag">リノベーション</span>
+          <span class="spec-tag">資産形成</span>
+        </div>
+      </div>
+    </div>
+    <div class="agent-card">
+      <div class="agent-photo" style="background-image:url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80');"></div>
+      <div class="agent-body">
+        <p class="agent-role">Agent / Investment Specialist</p>
+        <h3 class="agent-name">田中 誠</h3>
+        <p class="agent-name-en">MAKOTO TANAKA</p>
+        <p class="agent-text">不動産投資・収益物件の専門家。ファイナンシャルプランナー資格を活かした資産運用提案が強み。</p>
+        <div class="agent-spec">
+          <span class="spec-tag">収益物件</span>
+          <span class="spec-tag">投資相談</span>
+          <span class="spec-tag">税務サポート</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 PREMIER HOME. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

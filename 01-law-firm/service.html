@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>専門分野 | 山田・中村法律事務所</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--navy:#0d1b2a;--gold:#c9a84c;--light:#f5f3ee;--gray:#6b7280;--border:#e5e0d8;}
+  body{font-family:'Noto Sans JP',sans-serif;color:var(--navy);background:#fff;overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#f0ede8;border-left:3px solid var(--gold);padding:12px 20px;text-align:center;font-size:.75rem;color:var(--gray);}
+
+  nav{position:fixed;top:0;width:100%;background:rgba(13,27,42,.97);z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{font-family:'Noto Serif JP',serif;color:#fff;font-size:1.1rem;letter-spacing:.15em;}
+  .logo span{color:var(--gold);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:rgba(255,255,255,.8);font-size:.82rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--navy)!important;padding:10px 22px;font-weight:700;font-size:.78rem!important;}
+
+  .page-hero{height:400px;background:var(--navy);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px;}
+  .hero-line{position:absolute;left:0;top:0;width:5px;height:100%;background:var(--gold);}
+  .page-hero-bg{position:absolute;right:0;top:0;width:50%;height:100%;background:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80') center/cover;opacity:.15;}
+  .page-hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,27,42,1) 45%,rgba(13,27,42,.2) 100%);}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;}
+  .page-hero-sub{color:var(--gold);font-size:.72rem;letter-spacing:.4em;margin-bottom:16px;}
+  .page-hero h1{font-family:'Noto Serif JP',serif;color:#fff;font-size:2.6rem;font-weight:700;line-height:1.4;}
+  .page-hero-lead{color:rgba(255,255,255,.55);font-size:.85rem;margin-top:14px;line-height:1.9;}
+
+  .sec{padding:100px 80px;}
+  .sec-tag{color:var(--gold);font-size:.72rem;letter-spacing:.3em;margin-bottom:10px;}
+  .sec-title{font-family:'Noto Serif JP',serif;font-size:2rem;color:var(--navy);margin-bottom:14px;line-height:1.4;}
+  .sec-lead{color:var(--gray);line-height:2;font-size:.88rem;max-width:580px;}
+  .divider{width:40px;height:2px;background:var(--gold);margin:18px 0 48px;}
+  .btn-gold{display:inline-block;background:var(--gold);color:var(--navy);padding:16px 40px;font-size:.85rem;letter-spacing:.1em;font-weight:700;transition:.3s;}
+  .btn-gold:hover{background:#e0bb5a;transform:translateY(-2px);}
+
+  /* PRACTICE AREA SECTION */
+  .practice-sec{padding:100px 80px;}
+  .practice-sec.alt{background:var(--light);}
+  .practice-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+  .practice-inner.reverse{direction:rtl;}
+  .practice-inner.reverse>*{direction:ltr;}
+  .practice-img{position:relative;}
+  .practice-img img{width:100%;height:460px;object-fit:cover;display:block;}
+  .practice-num{position:absolute;top:-20px;left:-20px;font-family:'Noto Serif JP',serif;font-size:5rem;color:var(--gold);opacity:.15;font-weight:700;line-height:1;pointer-events:none;}
+  .practice-body{}
+  .practice-number{font-family:'Noto Serif JP',serif;font-size:3rem;color:var(--gold);opacity:.3;line-height:1;margin-bottom:12px;font-weight:700;}
+  .practice-title{font-family:'Noto Serif JP',serif;font-size:1.6rem;margin-bottom:8px;color:var(--navy);}
+  .practice-title-en{color:var(--gray);font-size:.72rem;letter-spacing:.2em;margin-bottom:24px;}
+  .practice-body p{color:var(--gray);font-size:.86rem;line-height:2.2;margin-bottom:18px;}
+  .practice-list{margin:24px 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .practice-list li{font-size:.82rem;color:var(--navy);padding-left:20px;position:relative;line-height:1.7;}
+  .practice-list li::before{content:'◆';position:absolute;left:0;color:var(--gold);font-size:.6rem;top:4px;}
+  .practice-faq{margin-top:40px;border-top:1px solid var(--border);}
+  .practice-faq-item{padding:18px 0;border-bottom:1px solid var(--border);}
+  .practice-faq-q{font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;gap:12px;}
+  .fq-icon{color:var(--gold);font-family:'Noto Serif JP',serif;font-size:1rem;flex-shrink:0;font-weight:700;}
+  .practice-faq-a{color:var(--gray);font-size:.78rem;line-height:1.9;padding-left:24px;}
+
+  /* OVERVIEW GRID */
+  .overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-bottom:80px;}
+  .og{background:#fff;padding:32px 28px;}
+  .og-num{font-family:'Noto Serif JP',serif;font-size:2rem;color:var(--gold);opacity:.3;margin-bottom:12px;line-height:1;}
+  .og-title{font-family:'Noto Serif JP',serif;font-size:1rem;margin-bottom:10px;}
+  .og-text{color:var(--gray);font-size:.78rem;line-height:1.85;}
+  .og a{color:var(--gold);font-size:.72rem;display:inline-block;margin-top:12px;}
+
+  /* CTA */
+  .cta-sec{background:var(--navy);padding:80px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:60px;}
+  .cta-title{font-family:'Noto Serif JP',serif;color:#fff;font-size:1.8rem;line-height:1.5;margin-bottom:10px;}
+  .cta-sub{color:rgba(255,255,255,.45);font-size:.82rem;}
+  .cta-btns{display:flex;flex-direction:column;gap:12px;align-items:center;}
+  .cta-tel{color:var(--gold);font-family:'Noto Serif JP',serif;font-size:1.8rem;letter-spacing:.05em;font-weight:700;}
+  .cta-tel-note{color:rgba(255,255,255,.3);font-size:.68rem;text-align:center;}
+
+  footer{background:#080f16;padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.3);font-size:.75rem;}
+  .footer-logo{font-family:'Noto Serif JP',serif;color:rgba(255,255,255,.5);font-size:.95rem;letter-spacing:.12em;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;} .page-hero h1{font-size:2rem;}
+    .sec,.practice-sec{padding:60px 24px;}
+    .practice-inner{grid-template-columns:1fr;}
+    .practice-inner.reverse{direction:ltr;}
+    .overview-grid{grid-template-columns:1fr;}
+    .cta-sec{grid-template-columns:1fr;text-align:center;}
+    footer{flex-direction:column;gap:10px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空の法律事務所です。実在する事務所・人物とは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html" class="logo"><span>山田・中村</span>法律事務所</a>
+  <ul>
+    <li><a href="about.html">事務所概要</a></li>
+    <li><a href="service.html">専門分野</a></li>
+    <li><a href="lawyers.html">弁護士紹介</a></li>
+    <li><a href="cases.html">解決事例</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談予約</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grad"></div>
+  <div class="hero-line"></div>
+  <div class="page-hero-content">
+    <p class="page-hero-sub">PRACTICE AREAS</p>
+    <h1>専門分野</h1>
+    <p class="page-hero-lead">企業の経営課題から個人の生活上のトラブルまで、6つの専門分野でお力になります。</p>
+  </div>
+</section>
+
+<!-- 概要グリッド -->
+<section class="sec" style="padding-bottom:60px;">
+  <p class="sec-tag">OVERVIEW</p>
+  <h2 class="sec-title">取り扱い分野一覧</h2>
+  <div class="divider"></div>
+  <p class="sec-lead">初回30分のご相談は無料です。どの分野に該当するかわからない場合もお気軽にご連絡ください。</p>
+  <div class="overview-grid" style="margin-top:48px;">
+    <div class="og"><div class="og-num">01</div><h3 class="og-title">企業法務・顧問契約</h3><p class="og-text">契約書審査から株主総会、M&Aまで企業経営を法的に守ります。</p><a href="#area01">詳細を見る →</a></div>
+    <div class="og"><div class="og-num">02</div><h3 class="og-title">相続・遺産分割</h3><p class="og-text">遺言書作成から遺産分割協議・調停まで幅広く対応します。</p><a href="#area02">詳細を見る →</a></div>
+    <div class="og"><div class="og-num">03</div><h3 class="og-title">離婚・家事問題</h3><p class="og-text">親権・養育費・財産分与・DV案件を依頼者に寄り添い解決します。</p><a href="#area03">詳細を見る →</a></div>
+    <div class="og"><div class="og-num">04</div><h3 class="og-title">不動産トラブル</h3><p class="og-text">売買・賃貸・境界・建築瑕疵など不動産全般に対応します。</p><a href="#area04">詳細を見る →</a></div>
+    <div class="og"><div class="og-num">05</div><h3 class="og-title">債務整理・破産</h3><p class="og-text">任意整理・個人再生・自己破産で経済的再スタートをサポートします。</p><a href="#area05">詳細を見る →</a></div>
+    <div class="og"><div class="og-num">06</div><h3 class="og-title">刑事弁護</h3><p class="og-text">逮捕直後から24時間対応。迅速な弁護活動で依頼者の権利を守ります。</p><a href="#area06">詳細を見る →</a></div>
+  </div>
+</section>
+
+<!-- AREA 01: 企業法務 -->
+<section id="area01" class="practice-sec">
+  <div class="practice-inner">
+    <div class="practice-img">
+      <div class="practice-num">01</div>
+      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="企業法務">
+    </div>
+    <div class="practice-body">
+      <div class="practice-number">01</div>
+      <h2 class="practice-title">企業法務・顧問契約</h2>
+      <p class="practice-title-en">CORPORATE LAW & RETAINER</p>
+      <p>企業が事業を行う上で、法律上のリスクは至るところに潜んでいます。取引先との契約、従業員の労務管理、新規事業参入、株主との関係など、一つ対処を誤ると経営に深刻な影響を与えかねません。当事務所では、中小企業から上場企業まで幅広い企業に対して、月額顧問契約による継続的なリーガルサポートを提供しています。</p>
+      <p>顧問弁護士を持つことの最大の利点は、問題が起きてからではなく、起きる前に法的リスクを把握・回避できることです。契約書のドラフトレビューから、労使トラブルへの対応、取締役会・株主総会の運営支援まで、企業経営を法律面で包括的にサポートします。</p>
+      <p>また、M&A・事業譲渡・会社分割といった組織再編にも対応。デューデリジェンスから契約交渉、クロージングまで、一連のプロセスを経験豊富な弁護士がサポートします。</p>
+      <ul class="practice-list">
+        <li>顧問契約（月額顧問料によるリテイナー契約）</li>
+        <li>契約書の作成・審査・修正</li>
+        <li>取引先との紛争対応・損害賠償交渉</li>
+        <li>労務問題（解雇・ハラスメント・未払い残業代）</li>
+        <li>株主総会・取締役会の法的サポート</li>
+        <li>M&A・事業譲渡・デューデリジェンス</li>
+        <li>知的財産権に関する基本的なアドバイス</li>
+        <li>フランチャイズ契約・代理店契約の審査</li>
+      </ul>
+      <div class="practice-faq">
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>顧問契約の費用はどのくらいですか？</div>
+          <div class="practice-faq-a">企業の規模・相談頻度によって異なりますが、月額2万円〜5万円程度が目安です。初回相談で詳しくご説明します。</div>
+        </div>
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>すでに顧問弁護士がいますが、セカンドオピニオンは可能ですか？</div>
+          <div class="practice-faq-a">もちろん可能です。契約書の確認、特定の案件についての第二意見など、スポット対応も承っています。</div>
+        </div>
+      </div>
+      <div style="margin-top:32px;">
+        <a href="contact.html" class="btn-gold">無料相談を予約する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREA 02: 相続 -->
+<section id="area02" class="practice-sec alt">
+  <div class="practice-inner reverse">
+    <div class="practice-img">
+      <div class="practice-num">02</div>
+      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80" alt="相続・遺産分割">
+    </div>
+    <div class="practice-body">
+      <div class="practice-number">02</div>
+      <h2 class="practice-title">相続・遺産分割</h2>
+      <p class="practice-title-en">INHERITANCE & ESTATE PLANNING</p>
+      <p>相続は「争族」とも言われるほど、親族間の感情的な対立を生みやすいテーマです。遺言書がなかった場合、遺産の分け方をめぐって兄弟姉妹が争い、最終的に家族関係が壊れてしまうケースも少なくありません。当事務所では、相続発生前の遺言書作成から、相続発生後の遺産分割協議・調停・審判まで、相続に関する全てのフェーズでサポートしています。</p>
+      <p>特に不動産を含む相続は複雑になりがちです。評価方法の違いや、特定の相続人が不動産に住み続けているケースなど、利害関係が入り組んでいます。当事務所では税理士・司法書士と連携し、税務・登記まで含めたワンストップの相続サポートを提供しています。</p>
+      <p>また、認知症の親の相続問題や、遺言書の有効性を争う案件（遺言無効確認訴訟）にも対応しています。家族の事情を丁寧に聞いた上で、最善の解決策をご提案します。</p>
+      <ul class="practice-list">
+        <li>遺言書の作成（自筆証書・公正証書遺言）</li>
+        <li>相続放棄・限定承認の手続き</li>
+        <li>遺産分割協議書の作成</li>
+        <li>遺産分割調停・審判の代理</li>
+        <li>遺留分侵害額請求</li>
+        <li>遺言書の有効性に関する紛争（遺言無効確認）</li>
+        <li>不動産を含む複雑な遺産分割</li>
+        <li>相続財産管理人・遺言執行者の就任</li>
+      </ul>
+      <div class="practice-faq">
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>遺言書はいつ作るのがよいですか？</div>
+          <div class="practice-faq-a">元気なうちに早めに準備することをお勧めします。認知症が進むと遺言書を作成できなくなる場合があります。</div>
+        </div>
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>相続人の一人が話し合いに応じない場合はどうなりますか？</div>
+          <div class="practice-faq-a">家庭裁判所への調停申立て、さらに調停不成立の場合は審判に移行します。当事務所が代理人として手続きを進めます。</div>
+        </div>
+      </div>
+      <div style="margin-top:32px;">
+        <a href="contact.html" class="btn-gold">無料相談を予約する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREA 03: 離婚 -->
+<section id="area03" class="practice-sec">
+  <div class="practice-inner">
+    <div class="practice-img">
+      <div class="practice-num">03</div>
+      <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80" alt="離婚・家事問題">
+    </div>
+    <div class="practice-body">
+      <div class="practice-number">03</div>
+      <h2 class="practice-title">離婚・家事問題</h2>
+      <p class="practice-title-en">DIVORCE & FAMILY LAW</p>
+      <p>離婚は人生における大きな決断です。感情的になりやすい局面だからこそ、冷静に法的な権利と見通しを把握することが重要です。当事務所では、協議離婚から調停離婚・裁判離婚まで全てのフェーズで代理人として対応します。親権・養育費・財産分与・慰謝料・婚姻費用分担など、複雑に絡み合う問題を整理し、依頼者にとって最善の結果を目指します。</p>
+      <p>モラルハラスメント（モラハラ）・ドメスティックバイオレンス（DV）の案件にも力を入れています。目に見えにくい精神的DVの立証は難しいとされますが、日記・録音・医師の診断書・メッセージ履歴などを組み合わせることで、多くの案件で立証に成功してきました。DV被害者の方は緊急での相談受付も可能です。</p>
+      <p>子どもの親権・面会交流・養育費の取り決めは、離婚後の子どもの生活に直結します。子どもの利益を最優先に考えながら、依頼者の立場で最善の提案をします。</p>
+      <ul class="practice-list">
+        <li>協議離婚・調停離婚・裁判離婚の代理</li>
+        <li>親権・監護権の交渉・調停</li>
+        <li>養育費の取り決め・未払い養育費の回収</li>
+        <li>財産分与（不動産・退職金・年金分割を含む）</li>
+        <li>慰謝料請求・婚姻費用分担</li>
+        <li>DV・モラハラの立証サポート</li>
+        <li>保護命令（接近禁止命令）の申立て</li>
+        <li>面会交流の取り決め・審判</li>
+      </ul>
+      <div class="practice-faq">
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>相手方が離婚に応じない場合でも離婚できますか？</div>
+          <div class="practice-faq-a">法定離婚事由（不貞行為・DVなど）があれば裁判で離婚が認められる場合があります。まずご相談ください。</div>
+        </div>
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>子どもの親権はどちらが取れるのですか？</div>
+          <div class="practice-faq-a">子の利益・監護実績・生活環境など様々な要素で判断されます。弁護士が状況を分析した上でアドバイスします。</div>
+        </div>
+      </div>
+      <div style="margin-top:32px;">
+        <a href="contact.html" class="btn-gold">無料相談を予約する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREA 04: 不動産 -->
+<section id="area04" class="practice-sec alt">
+  <div class="practice-inner reverse">
+    <div class="practice-img">
+      <div class="practice-num">04</div>
+      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="不動産トラブル">
+    </div>
+    <div class="practice-body">
+      <div class="practice-number">04</div>
+      <h2 class="practice-title">不動産トラブル</h2>
+      <p class="practice-title-en">REAL ESTATE DISPUTES</p>
+      <p>不動産に関するトラブルは、売買・賃貸・建築・境界など多岐にわたります。金額が大きく、感情的にもなりやすい不動産紛争では、早期の専門家への相談が重要です。当事務所では宅地建物取引士・建築士・測量士といった専門家とのネットワークを活用しながら、複合的な不動産問題に対応しています。</p>
+      <p>賃貸借問題では、賃料滞納者への明渡し交渉・訴訟、原状回復費用をめぐるトラブル、敷金返還請求など、オーナー側・テナント側の双方から相談をお受けしています。立退き交渉では、交渉戦略の立案から実際の交渉・合意書作成まで一括してサポートします。</p>
+      <p>建築瑕疵（欠陥住宅）の案件は、建築の専門知識が必要なため、多くの弁護士が苦手とする分野です。当事務所では専任の建築専門弁護士（木村浩二）が対応し、建築士の鑑定意見書を活用した緻密な立証戦略で多くの案件を解決してきました。</p>
+      <ul class="practice-list">
+        <li>不動産売買契約のトラブル（瑕疵担保責任・契約解除）</li>
+        <li>賃料滞納・明渡し交渉・訴訟</li>
+        <li>敷金・原状回復費用のトラブル</li>
+        <li>立退き交渉（賃借人・賃貸人双方）</li>
+        <li>境界線紛争・隣地との問題</li>
+        <li>建築瑕疵・欠陥住宅の損害賠償</li>
+        <li>マンション管理組合関連の問題</li>
+        <li>競売・任意売却のサポート</li>
+      </ul>
+      <div class="practice-faq">
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>賃借人が家賃を3ヶ月滞納しています。どうすればよいですか？</div>
+          <div class="practice-faq-a">内容証明郵便による催告から始め、交渉・訴訟・強制執行まで段階的にサポートします。早めの対応が重要です。</div>
+        </div>
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>購入した家に欠陥が見つかりました。どうすればよいですか？</div>
+          <div class="practice-faq-a">まず写真・動画で記録を残してください。建築士の調査を依頼した上で、売主・施工業者への請求が可能です。ご相談ください。</div>
+        </div>
+      </div>
+      <div style="margin-top:32px;">
+        <a href="contact.html" class="btn-gold">無料相談を予約する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREA 05: 債務整理 -->
+<section id="area05" class="practice-sec">
+  <div class="practice-inner">
+    <div class="practice-img">
+      <div class="practice-num">05</div>
+      <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80" alt="債務整理・破産">
+    </div>
+    <div class="practice-body">
+      <div class="practice-number">05</div>
+      <h2 class="practice-title">債務整理・破産</h2>
+      <p class="practice-title-en">DEBT RELIEF & BANKRUPTCY</p>
+      <p>借金問題を一人で抱え込んでいる方は非常に多く、深刻化するほど選択肢が狭まっていきます。しかし、弁護士に依頼することで、貸金業者からの督促・取り立てはすぐに止まり、現実的な解決策を検討できるようになります。「もう手遅れ」ということはありません。まずはご相談ください。</p>
+      <p>債務整理には大きく3つの方法があります。任意整理は裁判所を通さずに貸金業者と直接交渉し、利息カットや返済計画の再設定を行う方法です。個人再生は裁判所を通じて借金を大幅に減額（最大で5分の1）し、住宅ローンがある方も自宅を維持したまま手続きができます。自己破産は全ての借金をゼロにできますが、一定の財産は手放す必要があります。</p>
+      <p>どの方法が最適かは、借金の総額・収入・財産状況・借入先の数によって異なります。初回相談で状況を詳しく聞いた上で、最善の方法をご提案します。手続き後は新しいスタートを切れるよう、生活再建のアドバイスも行っています。</p>
+      <ul class="practice-list">
+        <li>任意整理（利息カット・返済計画の再設定）</li>
+        <li>個人再生（借金の大幅減額・住宅ローン特則）</li>
+        <li>自己破産（免責許可申立て）</li>
+        <li>過払い金の返還請求</li>
+        <li>サラ金・クレジット会社との交渉</li>
+        <li>法人破産・会社整理のサポート</li>
+        <li>免責不許可事由がある場合の対応</li>
+        <li>借金問題に伴う離婚・相続問題への対応</li>
+      </ul>
+      <div class="practice-faq">
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>自己破産すると仕事や生活にどんな影響がありますか？</div>
+          <div class="practice-faq-a">官報に掲載され、信用情報に記録（いわゆるブラックリスト）されますが、普通の仕事・生活は継続できます。免責を受けると借金はゼロになります。</div>
+        </div>
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>弁護士に依頼してからどのくらいで督促が止まりますか？</div>
+          <div class="practice-faq-a">受任通知を発送してから数日以内に貸金業者からの督促・取り立ては法律上禁止されます。すぐに効果があります。</div>
+        </div>
+      </div>
+      <div style="margin-top:32px;">
+        <a href="contact.html" class="btn-gold">無料相談を予約する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREA 06: 刑事弁護 -->
+<section id="area06" class="practice-sec alt">
+  <div class="practice-inner reverse">
+    <div class="practice-img">
+      <div class="practice-num">06</div>
+      <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80" alt="刑事弁護">
+    </div>
+    <div class="practice-body">
+      <div class="practice-number">06</div>
+      <h2 class="practice-title">刑事弁護</h2>
+      <p class="practice-title-en">CRIMINAL DEFENSE</p>
+      <p>刑事事件において、逮捕直後の対応が結果を大きく左右します。逮捕後48時間以内に検察官へ送致されるかどうか、さらに72時間以内に勾留請求がなされるかによって、身柄拘束の長さが決まります。この初期段階での弁護活動が不起訴・早期釈放につながる場合が多く、できる限り早く弁護士に接触することが重要です。当事務所では24時間緊急対応（刑事案件に限る）を行っています。</p>
+      <p>「容疑をかけられただけで犯罪者ではない」という原則に基づき、私たちは依頼者の無実を証明する、あるいは罪を軽減するための緻密な弁護戦略を立てます。被害者との示談交渉、証拠の収集・分析、取調べ対応のアドバイスなど、逮捕から裁判まで一貫してサポートします。</p>
+      <p>また、万が一有罪判決が見込まれる場合でも、情状弁護を尽くして執行猶予の獲得を目指します。社会復帰を見据えた弁護活動を大切にしています。痴漢・窃盗・傷害・詐欺・薬物事案など多様な刑事案件に対応実績があります。</p>
+      <ul class="practice-list">
+        <li>逮捕直後の緊急接見（24時間対応）</li>
+        <li>勾留延長・勾留阻止のための意見書提出</li>
+        <li>被害者との示談交渉・示談書作成</li>
+        <li>取調べ対応のアドバイス（黙秘権・供述の仕方）</li>
+        <li>不起訴処分を目指した弁護活動</li>
+        <li>公判での無罪・執行猶予を目指した弁護</li>
+        <li>痴漢・窃盗・傷害・詐欺・薬物事案</li>
+        <li>少年事件の弁護（付添人活動）</li>
+      </ul>
+      <div class="practice-faq">
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>家族が逮捕されました。今すぐ何をすればよいですか？</div>
+          <div class="practice-faq-a">すぐに当事務所へご連絡ください。弁護士が可能な限り早く警察署へ接見に行き、状況を確認した上で方針をお伝えします。</div>
+        </div>
+        <div class="practice-faq-item">
+          <div class="practice-faq-q"><span class="fq-icon">Q</span>本人が「やっていない」と言っています。無実を証明できますか？</div>
+          <div class="practice-faq-a">アリバイ・証拠・供述の矛盾を徹底的に分析し、無実の主張を裏付ける弁護活動を行います。まず早急にご相談ください。</div>
+        </div>
+      </div>
+      <div style="margin-top:32px;">
+        <a href="contact.html" class="btn-gold">無料相談を予約する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div>
+    <h2 class="cta-title">まずは、無料相談から。<br>一人で抱え込まないでください。</h2>
+    <p class="cta-sub">初回30分無料・完全予約制・秘密厳守</p>
+  </div>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn-gold" style="text-align:center;min-width:220px;">無料相談を予約する</a>
+    <div class="cta-tel">03-XXXX-XXXX</div>
+    <p class="cta-tel-note">平日 9:00〜18:00 ／ 土曜 10:00〜15:00</p>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-logo">山田・中村法律事務所</p>
+  <p>© 2024 Yamada & Nakamura Law Office. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

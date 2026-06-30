@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サービス | PREMIER HOME</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--dark:#111215;--gold:#b8975a;--cream:#f8f4ee;--gray:#6d6d6d;--border:rgba(184,151,90,.25);--light:#fafaf8;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;}
+  a{text-decoration:none;}
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(17,18,21,.97);padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo-mark{width:36px;height:36px;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Playfair Display',serif;font-size:.9rem;}
+  .logo-text{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.18em;color:#fff;text-transform:uppercase;margin-left:12px;}
+  .logo{display:flex;align-items:center;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.55);font-size:.7rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:#fff!important;padding:9px 22px;font-size:.7rem!important;}
+  .page-hero{height:380px;background:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1400&q=80') center/cover;position:relative;display:flex;align-items:center;padding-top:72px;}
+  .page-hero::after{content:'';position:absolute;inset:0;background:rgba(17,18,21,.75);}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;}
+  .page-hero-content p{color:var(--gold);font-size:.62rem;letter-spacing:.35em;margin-bottom:10px;text-transform:uppercase;}
+  .page-hero-content h1{font-family:'Playfair Display',serif;font-size:2.8rem;color:#fff;line-height:1.3;}
+  .sec{padding:80px;}
+  .sec-label{color:var(--gold);font-size:.62rem;letter-spacing:.3em;margin-bottom:10px;text-transform:uppercase;}
+  .gold-line{width:28px;height:1px;background:var(--gold);margin:12px 0 40px;}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:40px;}
+  .sc{background:#fff;padding:44px 36px;}
+  .sc-num{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--gold);margin-bottom:16px;opacity:.6;}
+  .sc-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);margin-bottom:12px;}
+  .sc-text{color:var(--gray);font-size:.8rem;line-height:2;}
+  .sc-list{list-style:none;margin-top:16px;}
+  .sc-list li{font-size:.78rem;color:var(--gray);padding:6px 0;border-bottom:1px solid rgba(184,151,90,.15);padding-left:14px;position:relative;}
+  .sc-list li::before{content:'—';color:var(--gold);position:absolute;left:0;font-size:.6rem;}
+  .flow-sec{background:var(--cream);padding:80px;}
+  .flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:40px;}
+  .flow-step{text-align:center;padding:28px 16px;position:relative;}
+  .flow-step::after{content:'→';position:absolute;right:-12px;top:36px;color:var(--gold);font-size:1.2rem;}
+  .flow-step:last-child::after{display:none;}
+  .flow-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);margin-bottom:10px;}
+  .flow-title{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:6px;}
+  .flow-text{font-size:.72rem;color:var(--gray);line-height:1.7;}
+  footer{background:var(--dark);padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.3);font-size:.7rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;} .page-hero-content h1{font-size:1.9rem;}
+    .sec{padding:48px 24px;} .service-grid{grid-template-columns:1fr;}
+    .flow-sec{padding:48px 24px;} .flow-steps{grid-template-columns:1fr;gap:16px;}
+    .flow-step::after{display:none;} footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">P</div>
+    <span class="logo-text">PREMIER HOME</span>
+  </a>
+  <ul>
+    <li><a href="properties.html">物件情報</a></li>
+    <li><a href="service.html">サービス</a></li>
+    <li><a href="agents.html">エージェント</a></li>
+    <li><a href="about.html">会社概要</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html" class="nav-cta">無料査定</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <p>SERVICE</p>
+    <h1>サービス一覧</h1>
+  </div>
+</div>
+<div class="sec">
+  <p class="sec-label">SERVICE</p>
+  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--dark);">不動産のすべてをワンストップで</h2>
+  <div class="gold-line"></div>
+  <p style="color:var(--gray);font-size:.84rem;line-height:2;max-width:680px;">PREMIER HOMEは高級不動産に特化したフルサービス会社です。売却・購入・賃貸・資産運用まで、すべてのニーズに対応します。</p>
+  <div class="service-grid">
+    <div class="sc">
+      <div class="sc-num">01</div>
+      <div class="sc-title">売却サービス</div>
+      <p class="sc-text">港区・渋谷区・千代田区を中心とした高級物件の売却を強力サポート。独自の富裕層ネットワークで最高価格での成約を実現します。</p>
+      <ul class="sc-list">
+        <li>無料査定・価格分析</li>
+        <li>プロフォト・動画撮影</li>
+        <li>VR内覧サービス</li>
+        <li>富裕層マッチング</li>
+        <li>税務・法務サポート</li>
+      </ul>
+    </div>
+    <div class="sc">
+      <div class="sc-num">02</div>
+      <div class="sc-title">購入サービス</div>
+      <p class="sc-text">理想の物件探しから契約・引き渡しまでトータルサポート。非公開物件情報も豊富に保有しています。</p>
+      <ul class="sc-list">
+        <li>希望条件ヒアリング</li>
+        <li>非公開物件紹介</li>
+        <li>内覧アレンジ</li>
+        <li>住宅ローン相談</li>
+        <li>リノベーション提案</li>
+      </ul>
+    </div>
+    <div class="sc">
+      <div class="sc-num">03</div>
+      <div class="sc-title">賃貸・資産運用</div>
+      <p class="sc-text">所有物件の賃貸管理から投資用物件の運用まで。安定収益を最大化するプランをご提案します。</p>
+      <ul class="sc-list">
+        <li>賃貸管理代行</li>
+        <li>入居者審査</li>
+        <li>収益シミュレーション</li>
+        <li>リノベーション提案</li>
+        <li>確定申告サポート</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="flow-sec">
+  <div style="max-width:1000px;margin:0 auto;">
+    <p class="sec-label">FLOW</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--dark);">ご利用の流れ（売却の場合）</h2>
+    <div class="gold-line"></div>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-num">01</div><div class="flow-title">無料査定</div><p class="flow-text">物件情報をお伝えいただければ最短翌日に査定書をご提出</p></div>
+      <div class="flow-step"><div class="flow-num">02</div><div class="flow-title">媒介契約</div><p class="flow-text">売却プランを確認の上、専任媒介または一般媒介契約を締結</p></div>
+      <div class="flow-step"><div class="flow-num">03</div><div class="flow-title">販売活動</div><p class="flow-text">プロ撮影・VR・富裕層ネットワーク活用で最速成約を目指します</p></div>
+      <div class="flow-step"><div class="flow-num">04</div><div class="flow-title">成約・契約</div><p class="flow-text">買主様との価格交渉・売買契約締結のサポートをします</p></div>
+      <div class="flow-step"><div class="flow-num">05</div><div class="flow-title">引き渡し</div><p class="flow-text">決済・登記・引き渡しまでシームレスにサポートします</p></div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2024 PREMIER HOME. All rights reserved.</p>
+  <p>※ 掲載内容はポートフォリオ用の架空サイトです</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ジムについて | IRON FORCE GYM 大阪・梅田</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700;900&family=Oswald:wght@400;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--black:#0a0a0a;--yellow:#f5c400;--gray:#1a1a1a;--mid:#111;--lgray:#888;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:#fff;overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#1a1500;border-left:3px solid var(--yellow);padding:12px 20px;text-align:center;font-size:.73rem;color:rgba(255,255,255,.5);}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(10,10,10,.97);border-bottom:2px solid var(--yellow);}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;}
+  .logo span{color:var(--yellow);}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav ul a{color:rgba(255,255,255,.7);font-size:.78rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;transition:.2s;}
+  nav ul a:hover{color:var(--yellow);}
+  .nav-cta{background:var(--yellow);color:var(--black)!important;padding:10px 24px;font-weight:900!important;}
+
+  /* TICKER */
+  .ticker{background:var(--yellow);padding:12px 0;overflow:hidden;white-space:nowrap;}
+  .ticker-inner{display:inline-block;animation:tick 20s linear infinite;}
+  .ticker-inner span{color:var(--black);font-size:.75rem;font-weight:900;letter-spacing:.2em;padding:0 40px;text-transform:uppercase;}
+  @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  /* HERO */
+  .hero{height:60vh;position:relative;display:flex;align-items:center;overflow:hidden;margin-top:33px;}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80') center/cover;filter:brightness(.3);}
+  .hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.9) 50%,transparent 100%);}
+  .hero-stripe{position:absolute;left:0;top:0;width:8px;height:100%;background:var(--yellow);}
+  .hero-content{position:relative;z-index:1;padding:0 80px;}
+  .hero-tag{display:inline-block;background:var(--yellow);color:var(--black);padding:6px 16px;font-size:.7rem;letter-spacing:.25em;font-weight:900;margin-bottom:24px;text-transform:uppercase;}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:7rem;line-height:.9;margin-bottom:20px;letter-spacing:.02em;}
+  .hero-lead{color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.9;max-width:500px;}
+
+  /* 共通 */
+  .sec{padding:100px 80px;}
+  .sec-label{color:var(--yellow);font-size:.7rem;letter-spacing:.35em;font-weight:900;text-transform:uppercase;margin-bottom:12px;}
+  .sec-title{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:.05em;margin-bottom:48px;line-height:1;}
+  .btn-yellow{display:inline-block;background:var(--yellow);color:var(--black);padding:16px 48px;font-size:.85rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
+  .btn-yellow:hover{background:#ffd700;transform:translateY(-2px);}
+  .btn-ghost{display:inline-block;border:2px solid rgba(255,255,255,.4);color:#fff;padding:16px 48px;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
+  .btn-ghost:hover{border-color:var(--yellow);color:var(--yellow);}
+  .btn-black{display:inline-block;background:var(--black);color:var(--yellow);padding:18px 56px;font-size:.9rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;transition:.3s;}
+  .btn-black:hover{background:#111;}
+
+  /* STORY */
+  .story{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
+  .story-img{background:url('https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=800&q=80') center/cover;position:relative;}
+  .story-img::after{content:'SINCE 2012';position:absolute;bottom:40px;left:40px;font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(245,196,0,.15);line-height:1;}
+  .story-content{background:var(--mid);padding:80px;}
+  .story-content p{color:rgba(255,255,255,.65);line-height:2;font-size:.88rem;margin-bottom:20px;}
+  .about-nums{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
+  .an{border-left:3px solid var(--yellow);padding-left:16px;}
+  .an-val{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--yellow);}
+  .an-label{color:var(--lgray);font-size:.72rem;margin-top:2px;}
+
+  /* 施設グリッド */
+  .facility-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+  .fc{position:relative;overflow:hidden;height:280px;cursor:pointer;}
+  .fc-img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+  .fc:hover .fc-img{transform:scale(1.08);}
+  .fc-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.9));display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:24px;}
+  .fc-name{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;margin-bottom:4px;}
+  .fc-desc{color:rgba(255,255,255,.6);font-size:.7rem;line-height:1.6;}
+
+  /* 設備の特徴 */
+  .features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .feat{background:var(--gray);padding:40px 28px;border-bottom:3px solid transparent;transition:.3s;}
+  .feat:hover{border-color:var(--yellow);}
+  .feat-icon{font-size:2.5rem;margin-bottom:20px;}
+  .feat-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.05em;margin-bottom:10px;}
+  .feat-text{color:var(--lgray);font-size:.78rem;line-height:1.85;}
+
+  /* タイムライン */
+  .timeline{max-width:700px;margin:0 auto;}
+  .tl-item{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+  .tl-year{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--yellow);padding-top:4px;}
+  .tl-content h4{font-size:.92rem;font-weight:700;margin-bottom:8px;}
+  .tl-content p{color:var(--lgray);font-size:.78rem;line-height:1.85;}
+
+  /* CTA */
+  .cta-sec{background:var(--yellow);padding:80px;text-align:center;}
+  .cta-title{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--black);letter-spacing:.05em;line-height:1;margin-bottom:12px;}
+  .cta-sub{color:rgba(0,0,0,.6);font-size:.88rem;margin-bottom:28px;}
+
+  footer{background:#050505;padding:40px 80px;display:grid;grid-template-columns:1fr auto;align-items:center;border-top:2px solid var(--yellow);}
+  footer p{color:rgba(255,255,255,.3);font-size:.75rem;}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#fff;margin-bottom:6px;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}nav ul{display:none;}
+    .sec{padding:60px 24px;}
+    .hero-content{padding:0 24px;}
+    .story{grid-template-columns:1fr;}
+    .story-content{padding:40px 24px;}
+    .facility-grid,.features-grid{grid-template-columns:1fr 1fr;}
+    footer{grid-template-columns:1fr;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空のフィットネスジムです。実在する施設・人物とは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html" class="logo">IRON<span>FORCE</span></a>
+  <ul>
+    <li><a href="program.html">プログラム</a></li>
+    <li><a href="about.html">施設</a></li>
+    <li><a href="trainers.html">トレーナー</a></li>
+    <li><a href="price.html">料金</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料体験</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div class="hero-tag">ABOUT IRON FORCE GYM</div>
+    <h1>OUR GYM</h1>
+    <p class="hero-lead">2012年の開業から変わらないもの――本気の人間だけが集まる場所を作るという、ただひとつの信念。</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span><span>2,400+ MEMBERS</span><span>FREE TRIAL</span><span>PERSONAL TRAINING</span><span>OPEN 24H</span><span>PRO TRAINERS</span><span>NUTRITION SUPPORT</span><span>GROUP LESSONS</span><span>2,400+ MEMBERS</span>
+  </div>
+</div>
+
+<!-- ジムのストーリー -->
+<div class="story">
+  <div class="story-img"></div>
+  <div class="story-content">
+    <p class="sec-label">Our Story</p>
+    <h2 class="sec-title" style="margin-bottom:28px;font-size:2.8rem;">ストーリー</h2>
+    <p>IRON FORCEは2012年、大阪・梅田に誕生しました。創業者の田中圭介はプロボクサーとして10年間現役を走り、引退後に「本気で鍛えたい人間が誰でも来られる場所を作る」という想いでこのジムを立ち上げました。</p>
+    <p>開業当初は会員数わずか80名。しかし口コミと実績が積み重なり、3年後には500名を超え、現在は2,400名以上の会員が在籍しています。アスリートからビジネスパーソン、産後のお母さんまで、あらゆるバックグラウンドの「本気」が集まっています。</p>
+    <p>私たちが大切にしているのは、設備の質とトレーナーの専門性、そして「結果にコミットする」という姿勢です。流行を追いかけるのではなく、科学的根拠に基づいたトレーニング指導を提供し続けることが IRON FORCE の存在意義です。</p>
+    <p>トレーニングは裏切らない。正しい方法と本気の継続があれば、必ず体は変わります。それを12年間、2,400名以上の会員とともに証明してきました。あなたの変化も、ここから始まります。</p>
+    <div class="about-nums">
+      <div class="an"><div class="an-val">2,400+</div><div class="an-label">在籍会員数</div></div>
+      <div class="an"><div class="an-val">12</div><div class="an-label">在籍トレーナー</div></div>
+      <div class="an"><div class="an-val">24H</div><div class="an-label">営業時間</div></div>
+      <div class="an"><div class="an-val">98%</div><div class="an-label">会員継続率</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 施設紹介 -->
+<section class="sec" style="background:var(--gray);padding-bottom:0;">
+  <p class="sec-label">Facilities</p>
+  <h2 class="sec-title">施設紹介</h2>
+</section>
+<div class="facility-grid">
+  <div class="fc">
+    <img class="fc-img" src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80" alt="フリーウェイトエリア">
+    <div class="fc-overlay">
+      <span class="fc-name">FREE WEIGHT AREA</span>
+      <span class="fc-desc">バーベル・ダンベル・ケトルベルを完備。パワーラック8台設置。</span>
+    </div>
+  </div>
+  <div class="fc">
+    <img class="fc-img" src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80" alt="マシンエリア">
+    <div class="fc-overlay">
+      <span class="fc-name">MACHINE AREA</span>
+      <span class="fc-desc">最新型のケーブルマシン・プレスマシン・レッグプレスなど40台以上。</span>
+    </div>
+  </div>
+  <div class="fc">
+    <img class="fc-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="グループスタジオ">
+    <div class="fc-overlay">
+      <span class="fc-name">GROUP STUDIO</span>
+      <span class="fc-desc">HIIT・ヨガ・ピラティスなど多彩なグループクラスを開催。定員20名制。</span>
+    </div>
+  </div>
+  <div class="fc">
+    <img class="fc-img" src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80" alt="パワーリフティングゾーン">
+    <div class="fc-overlay">
+      <span class="fc-name">POWERLIFTING ZONE</span>
+      <span class="fc-desc">競技用プラットフォーム4台。デッドリフトバー・スクワットバーを完備。</span>
+    </div>
+  </div>
+  <div class="fc">
+    <img class="fc-img" src="https://images.unsplash.com/photo-1592632789003-4f5cc1bdc6f3?w=600&q=80" alt="リカバリーゾーン">
+    <div class="fc-overlay">
+      <span class="fc-name">RECOVERY ZONE</span>
+      <span class="fc-desc">ストレッチエリア・マッサージガン・フォームローラーを常設。</span>
+    </div>
+  </div>
+  <div class="fc">
+    <img class="fc-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="ロッカールーム">
+    <div class="fc-overlay">
+      <span class="fc-name">LOCKER ROOM</span>
+      <span class="fc-desc">男女別完備。シャワー10室・ドライヤー・アメニティ完備。</span>
+    </div>
+  </div>
+</div>
+<div style="background:var(--gray);padding:40px 80px 100px;">
+</div>
+
+<!-- 設備の特徴 -->
+<section class="sec" style="padding-top:80px;">
+  <p class="sec-label">Equipment</p>
+  <h2 class="sec-title">設備の特徴</h2>
+  <div class="features-grid">
+    <div class="feat">
+      <div class="feat-icon">🏋️</div>
+      <h3 class="feat-title">プレミアムバーベル</h3>
+      <p class="feat-text">国産・海外一流メーカーのバーベルを取り揃え。ニールのジップサイクルからELEIKOの競技用バーまで、用途に合わせて選択可能。総重量10,000kg以上のプレート在庫。</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">⚙️</div>
+      <h3 class="feat-title">最新マシン</h3>
+      <p class="feat-text">Life Fitness・Technogym・Hammerstrengthの最新モデルを導入。年1回の定期メンテナンスで常にベストコンディション。有酸素マシンは個人タブレット接続可能。</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📊</div>
+      <h3 class="feat-title">体組成測定器</h3>
+      <p class="feat-text">InBodyの最新機種を2台設置。体重・体脂肪率・筋肉量・水分量を精密測定。入会時・月次・任意のタイミングで無料測定。データを基にトレーナーがプログラムを最適化。</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🎵</div>
+      <h3 class="feat-title">音響・空調</h3>
+      <p class="feat-text">JBLの業務用サウンドシステムを全エリアに設置。常時80〜100BPMのトレーニングBGMが流れる環境。24時間365日、温度22〜24℃・湿度50%以下を維持する空調システム。</p>
+    </div>
+  </div>
+</section>
+
+<!-- タイムライン -->
+<section class="sec" style="background:var(--mid);">
+  <p class="sec-label">History</p>
+  <h2 class="sec-title" style="text-align:center;">SINCE 2012</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">2012</div>
+      <div class="tl-content">
+        <h4>IRON FORCE GYM 開業</h4>
+        <p>大阪・梅田にてオープン。会員80名、トレーナー3名でスタート。フリーウェイトとパーソナルトレーニングを主軸にした「結果にこだわるジム」をコンセプトに掲げる。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2014</div>
+      <div class="tl-content">
+        <h4>グループスタジオ増設・HIIT クラス開始</h4>
+        <p>会員数300名を突破。グループクラスへの需要に応え、スタジオを増設。HIITクラスを新たに導入し、幅広い年代の会員が参加するようになる。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2016</div>
+      <div class="tl-content">
+        <h4>パワーリフティングゾーン設置・24時間営業開始</h4>
+        <p>競技志向の会員からの要望を受け、専用プラットフォームを設置。同年、STANDARDプラン以上の会員を対象に24時間利用を開始。利便性が大幅に向上。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2018</div>
+      <div class="tl-content">
+        <h4>栄養カウンセリングサービス開始</h4>
+        <p>管理栄養士資格を持つトレーナーが在籍。食事改善・栄養プログラムの提供を開始。トレーニングと食事の両軸から結果にコミットする体制が整う。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2020</div>
+      <div class="tl-content">
+        <h4>全施設リニューアル・オンライン指導スタート</h4>
+        <p>コロナ禍でも会員のトレーニングを止めないために、オンラインパーソナル指導を導入。同年、フロア全体のリニューアルを完了。設備を全面刷新。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2022</div>
+      <div class="tl-content">
+        <h4>会員数2,000名突破・リカバリーゾーン新設</h4>
+        <p>開業10周年を機に会員数2,000名を達成。リカバリー需要の高まりに応え、専用のリカバリーゾーンを新設。スポーツマッサージサービスも開始。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2024</div>
+      <div class="tl-content">
+        <h4>在籍会員2,400名超・継続率98%達成</h4>
+        <p>開業から12年。業界平均を大幅に上回る98%の継続率を維持。「やめられないジム」として大阪随一の本格的トレーニング施設として確立。新規トレーナー採用も強化。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <h2 class="cta-title">まず体験してみろ</h2>
+  <p class="cta-sub">無料体験60分 ／ 完全予約制 ／ しつこい勧誘なし</p>
+  <a href="contact.html" class="btn-black">無料体験を申し込む</a>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-logo">IRON FORCE GYM</div>
+    <p>大阪府大阪市北区梅田2-X-X IRONFORCE BLDG 3F / TEL: 06-XXXX-XXXX</p>
+  </div>
+  <p>© 2024 IRON FORCE GYM. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

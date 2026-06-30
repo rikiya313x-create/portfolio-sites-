@@ -106,6 +106,18 @@
   footer{background:var(--black);padding:36px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);}
   .footer-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:rgba(255,255,255,.4);letter-spacing:.05em;}
   footer p{color:rgba(255,255,255,.2);font-size:.7rem;}
+  @media(max-width:900px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .hero{grid-template-columns:1fr!important;height:auto;} .hero-left{padding:100px 24px 40px;}
+    .hero h1{font-size:2.8rem;} .hero-right{height:50vw;grid-template-columns:1fr 1fr;grid-template-rows:1fr;}
+    .hero-img-1{grid-row:1/2;}
+    .sec{padding:52px 24px;} .about{grid-template-columns:1fr!important;} .about-img{min-height:280px;}
+    .about-content{padding:36px 24px;}
+    .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:160px;}
+    .services-grid{grid-template-columns:1fr;} .flow-steps{grid-template-columns:1fr 1fr;}
+    .voice-grid{grid-template-columns:1fr;} .cta-sec{grid-template-columns:1fr!important;}
+    footer{padding:28px 24px;flex-direction:column;gap:8px;text-align:center;}
+  }
 </style>
 </head>
 <body>
@@ -114,11 +126,11 @@
 <nav>
   <div class="logo">HIKARI <span>STUDIO</span></div>
   <ul>
-    <li><a href="#">Works</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">FAQ</a></li>
-    <li><a href="#" class="nav-cta">Contact</a></li>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="service.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
@@ -128,8 +140,8 @@
     <h1>光を<br>写す、<em>物語を残す。</em></h1>
     <p class="hero-lead">結婚式・家族・ポートレート・商業撮影まで。東京を拠点に、あなたの大切な瞬間を丁寧に切り取ります。</p>
     <div>
-      <a href="#" class="btn-black">撮影を依頼する</a>
-      <a href="#" class="btn-line">作品を見る</a>
+      <a href="contact.html" class="btn-black">撮影を依頼する</a>
+      <a href="portfolio.html" class="btn-line">作品を見る</a>
     </div>
   </div>
   <div class="hero-right">
@@ -225,7 +237,7 @@
   <div class="cta-content">
     <h2 class="cta-title">大切な瞬間を、<em>一緒に残しませんか。</em></h2>
     <p class="cta-text">まずはご相談だけでも構いません。撮影のご依頼・お見積もり・ご質問はお気軽にどうぞ。</p>
-    <a href="#" class="btn-warm">お問い合わせ・撮影依頼</a>
+    <a href="contact.html" class="btn-warm">お問い合わせ・撮影依頼</a>
   </div>
 </div>
 
@@ -235,3 +247,4 @@
 </footer>
 </body>
 </html>
+

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>解決事例 | 山田・中村法律事務所</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--navy:#0d1b2a;--gold:#c9a84c;--light:#f5f3ee;--gray:#6b7280;--border:#e5e0d8;}
+  body{font-family:'Noto Sans JP',sans-serif;color:var(--navy);background:#fff;overflow-x:hidden;}
+  a{text-decoration:none;}
+  .portfolio-note{background:#f0ede8;border-left:3px solid var(--gold);padding:12px 20px;text-align:center;font-size:.75rem;color:var(--gray);}
+
+  nav{position:fixed;top:0;width:100%;background:rgba(13,27,42,.97);z-index:100;padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{font-family:'Noto Serif JP',serif;color:#fff;font-size:1.1rem;letter-spacing:.15em;}
+  .logo span{color:var(--gold);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav ul a{color:rgba(255,255,255,.8);font-size:.82rem;letter-spacing:.12em;transition:.2s;}
+  nav ul a:hover{color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--navy)!important;padding:10px 22px;font-weight:700;font-size:.78rem!important;}
+
+  .page-hero{height:400px;background:var(--navy);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px;}
+  .hero-line{position:absolute;left:0;top:0;width:5px;height:100%;background:var(--gold);}
+  .page-hero-bg{position:absolute;right:0;top:0;width:55%;height:100%;background:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80') center/cover;opacity:.12;}
+  .page-hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,27,42,1) 45%,rgba(13,27,42,.2) 100%);}
+  .page-hero-content{position:relative;z-index:1;padding:0 80px;}
+  .page-hero-sub{color:var(--gold);font-size:.72rem;letter-spacing:.4em;margin-bottom:16px;}
+  .page-hero h1{font-family:'Noto Serif JP',serif;color:#fff;font-size:2.6rem;font-weight:700;line-height:1.4;}
+  .page-hero-lead{color:rgba(255,255,255,.55);font-size:.85rem;margin-top:14px;line-height:1.9;}
+
+  /* STATS BAR */
+  .stats-bar{background:var(--gold);display:grid;grid-template-columns:repeat(4,1fr);}
+  .sb{padding:28px 20px;text-align:center;border-right:1px solid rgba(13,27,42,.12);}
+  .sb:last-child{border:none;}
+  .sb-num{font-family:'Noto Serif JP',serif;font-size:2.2rem;color:var(--navy);font-weight:700;line-height:1;}
+  .sb-label{font-size:.72rem;color:var(--navy);margin-top:6px;opacity:.7;}
+
+  .sec{padding:100px 80px;}
+  .sec-tag{color:var(--gold);font-size:.72rem;letter-spacing:.3em;margin-bottom:10px;}
+  .sec-title{font-family:'Noto Serif JP',serif;font-size:2rem;color:var(--navy);margin-bottom:14px;line-height:1.4;}
+  .divider{width:40px;height:2px;background:var(--gold);margin:18px 0 48px;}
+  .btn-gold{display:inline-block;background:var(--gold);color:var(--navy);padding:16px 40px;font-size:.85rem;letter-spacing:.1em;font-weight:700;transition:.3s;}
+  .btn-gold:hover{background:#e0bb5a;transform:translateY(-2px);}
+
+  /* FILTER TABS */
+  .filter-tabs{display:flex;gap:0;flex-wrap:wrap;margin-bottom:48px;border-bottom:2px solid var(--border);}
+  .filter-tab{padding:12px 24px;font-size:.78rem;color:var(--gray);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:.2s;}
+  .filter-tab.active{color:var(--navy);border-bottom-color:var(--gold);font-weight:700;}
+  .filter-tab:hover{color:var(--navy);}
+
+  /* CASE CARDS */
+  .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .cc{background:#fff;padding:32px 28px;border-top:3px solid var(--gold);transition:.3s;position:relative;}
+  .cc:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);transform:translateY(-3px);}
+  .cc-cat{color:var(--gold);font-size:.68rem;letter-spacing:.15em;margin-bottom:10px;font-weight:700;}
+  .cc-title{font-family:'Noto Serif JP',serif;font-size:.98rem;margin-bottom:14px;line-height:1.6;color:var(--navy);}
+  .cc-situation{margin-bottom:14px;}
+  .cc-situation-label{font-size:.65rem;font-weight:700;color:var(--navy);letter-spacing:.1em;margin-bottom:5px;}
+  .cc-text{color:var(--gray);font-size:.78rem;line-height:1.88;}
+  .cc-strategy{margin:14px 0;}
+  .cc-strategy-label{font-size:.65rem;font-weight:700;color:var(--navy);letter-spacing:.1em;margin-bottom:5px;}
+  .cc-result{margin-top:18px;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .cc-badge{background:var(--navy);color:#fff;font-size:.62rem;padding:4px 12px;letter-spacing:.06em;flex-shrink:0;}
+  .cc-badge.win{background:#1a5c3a;}
+  .cc-badge.settle{background:#2c4a7c;}
+  .cc-badge.dismiss{background:#5c2c1a;}
+  .cc-metric{font-size:.75rem;color:var(--gold);font-weight:700;}
+
+  /* DISCLAIMER */
+  .case-note{background:var(--light);padding:20px 80px;font-size:.75rem;color:var(--gray);line-height:1.8;border-top:1px solid var(--border);}
+
+  /* CTA */
+  .cta-sec{background:var(--navy);padding:80px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:60px;}
+  .cta-title{font-family:'Noto Serif JP',serif;color:#fff;font-size:1.8rem;line-height:1.5;margin-bottom:10px;}
+  .cta-sub{color:rgba(255,255,255,.45);font-size:.82rem;}
+  .cta-btns{display:flex;flex-direction:column;gap:12px;align-items:center;}
+  .cta-tel{color:var(--gold);font-family:'Noto Serif JP',serif;font-size:1.8rem;letter-spacing:.05em;font-weight:700;}
+  .cta-tel-note{color:rgba(255,255,255,.3);font-size:.68rem;text-align:center;}
+
+  footer{background:#080f16;padding:40px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{color:rgba(255,255,255,.3);font-size:.75rem;}
+  .footer-logo{font-family:'Noto Serif JP',serif;color:rgba(255,255,255,.5);font-size:.95rem;letter-spacing:.12em;}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;} nav ul{display:none;}
+    .page-hero-content{padding:0 24px;} .page-hero h1{font-size:2rem;}
+    .sec{padding:60px 24px;}
+    .cases-grid{grid-template-columns:1fr;}
+    .stats-bar{grid-template-columns:1fr 1fr;}
+    .case-note{padding:20px 24px;}
+    .cta-sec{grid-template-columns:1fr;text-align:center;}
+    footer{flex-direction:column;gap:10px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="portfolio-note">※ ポートフォリオ用に制作した架空の法律事務所です。実在する事務所・人物とは一切関係ありません。</div>
+
+<nav>
+  <a href="index.html" class="logo"><span>山田・中村</span>法律事務所</a>
+  <ul>
+    <li><a href="about.html">事務所概要</a></li>
+    <li><a href="service.html">専門分野</a></li>
+    <li><a href="lawyers.html">弁護士紹介</a></li>
+    <li><a href="cases.html">解決事例</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="contact.html" class="nav-cta">無料相談予約</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grad"></div>
+  <div class="hero-line"></div>
+  <div class="page-hero-content">
+    <p class="page-hero-sub">CASE STUDIES</p>
+    <h1>解決事例</h1>
+    <p class="page-hero-lead">実際に解決した案件の一部をご紹介します。依頼者のご同意を得て掲載しています。</p>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="sb"><div class="sb-num">1,800<small style="font-size:.9rem">+</small></div><div class="sb-label">累計解決件数</div></div>
+  <div class="sb"><div class="sb-num">87<small style="font-size:.9rem">%</small></div><div class="sb-label">依頼者有利結果率</div></div>
+  <div class="sb"><div class="sb-num">6.2<small style="font-size:.9rem">ヶ月</small></div><div class="sb-label">平均解決期間</div></div>
+  <div class="sb"><div class="sb-num">96<small style="font-size:.9rem">%</small></div><div class="sb-label">依頼者満足度</div></div>
+</div>
+
+<!-- CASES SECTION -->
+<section class="sec" style="background:var(--light);">
+  <p class="sec-tag">CASE STUDIES</p>
+  <h2 class="sec-title">解決事例一覧</h2>
+  <div class="divider"></div>
+
+  <!-- FILTER TABS (visual only) -->
+  <div class="filter-tabs">
+    <div class="filter-tab active">全件</div>
+    <div class="filter-tab">企業法務</div>
+    <div class="filter-tab">相続</div>
+    <div class="filter-tab">離婚</div>
+    <div class="filter-tab">不動産</div>
+    <div class="filter-tab">債務整理</div>
+    <div class="filter-tab">刑事</div>
+    <div class="filter-tab">労働</div>
+  </div>
+
+  <div class="cases-grid">
+
+    <!-- CASE 01 -->
+    <div class="cc">
+      <p class="cc-cat">企業法務</p>
+      <h3 class="cc-title">取引先との契約トラブルで2,000万円の損害賠償請求を受けた中小企業のケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">製造業の中小企業A社が取引先から納品物の瑕疵を主張され、突然2,000万円の損害賠償を請求された。弁護士を依頼したことがなく、どうすればよいかわからないまま相談に来られた。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">契約書・仕様書・検収記録を精査し、瑕疵の存在自体を否定する反論書面を作成。相手方の主張の根拠を逐一崩し、交渉を有利に進めた。最終的に事実上の瑕疵なしとして解決金200万円での和解を実現した。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge settle">和解成立</span>
+        <span class="cc-metric">請求額の90%削減</span>
+      </div>
+    </div>
+
+    <!-- CASE 02 -->
+    <div class="cc">
+      <p class="cc-cat">相続</p>
+      <h3 class="cc-title">遺言書なしで不動産・預金を含む遺産分割が困難になったケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">父が急逝し、遺言書なしで不動産・預金・株式の遺産が残された。兄弟3人の意見が合わず、特に自宅不動産の扱いをめぐって感情的な対立が激化した。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">各相続人の事情・希望を個別に聞き取り、不動産を換価処分して公平に分配する分割案を作成。家庭裁判所での調停において粘り強く説得し、全員が納得できる形で調停成立に至った。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge settle">調停成立</span>
+        <span class="cc-metric">8ヶ月で全件解決</span>
+      </div>
+    </div>
+
+    <!-- CASE 03 -->
+    <div class="cc">
+      <p class="cc-cat">離婚</p>
+      <h3 class="cc-title">夫のモラハラを理由とした離婚・親権取得のケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">10年間のモラルハラスメントに悩む女性が離婚を決意。しかし目に見えない精神的DVのため証拠が少なく、相手方が離婚を拒否。子どもの親権も争いになる見込みだった。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">日記・LINEメッセージ・録音・心療内科の診断書を組み合わせて立証。婚姻費用の仮処分申立てで相手方にプレッシャーをかけ、調停で親権・養育費・財産分与すべてを依頼者に有利な条件で合意に至った。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge win">離婚成立</span>
+        <span class="cc-metric">親権・養育費・財産分与取得</span>
+      </div>
+    </div>
+
+    <!-- CASE 04 -->
+    <div class="cc">
+      <p class="cc-cat">企業法務</p>
+      <h3 class="cc-title">元従業員から不当解雇・パワハラを理由に3,000万円を請求されたケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">IT企業B社が元従業員から解雇無効・パワハラを理由に慰謝料3,000万円の請求を受けた。社内での対応が遅れ、訴訟提起された状態で相談に来られた。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">勤怠記録・業務評価・人事記録を精査し、解雇の正当性を示す証拠を整理。裁判では相手方の主張の矛盾を突く反論を展開し、最終的に会社に有利な判決を得た。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge win">判決勝訴</span>
+        <span class="cc-metric">全請求棄却</span>
+      </div>
+    </div>
+
+    <!-- CASE 05 -->
+    <div class="cc">
+      <p class="cc-cat">不動産</p>
+      <h3 class="cc-title">家賃3ヶ月滞納の賃借人への立退き交渉と未払い賃料回収のケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">マンションオーナーC氏が、家賃を3ヶ月以上滞納している賃借人への対応に困り相談。直接交渉しても埒が明かず、弁護士への依頼を決断した。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">内容証明郵便による催告・建物明渡し請求訴訟を提起。同時に賃借人の資力を調査し、強制執行も視野に入れた交渉を実施。訴訟期日前に賃借人が和解に応じ、滞納賃料全額と退去合意を獲得した。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge settle">和解成立</span>
+        <span class="cc-metric">未払賃料全額・退去合意</span>
+      </div>
+    </div>
+
+    <!-- CASE 06 -->
+    <div class="cc">
+      <p class="cc-cat">債務整理</p>
+      <h3 class="cc-title">複数の消費者金融・クレジットへの多重債務（総額700万円）の個人再生のケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">30代会社員D氏が、生活費の補填のために借り入れを繰り返した結果、5社700万円の多重債務を抱えることに。収入はあるが返済が生活を圧迫し、相談に来られた。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">受任直後に各債権者へ受任通知を発送し督促を止めた。収入・支出を精査した上で個人再生（住宅ローン特則なし）を選択。裁判所へ申立て後、約8ヶ月で認可決定を得て借金を140万円に圧縮した。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge settle">認可決定</span>
+        <span class="cc-metric">700万円 → 140万円に圧縮</span>
+      </div>
+    </div>
+
+    <!-- CASE 07 -->
+    <div class="cc">
+      <p class="cc-cat">刑事弁護</p>
+      <h3 class="cc-title">痴漢の疑いで逮捕・否認するも翌日から弁護・不起訴を獲得したケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">会社員E氏が通勤電車内での痴漢を疑われ逮捕された。本人は一貫して無実を主張していたが、逮捕の事実が発覚すれば失職の恐れがあり、家族が緊急で連絡してきた。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">逮捕翌日に接見し、取調べでの黙秘権行使をアドバイス。防犯カメラ映像の早期確保を要請し、目撃者証言とともにアリバイを立証する証拠を収集。検察に対して不起訴を強く申し入れ、起訴猶予処分を獲得した。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge dismiss">不起訴処分</span>
+        <span class="cc-metric">身柄釈放・職場秘匿</span>
+      </div>
+    </div>
+
+    <!-- CASE 08 -->
+    <div class="cc">
+      <p class="cc-cat">相続</p>
+      <h3 class="cc-title">認知症の父が作成した遺言書の有効性を争った遺言無効確認訴訟のケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">父の死後、突然見知らぬ遺言書が存在し、父が認知症を患っていた時期に作成されたと疑われた。内容は一部の相続人に有利なもので、不審を覚えた他の相続人が相談に来た。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">遺言書作成時の父の認知状態について、医師・介護記録・ヘルパー証言を収集。精神科医による鑑定書を取得し、遺言書作成時の意思能力を欠いていたことを立証して無効確認判決を得た。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge win">遺言無効確認</span>
+        <span class="cc-metric">法定相続分通りの分割実現</span>
+      </div>
+    </div>
+
+    <!-- CASE 09 -->
+    <div class="cc">
+      <p class="cc-cat">企業法務</p>
+      <h3 class="cc-title">フランチャイズ契約の一方的解除をめぐる加盟店からの損害賠償請求のケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">飲食フランチャイズ本部F社が、業績不振を理由に加盟店契約を解除。加盟店側から設備費・のれん代・逸失利益として5,000万円の請求を受けた。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">契約書の解除条項・通知手続きの適法性を確認し、契約解除の正当性を主張。加盟店側の損害額の算定根拠を精査・反論し、逸失利益の大部分が認められないことを示して和解交渉を有利に進めた。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge settle">和解成立</span>
+        <span class="cc-metric">請求額の75%減額</span>
+      </div>
+    </div>
+
+    <!-- CASE 10 -->
+    <div class="cc">
+      <p class="cc-cat">離婚</p>
+      <h3 class="cc-title">外国人配偶者との国際結婚の離婚・子の引渡しのケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">日本人男性G氏が外国人配偶者との離婚を望んでいたが、配偶者が子を連れて帰国しようとしており、国際的な子の奪取の問題も絡む複雑な案件となった。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">ハーグ条約・国際私法に基づいた法的分析を行い、子の監護権の確保を最優先に対応。外国の弁護士とも連携しながら、子の返還申立てと並行して離婚条件の交渉を進めた。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge win">離婚成立・親権確保</span>
+        <span class="cc-metric">子の国内残留実現</span>
+      </div>
+    </div>
+
+    <!-- CASE 11 -->
+    <div class="cc">
+      <p class="cc-cat">不動産</p>
+      <h3 class="cc-title">購入後1年で発覚した建築瑕疵（基礎欠陥）の損害賠償請求のケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">新築一戸建てを購入した夫婦が、1年後に床の傾き・ドアの歪みを発見。施工業者に申し入れたが「問題ない」と取り合ってもらえず、相談に来られた。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">建築士とともに現地調査を実施し、基礎の施工不良を確認。建築士の鑑定書をもとに損害賠償請求書を送付。施工業者が無視したため訴訟に移行し、修繕費用全額・引越し費用・慰謝料を請求。一審で全面勝訴した。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge win">判決勝訴</span>
+        <span class="cc-metric">修繕費・慰謝料全額認容</span>
+      </div>
+    </div>
+
+    <!-- CASE 12 -->
+    <div class="cc">
+      <p class="cc-cat">労働</p>
+      <h3 class="cc-title">5年間の未払い残業代（約280万円）の全額回収のケース</h3>
+      <div class="cc-situation">
+        <p class="cc-situation-label">状況</p>
+        <p class="cc-text">30代会社員H氏が在職中から毎月60〜80時間の残業をしていたが、固定残業代制度を理由に一切の残業代が支払われていなかった。退職後に相談に来られた。</p>
+      </div>
+      <div class="cc-strategy">
+        <p class="cc-situation-label">当事務所の対応</p>
+        <p class="cc-text">タイムカード・PCのログイン記録・メール送信時刻を使って実労働時間を再計算。固定残業代制度の適法要件を満たしていないことを主張。労働審判を申立て、期日2回で約280万円の全額支払いに合意させた。</p>
+      </div>
+      <div class="cc-result">
+        <span class="cc-badge win">全額回収</span>
+        <span class="cc-metric">未払残業代280万円回収</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="case-note">
+  ※ 掲載している解決事例はすべて依頼者の承諾を得た上で、個人を特定できない形に加工・編集しています。解決内容は個々の案件の事実関係・証拠・相手方の状況によって異なります。同様の結果を保証するものではありません。
+</div>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div>
+    <h2 class="cta-title">まずは、無料相談から。<br>一人で抱え込まないでください。</h2>
+    <p class="cta-sub">初回30分無料・完全予約制・秘密厳守</p>
+  </div>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn-gold" style="text-align:center;min-width:220px;">無料相談を予約する</a>
+    <div class="cta-tel">03-XXXX-XXXX</div>
+    <p class="cta-tel-note">平日 9:00〜18:00 ／ 土曜 10:00〜15:00</p>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-logo">山田・中村法律事務所</p>
+  <p>© 2024 Yamada & Nakamura Law Office. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
